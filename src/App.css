@@ -1,38 +1,75 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Poppins&display=swap');*{
+  font-family: 'Poppins', sans-serif;
+}
+.styled-heading{
+  font-family: 'Lobster', cursive;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.login-page{
+  /* min-height: 100vh; */
+  background: #080353ce url(https://i.ibb.co/r7d4nCm/IMG-0167.jpg) center center;
+  background-size: cover;
+  background-blend-mode: multiply;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.register-page{
+  /* min-height: 100vh; */
+  background: #080353ce url(https://i.ibb.co/vkHnB1Y/IMG-5132.jpg) center center;
+  background-size: cover;
+  background-blend-mode: multiply;
+}
+.login-box{
+  background: #0000009c;
+}
+.nav-avatar{
+  height: 20px;
+  width: 18px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.menu-items{
+  color: #034bd1 !important;
+  display: block;
+  padding-left: 10px !important;
+}
+.menu-items:hover{
+  background: #d1032f;
+  color: #fff !important;
 }
 
-.App-link {
-  color: #61dafb;
+.carousel-caption{
+  width: 100%;
+  right: 0 !important;
+  left: 0 !important;
+  /* height: 100%; */
+  background: #00000093;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.profile-pic{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+}
+.allMemver-header{
+  padding: 50px 0px;
+  background: #05134296 url(https://i.ibb.co/1Gy8Q93/1642572606maxresdefault.jpg) center center;
+  background-size: cover;
+  background-blend-mode: multiply;
+}
+
+/* member card */
+.member-card{
+  background: linear-gradient(18deg, yellow 70%, blue 30%);
+  padding: 10px;
+  border-radius: 7px;
+  box-shadow: #f02eaa33 0px 3px 12px;
+  transition: .2s;
+}
+.member-card:hover{
+  box-shadow: #f02eaa66 5px 5px, #f02eaa4d 10px 10px, #f02eaa33 15px 15px, #f02eaa1a 20px 20px;
+}
+.member-image{
+  margin-bottom: 15px;
+}
+.member-info table{
+  width: 100%;
 }
