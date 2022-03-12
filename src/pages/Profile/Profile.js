@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Hearder from '../CommonSections/Header/Hearder';
 import useAuth from '../../hooks/useAuth/useAuth';
-import { Button, Container } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import ShowMemberDetail from '../CommonSections/ShowMemberDetail/ShowMemberDetail';
 
 const Profile = () => {

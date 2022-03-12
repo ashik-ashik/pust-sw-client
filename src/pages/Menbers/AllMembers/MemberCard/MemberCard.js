@@ -14,7 +14,14 @@ const MemberCard = ({userInfo}) => {
       <Col>
         <div className="member-card">
           <div className="member-image text-center">
-            <img src={userInfo?.profilePic || "https://i.ibb.co/17b0X70/profile-avatar.jpg"} alt="Member" />
+            {
+              userInfo?.profilePic ? <>
+                <img className='profile-pic' src={`data:image/png;base64,${userInfo?.profilePic}`} alt="" /> 
+              </> : <>
+                <img src="https://i.ibb.co/17b0X70/profile-avatar.jpg" alt="Member" />
+              </>
+            }
+            
             <h5 className="styled-heading mt-3 text-light">{userInfo?.fullName}</h5>
           </div>
           <div className="member-info text-white small">
@@ -34,7 +41,7 @@ const MemberCard = ({userInfo}) => {
                 </tr>
                 <tr>
                   <td style={{width:"40%"}}>Blood</td>
-                  <td  style={{width:"60%"}}>: {userInfo?.blood.toUpperCase()}</td>
+                  <td  style={{width:"60%"}}>: {userInfo?.blood?.toUpperCase()}</td>
                 </tr>
                 <tr>
                   <td style={{width:"40%"}}>Is in Hall?</td>

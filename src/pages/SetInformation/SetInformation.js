@@ -8,6 +8,7 @@ const axios = require('axios');
 
 const SetInformation = () => {
   const {user, name} = useAuth();
+  
   const [isHall, setHall] = useState(false);
   const navigate = useNavigate();
 

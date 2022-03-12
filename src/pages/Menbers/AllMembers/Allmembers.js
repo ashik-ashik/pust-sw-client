@@ -6,14 +6,17 @@ import MemberCard from './MemberCard/MemberCard';
 import { useForm } from "react-hook-form";
 
 const Allmembers = () => {
-  const {user} = useAuth();
+  const {user, setUnload, isUnload} = useAuth();
   const [users, setUsers] = useState(null);
   const [data , setData] = useState('');
   // const history = 
   useEffect(()=> {
     fetch("http://localhost:5500/users")
     .then(res => res.json())
-    .then(data => setUsers(data));
+    .then(data => {
+      setUsers(data)
+      setUnload(false);
+    });
   }, [user]);
   
   const { register, handleSubmit, reset } = useForm();
@@ -27,7 +30,8 @@ const Allmembers = () => {
     .then(res => res.json())
     .then(data => {
       data.searched = true;
-      setUsers([data])
+      setUsers([data]);
+      setUnload(false);
     })
 
   }, [data]);
@@ -35,6 +39,13 @@ const Allmembers = () => {
   // go back from shearched result
   const goBack = () => {
     window.location.reload()  
+  }
+  if(isUnload){
+    return <>
+      <div className="reloading">
+        <img src="https://i.ibb.co/thLH6tv/reloading.gif" alt="" />
+      </div>
+    </>
   }
 
   return (

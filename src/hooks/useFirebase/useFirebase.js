@@ -4,6 +4,7 @@ const useFirebase = () => {
   const auth = getAuth();
   const [user, setNewUser] = useState(null);
   const [isLoading, setLoading] = useState(true);
+  const [isUnload, setUnload] = useState(true)
   const [name, setName] = useState(null);
   
 
@@ -56,6 +57,8 @@ const useFirebase = () => {
     setLoading,
     updateProfile,
     memberLogOut,
+    isUnload, 
+    setUnload
   }
 }
 export default useFirebase;
