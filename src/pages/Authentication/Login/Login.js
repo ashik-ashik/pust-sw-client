@@ -19,7 +19,7 @@ const Login = () => {
     if(email !== '' && password.length >=8){
       memberLogin(email, password)
       .then((userCredential) => {
-        navigate('/setup-information')
+        navigate('/')
         // Signed in 
         const user = userCredential.user;
         setNewUser(user)

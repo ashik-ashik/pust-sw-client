@@ -5,13 +5,14 @@ import Hearder from '../../CommonSections/Header/Hearder';
 import ShowMemberDetail from '../../CommonSections/ShowMemberDetail/ShowMemberDetail';
 
 const SingleMember = () => {
-  const {email} = useParams();
+  const {id} = useParams();
+  console.log(id)
   const [member, setMember] = useState(null);
   useEffect(()=> {
-    fetch(`http://localhost:5500/currentUser/${email}`)
+    fetch(`http://localhost:5500/getUser/${id}`)
     .then(res => res.json())
     .then(data => setMember(data))
-  }, [email]);
+  }, [id]);
   console.log(member)
   return (
     <>

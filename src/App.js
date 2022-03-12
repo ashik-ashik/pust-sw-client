@@ -36,11 +36,11 @@ function App() {
               <Allmembers />
             </PrivateRoute>
             }/>
-            <Route path='/member/:email' element={<PrivateRoute>
+            <Route path='/member/:id' element={<PrivateRoute>
               <SingleMember />
             </PrivateRoute>
             }/>
-            <Route path='/update-profile/:email' element={<PrivateRoute>
+            <Route path='/update-profile/:id' element={<PrivateRoute>
               <UpdateProfile />
             </PrivateRoute>
             }/>

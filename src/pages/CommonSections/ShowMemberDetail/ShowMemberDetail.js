@@ -6,8 +6,8 @@ import useAuth from '../../../hooks/useAuth/useAuth';
 const ShowMemberDetail = ({member}) => {
   const {user} = useAuth();
   const navigate = useNavigate();
-  const updateProfile = email => {
-    navigate(`/update-profile/${email}`);
+  const updateProfile = id => {
+    navigate(`/update-profile/${id}`);
   }
   return (
     <>
@@ -118,10 +118,18 @@ const ShowMemberDetail = ({member}) => {
 
                   </tbody>
                 </Table>
+                <div className="socital-media py-4 bg-light">
+                  <ul className='list-unstyled member-social-media w-75 mx-auto'>
+                    <li><a href={member?.facebookLink || "#"}><i className='bx bxl-facebook'></i></a></li>
+                    <li><a href={member?.instagramLink || "#"}><i className='bx bxl-instagram'></i></a></li>
+                    <li><a href={member?.twitterLink || "#"}><i className='bx bxl-twitter'></i></a></li>
+                    <li><a href={member?.linkedinLink || "#"}><i className='bx bxl-linkedin'></i></a></li>
+                  </ul>
+                </div>
                 {
                   user?.email === member?.email && <>
                     <div className="mt-4">
-                      <Button onClick={()=> updateProfile(user?.email)} variant='success' className='rounded-0 px-4' >Edit Profile</Button>
+                      <Button onClick={()=> updateProfile(member?._id)} variant='success' className='rounded-0 px-4' >Edit Profile</Button>
                     </div>
                   </>
                 }

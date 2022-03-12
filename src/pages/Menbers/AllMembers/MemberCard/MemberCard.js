@@ -4,10 +4,11 @@ import { useNavigate } from 'react-router-dom';
 
 const MemberCard = ({userInfo}) => {
   const navigate = useNavigate();
-  const viewProfile = email => {
-    console.log(email);
-    navigate(`/member/${email}`)
-  }
+  const viewProfile = id => {
+    navigate(`/member/${id}`)
+  console.log(id)
+}
+  console.log(userInfo)
   return (
     <>
       <Col>
@@ -50,7 +51,7 @@ const MemberCard = ({userInfo}) => {
               </tbody>
             </table>
             <div className="viewProfile text-center mt-3">
-              <Button variant="danger" onClick={()=>viewProfile(userInfo?.email)} size="sm" className='px-4 small shadow-none rounded-3' >View Profile</Button>
+              <Button variant="danger" onClick={()=>viewProfile(userInfo?._id)} size="sm" className='px-4 small shadow-none rounded-3' >View Profile</Button>
             </div>
             <div className="pt-3">
               <ul className='list-unstyled member-social-media'>

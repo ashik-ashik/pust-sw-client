@@ -37,7 +37,6 @@ const Allmembers = () => {
     window.location.reload()  
   }
 
-
   return (
     <>
       <Hearder />

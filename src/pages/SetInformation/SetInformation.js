@@ -3,6 +3,7 @@ import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth/useAuth';
 import { useForm } from "react-hook-form";
+import InfoFields from './InfoFields/InfoFields';
 const axios = require('axios');
 
 const SetInformation = () => {
@@ -53,6 +54,7 @@ const SetInformation = () => {
           Hello <span className='text-success'>{user?.displayName ? user?.displayName : name}</span>! You have successfully registred. Now you should set some basic information about you. Please sincerely fill up the below fileds.
           </p>
 
+
           <Form  onSubmit={handleSubmit(onSubmit)}>
             
             <Row className='mt-3'>
@@ -92,21 +94,21 @@ const SetInformation = () => {
               </Form.Group>
               
               <Form.Group as={Col} md="6" className="mb-3">
-              <Form.Label>Department:</Form.Label>
-              <Form.Select {...register("dept")}>
-                <option value='none'>Select Dept.</option>
-                <option value="social-work">Social Work</option>
-                <option value="economics">Economics</option>
-                <option value="english">English</option>
-                <option value="public-add">Public Addminitration</option>
-                <option value="bangla">Bangla</option>
-                <option value="thm">THM</option>
-                <option value="hbs">HBS</option>
-                <option value="physics">Physics</option>
-                <option value="eee">EEE</option>
-                <option value="cse">CSE</option>
-                <option value="urp">URP</option>
-              </Form.Select>
+                <Form.Label>Department:</Form.Label>
+                  <Form.Select {...register("dept")}>
+                    <option value='none'>Select Dept.</option>
+                    <option value="social-work">Social Work</option>
+                    <option value="economics">Economics</option>
+                    <option value="english">English</option>
+                    <option value="public-add">Public Addminitration</option>
+                    <option value="bangla">Bangla</option>
+                    <option value="thm">THM</option>
+                    <option value="hbs">HBS</option>
+                    <option value="physics">Physics</option>
+                    <option value="eee">EEE</option>
+                    <option value="cse">CSE</option>
+                    <option value="urp">URP</option>
+                  </Form.Select>
               </Form.Group>              
             </Row>
 
