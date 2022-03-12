@@ -53,6 +53,7 @@ const useFirebase = () => {
     memberRegister,
     memberLogin,
     isLoading,
+    setLoading,
     updateProfile,
     memberLogOut,
   }

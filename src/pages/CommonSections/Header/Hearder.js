@@ -9,7 +9,7 @@ const Hearder = () => {
     <>
       <Navbar sticky="top" bg="dark" variant="dark" expand={false}>
         <Container>
-          <Navbar.Brand href="#">PUST-SW</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/">PUST-SW</Navbar.Brand>
           <Navbar.Toggle aria-controls="offcanvasNavbar" className='shahow-none rounded-0 border-2' />
           <Navbar.Offcanvas
             id="offcanvasNavbar"

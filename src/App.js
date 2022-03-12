@@ -7,8 +7,10 @@ import PrivateRoute from './pages/Authentication/PrivateRoute/PrivateRoute';
 import Register from './pages/Authentication/Register/Register';
 import Home from './pages/Home/Home';
 import Allmembers from './pages/Menbers/AllMembers/Allmembers';
+import SingleMember from './pages/Menbers/SingleMember/SingleMember';
 import NotFound from './pages/NotFound/NotFound';
 import Profile from './pages/Profile/Profile';
+import UpdateProfile from './pages/Profile/UpdateProfile/UpdateProfile';
 import SetInformation from './pages/SetInformation/SetInformation';
 firebaseInit();
 function App() {
@@ -32,6 +34,14 @@ function App() {
             }/>
             <Route path='/members' element={<PrivateRoute>
               <Allmembers />
+            </PrivateRoute>
+            }/>
+            <Route path='/member/:email' element={<PrivateRoute>
+              <SingleMember />
+            </PrivateRoute>
+            }/>
+            <Route path='/update-profile/:email' element={<PrivateRoute>
+              <UpdateProfile />
             </PrivateRoute>
             }/>
             <Route path='/login' element={<Login />} />

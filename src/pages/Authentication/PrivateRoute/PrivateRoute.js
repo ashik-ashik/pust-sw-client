@@ -8,7 +8,11 @@ const PrivateRoute = ({children, ...rest}) => {
   console.log(user, isLoading, children)
 
   if(isLoading){
-    return <h4>Loading...</h4>
+    return <>
+      <div className="reloading">
+        <img src="https://i.ibb.co/thLH6tv/reloading.gif" alt="" />
+      </div>
+    </>
   }
   if(user?.email){
     return children;
