@@ -6,14 +6,16 @@ import ShowMemberDetail from '../../CommonSections/ShowMemberDetail/ShowMemberDe
 
 const SingleMember = () => {
   const {id} = useParams();
-  console.log(id)
   const [member, setMember] = useState(null);
+  useEffect(()=>{
+    document.title = member ? member?.fullName+ " Profile" : "Profile";
+  }, [member])
+  
   useEffect(()=> {
     fetch(`http://localhost:5500/getUser/${id}`)
     .then(res => res.json())
     .then(data => setMember(data))
   }, [id]);
-  console.log(member)
   return (
     <>
      <Hearder /> 

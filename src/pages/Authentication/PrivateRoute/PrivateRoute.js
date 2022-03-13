@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth/useAuth';
+import Loading from '../../CommonSections/Loading/Loading';
 
 const PrivateRoute = ({children, ...rest}) => {
   const location = useLocation();
@@ -9,10 +10,8 @@ const PrivateRoute = ({children, ...rest}) => {
 
   if(isLoading){
     return <>
-      <div className="reloading">
-        <img src="https://i.ibb.co/thLH6tv/reloading.gif" alt="" />
-      </div>
-    </>
+          <Loading />
+        </>
   }
   if(user?.email){
     return children;

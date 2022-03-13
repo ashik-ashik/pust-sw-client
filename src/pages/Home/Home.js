@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import Hearder from '../CommonSections/Header/Hearder';
 import Slider from './Slider/Slider';
 
 const Home = () => {
+  useEffect(()=>{
+    document.title = "Department of Social Work at PUST"
+  }, []);
   return (
     <>
       <Hearder />

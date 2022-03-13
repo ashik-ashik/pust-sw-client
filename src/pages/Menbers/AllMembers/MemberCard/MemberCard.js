@@ -22,7 +22,7 @@ const MemberCard = ({userInfo}) => {
               </>
             }
             
-            <h5 className="styled-heading mt-3 text-light">{userInfo?.fullName}</h5>
+            <h5 className="styled-heading mt-3 text-light">{userInfo?.fullName} {userInfo?.isCR && <sup className="cr-badge-card">CR</sup>}</h5>
           </div>
           <div className="member-info text-white small">
             <table>

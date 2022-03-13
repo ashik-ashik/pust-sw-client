@@ -11,7 +11,6 @@ const Hearder = () => {
     .then(res => res.json())
     .then(data => setCurrentUser(data));
   }, []);
-  console.log(currentUser)
   return (
     <>
       <Navbar sticky="top" bg="dark" variant="dark" expand={false}>
@@ -28,11 +27,11 @@ const Hearder = () => {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link as={Link} className="menu-items" to="/"><i className='fs-4 bx bx-home'></i> Home</Nav.Link>
-                <Nav.Link as={Link} className="menu-items" to="/notice"><i className='fs-4 bx bxs-bell-ring'></i> Notice</Nav.Link>
-                <Nav.Link as={Link} className="menu-items" to="/events"><i className='fs-4 bx bx-calendar-event' ></i> Events</Nav.Link>
-                <Nav.Link as={Link} className="menu-items" to="/members"><i className='fs-4 bx bxs-group'></i> Members</Nav.Link>
-                <Nav.Link as={Link} className="menu-items" to="/profile"><i className='fs-4 bx bxs-user-circle' ></i> Profile</Nav.Link>
+                <Nav.Link as={Link} className="menu-items" to="/"><i className='fs-4 bx bx-home me-2'></i> <span>Home</span></Nav.Link>
+                <Nav.Link as={Link} className="menu-items" to="/notice"><i className='fs-4 bx bxs-bell-ring me-2'></i> <span>Notice</span></Nav.Link>
+                <Nav.Link as={Link} className="menu-items" to="/events"><i className='fs-4 bx bx-calendar-event me-2' ></i> Events</Nav.Link>
+                <Nav.Link as={Link} className="menu-items" to="/members"><i className='fs-4 bx bxs-group me-2'></i> Members</Nav.Link>
+                <Nav.Link as={Link} className="menu-items" to="/profile"><i className='fs-4 bx bxs-user-circle me-2' ></i> Profile</Nav.Link>
                 <Nav.Link as={Button} variant='danger' className='text-white small mt-2' onClick={memberLogOut}>Log Out</Nav.Link>
                 
               </Nav>
@@ -41,9 +40,12 @@ const Hearder = () => {
           </Navbar.Offcanvas>
         </Container>
       </Navbar>
+      {
+        currentUser ? (currentUser.email && "") : ""
+      }
 
       {
-       !currentUser?.phone && !currentUser?.blood && !currentUser?.roll && !currentUser?.reg && !currentUser?.dept && !currentUser?.district &&  <>
+       currentUser ? (!currentUser?.phone && !currentUser?.blood && !currentUser?.roll && !currentUser?.reg && !currentUser?.dept && !currentUser?.district &&  <>
         <Container>
         <Alert variant="danger" className='mt-4'>
           <Alert.Heading>Oh snap! You have not set your basic information!</Alert.Heading>
@@ -53,7 +55,7 @@ const Hearder = () => {
           </p>
         </Alert>
       </Container>
-       </>
+       </>) : ''
       }
       
     </>

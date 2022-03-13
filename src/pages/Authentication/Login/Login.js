@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
@@ -6,7 +6,9 @@ import useAuth from '../../../hooks/useAuth/useAuth';
 import Hearder from '../../CommonSections/Header/Hearder';
 
 const Login = () => {
-
+  useEffect(()=>{
+    document.title = "Login to Department of Social Work at PUST"
+  }, []);
   const {user, setNewUser, memberLogin, errorMessage} = useAuth();
   // get values from the form
   const { register, handleSubmit } = useForm();

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
@@ -9,6 +9,9 @@ const axios = require('axios');
 const Register = () => {
   const {user, setNewUser, memberRegister, updateProfile, auth} = useAuth();
   const navigate = useNavigate();
+  useEffect(()=>{
+    document.title = "Register to Department of Social Work at PUST"
+  }, []);
   // get values from the form
   const { register, handleSubmit } = useForm();
   const [errPass, setErrPass] = useState('');

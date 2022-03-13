@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth/useAuth';
 import { useForm } from "react-hook-form";
-import InfoFields from './InfoFields/InfoFields';
 const axios = require('axios');
 
 const SetInformation = () => {
   const {user, name} = useAuth();
-  
+  useEffect(()=>{
+    document.title = "Setup Basic Information";
+  }, [])
   const [isHall, setHall] = useState(false);
   const navigate = useNavigate();
 

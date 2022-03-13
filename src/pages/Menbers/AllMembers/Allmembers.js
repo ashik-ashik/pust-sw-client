@@ -4,9 +4,13 @@ import useAuth from '../../../hooks/useAuth/useAuth';
 import Hearder from '../../CommonSections/Header/Hearder';
 import MemberCard from './MemberCard/MemberCard';
 import { useForm } from "react-hook-form";
+import Loading from '../../CommonSections/Loading/Loading';
 
 const Allmembers = () => {
-  const {user, setUnload, isUnload} = useAuth();
+  useEffect(()=>{
+    document.title = "Members of Department of Social Work at PUST"
+  }, []);
+  const {user} = useAuth();
   const [users, setUsers] = useState(null);
   const [data , setData] = useState('');
   // const history = 
@@ -15,7 +19,6 @@ const Allmembers = () => {
     .then(res => res.json())
     .then(data => {
       setUsers(data)
-      setUnload(false);
     });
   }, [user]);
   
@@ -31,7 +34,6 @@ const Allmembers = () => {
     .then(data => {
       data.searched = true;
       setUsers([data]);
-      setUnload(false);
     })
 
   }, [data]);
@@ -40,11 +42,10 @@ const Allmembers = () => {
   const goBack = () => {
     window.location.reload()  
   }
-  if(isUnload){
+ 
+  if(!users){
     return <>
-      <div className="reloading">
-        <img src="https://i.ibb.co/thLH6tv/reloading.gif" alt="" />
-      </div>
+      <Loading />
     </>
   }
 
@@ -89,7 +90,7 @@ const Allmembers = () => {
               }         
               <Row xs={1} md={2} lg={3} className="g-4">
                   {
-                    users?.map(user => <MemberCard key={user?._id} userInfo={user} />)
+                    users?.map(user => <MemberCard key={user?._id} userInfo={user} />) 
                   }
                 </Row>
 

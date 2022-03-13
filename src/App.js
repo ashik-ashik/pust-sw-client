@@ -5,6 +5,7 @@ import firebaseInit from './firebase/firebase.init/firebase.init';
 import Login from './pages/Authentication/Login/Login';
 import PrivateRoute from './pages/Authentication/PrivateRoute/PrivateRoute';
 import Register from './pages/Authentication/Register/Register';
+import Footer from './pages/CommonSections/Footer/Footer';
 import Home from './pages/Home/Home';
 import Allmembers from './pages/Menbers/AllMembers/Allmembers';
 import SingleMember from './pages/Menbers/SingleMember/SingleMember';
@@ -49,6 +50,7 @@ function App() {
             <Route path='*' element={<NotFound />} />
           </Routes>
         </Router>
+        <Footer />
       </AuthProvider>
     </>
   );

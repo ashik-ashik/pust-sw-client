@@ -8,6 +8,9 @@ const Profile = () => {
   const {user} = useAuth();
   const [currentUser, setCurrentUser] = useState(null);
   useEffect(()=>{
+    document.title = currentUser ? currentUser?.fullName+ " Profile" : "Profile";
+  }, [currentUser])
+  useEffect(()=>{
     fetch(`http://localhost:5500/currentUser/${user?.email}`)
     .then(res => res.json())
     .then(data => setCurrentUser(data))
