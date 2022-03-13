@@ -62,10 +62,10 @@ const MemberCard = ({userInfo}) => {
             </div>
             <div className="pt-3">
               <ul className='list-unstyled member-social-media'>
-                <li><a href={userInfo.facebookLink || "#"}><i className='bx bxl-facebook'></i></a></li>
-                <li><a href={userInfo.instagramLink || "#"}><i className='bx bxl-instagram'></i></a></li>
-                <li><a href={userInfo.twitterLink || "#"}><i className='bx bxl-twitter'></i></a></li>
-                <li><a href={userInfo.linkedinLink || "#"}><i className='bx bxl-linkedin'></i></a></li>
+                <li><a href={userInfo?.facebookLink || "#"}><i className='bx bxl-facebook'></i></a></li>
+                <li><a href={userInfo?.instagramLink || "#"}><i className='bx bxl-instagram'></i></a></li>
+                <li><a href={userInfo?.twitterLink || "#"}><i className='bx bxl-twitter'></i></a></li>
+                <li><a href={userInfo?.linkedinLink || "#"}><i className='bx bxl-linkedin'></i></a></li>
               </ul>
             </div>
           </div>

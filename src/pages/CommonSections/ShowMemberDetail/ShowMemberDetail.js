@@ -21,7 +21,7 @@ const ShowMemberDetail = ({member}) => {
   const submitCRship = (e) => {
     const isCR = document.getElementById("CRship").checked;
     console.log(isCR)
-    axios.put(`http://localhost:5500/upload-cr-ship/${member?._id}`, {isCR})
+    axios.put(`http://localhost:5500/upload-cr-ship/${member?._id}`, {isCR, CRstatus:'pending'})
     .then(res => {
       setShow(false);
         window.location.reload();

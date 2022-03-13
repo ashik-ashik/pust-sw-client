@@ -41,15 +41,9 @@ const SetInformation = () => {
   }
   return (
     <>
-      <section className="pt-3 pb-4 text-end bg-light">
-        <Container>
-        <div>
-          <Link to='/' className="text-danger text-decoration-none">Skip for Now</Link>
-          </div>
-        </Container>
-      </section>
+      
 
-      <section className="py-2">
+      <section className="py-4">
         <Container>
           <h4 className="text-success styled-heading">Welcome! {user?.displayName ? user?.displayName : name}</h4>
           <p>

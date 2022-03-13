@@ -1,12 +1,30 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import useAuth from '../../hooks/useAuth/useAuth';
 import Hearder from '../CommonSections/Header/Hearder';
+import MemberCard from '../Menbers/AllMembers/MemberCard/MemberCard';
 import Slider from './Slider/Slider';
 
 const Home = () => {
   useEffect(()=>{
     document.title = "Department of Social Work at PUST"
   }, []);
+  const {user} = useAuth();
+  const navigate = useNavigate();
+  const [currentUser, setCurrentUser] = useState(null);
+   useEffect (()=>{
+    const load = async ()=> {
+      const res = await fetch(`http://localhost:5500/currentUser/${user?.email}`);
+      const result = await res.json();
+      setCurrentUser(result);
+    }
+    load();
+  }, [user])
+  console.log("Home user " , currentUser);
+  if(!currentUser?.fullName || !currentUser?.phone || !currentUser?.roll || !currentUser?.reg || !currentUser?.blood){
+    navigate("/setup-information")
+  }
   return (
     <>
       <Hearder />
@@ -29,6 +47,8 @@ const Home = () => {
             </Col>
           </Row>
         </Container>
+
+        
       </section>
     </>
   );
