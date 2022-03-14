@@ -15,7 +15,7 @@ const Home = () => {
   const [currentUser, setCurrentUser] = useState(null);
    useEffect (()=>{
     const load = async ()=> {
-      const res = await fetch(`http://localhost:5500/currentUser/${user?.email}`);
+      const res = await fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`);
       const result = await res.json();
       setCurrentUser(result);
     }

@@ -34,7 +34,7 @@ const Register = () => {
           displayName: fullName, 
         }).then(() => {
         // updated
-        axios.post("http://localhost:5500/user", user)
+        axios.post("https://warm-earth-97575.herokuapp.com/user", user)
         .then(res => {
           console.log(res)
         })
