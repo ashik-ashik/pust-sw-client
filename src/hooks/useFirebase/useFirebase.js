@@ -1,4 +1,4 @@
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, updateProfile, signOut } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, updateProfile, signOut, deleteUser } from "firebase/auth";
 import { useEffect, useState } from "react";
 const useFirebase = () => {
   const auth = getAuth();
@@ -44,6 +44,16 @@ const useFirebase = () => {
       // An error happened.
     });
   }
+
+  // account delete
+  const deleteAccount = () => {
+    deleteUser(user).then(() => {
+      // User deleted.
+    }).catch((error) => {
+      // An error ocurred
+      // ...
+    });
+  }
   console.log(user)
 
   return {
@@ -58,7 +68,8 @@ const useFirebase = () => {
     updateProfile,
     memberLogOut,
     isUnload, 
-    setUnload
+    setUnload,
+    deleteAccount
   }
 }
 export default useFirebase;

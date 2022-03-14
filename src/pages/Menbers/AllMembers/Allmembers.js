@@ -12,7 +12,7 @@ const Allmembers = () => {
   }, []);
   const {user} = useAuth();
   const [users, setUsers] = useState(null);
-  const [data , setData] = useState('');
+  const [data , setData] = useState('no');
   // const history = 
   useEffect(()=> {
     fetch("https://warm-earth-97575.herokuapp.com/users")
@@ -32,8 +32,10 @@ const Allmembers = () => {
     fetch(`https://warm-earth-97575.herokuapp.com/searchMember/${data}`)
     .then(res => res.json())
     .then(data => {
-      data.searched = true;
-      setUsers([data]);
+      if(data){
+        data.searched = true;
+        setUsers([data]);
+      }
     })
 
   }, [data]);

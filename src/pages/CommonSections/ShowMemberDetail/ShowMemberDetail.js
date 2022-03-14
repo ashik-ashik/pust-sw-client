@@ -59,7 +59,7 @@ const ShowMemberDetail = ({member}) => {
       <Row>
               <Col></Col>
               <Col md="9">
-                <div className="profilePic text-center py-4" style={{backgroundImage:`url(${imageURL})`}}>
+                <div className={`profilePic text-center ${member?.email !== user?.email ? "py-5" : "py-4"}`} style={{backgroundImage:`url(${imageURL})`}}>
                   
                   {
                     member?.profilePic ?
@@ -67,7 +67,11 @@ const ShowMemberDetail = ({member}) => {
                     <img className='profile-pic' src="https://i.ibb.co/17b0X70/profile-avatar.jpg" alt="" />
                     }
                   <div className="mt-3">
-                    <Button  onClick={clickFile} variant="success" size="sm" className="px-4 rounded-0"><i className='bx bxs-camera fs-6'></i> Upload Profile</Button>
+                    {
+                      member?.email === user?.email && <>
+                        <Button  onClick={clickFile} variant="success" size="sm" className="px-4 rounded-0"><i className='bx bxs-camera fs-6'></i> Upload Profile</Button>
+                      </>
+                    }
                   </div>
                 </div>
                 <h2 className='mb-3 mt-2 text-center styled-heading'>{member?.fullName} {member?.CRstatus === "verified" && <sup className="cr-badge">CR</sup>}</h2>
@@ -180,6 +184,7 @@ const ShowMemberDetail = ({member}) => {
 
                   </tbody>
                 </Table>
+
                 <div className="socital-media py-4 bg-light">
                   <ul className='list-unstyled member-social-media w-75 mx-auto'>
                     <li><a href={member?.facebookLink || "#"}><i className='bx bxl-facebook'></i></a></li>
@@ -188,6 +193,7 @@ const ShowMemberDetail = ({member}) => {
                     <li><a href={member?.linkedinLink || "#"}><i className='bx bxl-linkedin'></i></a></li>
                   </ul>
                 </div>
+                
                 {
                   user?.email === member?.email && <>
                     <div className="mt-4">

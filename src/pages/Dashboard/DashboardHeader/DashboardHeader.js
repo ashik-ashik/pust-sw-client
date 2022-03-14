@@ -3,7 +3,8 @@ import { Alert, Button, Container, Nav, Navbar, Offcanvas } from 'react-bootstra
 import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth/useAuth';
 
-const Hearder = () => {
+const DashboardHeader = () => {
+
   const {user, memberLogOut} = useAuth();
   const [currentUser, setCurrentUser]=useState(null);
   useEffect(()=> {
@@ -28,15 +29,11 @@ const Hearder = () => {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link as={Link} className="menu-items" to="/"><i className='fs-4 bx bx-home me-2'></i> <span>Home</span></Nav.Link>
-                {
-                  currentUser?.role === "admin" && <>
-                    <Nav.Link as={Link} className="menu-items" to="/dashboard"><i className='fs-4 bx bxs-dashboard me-2'></i> <span>Dashboard</span></Nav.Link>
-                  </>
-                }
-                <Nav.Link as={Link} className="menu-items" to="/notice-board"><i className='fs-4 bx bxs-bell-ring me-2'></i> <span>Notice</span></Nav.Link>
-                <Nav.Link as={Link} className="menu-items" to="/events"><i className='fs-4 bx bx-calendar-event me-2' ></i> Events</Nav.Link>
-                <Nav.Link as={Link} className="menu-items" to="/members"><i className='fs-4 bx bxs-group me-2'></i> Members</Nav.Link>
+                
+                <Nav.Link as={Link} className="menu-items" to="/"><i className='fs-4 bx bxs-home me-2'></i> <span>Home</span></Nav.Link>
+                <Nav.Link as={Link} className="menu-items" to="/manage-members"><i className='fs-4 bx bxs-user-detail me-2'></i> <span>Manage Members</span></Nav.Link>
+                <Nav.Link as={Link} className="menu-items" to="/cr-request"><i className='fs-4 bx bxs-user-pin me-2' ></i> CR Requests</Nav.Link>
+                
                 <Nav.Link as={Link} className="menu-items" to="/profile"><i className='fs-4 bx bxs-user-circle me-2' ></i> Profile</Nav.Link>
                 <Nav.Link as={Button} variant='danger' className='text-white small mt-2' onClick={memberLogOut}>Log Out</Nav.Link>
                 
@@ -71,4 +68,7 @@ const Hearder = () => {
   );
 };
 
-export default Hearder;
+
+export default DashboardHeader;
+
+ 

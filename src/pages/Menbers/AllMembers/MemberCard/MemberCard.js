@@ -8,7 +8,7 @@ const MemberCard = ({userInfo}) => {
     navigate(`/member/${id}`)
   console.log(id)
 }
-  const profilePic= `data:image/png;base64,${userInfo?.profilePic}`
+  const profilePic= `data:image/png;base64,${userInfo?.profilePic}`;
   console.log(userInfo)
   return (
     <>

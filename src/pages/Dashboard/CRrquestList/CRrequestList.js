@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Table } from 'react-bootstrap';
+import { Container, Row, Table } from 'react-bootstrap';
 import CRrequests from '../CRrequest/CRrequests';
 import Loading from '../../CommonSections/Loading/Loading';
 import DashboardHeader from '../DashboardHeader/DashboardHeader';
 
-const Dashboard = () => {
+const CRrequestList = () => {
   const [user, setUser] = useState(null);
   useEffect(()=>{
     const load = async ()=>{
@@ -26,11 +26,22 @@ const Dashboard = () => {
       <DashboardHeader />
       <div className="py-4">
         <Container>
-          <h3 className="display-3 text-center">Welcome to Dashboard</h3>
+          <h3 className="styled-heading text-primary mb-4">CR-ship Requests:</h3>
+            <Row xs={1} md={3} lg={4}>
+              {
+                CR_requests?.length > 0 ? <>
+                  {
+                  CR_requests?.map(single => <CRrequests key={single?._id} requests={single}  />)
+                  }
+                </> : <>
+                  <h5 className="styled-heading text-danger">There is no CR request.</h5>
+                </>
+              }
+            </Row>
         </Container>
       </div>
     </>
   );
 };
 
-export default Dashboard;
+export default CRrequestList;
