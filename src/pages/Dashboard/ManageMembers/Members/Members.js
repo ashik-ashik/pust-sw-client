@@ -5,9 +5,19 @@ import useAuth from '../../../../hooks/useAuth/useAuth';
 
 const Members = ({member}) => {
   console.log(member);
-  const {deleteAccount} = useAuth();
+  const {user, deleteAccount} = useAuth();
   const [openDelete, setDelete] = useState(false);
-  
+  // current logged in user
+  const [currentUser, setCurrentuser] = useState(null);
+  useEffect(()=>{
+    const load = async () => {
+      const res = await fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`);
+      const result = await res.json();
+      setCurrentuser(result)
+    }
+    load();
+  }, [user]);
+
   // remove cr ship
   const removeCR = (id) => {
     axios.put(`https://warm-earth-97575.herokuapp.com/remove-cr/${id}`, {})
@@ -75,16 +85,20 @@ const Members = ({member}) => {
                 </tr>
               </tbody>
             </table>
-            <div className="viewProfile text-center mt-3 pb-2">
-              {
-                member?.CRstatus === "verified" ? <>
-                  <Button onClick={()=> removeCR(member._id)} variant="danger" size="sm" className='px-4 small shadow-none rounded-0 me-3' >Remove CR</Button>
-                </> : <>
-                  <Button onClick={()=> makeCR(member?._id)} variant="primary" size="sm" className='px-4 small shadow-none rounded-0 me-3' >Make CR</Button>
-                </>
-              }
-              <Button onClick={deleteMember} variant="danger" size="sm" className='px-4 small shadow-none rounded-0' >Delete</Button>
-            </div>
+            {
+              currentUser?.role === "admin" && <>
+                <div className="viewProfile text-center mt-3 pb-2">
+                  {
+                    member?.CRstatus === "verified" ? <>
+                      <Button onClick={()=> removeCR(member._id)} variant="danger" size="sm" className='px-4 small shadow-none rounded-0 me-3' >Remove CR</Button>
+                    </> : <>
+                      <Button onClick={()=> makeCR(member?._id)} variant="primary" size="sm" className='px-4 small shadow-none rounded-0 me-3' >Make CR</Button>
+                    </>
+                  }
+                  <Button onClick={deleteMember} variant="danger" size="sm" className='px-4 small shadow-none rounded-0' >Delete</Button>
+                </div>
+              </>
+            }
             {/* <div className="pt-3">
               <ul className='list-unstyled member-social-media'>
                 <li><a href={member?.facebookLink || "#"}><i className='bx bxl-facebook'></i></a></li>

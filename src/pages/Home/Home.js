@@ -3,6 +3,8 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth/useAuth';
 import Hearder from '../CommonSections/Header/Hearder';
+import Loading from '../CommonSections/Loading/Loading';
+import Members from '../Dashboard/ManageMembers/Members/Members';
 import Slider from './Slider/Slider';
 
 const Home = () => {
@@ -12,6 +14,7 @@ const Home = () => {
   const {user} = useAuth();
   const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState(null);
+  const [members, setMembers] = useState(null);
    useEffect (()=>{
     const load = async ()=> {
       const res = await fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`);
@@ -19,8 +22,21 @@ const Home = () => {
       setCurrentUser(result);
     }
     load();
-  }, [user])
-  console.log("Home user " , currentUser);
+  }, [user]);
+
+   useEffect (()=>{
+    const load = async ()=> {
+      const res = await fetch(`https://warm-earth-97575.herokuapp.com/users`);
+      const result = await res.json();
+      setMembers(result);
+    }
+    load();
+  }, [user]);
+  const featuredMember = members?.slice(0,4);
+  if(!members){
+    return <><Loading /> </>
+  }
+  console.log("Home user " , members?.slice(0,4));
   if(!currentUser?.fullName || !currentUser?.phone || !currentUser?.roll || !currentUser?.reg || !currentUser?.blood){
     navigate("/setup-information")
   }
@@ -45,9 +61,18 @@ const Home = () => {
             <img className='img-fluid' src="https://i.ibb.co/1Gy8Q93/1642572606maxresdefault.jpg" alt="Jonok" />
             </Col>
           </Row>
-        </Container>
+        </Container>        
+      </section>
 
-        
+      <section className="py-4">
+        <Container>
+          <h3 className="styled-heading mb-4">Featured Members:</h3>
+          <Row>
+            {
+              featuredMember?.map(member => <Members key={member?._id} member={member} />)
+            }
+          </Row>
+        </Container>
       </section>
     </>
   );

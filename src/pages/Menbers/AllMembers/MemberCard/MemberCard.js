@@ -59,7 +59,7 @@ const MemberCard = ({userInfo}) => {
               </tbody>
             </table>
             <div className="viewProfile text-center mt-3">
-              <Button variant="danger" onClick={()=>viewProfile(userInfo?._id)} size="sm" className='px-4 small shadow-none rounded-3' >View Profile</Button>
+              <Button variant="danger" onClick={()=>viewProfile(userInfo?._id)} size="sm" className='px-4 small shadow-none rounded-3' ><i className='bx bxs-user-badge me-1'></i>View Profile</Button>
             </div>
             <div className="pt-3">
               <ul className='list-unstyled member-social-media'>

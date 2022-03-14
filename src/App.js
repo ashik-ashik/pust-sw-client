@@ -12,6 +12,7 @@ import ManageMembers from './pages/Dashboard/ManageMembers/ManageMembers';
 import Home from './pages/Home/Home';
 import Allmembers from './pages/Menbers/AllMembers/Allmembers';
 import SingleMember from './pages/Menbers/SingleMember/SingleMember';
+import MissionVision from './pages/MissionVision/MissionVision';
 import NotFound from './pages/NotFound/NotFound';
 import Notices from './pages/Notices/Notices';
 import PublishNotice from './pages/Notices/PublishNotice/PublishNotice';
@@ -72,11 +73,12 @@ function App() {
             }/>
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
+            <Route path='/mission-vision' element={<MissionVision />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
         </Router>
-        <Footer />
       </AuthProvider>
+        <Footer />
     </>
   );
 }

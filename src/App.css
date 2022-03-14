@@ -180,3 +180,7 @@ a{
 .cr-request-body .cr-info{
   padding: 0 15px;
 }
+.footer-link{
+  font-size: 13px;
+  color: #d1032f;
+}

@@ -27,7 +27,7 @@ const CRrequestList = () => {
       <div className="py-4">
         <Container>
           <h3 className="styled-heading text-primary mb-4">CR-ship Requests:</h3>
-            <Row xs={1} md={3} lg={4}>
+            <Row xs={1} md={3} lg={4} className="g-4">
               {
                 CR_requests?.length > 0 ? <>
                   {
