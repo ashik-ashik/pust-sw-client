@@ -8,6 +8,7 @@ const MemberCard = ({userInfo}) => {
     navigate(`/member/${id}`)
   console.log(id)
 }
+  const profilePic= `data:image/png;base64,${userInfo?.profilePic}`
   console.log(userInfo)
   return (
     <>
@@ -16,13 +17,13 @@ const MemberCard = ({userInfo}) => {
           <div className="member-image text-center">
             {
               userInfo?.profilePic ? <>
-                <img className='profile-pic' src={`data:image/png;base64,${userInfo?.profilePic}`} alt="" /> 
+                <img className='profile-pic' src={profilePic} alt="" /> 
               </> : <>
                 <img src="https://i.ibb.co/17b0X70/profile-avatar.jpg" alt="Member" />
               </>
             }
             
-            <h5 className="styled-heading mt-3 text-light">{userInfo?.fullName} {userInfo?.isCR && <sup className="cr-badge-card">CR</sup>}</h5>
+            <h5 className="styled-heading mt-3 text-light">{userInfo?.fullName} {userInfo?.CRstatus === "verified" && <sup className="cr-badge-card">CR</sup>}</h5>
           </div>
           <div className="member-info text-white small">
             <table>

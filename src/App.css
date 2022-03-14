@@ -159,3 +159,24 @@ a{
   background: green;
   color: #fff;
 }
+.menubar-logo{
+  width: auto;
+  height: 40px;
+}
+.CR-reques-img{
+  width: auto;
+  height: 100px;
+  border-radius: 5px;
+}
+.cr-request-list{
+  display: flex;
+  align-items: center;
+  background: #2b0375e8;
+  border-radius: 5px;
+}
+.cr-request-body{
+  display: flex;
+}
+.cr-request-body .cr-info{
+  padding: 0 15px;
+}

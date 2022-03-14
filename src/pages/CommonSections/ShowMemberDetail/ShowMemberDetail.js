@@ -70,7 +70,7 @@ const ShowMemberDetail = ({member}) => {
                     <Button  onClick={clickFile} variant="success" size="sm" className="px-4 rounded-0"><i className='bx bxs-camera fs-6'></i> Upload Profile</Button>
                   </div>
                 </div>
-                <h2 className='mb-3 mt-2 text-center styled-heading'>{member?.fullName} {member?.isCR && <sup className="cr-badge">CR</sup>}</h2>
+                <h2 className='mb-3 mt-2 text-center styled-heading'>{member?.fullName} {member?.CRstatus === "verified" && <sup className="cr-badge">CR</sup>}</h2>
                 {
                   user?.email === member?.email && !member?.isCR && <>
                     <p>Are you CR of your class? <span className='cr-ship' onClick={()=> updateCR(member?._id)}>Set CRship</span></p>

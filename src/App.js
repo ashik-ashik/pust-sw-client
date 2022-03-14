@@ -6,6 +6,7 @@ import Login from './pages/Authentication/Login/Login';
 import PrivateRoute from './pages/Authentication/PrivateRoute/PrivateRoute';
 import Register from './pages/Authentication/Register/Register';
 import Footer from './pages/CommonSections/Footer/Footer';
+import Dashboard from './pages/Dashboard/Dashboard/Dashboard';
 import Home from './pages/Home/Home';
 import Allmembers from './pages/Menbers/AllMembers/Allmembers';
 import SingleMember from './pages/Menbers/SingleMember/SingleMember';
@@ -43,6 +44,10 @@ function App() {
             }/>
             <Route path='/update-profile/:id' element={<PrivateRoute>
               <UpdateProfile />
+            </PrivateRoute>
+            }/>
+            <Route path='/dashboard' element={<PrivateRoute>
+              <Dashboard />
             </PrivateRoute>
             }/>
             <Route path='/login' element={<Login />} />
