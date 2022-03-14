@@ -3,7 +3,6 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth/useAuth';
 import Hearder from '../CommonSections/Header/Hearder';
-import MemberCard from '../Menbers/AllMembers/MemberCard/MemberCard';
 import Slider from './Slider/Slider';
 
 const Home = () => {
