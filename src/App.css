@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Poppins&display=swap');*{
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Teko&display=swap');
+*{
   font-family: 'Poppins', sans-serif;
 }
 
@@ -183,4 +185,19 @@ a{
 .footer-link{
   font-size: 13px;
   color: #d1032f;
+}
+.publish-notice{
+  background: #350869a2 url(https://i.ibb.co/2gy4T9t/inner-bg.jpg) center center;
+  background-attachment: fixed;
+  background-size: cover;
+  background-blend-mode: multiply;
+}
+.transparent-field{
+  background: #000000a9 !important;
+}
+.notice-head{
+  background: purple !important;
+}
+.title-font{
+  font-family: 'Teko', sans-serif !important;  
 }

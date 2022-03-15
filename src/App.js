@@ -16,6 +16,7 @@ import MissionVision from './pages/MissionVision/MissionVision';
 import NotFound from './pages/NotFound/NotFound';
 import Notices from './pages/Notices/Notices';
 import PublishNotice from './pages/Notices/PublishNotice/PublishNotice';
+import SingleNotice from './pages/Notices/SingleNotice/SingleNotice';
 import Profile from './pages/Profile/Profile';
 import UpdateProfile from './pages/Profile/UpdateProfile/UpdateProfile';
 import SetInformation from './pages/SetInformation/SetInformation';
@@ -69,6 +70,10 @@ function App() {
             }/>
             <Route path='/publish-notice' element={<PrivateRoute>
               <PublishNotice />
+            </PrivateRoute>
+            }/>
+            <Route path='/notice/:id' element={<PrivateRoute>
+              <SingleNotice />
             </PrivateRoute>
             }/>
             <Route path='/login' element={<Login />} />

@@ -67,7 +67,7 @@ const Home = () => {
       <section className="py-4">
         <Container>
           <h3 className="styled-heading mb-4">Featured Members:</h3>
-          <Row>
+          <Row xs={1} md={2} lg={4} className='g-4'>
             {
               featuredMember?.map(member => <Members key={member?._id} member={member} />)
             }
