@@ -5,8 +5,8 @@ import useAuth from '../../../../hooks/useAuth/useAuth';
 
 const Members = ({member}) => {
   console.log(member);
-  const {user, deleteAccount} = useAuth();
-  const [openDelete, setDelete] = useState(false);
+  const {user} = useAuth();
+  
   // current logged in user
   const [currentUser, setCurrentuser] = useState(null);
   useEffect(()=>{
@@ -34,19 +34,6 @@ const Members = ({member}) => {
     })
   };
 
-  // delete a Account
-  const handleDeleteClose = () => setDelete(false);
-  const deleteMember = () => {
-      setDelete(true);
-  }
-  const confirmDelete = (id) => {
-    axios.delete(`https://warm-earth-97575.herokuapp.com/delete-member/${id}`)
-    .then(res => {
-      deleteAccount();
-      window.location.reload();
-    })
-    console.log('deleteId' , id)
-  }
   
   const profilePic = `data:image/png;base64,${member?.profilePic}`;
   return (
@@ -95,7 +82,6 @@ const Members = ({member}) => {
                       <Button onClick={()=> makeCR(member?._id)} variant="primary" size="sm" className='px-4 small shadow-none rounded-0 me-3' >Make CR</Button>
                     </>
                   }
-                  <Button onClick={deleteMember} variant="danger" size="sm" className='px-4 small shadow-none rounded-0' >Delete</Button>
                 </div>
               </>
             }
@@ -111,28 +97,7 @@ const Members = ({member}) => {
         </div>
       </Col>
 
-      {/* update CR-ship */}
-      <Modal show={openDelete} onHide={handleDeleteClose} centered animation={true}>
-        <Modal.Header className='fs-5 shadow-none'>
-          <Modal.Title>Are You seure delete <span className="text-danger fw-bold"> {member?.fullName}</span> 's Account?</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-            <div className="user-profile text-center mb-3">
-              <img className='img-fluid w-50 rounded' src={profilePic} alt="" />
-            </div>
-            <Button onClick={()=> confirmDelete(member?._id)} variant="danger" className='shadow-none px-4 rounded-0' size="sm" >
-              Confirm Delete
-            </Button>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleDeleteClose}>
-            Cancel
-          </Button>
-          {/* <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button> */}
-        </Modal.Footer>
-      </Modal>
+
 
     </>
   );

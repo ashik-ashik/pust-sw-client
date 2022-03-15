@@ -36,6 +36,9 @@ const Home = () => {
   if(!members){
     return <><Loading /> </>
   }
+  if(!currentUser){
+    return <><Loading /> </>
+  }
   console.log("Home user " , members?.slice(0,4));
   if(!currentUser?.fullName || !currentUser?.phone || !currentUser?.roll || !currentUser?.reg || !currentUser?.blood){
     navigate("/setup-information")

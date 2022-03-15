@@ -5,7 +5,7 @@ import useAuth from '../../../hooks/useAuth/useAuth';
 import axios from 'axios';
 
 const ShowMemberDetail = ({member}) => {
-  const {user} = useAuth();
+  const {user, deleteAccount} = useAuth();
   const navigate = useNavigate();
 
   const updateProfile = id => {
@@ -43,7 +43,9 @@ const ShowMemberDetail = ({member}) => {
       setShow(false);
         window.location.reload();
     });
-  }
+  };
+
+
   const imageURL = `data:image/png;base64,${member?.profilePic}`
   if (!member){
     return <>
@@ -200,7 +202,7 @@ const ShowMemberDetail = ({member}) => {
                       <p className="small mb-2">
                         You can add your social media links so that people can connect with you easily.
                       </p>
-                      <Button onClick={()=> updateProfile(member?._id)} variant='success' className='rounded-0 px-4' >Edit Profile</Button>
+                      <Button onClick={()=> updateProfile(member?._id)} variant='success' className='rounded-0 px-4 me-2' >Edit Profile</Button>
                     </div>
                   </>
                 }
@@ -208,6 +210,7 @@ const ShowMemberDetail = ({member}) => {
               <Col></Col>
       </Row>
 
+      {/* profile pic upload */}
       <Modal show={show} onHide={handleClose} centered animation={true}>
         <Modal.Header className='fs-5 shadow-none'>
           <Modal.Title>Upload Profile Picture</Modal.Title>
@@ -263,6 +266,8 @@ const ShowMemberDetail = ({member}) => {
           </Button> */}
         </Modal.Footer>
       </Modal>
+
+
 
     </>
   );

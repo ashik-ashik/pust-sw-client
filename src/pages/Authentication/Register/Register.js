@@ -7,7 +7,7 @@ import Hearder from '../../CommonSections/Header/Hearder';
 const axios = require('axios');
 
 const Register = () => {
-  const {user, setNewUser, memberRegister, updateProfile, auth} = useAuth();
+  const {user, setNewUser, memberRegister, updateProfile, auth, sendEmailVerification} = useAuth();
   const navigate = useNavigate();
   useEffect(()=>{
     document.title = "Register to Department of Social Work at PUST"
@@ -28,16 +28,23 @@ const Register = () => {
       memberRegister(email, password, fullName)
       .then((userCredential) => {
         // Signed in
+        sendEmailVerification(auth.currentUser)
+        .then(() => {
+          // Email verification sent!
+          // ...
+        });
         navigate("/setup-information");
+        
+        // update userName
         const user = userCredential.user;
         updateProfile(auth.currentUser, {
           displayName: fullName, 
         }).then(() => {
         // updated
-        axios.post("https://warm-earth-97575.herokuapp.com/user", user)
-        .then(res => {
-          console.log(res)
-        })
+          axios.post("https://warm-earth-97575.herokuapp.com/user", user)
+          .then(res => {
+            console.log(res)
+          })
         }).catch((error) => {
           console.log(error.message)
         });

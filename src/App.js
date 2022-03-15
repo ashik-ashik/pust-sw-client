@@ -14,6 +14,7 @@ import Allmembers from './pages/Menbers/AllMembers/Allmembers';
 import SingleMember from './pages/Menbers/SingleMember/SingleMember';
 import MissionVision from './pages/MissionVision/MissionVision';
 import NotFound from './pages/NotFound/NotFound';
+import ManageNotice from './pages/Notices/ManageNotice/ManageNotice';
 import Notices from './pages/Notices/Notices';
 import PublishNotice from './pages/Notices/PublishNotice/PublishNotice';
 import SingleNotice from './pages/Notices/SingleNotice/SingleNotice';
@@ -70,6 +71,10 @@ function App() {
             }/>
             <Route path='/publish-notice' element={<PrivateRoute>
               <PublishNotice />
+            </PrivateRoute>
+            }/>
+            <Route path='/manage-notice' element={<PrivateRoute>
+              <ManageNotice />
             </PrivateRoute>
             }/>
             <Route path='/notice/:id' element={<PrivateRoute>

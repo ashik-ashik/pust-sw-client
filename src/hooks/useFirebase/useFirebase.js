@@ -1,10 +1,10 @@
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, updateProfile, signOut, deleteUser } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, updateProfile, signOut, deleteUser, sendEmailVerification } from "firebase/auth";
 import { useEffect, useState } from "react";
 const useFirebase = () => {
   const auth = getAuth();
   const [user, setNewUser] = useState(null);
   const [isLoading, setLoading] = useState(true);
-  const [isUnload, setUnload] = useState(true)
+  const [isUnload, setUnload] = useState(true);
   const [name, setName] = useState(null);
   
 
@@ -69,7 +69,8 @@ const useFirebase = () => {
     memberLogOut,
     isUnload, 
     setUnload,
-    deleteAccount
+    deleteAccount,
+    sendEmailVerification
   }
 }
 export default useFirebase;

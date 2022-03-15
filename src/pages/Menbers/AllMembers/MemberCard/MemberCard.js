@@ -1,8 +1,10 @@
 import React from 'react';
 import { Button, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+import useAuth from '../../../../hooks/useAuth/useAuth';
 
 const MemberCard = ({userInfo}) => {
+  const {user} = useAuth();
   const navigate = useNavigate();
   const viewProfile = id => {
     navigate(`/member/${id}`)
@@ -33,12 +35,8 @@ const MemberCard = ({userInfo}) => {
                   <td  style={{width:"60%"}}>: <a href={`mailto:${userInfo?.email}`}>{userInfo?.email.slice(0,7)}...com</a></td>
                 </tr>
                 <tr>
-                  <td style={{width:"40%"}}>Reg</td>
-                  <td  style={{width:"60%"}}>: {userInfo?.reg}</td>
-                </tr>
-                <tr>
-                  <td style={{width:"40%"}}>session</td>
-                  <td  style={{width:"60%"}}>: {userInfo?.session}</td>
+                  <td style={{width:"40%"}}>Batch</td>
+                  <td  style={{width:"60%"}}>: {userInfo?.batchNo}</td>
                 </tr>
                 <tr>
                   <td style={{width:"40%"}}>Blood</td>
@@ -52,14 +50,15 @@ const MemberCard = ({userInfo}) => {
                   <td style={{width:"40%"}}>District</td>
                   <td  style={{width:"60%"}}>: {userInfo?.district}</td>
                 </tr>
-                <tr>
-                  <td style={{width:"40%"}}>Registred</td>
-                  <td  style={{width:"60%"}}>: {userInfo?.registerDate}</td>
-                </tr>
               </tbody>
             </table>
             <div className="viewProfile text-center mt-3">
-              <Button variant="danger" onClick={()=>viewProfile(userInfo?._id)} size="sm" className='px-4 small shadow-none rounded-3' ><i className='bx bxs-user-badge me-1'></i>View Profile</Button>
+              <Button variant="danger" onClick={()=>viewProfile(userInfo?._id)} size="sm" className='px-4 small shadow-none rounded-3' >
+                <i className='bx bxs-user-badge me-1'></i>
+                  {
+                    userInfo?.email === user?.email ? "My Profile" : "View Profile"
+                  }
+              </Button>
             </div>
             <div className="pt-3">
               <ul className='list-unstyled member-social-media'>
