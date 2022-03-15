@@ -46,7 +46,23 @@ const ShowMemberDetail = ({member}) => {
   };
 
 
-  const imageURL = `data:image/png;base64,${member?.profilePic}`
+  const imageURL = `data:image/png;base64,${member?.profilePic}`;
+
+  // view profile in large
+  const [largeImg, setLargeImg] = useState('');
+  const classa = document.getElementById("large-view");
+  const viewLarge = () => {
+    setLargeImg(imageURL);
+    classa.style.display = "flex";
+  };
+  const closeLarge = (e) => {
+    if(e.target.className !== "img-large-view"){
+      setLargeImg('');
+      classa.style.display = "none";
+    }
+    console.log('close', e.target.className)
+  }
+
   if (!member){
     return <>
           <Row>
@@ -56,8 +72,13 @@ const ShowMemberDetail = ({member}) => {
           </Row>
     </>
   }
+
+
   return (
     <>
+        <div  onClick={closeLarge} id="large-view">
+          <img className='img-large-view' src={largeImg} alt="" />
+        </div>
       <Row>
               <Col></Col>
               <Col md="9">
@@ -65,7 +86,7 @@ const ShowMemberDetail = ({member}) => {
                   
                   {
                     member?.profilePic ?
-                    <img className='profile-pic' src={imageURL} alt="" /> : 
+                    <img onClick={viewLarge} className='profile-pic to-large-view' src={imageURL} alt="" /> : 
                     <img className='profile-pic' src="https://i.ibb.co/17b0X70/profile-avatar.jpg" alt="" />
                     }
                   <div className="mt-3">

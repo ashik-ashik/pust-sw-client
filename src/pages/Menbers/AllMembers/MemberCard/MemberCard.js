@@ -9,7 +9,9 @@ const MemberCard = ({userInfo}) => {
   const viewProfile = id => {
     navigate(`/member/${id}`)
   console.log(id)
-}
+};
+
+
   const profilePic= `data:image/png;base64,${userInfo?.profilePic}`;
   console.log(userInfo)
   return (
@@ -71,6 +73,7 @@ const MemberCard = ({userInfo}) => {
           </div>
         </div>
       </Col>
+        
     </>
   );
 };
