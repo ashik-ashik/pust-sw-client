@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Alert, Button, Col, Container, Form, Row } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth/useAuth';
 import { useForm } from "react-hook-form";
+import Loading from '../CommonSections/Loading/Loading';
 const axios = require('axios');
 
 const SetInformation = () => {
@@ -12,11 +13,13 @@ const SetInformation = () => {
   }, [])
   const [isHall, setHall] = useState(false);
   const navigate = useNavigate();
+ 
 
   // manage submited data
   const { register, handleSubmit } = useForm();
   const onSubmit = (info) => {
-    let userInfo = {}
+    let userInfo = {};
+    info.phoneCount = 1;
     if(info.isHall){
       const {messName, messAddress, ...inHall} = info;
       userInfo = inHall;
@@ -39,6 +42,16 @@ const SetInformation = () => {
     // console.log(e.target.checked);
     setHall(e.target.checked);
   }
+  if(!user){
+    return <>
+      <Loading />
+    </>
+  }
+
+  if(!user?.emailVerified){
+    console.log(user?.emailVerified)
+    navigate("/verify-your-account");
+  }
   return (
     <>
       
@@ -47,22 +60,13 @@ const SetInformation = () => {
         <Container>
           <h4 className="text-success styled-heading">Welcome! {user?.displayName ? user?.displayName : name}</h4>
 
-          {
-            !user?.emailVerified && <>
-            <Alert variant="danger">
-              <Alert.Heading className="title-font">Please Verify you account</Alert.Heading>
-              <p className='small'>
-                We have sent you a verification mail to your account email [{user?.email}] Verify your account now. <a href="http://mail.google.com/" rel='noreferrer' target="_blank">Click Here</a>
-              </p>
-            </Alert>
-            </>
-          }
+          
           <p>
           Hello <span className='text-success'>{user?.displayName ? user?.displayName : name}</span>! You have successfully registred. Now you should set some basic information about you. Please sincerely fill up the below fileds.
           </p>
 
 
-          <Form  onSubmit={handleSubmit(onSubmit)}>
+          <Form onSubmit={handleSubmit(onSubmit)}>
             
             <Row className='mt-3'>
               <Form.Group as={Col} md="6" className="mb-2">
@@ -103,7 +107,7 @@ const SetInformation = () => {
               <Form.Group as={Col} md="6" className="mb-3">
                 <Form.Label>University Batch No:</Form.Label>
                   <Form.Select {...register("batchNo")}>
-                    <option >Select you batch</option>
+                    <option value={null}>Select you batch</option>
                     <option value="8">8th Batch</option>
                     <option value="9">9th Batch</option>
                     <option value="10">10th Batch</option>
@@ -125,17 +129,17 @@ const SetInformation = () => {
               <Form.Label>Department:</Form.Label>
                 <Form.Select {...register("dept")}>
                   <option value='none'>Select Dept.</option>
-                  <option value="social-work">Social Work</option>
-                  <option value="economics">Economics</option>
-                  <option value="english">English</option>
-                  <option value="public-add">Public Addminitration</option>
+                  <option value="Social Work">Social Work</option>
+                  <option value="Economics">Economics</option>
+                  <option value="English">English</option>
+                  <option value="Public Addminitration">Public Addminitration</option>
                   <option value="bangla">Bangla</option>
-                  <option value="thm">THM</option>
-                  <option value="hbs">HBS</option>
-                  <option value="physics">Physics</option>
-                  <option value="eee">EEE</option>
-                  <option value="cse">CSE</option>
-                  <option value="urp">URP</option>
+                  <option value="Bangla">THM</option>
+                  <option value="HBS">HBS</option>
+                  <option value="Physics">Physics</option>
+                  <option value="EEE">EEE</option>
+                  <option value="CSE">CSE</option>
+                  <option value="URP">URP</option>
                 </Form.Select>
             </Form.Group>              
 
@@ -306,7 +310,7 @@ const SetInformation = () => {
                 </Row>
               </div>
 
-            <Button variant="success" className='shadow-none rounded-1 px-5' type="submit">
+            <Button variant="success" disabled={!user?.emailVerified ? true : false} className='shadow-none rounded-1 px-5' type="submit">
               Save Change
             </Button>
           </Form>

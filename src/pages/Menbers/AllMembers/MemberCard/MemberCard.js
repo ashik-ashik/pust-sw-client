@@ -38,7 +38,7 @@ const MemberCard = ({userInfo}) => {
                 </tr>
                 <tr>
                   <td style={{width:"40%"}}>Batch</td>
-                  <td  style={{width:"60%"}}>: {userInfo?.batchNo}</td>
+                  <td  style={{width:"60%"}}>: {userInfo?.batchNo}<sup>th</sup></td>
                 </tr>
                 <tr>
                   <td style={{width:"40%"}}>Blood</td>

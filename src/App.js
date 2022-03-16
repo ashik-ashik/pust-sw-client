@@ -6,6 +6,7 @@ import Login from './pages/Authentication/Login/Login';
 import PrivateRoute from './pages/Authentication/PrivateRoute/PrivateRoute';
 import Register from './pages/Authentication/Register/Register';
 import Footer from './pages/CommonSections/Footer/Footer';
+import Verification from './pages/CommonSections/Verification/Verification';
 import CRrequestList from './pages/Dashboard/CRrquestList/CRrequestList';
 import Dashboard from './pages/Dashboard/Dashboard/Dashboard';
 import ManageMembers from './pages/Dashboard/ManageMembers/ManageMembers';
@@ -35,10 +36,6 @@ function App() {
             }/>
             <Route path='/profile' element={<PrivateRoute>
               <Profile />
-            </PrivateRoute>
-            }/>
-            <Route path='/setup-information' element={<PrivateRoute>
-              <SetInformation />
             </PrivateRoute>
             }/>
             <Route path='/members' element={<PrivateRoute>
@@ -81,6 +78,10 @@ function App() {
               <SingleNotice />
             </PrivateRoute>
             }/>
+            <Route path='/setup-information' element={<PrivateRoute>
+              <SetInformation />
+            </PrivateRoute>}/>
+            <Route path='/verify-your-account' element={<Verification />}/>
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
             <Route path='/mission-vision' element={<MissionVision />} />

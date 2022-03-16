@@ -13,7 +13,7 @@ const PrivateRoute = ({children, ...rest}) => {
           <Loading />
         </>
   }
-  if(user?.email){
+  if(user?.emailVerified){
     return children;
   }
   else{

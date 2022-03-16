@@ -218,7 +218,16 @@ a{
   cursor: pointer;
 }
 .img-large-view{
-  max-width: 50%;
+  max-width: 75%;
   height: auto;
   cursor: pointer;
+}
+
+.cursor-pointer.active{
+  background: #3c057a !important;
+}
+.cursor-pointer:hover{
+  cursor: pointer !important;
+  background: #a10707 !important;
+  color: #fff !important;
 }

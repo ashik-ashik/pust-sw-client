@@ -1,11 +1,15 @@
 import React, { useState } from 'react';
-import { Button, Col, Row, Table, Modal, Form } from 'react-bootstrap';
+import { Button, Col, Row, Table, Modal, Form, Tab, Nav } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth/useAuth';
 import axios from 'axios';
+import BasicInfo from './BasicInfo/BasicInfo';
+import ContactInfo from './ContactInfo/ContactInfo';
+import AddressInfo from './AddressInfo/AddressInfo';
+import { useForm } from "react-hook-form";
 
 const ShowMemberDetail = ({member}) => {
-  const {user, deleteAccount} = useAuth();
+  const {user} = useAuth();
   const navigate = useNavigate();
 
   const updateProfile = id => {
@@ -79,156 +83,87 @@ const ShowMemberDetail = ({member}) => {
         <div  onClick={closeLarge} id="large-view">
           <img className='img-large-view' src={largeImg} alt="" />
         </div>
+        
+        
       <Row>
-              <Col></Col>
-              <Col md="9">
-                <div className={`profilePic text-center ${member?.email !== user?.email ? "py-5" : "py-4"}`} style={{backgroundImage:`url(${imageURL})`}}>
-                  
-                  {
-                    member?.profilePic ?
-                    <img onClick={viewLarge} className='profile-pic to-large-view' src={imageURL} alt="" /> : 
-                    <img className='profile-pic' src="https://i.ibb.co/17b0X70/profile-avatar.jpg" alt="" />
-                    }
-                  <div className="mt-3">
-                    {
-                      member?.email === user?.email && <>
-                        <Button  onClick={clickFile} variant="success" size="sm" className="px-4 rounded-0"><i className='bx bxs-camera fs-6'></i> Upload Profile</Button>
-                      </>
-                    }
-                  </div>
-                </div>
-                <h2 className='mb-3 mt-2 text-center styled-heading'>{member?.fullName} {member?.CRstatus === "verified" && <sup className="cr-badge">CR</sup>}</h2>
-                {
-                  user?.email === member?.email && !member?.isCR && <>
-                    <p>Are you CR of your class? <span className='cr-ship' onClick={()=> updateCR(member?._id)}>Set CRship</span></p>
-                  </>
-                }
-                <Table responsive striped bordered size="sm">
-                  <thead>
-                    <tr>
-                      <th>Title</th>
-                      <th>Information:</th>
-                    </tr>
-                  </thead>
-                  <tbody  className='text-capitalize'>
-                    {/* <tr>
-                      <td>Name:</td>
-                      <td>{member?.fullName}</td>
-                    </tr> */}
-                    <tr>
-                      <td>Email:</td>
-                      <td> <a className='text-decoration-none text-lowercase' href={`mailto:${member?.email}`}>{member?.email}</a></td>
-                    </tr>
-                    <tr>
-                      <td>Phone:</td>
-                      <td><a className='text-decoration-none' href={`tel:${member?.phone}`}> {member?.phone} </a></td>
-                    </tr>
-                    <tr>
-                      <td>Blood Group:</td>
-                      <td>{member?.blood?.toUpperCase()}</td>
-                    </tr>
-                    <tr>
-                      <td>Reg:</td>
-                      <td>{member?.reg}</td>
-                    </tr>
-                    <tr>
-                      <td>Roll:</td>
-                      <td>{member?.roll}</td>
-                    </tr>
-                    {
-                      member?.isCR && <tr>
-                      <td>Roll:</td>
-                      <td>{member?.roll}</td>
-                    </tr>}
-                    <tr>
-                      <td>Dept.</td>
-                      <td>{member?.dept}</td>
-                    </tr>
-                    <tr>
-                      <td>Session.</td>
-                      <td>{member?.session}</td>
-                    </tr>
-                    
-                    <tr>
-                      <td></td>
-                      <td className='text-danger'>Present Address</td>
-                    </tr>
-                    <tr>
-                      <td>In Hall ?</td>
-                      <td>{member?.isHall ? "Yes" : "No"}</td>
-                    </tr>
-                    {
-                      member?.isHall ? <>
-                      <tr>
-                       <td>Hall Name</td>
-                       <td>{member?.hallName}</td>
-                     </tr>
-                     <tr>
-                       <td>Block</td>
-                       <td>{member?.hallBlock.toUpperCase()}</td>
-                     </tr>
-                     <tr>
-                       <td>Room No</td>
-                       <td>{member?.hallRoom}</td>
-                     </tr> 
-                     
-                     </> : <>
+        <Col></Col>
+        <Col md="10">
+          <div className={`profilePic text-center ${member?.email !== user?.email ? "py-5" : "py-4"}`} style={{backgroundImage:`url(${imageURL})`}}>
+            
+            {
+              member?.profilePic ?
+              <img onClick={viewLarge} className='profile-pic to-large-view' src={imageURL} alt="" /> : 
+              <img className='profile-pic' src="https://i.ibb.co/17b0X70/profile-avatar.jpg" alt="" />
+              }
+            <div className="mt-3">
+              {
+                member?.email === user?.email && <>
+                  <Button  onClick={clickFile} variant="success" size="sm" className="px-4 rounded-0"><i className='bx bxs-camera fs-6'></i> Upload Profile</Button>
+                </>
+              }
+            </div>
+          </div>
+          <h2 className='mb-3 mt-2 text-center styled-heading'>{member?.fullName} {member?.CRstatus === "verified" && <sup className="cr-badge">CR</sup>}</h2>
+          {
+            user?.email === member?.email && !member?.isCR && <>
+              <p>Are you CR of your class? <span className='cr-ship' onClick={()=> updateCR(member?._id)}>Set CRship</span></p>
+            </>
+          }
 
-                     <tr>
-                      <td>Mess Name</td>
-                      <td>{member?.messName}</td>
-                    </tr>
-                     <tr>
-                      <td>Mess Address</td>
-                      <td>{member?.messAddress}</td>
-                    </tr>
-                    </>
-                    }
-                     <tr>
-                      <td></td>
-                      <td className='text-danger'>Parmanent Address</td>
-                    </tr>
-                     <tr>
-                      <td>Village</td>
-                      <td>{member?.village}</td>
-                    </tr>
-                     <tr>
-                      <td>District</td>
-                      <td>{member?.district}</td>
-                    </tr>
-                     <tr>
-                      <td>Division</td>
-                      <td>{member?.division}</td>
-                    </tr>
-                     <tr>
-                      <td>Registred At</td>
-                      <td>{member?.registerDate} <small className='text-uppercase fw-bold' style={{fontSize:"11px"}}>(mm/dd/yy)</small></td>
-                    </tr>
-
-                  </tbody>
-                </Table>
-
-                <div className="socital-media py-4 bg-light">
-                  <ul className='list-unstyled member-social-media w-75 mx-auto'>
-                    <li><a href={member?.facebookLink || "#"}><i className='bx bxl-facebook'></i></a></li>
-                    <li><a href={member?.instagramLink || "#"}><i className='bx bxl-instagram'></i></a></li>
-                    <li><a href={member?.twitterLink || "#"}><i className='bx bxl-twitter'></i></a></li>
-                    <li><a href={member?.linkedinLink || "#"}><i className='bx bxl-linkedin'></i></a></li>
-                  </ul>
-                </div>
-                
-                {
-                  user?.email === member?.email && <>
-                    <div className="mt-4">
-                      <p className="small mb-2">
-                        You can add your social media links so that people can connect with you easily.
-                      </p>
-                      <Button onClick={()=> updateProfile(member?._id)} variant='success' className='rounded-0 px-4 me-2' >Edit Profile</Button>
-                    </div>
-                  </>
-                }
+          <Tab.Container id="left-tabs-example" defaultActiveKey="basic">
+            <Row className='g-4'>
+              <Col sm={3}>
+                <Nav variant="pills" className="flex-column">
+                  <Nav.Item>
+                    <Nav.Link className='rounded-0 cursor-pointer' eventKey="basic">Basic</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link className='rounded-0 cursor-pointer' eventKey="contact">Contact</Nav.Link>
+                  </Nav.Item>
+                  <Nav.Item>
+                    <Nav.Link className='rounded-0 cursor-pointer' eventKey="address">Address</Nav.Link>
+                  </Nav.Item>
+                </Nav>
               </Col>
-              <Col></Col>
+              <Col sm={9}>
+                <Tab.Content>
+                  <Tab.Pane eventKey="basic">
+                    <BasicInfo member={member} />
+                  </Tab.Pane>
+                  <Tab.Pane eventKey="contact">
+                    <ContactInfo member={member} />
+                  </Tab.Pane>
+                  <Tab.Pane eventKey="address">
+                    <AddressInfo member={member} />
+                  </Tab.Pane>
+                </Tab.Content>
+              </Col>
+            </Row>
+          </Tab.Container>
+          
+          
+
+          <div className="socital-media py-4 bg-light">
+            <ul className='list-unstyled member-social-media w-75 mx-auto'>
+              <li><a href={member?.facebookLink || "#"}><i className='bx bxl-facebook'></i></a></li>
+              <li><a href={member?.instagramLink || "#"}><i className='bx bxl-instagram'></i></a></li>
+              <li><a href={member?.twitterLink || "#"}><i className='bx bxl-twitter'></i></a></li>
+              <li><a href={member?.linkedinLink || "#"}><i className='bx bxl-linkedin'></i></a></li>
+            </ul>
+          </div>
+          
+          {
+            user?.email === member?.email && <>
+              <div className="mt-4">
+                <p className="small mb-2">
+                  You can add your social media links so that people can connect with you easily.
+                </p>
+                <Button onClick={()=> updateProfile(member?._id)} variant='success' className='rounded-0 px-4 me-2' >Edit Profile</Button>
+              </div>
+            </>
+          }
+        </Col>
+        <Col></Col>
       </Row>
 
       {/* profile pic upload */}
