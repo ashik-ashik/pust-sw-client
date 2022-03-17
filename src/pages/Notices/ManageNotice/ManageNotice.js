@@ -10,6 +10,9 @@ const ManageNotice = () => {
   const [member, setMember] = useState(null);
   const [notices, setNotices] = useState(null);
 
+  useEffect(()=>{
+    document.title = "Manage Notices";
+  }, []);
 
   useEffect (()=>{
     const load = async ()=> {

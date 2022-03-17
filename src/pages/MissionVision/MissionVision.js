@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container } from 'react-bootstrap';
 import useAuth from '../../hooks/useAuth/useAuth';
 import Hearder from '../CommonSections/Header/Hearder';
 import UnLoggedHeader from '../CommonSections/UnLoggedHeader/UnLoggedHeader';
 
 const MissionVision = () => {
+  useEffect(()=>{
+    document.title = "Mission and Vision of this site";
+  }, []);
+
   const {user} = useAuth();
   return (
 

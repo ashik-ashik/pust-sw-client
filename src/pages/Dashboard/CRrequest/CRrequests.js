@@ -1,8 +1,11 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Col, Modal, Table } from 'react-bootstrap';
 
 const CRrequests = ({requests}) => {
+  useEffect(()=>{
+    document.title = "CR-ship requests";
+  }, []);
   console.log(requests)
   const profilePic = `data:image/png;base64,${requests?.profilePic}`;
 

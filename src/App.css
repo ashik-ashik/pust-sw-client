@@ -231,3 +231,21 @@ a{
   background: #a10707 !important;
   color: #fff !important;
 }
+.blood-card-img{
+  height: 50px;
+  width: 50px;
+  border-radius: 7px;
+}
+.accordion-button{
+  background: linear-gradient(90deg, #f00034, #02631b) !important;
+  box-shadow: none !important;
+  color: #eee !important;
+}
+.accordion-button.collapsed{
+  background: linear-gradient(90deg, #010170, #b60202) !important;
+  color: #fff;
+}
+.accordion-button::after{
+  filter: brightness(100);
+  background-size: 15px !important;
+}

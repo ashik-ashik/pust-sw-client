@@ -10,7 +10,7 @@ const SetInformation = () => {
   const {user, name} = useAuth();
   useEffect(()=>{
     document.title = "Setup Basic Information";
-  }, [])
+  }, []);
   const [isHall, setHall] = useState(false);
   const navigate = useNavigate();
  

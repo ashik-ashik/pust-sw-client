@@ -5,6 +5,7 @@ import Hearder from '../../CommonSections/Header/Hearder';
 import Loading from '../../CommonSections/Loading/Loading';
 
 const SingleNotice = () => {
+
     const {id} = useParams();
     const [notice, setNotice] = useState(null);
     useEffect(()=>{
@@ -15,6 +16,11 @@ const SingleNotice = () => {
       };
       load();
     },[id]);
+
+    useEffect(()=>{
+      document.title = notice?.noticeTitle || "Notice";
+    }, [notice]);
+
     console.log(notice);
     if(!notice){
       return <>

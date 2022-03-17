@@ -15,7 +15,7 @@ const ContactInfo = ({member}) => {
   const addContact = data => {
     data.phoneCount = member.phoneCount + 1;
     console.log(data)
-    axios.put(`http://localhost:5500/add-contact/${member._id}`, data)
+    axios.put(`https://warm-earth-97575.herokuapp.com/add-contact/${member._id}`, data)
     .then(res => {
       console.log(res.starus)
       if(res.status === 200){

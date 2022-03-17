@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { Button, Col, Row, Table, Modal, Form, Tab, Nav } from 'react-bootstrap';
+import { Button, Col, Row, Modal, Form, Tab, Nav } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth/useAuth';
 import axios from 'axios';
 import BasicInfo from './BasicInfo/BasicInfo';
 import ContactInfo from './ContactInfo/ContactInfo';
 import AddressInfo from './AddressInfo/AddressInfo';
-import { useForm } from "react-hook-form";
 
 const ShowMemberDetail = ({member}) => {
   const {user} = useAuth();
@@ -158,7 +157,7 @@ const ShowMemberDetail = ({member}) => {
                 <p className="small mb-2">
                   You can add your social media links so that people can connect with you easily.
                 </p>
-                <Button onClick={()=> updateProfile(member?._id)} variant='success' className='rounded-0 px-4 me-2' >Edit Profile</Button>
+                <Button onClick={()=> updateProfile(member?._id)} variant='success' className='rounded-0 px-4 me-2' >Add Social Media</Button>
               </div>
             </>
           }

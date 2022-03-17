@@ -6,10 +6,11 @@ import DashboardHeader from '../DashboardHeader/DashboardHeader';
 import Members from './Members/Members';
 
 const ManageMembers = () => {
+  useEffect(()=>{
+    document.title = "Manage Members of PUST-SW";
+  }, []);
   const {user} = useAuth();
   const [users, setUsers] = useState(null);
-  const [data , setData] = useState('');
-  // const history = 
   useEffect(()=> {
     fetch("https://warm-earth-97575.herokuapp.com/users")
     .then(res => res.json())

@@ -7,6 +7,9 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const PublishNotice = () => {
+  useEffect(()=>{
+    document.title = "Publish a Notice";
+  }, []);
   const {user} = useAuth();
   const navigate = useNavigate();
   const [member, setMember] = useState(null);
