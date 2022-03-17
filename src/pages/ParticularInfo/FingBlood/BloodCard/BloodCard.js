@@ -27,7 +27,7 @@ const BloodCard = ({member}) => {
                   </tr>
                   <tr>
                     <td>Phone:</td>
-                    <td> <a href={`tel:+${member?.phone}`}>{member?.phone}</a> </td>
+                    <td> <a href={`tel:${member?.phone}`}>{member?.phone}</a> </td>
                   </tr>
                 </tbody>
               </Table>

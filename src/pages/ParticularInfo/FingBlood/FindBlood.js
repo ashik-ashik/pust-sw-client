@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Loading from "../../CommonSections/Loading/Loading";
 import Header from "../../CommonSections/Header/Hearder";
-import { Container, Form, FormSelect, Row } from 'react-bootstrap';
+import { Container, Form, InputGroup, Row, Button } from 'react-bootstrap';
 import BloodCard from './BloodCard/BloodCard';
 
 const FindBlood = () => {
@@ -20,9 +20,21 @@ const FindBlood = () => {
 
   // search blood group
   const [blood, setBlood] = useState(null);
-  const getBlood = e => {
-    setBlood(e.target.value);
+  const getBlood = () => {
+    const searchKey = document.getElementById("blood").value
+    setBlood(searchKey);
   }
+  useEffect(()=>{
+    const load = async () => {
+      setMembers(null)
+      const res = await fetch(`https://warm-earth-97575.herokuapp.com/search-blood/${blood}`);
+      const result = await res.json();
+      setMembers(result)
+      console.log(result)
+    }
+    load();
+  }, [blood])
+  console.log(blood)
   
   if(!members){
     return <>
@@ -38,8 +50,9 @@ const FindBlood = () => {
         <div className="py-3">
           <p>Find a specific blood group:</p>
           <Form>
-            <Form.Select size="sm" onChange={getBlood} name="blood-group" id="">
-              <option value="">Select Group</option>
+            <InputGroup size="sm" className="mb-3">
+              <Form.Select size="sm" name="blood-group" id="blood">
+              <option value="none">Select Group</option>
               <option value="a+">A+</option>
               <option value="a-">A-</option>
               <option value="b+">B+</option>
@@ -49,11 +62,18 @@ const FindBlood = () => {
               <option value="ab+">AB+</option>
               <option value="ab-">AB-</option>
             </Form.Select>
+            <Button onClick={getBlood} variant="success" className="px-4">
+              Search
+            </Button>
+              {/* <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" /> */}
+            </InputGroup>          
           </Form>
         </div>
-        <Row xs={1} md={2} lg={3} className="g-4">
+        <Row xs={1} md={2} lg={3} className="g-3">
           {
-             members?.map(member => <BloodCard key={member._id} member={member} />) 
+          members?.length > 0 ? members?.map(member => <BloodCard key={member._id} member={member} />) : <>
+            <h3 className="title-font text-danger">No result found...</h3>
+          </>
           }
         </Row>
 

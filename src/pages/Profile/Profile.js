@@ -9,7 +9,7 @@ const Profile = () => {
   const [currentUser, setCurrentUser] = useState(null);
   useEffect(()=>{
     document.title = currentUser ? currentUser?.fullName+ " Profile" : "Profile";
-  }, [currentUser])
+  }, [currentUser]);
   useEffect(()=>{
     fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`)
     .then(res => res.json())

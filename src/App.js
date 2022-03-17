@@ -19,6 +19,7 @@ import ManageNotice from './pages/Notices/ManageNotice/ManageNotice';
 import Notices from './pages/Notices/Notices';
 import PublishNotice from './pages/Notices/PublishNotice/PublishNotice';
 import SingleNotice from './pages/Notices/SingleNotice/SingleNotice';
+import Contacts from './pages/ParticularInfo/Contacts/Contacts';
 import FindBlood from './pages/ParticularInfo/FingBlood/FindBlood';
 import Profile from './pages/Profile/Profile';
 import UpdateProfile from './pages/Profile/UpdateProfile/UpdateProfile';
@@ -85,6 +86,10 @@ function App() {
             }/>
             <Route path='/find-blood' element={<PrivateRoute>
               <FindBlood />
+            </PrivateRoute>
+            }/>
+            <Route path='/contacts' element={<PrivateRoute>
+              <Contacts />
             </PrivateRoute>
             }/>
             <Route path='/verify-your-account' element={<Verification />}/>

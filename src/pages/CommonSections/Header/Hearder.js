@@ -36,7 +36,8 @@ const Hearder = () => {
                 }
                 <Nav.Link as={Link} className="menu-items" to="/notice-board"><i className='fs-4 bx bxs-bell-ring me-2'></i> <span>Notice</span></Nav.Link>
                 <Nav.Link as={Link} className="menu-items" to="/events"><i className='fs-4 bx bx-calendar-event me-2' ></i> Events</Nav.Link>
-                <Nav.Link as={Link} className="menu-items" to="/find-blood"><i className='fs-4 bx bx-donate-blood me-2' ></i> Fing Blood</Nav.Link>
+                <Nav.Link as={Link} className="menu-items" to="/find-blood"><i className='fs-4 bx bx-donate-blood me-2' ></i> Find Blood</Nav.Link>
+                <Nav.Link as={Link} className="menu-items" to="/contacts"><i className='fs-4 bx bx-phone me-2' ></i> Contacts</Nav.Link>
                 <Nav.Link as={Link} className="menu-items" to="/mission-vision"><i className='fs-4 bx bx-target-lock me-2' ></i> Mission & Vision</Nav.Link>
                 <Nav.Link as={Link} className="menu-items" to="/members"><i className='fs-4 bx bxs-group me-2'></i> Members</Nav.Link>
                 <Nav.Link as={Link} className="menu-items" to="/profile"><i className='fs-4 bx bxs-user-circle me-2' ></i> Profile</Nav.Link>

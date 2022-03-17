@@ -136,31 +136,32 @@ const ShowMemberDetail = ({member}) => {
                     <AddressInfo member={member} />
                   </Tab.Pane>
                 </Tab.Content>
+
+
+                <div className="socital-media py-4 bg-light">
+                  <ul className='list-unstyled member-social-media w-75 mx-auto'>
+                    <li><a href={member?.facebookLink || "#"}><i className='bx bxl-facebook'></i></a></li>
+                    <li><a href={member?.instagramLink || "#"}><i className='bx bxl-instagram'></i></a></li>
+                    <li><a href={member?.twitterLink || "#"}><i className='bx bxl-twitter'></i></a></li>
+                    <li><a href={member?.linkedinLink || "#"}><i className='bx bxl-linkedin'></i></a></li>
+                  </ul>
+                </div>
+                
+                {
+                  user?.email === member?.email && <>
+                    <div className="mt-4">
+                      <p className="small mb-2">
+                        You can add your social media links so that people can connect with you easily.
+                      </p>
+                      <Button onClick={()=> updateProfile(member?._id)} variant='success' className='rounded-0 px-4 me-2' >Add Social Media</Button>
+                    </div>
+                  </>
+                }
               </Col>
             </Row>
           </Tab.Container>
           
           
-
-          <div className="socital-media py-4 bg-light">
-            <ul className='list-unstyled member-social-media w-75 mx-auto'>
-              <li><a href={member?.facebookLink || "#"}><i className='bx bxl-facebook'></i></a></li>
-              <li><a href={member?.instagramLink || "#"}><i className='bx bxl-instagram'></i></a></li>
-              <li><a href={member?.twitterLink || "#"}><i className='bx bxl-twitter'></i></a></li>
-              <li><a href={member?.linkedinLink || "#"}><i className='bx bxl-linkedin'></i></a></li>
-            </ul>
-          </div>
-          
-          {
-            user?.email === member?.email && <>
-              <div className="mt-4">
-                <p className="small mb-2">
-                  You can add your social media links so that people can connect with you easily.
-                </p>
-                <Button onClick={()=> updateProfile(member?._id)} variant='success' className='rounded-0 px-4 me-2' >Add Social Media</Button>
-              </div>
-            </>
-          }
         </Col>
         <Col></Col>
       </Row>

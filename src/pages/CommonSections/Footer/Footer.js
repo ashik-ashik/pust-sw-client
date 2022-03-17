@@ -15,7 +15,7 @@ const Footer = () => {
           </div>
         </Container>
       </footer>
-        <p className="small text-center text-white bg-dark m-0 py-2">Developed by Md Ashik Ali</p>
+        <p className="small text-center text-white bg-dark m-0 py-2">Wishes to Depatrment of Social Work</p>
     </>
   );
 };

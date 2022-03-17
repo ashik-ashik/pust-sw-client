@@ -13,8 +13,8 @@ const AddressInfo = ({member}) => {
         </thead>
         <tbody  className='text-capitalize'>
         <tr>
-          <td className='text-danger'>Present Address</td>
-          <td></td>
+          <td colSpan={2} className='text-danger text-center fw-bold'>Present Address</td>
+          
         </tr>
         <tr>
           <td>Is in Hall ?</td>
@@ -48,8 +48,7 @@ const AddressInfo = ({member}) => {
         </>
         }
           <tr>
-          <td className='text-danger'>Parmanent Address</td>
-          <td></td>
+          <td colSpan={2} className='text-danger text-center fw-bold'>Parmanent Address</td>
         </tr>
           <tr>
           <td>Village</td>

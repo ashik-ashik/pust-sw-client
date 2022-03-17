@@ -10,7 +10,9 @@ const Notices = () => {
   const {user} = useAuth();
   const [member, setMember] = useState(null);
   const [notices, setNotices] = useState(null);
-
+  useEffect(()=>{
+    document.title = "Notice Board of PUST-SW";
+  }, []);
 
   useEffect (()=>{
     const load = async ()=> {
