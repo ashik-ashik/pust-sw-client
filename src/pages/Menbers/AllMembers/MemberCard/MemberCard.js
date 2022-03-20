@@ -12,7 +12,10 @@ const MemberCard = ({userInfo}) => {
 };
 
 
-  const profilePic= `data:image/png;base64,${userInfo?.profilePic}`;
+  let profilePic = "";  
+  if(!userInfo?.profilePic.includes("http")){
+    profilePic = `data:image/png;base64,${userInfo?.profilePic}`;
+  } 
   console.log(userInfo)
   return (
     <>
@@ -21,7 +24,7 @@ const MemberCard = ({userInfo}) => {
           <div className="member-image text-center">
             {
               userInfo?.profilePic ? <>
-                <img className='profile-pic' src={profilePic} alt="" /> 
+                <img className='profile-pic' src={profilePic ? profilePic : userInfo?.profilePic} alt="" /> 
               </> : <>
                 <img src="https://i.ibb.co/17b0X70/profile-avatar.jpg" alt="Member" />
               </>

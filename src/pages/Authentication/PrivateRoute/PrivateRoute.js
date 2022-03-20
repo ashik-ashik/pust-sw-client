@@ -6,14 +6,13 @@ import Loading from '../../CommonSections/Loading/Loading';
 const PrivateRoute = ({children, ...rest}) => {
   const location = useLocation();
   const {user, isLoading} = useAuth();
-  console.log(user, isLoading, children)
 
   if(isLoading){
     return <>
           <Loading />
         </>
   }
-  if(user?.emailVerified){
+  if(user){
     return children;
   }
   else{

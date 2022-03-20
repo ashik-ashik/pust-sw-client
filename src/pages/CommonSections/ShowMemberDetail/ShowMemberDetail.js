@@ -8,8 +8,9 @@ import ContactInfo from './ContactInfo/ContactInfo';
 import AddressInfo from './AddressInfo/AddressInfo';
 
 const ShowMemberDetail = ({member}) => {
-  const {user} = useAuth();
+  const {user, auth} = useAuth();
   const navigate = useNavigate();
+
 
   const updateProfile = id => {
     navigate(`/update-profile/${id}`);
@@ -37,6 +38,7 @@ const ShowMemberDetail = ({member}) => {
   const clickFile = () => {
     setShow(true);
   };
+  // upload profile Pic
   const submitFile = (e) => {
     const file = document.getElementById("file").files[0];
     const formData = new FormData();
@@ -48,8 +50,10 @@ const ShowMemberDetail = ({member}) => {
     });
   };
 
-
-  const imageURL = `data:image/png;base64,${member?.profilePic}`;
+  let imageURL = "";  
+  if(!member?.profilePic.includes("http")){
+  imageURL = `data:image/png;base64,${member?.profilePic}`;
+  }  
 
   // view profile in large
   const [largeImg, setLargeImg] = useState('');
@@ -63,8 +67,11 @@ const ShowMemberDetail = ({member}) => {
       setLargeImg('');
       classa.style.display = "none";
     }
-    console.log('close', e.target.className)
   }
+  
+  
+  
+
 
   if (!member){
     return <>
@@ -87,11 +94,11 @@ const ShowMemberDetail = ({member}) => {
       <Row>
         <Col></Col>
         <Col md="10">
-          <div className={`profilePic text-center ${member?.email !== user?.email ? "py-5" : "py-4"}`} style={{backgroundImage:`url(${imageURL})`}}>
+          <div className={`profilePic text-center ${member?.email !== user?.email ? "py-5" : "py-4"}`} style={{backgroundImage:`url(${imageURL ? imageURL : member.profilePic})`}}>
             
             {
               member?.profilePic ?
-              <img onClick={viewLarge} className='profile-pic to-large-view' src={imageURL} alt="" /> : 
+              <img onClick={viewLarge} className='profile-pic to-large-view' src={imageURL ? imageURL : member.profilePic} alt="" /> : 
               <img className='profile-pic' src="https://i.ibb.co/17b0X70/profile-avatar.jpg" alt="" />
               }
             <div className="mt-3">

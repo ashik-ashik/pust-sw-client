@@ -13,16 +13,16 @@ const Home = () => {
   }, []);
   const {user} = useAuth();
   const navigate = useNavigate();
-  const [currentUser, setCurrentUser] = useState(null);
+  // const [currentUser, setCurrentUser] = useState(null);
   const [members, setMembers] = useState(null);
-   useEffect (()=>{
-    const load = async ()=> {
-      const res = await fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`);
-      const result = await res.json();
-      setCurrentUser(result);
-    }
-    load();
-  }, [user]);
+  //  useEffect (()=>{
+  //   const load = async ()=> {
+  //     const res = await fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`);
+  //     const result = await res.json();
+  //     setCurrentUser(result);
+  //   }
+  //   load();
+  // }, [user]);
 
    useEffect (()=>{
     const load = async ()=> {
@@ -32,6 +32,7 @@ const Home = () => {
     }
     load();
   }, [user]);
+  const currentUser = members?.filter(member => member?.email === user?.email)
   const featuredMember = members?.slice(0,4);
   if(!members){
     return <><Loading /> </>

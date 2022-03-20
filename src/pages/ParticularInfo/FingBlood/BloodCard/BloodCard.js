@@ -2,15 +2,23 @@ import React from 'react';
 import { Accordion, Col, Table } from 'react-bootstrap';
 
 const BloodCard = ({member}) => {
-  const profilePic= `data:image/png;base64,${member?.profilePic}`;
+  let profilePic = "";
+  
+  if(!member?.profilePic.includes("http")){
+   profilePic = `data:image/png;base64,${member?.profilePic}`;
+  }
+  
   return (
     <>
       <Col>
         <Accordion>
           <Accordion.Item eventKey="0">
             <Accordion.Header>
-              <img className='blood-card-img me-3' src={profilePic} alt="" />
-              <h2 className="title-font">{member?.blood?.toUpperCase()}</h2>
+              <img className='blood-card-img me-3' src={profilePic ? profilePic : member?.profilePic} alt="" />
+              <div>
+              <h3 className="title-font mb-0">{member?.blood?.toUpperCase()}</h3>
+              <p className="mb-0 text-light blood-name">{member?.fullName}, {member?.batchNo}<sup>th</sup></p>
+              </div>
             </Accordion.Header>
             <Accordion.Body>
               <Table striped bordered responsive>

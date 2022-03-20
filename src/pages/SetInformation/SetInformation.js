@@ -7,7 +7,7 @@ import Loading from '../CommonSections/Loading/Loading';
 const axios = require('axios');
 
 const SetInformation = () => {
-  const {user, name} = useAuth();
+  const {user, name, auth} = useAuth();
   useEffect(()=>{
     document.title = "Setup Basic Information";
   }, []);
@@ -20,6 +20,8 @@ const SetInformation = () => {
   const onSubmit = (info) => {
     let userInfo = {};
     info.phoneCount = 1;
+    info.profilePic = "https://i.ibb.co/17b0X70/profile-avatar.jpg";
+    info.auth = auth;
     if(info.isHall){
       const {messName, messAddress, ...inHall} = info;
       userInfo = inHall;
@@ -27,15 +29,15 @@ const SetInformation = () => {
       const {hallName, hallBlock, hallRoom, ...notHall} = info;
       userInfo = notHall;
     }
-    // console.log(userInfo)
-
+    // save user informaiton to database
     axios.put("https://warm-earth-97575.herokuapp.com/user", userInfo)
     .then(res => {
       console.log(res.starus)
       if(res.status === 200){
         navigate("/profile");
       }
-    })
+    });
+    
   }
 
   const yes = e => {
@@ -48,10 +50,10 @@ const SetInformation = () => {
     </>
   }
 
-  if(!user?.emailVerified){
-    console.log(user?.emailVerified)
-    navigate("/verify-your-account");
-  }
+  // if(!user?.emailVerified){
+  //   console.log(user?.emailVerified)
+  //   navigate("/verify-your-account");
+  // }
   return (
     <>
       
@@ -310,7 +312,7 @@ const SetInformation = () => {
                 </Row>
               </div>
 
-            <Button variant="success" disabled={!user?.emailVerified ? true : false} className='shadow-none rounded-1 px-5' type="submit">
+            <Button variant="success" disabled={!user?.emailVerified ? false : false} className='shadow-none rounded-1 px-5' type="submit">
               Save Change
             </Button>
           </Form>

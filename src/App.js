@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import AuthProvider from './contex/AuthProvider/AuthProvider';
 import firebaseInit from './firebase/firebase.init/firebase.init';
+import AdminRoute from './pages/Authentication/AdminRoute/AdminRoute';
 import Login from './pages/Authentication/Login/Login';
 import PrivateRoute from './pages/Authentication/PrivateRoute/PrivateRoute';
 import Register from './pages/Authentication/Register/Register';
@@ -52,17 +53,22 @@ function App() {
               <UpdateProfile />
             </PrivateRoute>
             }/>
-            <Route path='/dashboard' element={<PrivateRoute>
+            <Route path='/dashboard' element={<AdminRoute>
               <Dashboard />
-            </PrivateRoute>
+            </AdminRoute>
+              
             }/>
-            <Route path='/manage-members' element={<PrivateRoute>
+            <Route path='/manage-members' element={<AdminRoute>
               <ManageMembers />
-            </PrivateRoute>
+            </AdminRoute>
             }/>
-            <Route path='/cr-request' element={<PrivateRoute>
+            <Route path='/cr-request' element={<AdminRoute>
               <CRrequestList />
-            </PrivateRoute>
+            </AdminRoute>
+            }/>            
+            <Route path='/manage-notice' element={<AdminRoute>
+              <ManageNotice />
+            </AdminRoute>
             }/>
             <Route path='/notice-board' element={<PrivateRoute>
               <Notices />
@@ -70,10 +76,6 @@ function App() {
             }/>
             <Route path='/publish-notice' element={<PrivateRoute>
               <PublishNotice />
-            </PrivateRoute>
-            }/>
-            <Route path='/manage-notice' element={<PrivateRoute>
-              <ManageNotice />
             </PrivateRoute>
             }/>
             <Route path='/notice/:id' element={<PrivateRoute>

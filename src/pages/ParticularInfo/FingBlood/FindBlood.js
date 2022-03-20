@@ -21,20 +21,12 @@ const FindBlood = () => {
   // search blood group
   const [blood, setBlood] = useState(null);
   const getBlood = () => {
-    const searchKey = document.getElementById("blood").value
-    setBlood(searchKey);
+    const searchKey = document.getElementById("blood").value;
+    const searched = members.filter(member => member.blood.toLowerCase() === searchKey.toLowerCase())
+    setBlood(searched)
+    console.log(searchKey, members);
   }
-  useEffect(()=>{
-    const load = async () => {
-      setMembers(null)
-      const res = await fetch(`https://warm-earth-97575.herokuapp.com/search-blood/${blood}`);
-      const result = await res.json();
-      setMembers(result)
-      console.log(result)
-    }
-    load();
-  }, [blood])
-  console.log(blood)
+
   
   if(!members){
     return <>
@@ -71,8 +63,9 @@ const FindBlood = () => {
         </div>
         <Row xs={1} md={2} lg={3} className="g-3">
           {
-          members?.length > 0 ? members?.map(member => <BloodCard key={member._id} member={member} />) : <>
-            <h3 className="title-font text-danger">No result found...</h3>
+         !blood ? members?.map(member => <BloodCard key={member._id} member={member} />) : <>
+            {
+             blood.length > 0 ? blood?.map(member => <BloodCard key={member._id} member={member} />) : <h3 className="title-font text-danger">No result found...</h3>}
           </>
           }
         </Row>

@@ -7,7 +7,7 @@ const useFirebase = () => {
   const [isUnload, setUnload] = useState(true);
   const [name, setName] = useState(null);
   
-
+console.log(auth)
   // Registration by email and password
   const memberRegister = (email, password, fullName) => {
     setName(fullName);
@@ -46,8 +46,8 @@ const useFirebase = () => {
   }
 
   // account delete
-  const deleteAccount = () => {
-    deleteUser(user).then(() => {
+  const deleteAccount = (userAuth) => {
+    deleteUser(userAuth).then(() => {
       // User deleted.
     }).catch((error) => {
       // An error ocurred

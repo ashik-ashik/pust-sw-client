@@ -43,7 +43,7 @@ const Register = () => {
         // updated
           axios.post("https://warm-earth-97575.herokuapp.com/user", user)
           .then(res => {
-            console.log(res)
+
           })
         }).catch((error) => {
           console.log(error.message)

@@ -1,7 +1,11 @@
 import React from 'react';
 import { Table } from 'react-bootstrap';
+import useAuth from '../../../../hooks/useAuth/useAuth';
 
 const BasicInfo = ({member}) => {
+  const {user} = useAuth();
+
+
   return (
     <>
       <Table responsive striped bordered size="sm">
@@ -32,8 +36,10 @@ const BasicInfo = ({member}) => {
             <td>{member?.dept}</td>
           </tr>
           <tr>
-            <td>Is CR?</td>
-            <td>{member?.isCR ? "Yes" : "No"}</td>
+            <td>{user?.email === member?.email ? "CR Status" : "Is CR?"}</td>
+            <td>{user?.email === member?.email ? member?.CRstatus : <>
+              {member?.isCR ? "Yes" : "No"}
+            </>}</td>
           </tr>
           
           <tr>

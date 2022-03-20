@@ -12,7 +12,7 @@ const Allmembers = () => {
   }, []);
   const {user} = useAuth();
   const [users, setUsers] = useState(null);
-  const [data , setData] = useState('no');
+  const [searchedUser, setSearched] = useState(null);
   // const history = 
   useEffect(()=> {
     fetch("https://warm-earth-97575.herokuapp.com/users")
@@ -25,27 +25,13 @@ const Allmembers = () => {
   const { register, handleSubmit, reset } = useForm();
   // let searchedData = '';
   const onSubmit = ({data}) => {
-    setData(data);
+    const rearch = users.filter(u => (u.roll === data) || (u.reg === data) || (u.fullName.toLowerCase().includes(data.toLowerCase())))
+    setSearched(rearch);
     reset();
   }
-  useEffect(()=> {
-    fetch(`https://warm-earth-97575.herokuapp.com/searchMember/${data}`)
-    .then(res => res.json())
-    .then(data => {
-      if(data){
-        data.searched = true;
-        setUsers([data]);
-      }
-    })
 
-  }, [data]);
-
-  // go back from shearched result
-  const goBack = () => {
-    window.location.reload()  
-  }
  
-  if(!users){
+  if(!users && !searchedUser){
     return <>
       <Loading />
     </>
@@ -72,7 +58,7 @@ const Allmembers = () => {
                   <h5>You can find member:</h5>
                   <InputGroup className="mb-3">
                     <FormControl
-                      placeholder="search by roll or reg no."
+                      placeholder="search by roll or reg no. or name"
                       aria-label="Recipient's username"
                       aria-describedby="basic-addon2" 
                       {...register("data", {required: true})}
@@ -83,26 +69,17 @@ const Allmembers = () => {
                   </InputGroup>
                 </Form>
               </div>
-              {
-                users?.find(user => user.searched) && <>
-                  <div className="mt-4">
-                    <h5 className="styled-heading">Search Result:</h5>
-                  </div>
-                </>
-              }         
+
               <Row xs={1} md={2} lg={3} className="g-4">
                   {
-                    users?.map(user => <MemberCard key={user?._id} userInfo={user} />) 
+                   !searchedUser ? users?.map(user => <MemberCard key={user?._id} userInfo={user} />) : <>
+                   {
+                     searchedUser?.map(user => <MemberCard key={user?._id} userInfo={user} />)
+                   }
+                   </>
                   }
                 </Row>
 
-                  {
-                    users?.find(user => user.searched) && <>
-                      <div className="mt-4">
-                        <Button onClick={goBack} className='px-4 shadow-none rounded-0' variant="primary" size="sm">Back</Button>
-                      </div>
-                    </>
-                  }
             </Col>
             <Col></Col>
           </Row>

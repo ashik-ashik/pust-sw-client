@@ -5,7 +5,7 @@ import useAuth from '../../../../hooks/useAuth/useAuth';
 
 const Members = ({member}) => {
   console.log(member);
-  const {user} = useAuth();
+  const {user, deleteAccount, auth} = useAuth();
   
   // current logged in user
   const [currentUser, setCurrentuser] = useState(null);
@@ -33,9 +33,20 @@ const Members = ({member}) => {
       window.location.reload();
     })
   };
+  // make a cr
+  const removeAccount = (id) => {
+    axios.delete(`https://warm-earth-97575.herokuapp.com/delete-member/${id}`, {})
+    .then(res => {
+      deleteAccount(auth);
+      window.location.reload();
+    })
+  };
 
   
-  const profilePic = `data:image/png;base64,${member?.profilePic}`;
+  let profilePic = "";  
+  if(!member?.profilePic.includes("http")){
+    profilePic = `data:image/png;base64,${member?.profilePic}`;
+  } 
   return (
     <>
       <Col>
@@ -43,7 +54,7 @@ const Members = ({member}) => {
           <div className="member-image text-center">
             {
               member?.profilePic ? <>
-                <img className='profile-pic' src={profilePic} alt="" /> 
+                <img className='profile-pic' src={profilePic ? profilePic : member?.profilePic} alt="" /> 
               </> : <>
                 <img src="https://i.ibb.co/17b0X70/profile-avatar.jpg" alt="Member" />
               </>
@@ -79,9 +90,10 @@ const Members = ({member}) => {
                     member?.CRstatus === "verified" ? <>
                       <Button onClick={()=> removeCR(member._id)} variant="danger" size="sm" className='px-4 small shadow-none rounded-0 me-3' >Remove CR</Button>
                     </> : <>
-                      <Button onClick={()=> makeCR(member?._id)} variant="primary" size="sm" className='px-4 small shadow-none rounded-0 me-3' >Make CR</Button>
+                    <Button onClick={()=> makeCR(member?._id)} variant="primary" size="sm" className='px-4 small shadow-none rounded-0 me-3' >Make CR</Button>
                     </>
                   }
+                  <Button onClick={()=> removeAccount(member?._id)} variant="primary" size="sm" className='px-4 small shadow-none rounded-0 me-3' >Remove Account</Button>
                 </div>
               </>
             }
