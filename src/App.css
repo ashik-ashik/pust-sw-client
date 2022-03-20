@@ -280,3 +280,12 @@ a{
   color: #e4e3e3;
   font-size: 13px;
 }
+
+.admin-menu-items{
+  color: #444 !important;
+  font-size: 13px;
+}
+.admin-menu-items:hover{
+  color: rgb(22, 22, 22);
+  background: #ddd;
+}

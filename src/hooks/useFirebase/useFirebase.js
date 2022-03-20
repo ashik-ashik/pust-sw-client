@@ -46,13 +46,13 @@ console.log(auth)
   }
 
   // account delete
-  const deleteAccount = (userAuth) => {
-    deleteUser(userAuth).then(() => {
-      // User deleted.
-    }).catch((error) => {
-      // An error ocurred
-      // ...
-    });
+  const deleteAccount = (email) => {
+    
+    // deleteUser(userAuth.currentUser).then(() => {
+    //   console.log("Member deleted")
+    // }).catch((error) => {
+    //   console.log(error.message)
+    // });
   }
   console.log(user)
 

@@ -9,23 +9,29 @@ const AdminRoute = ({children, ...rest}) => {
   const [admin, setAdmin] = useState(null);
   useEffect(()=>{
     const load = async () => {
-      const res = await fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user.email}`);
+      const res = await fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`);
       const result = await (await res).json();
       setAdmin(result);
     };
     load();
   },[user]);
 
-  console.log(admin)
+  console.log(admin);
   
   if(isLoading || !admin){
     return <Loading />
   }
-  if(user.emailVerified || admin.role === "admin" ){
+  if(!user){
+    return <Navigate to={"/login"} state={{from:location}} />
+  }
+  if(user?.emailVerified || admin?.role === "admin" ){
     return children
   }
-  else{
+  else if(user && admin?.role !== "admin"){
     return <Navigate to={"/"} state={{from:location}} />
+  }
+  else{
+    return <Navigate to={"/login"} state={{from:location}} />
   }
 };
 

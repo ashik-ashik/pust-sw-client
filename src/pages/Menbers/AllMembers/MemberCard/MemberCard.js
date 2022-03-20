@@ -13,7 +13,7 @@ const MemberCard = ({userInfo}) => {
 
 
   let profilePic = "";  
-  if(!userInfo?.profilePic.includes("http")){
+  if(!userInfo?.profilePic?.includes("http")){
     profilePic = `data:image/png;base64,${userInfo?.profilePic}`;
   } 
   console.log(userInfo)

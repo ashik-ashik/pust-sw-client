@@ -13,16 +13,7 @@ const Home = () => {
   }, []);
   const {user} = useAuth();
   const navigate = useNavigate();
-  // const [currentUser, setCurrentUser] = useState(null);
   const [members, setMembers] = useState(null);
-  //  useEffect (()=>{
-  //   const load = async ()=> {
-  //     const res = await fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`);
-  //     const result = await res.json();
-  //     setCurrentUser(result);
-  //   }
-  //   load();
-  // }, [user]);
 
    useEffect (()=>{
     const load = async ()=> {
@@ -30,18 +21,19 @@ const Home = () => {
       const result = await res.json();
       setMembers(result);
     }
-    load();
+    if(user){
+      load();
+    }
   }, [user]);
   const currentUser = members?.filter(member => member?.email === user?.email)
   const featuredMember = members?.slice(0,4);
   if(!members){
     return <><Loading /> </>
   }
-  if(!currentUser){
-    return <><Loading /> </>
-  }
-  console.log("Home user " , members?.slice(0,4));
-  if(!currentUser?.fullName || !currentUser?.phone || !currentUser?.roll || !currentUser?.reg || !currentUser?.blood){
+
+  const [thisUser] = currentUser;
+  console.log(thisUser)
+  if(!thisUser?.fullName || !thisUser?.phone || !thisUser?.roll || !thisUser?.reg || !thisUser?.blood){
     navigate("/setup-information")
   }
   return (

@@ -31,7 +31,7 @@ const CRrequestList = () => {
               {
                 CR_requests?.length > 0 ? <>
                   {
-                  CR_requests?.map(single => <CRrequests key={single?._id} requests={single}  />)
+                  CR_requests?.map(single => <CRrequests key={single?._id} request={single}  />)
                   }
                 </> : <>
                   <h5 className="styled-heading text-danger">There is no CR request.</h5>

@@ -34,17 +34,18 @@ const Members = ({member}) => {
     })
   };
   // make a cr
-  const removeAccount = (id) => {
-    axios.delete(`https://warm-earth-97575.herokuapp.com/delete-member/${id}`, {})
-    .then(res => {
-      deleteAccount(auth);
-      window.location.reload();
-    })
+  const removeAccount = (member) => {
+    deleteAccount(member.email);
+    // axios.delete(`https://warm-earth-97575.herokuapp.com/delete-member/${id}`, {})
+    // .then(res => {
+    //   window.location.reload();
+    // })
   };
+  console.log(member.auth)
 
   
   let profilePic = "";  
-  if(!member?.profilePic.includes("http")){
+  if(!member?.profilePic?.includes("http")){
     profilePic = `data:image/png;base64,${member?.profilePic}`;
   } 
   return (
@@ -93,7 +94,7 @@ const Members = ({member}) => {
                     <Button onClick={()=> makeCR(member?._id)} variant="primary" size="sm" className='px-4 small shadow-none rounded-0 me-3' >Make CR</Button>
                     </>
                   }
-                  <Button onClick={()=> removeAccount(member?._id)} variant="primary" size="sm" className='px-4 small shadow-none rounded-0 me-3' >Remove Account</Button>
+                  <Button onClick={()=> removeAccount(member)} variant="danger" size="sm" className='px-4 small shadow-none rounded-0 mt-3' >Delete Account</Button>
                 </div>
               </>
             }

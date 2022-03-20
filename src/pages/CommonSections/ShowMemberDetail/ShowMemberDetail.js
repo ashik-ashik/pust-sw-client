@@ -51,7 +51,7 @@ const ShowMemberDetail = ({member}) => {
   };
 
   let imageURL = "";  
-  if(!member?.profilePic.includes("http")){
+  if(!member?.profilePic?.includes("http")){
   imageURL = `data:image/png;base64,${member?.profilePic}`;
   }  
 

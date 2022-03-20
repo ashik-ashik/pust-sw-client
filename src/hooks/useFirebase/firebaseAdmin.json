@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "social-work-at-pust",
+  "private_key_id": "59ea86394a9415878ed67705da0ea5d63f6ab439",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCOmiE7ZWJ21Fzy\n09yEasy/kJbu7TkQ/ZuUpaGkBK7Ow4FAYwf9zF293/PKmx6MnQEvEliLPJXufSLO\nGer2GVI4KqqrUZ8Af3O7Eu9CVzCcpXb2vTQGjKzqJ/TiA+/fP9AQhJjftwLDigvc\nZosW60xLcn6hCN/KnfAaK6BfA1rgPbNTM8QVZvGvXpDPT63LYtpy21RqqoaVFYtK\nsPu/DwyoNL6kX5nSXKC8IzEbN8Dv/COz/cUcUCeqCuaFFKEj3O9b0VTLXNJHcSyR\nEqngJyng6cNr2ypbfugjcfzLwDNkLAJLY6vwZIuKwzGn5+SDJpGgFGuPcSW6bvDw\n04OhaiZFAgMBAAECggEAHhgnesA48TB8hC+TamualbP3MmmkYTJQTuTMkc9+L7sB\nMDwmD9j9EIjui3vEjPLGcO9recj5sEi+22WLWU/7MsjIV1rkliePnjOPBD5fzzM5\nQbWowNgX1tvDWZ5wlToDmDTPiWj3P5qGycbnRBk4svRxBl2X0wwVQ4Sg9eRAnbF/\nGtwtIupMpaqU5n2GVBa+FOhytWjvEPqbZonyJ+Cl71AWlt6fqoHbc6dKemkw2yFw\njwAXpumKO3A6LE2TX6kUiW4pV97Fih+xssuXUR9mwic5YyJNC16Ls5K1wo/d3N/B\nZb5C1IpjL4WPygEmg4XgpiFp9aSux0R+PkfvMAPZwQKBgQDCDuNixWOz/9nEuhuV\nYCAj4EEsh5Xut9GgV7gaA0HBP9CBHOy0G1/Yj6W5j/9uPBgE2KpCxOR669BYBZt+\n5ExMD+AqCHTHSNbA0wjTvAsIICQVvVXyEIROVeONtOxc7Nr4KVsYOTf9gZ31UzaU\ntGAy/K2pvUkBoU+x6YrqG0QpQQKBgQC8Hpmv3qXdNdCOJhXlWWb6tmiAgPkR75rg\npofn0mV5RmYCgyx+8EAuKltl2FPPL9f3Lsq7A0cPcy2cn+8n/bpFdBEjGQwjWt5f\nWbYwqF/lsq/RaFtSBJXviDP3ohmIL142m0uhgQ67W51PZ1QCfrpfUq9dDxLQnd31\nXDrE4idYBQKBgHaH3X/RDWs+lWdCPeLpifgf2+81CfF7ucD0k3DgGGPPdK3IWxRP\nvCVs6E8Fk4Fjl1AufyC1XtFuBB4fnrDNBYVYFRXXgGzRIss4m6WosBxQdXoJ4dsv\nF4E5mPpPTigcTEtUB14uZPKlHzRflXETE8dQ60pIYbVrMGB9Q+pmqSWBAoGATIdS\nVFaKOUycNEfQHoZZO2MbbjOJn79OzVdR8IAKIeT+uMTuRBGuulkm526y4ZWAESGq\n/ZtevC1J/+6cVzOEJJ8MHbAh3PwpfLa9RFwq7wHbPqBqjhopeNF6+qGqK1nBxQs2\nIFSlTpj9jQDnD0DIxuCXUI9CQzYFxrwneFLcWJUCgYAZn9IANNpFLB43EQx6T2lE\ndlQvxg9HeErYKLkdl/Yx8Eq98gvDQIOKK+arsajGpUkQXLAn3Smb3qiMydcXMcq4\n7Kgd66BSu7APjj5FTnp7jUfN9pWvUFEwcnNCC8KB3sSMOi8ziwfYUlk/rx+k53pc\n+PPhG7S8OiSA5L6D73Gpng==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-zhzjo@social-work-at-pust.iam.gserviceaccount.com",
+  "client_id": "109370076087696140166",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-zhzjo%40social-work-at-pust.iam.gserviceaccount.com"
+}
