@@ -37,9 +37,11 @@ const BasicInfo = ({member}) => {
           </tr>
           <tr>
             <td>{user?.email === member?.email ? "CR Status" : "Is CR?"}</td>
-            <td>{user?.email === member?.email ? member?.CRstatus : <>
-              {member?.isCR ? "Yes" : "No"}
-            </>}</td>
+            <td>{user?.email === member?.email ? member?.CRstatus || "N/A" : <>
+              {member?.CRstatus === "verified" ? "Yes" : "No"}
+            </>}
+            
+            </td>
           </tr>
           
           <tr>

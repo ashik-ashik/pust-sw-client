@@ -8,7 +8,6 @@ const MemberCard = ({userInfo}) => {
   const navigate = useNavigate();
   const viewProfile = id => {
     navigate(`/member/${id}`)
-  console.log(id)
 };
 
 
@@ -16,7 +15,6 @@ const MemberCard = ({userInfo}) => {
   if(!userInfo?.profilePic?.includes("http")){
     profilePic = `data:image/png;base64,${userInfo?.profilePic}`;
   } 
-  console.log(userInfo)
   return (
     <>
       <Col>

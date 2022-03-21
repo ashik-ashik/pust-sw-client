@@ -14,10 +14,11 @@ const Home = () => {
   const {user} = useAuth();
   const navigate = useNavigate();
   const [members, setMembers] = useState(null);
+  const [currentMembers, setCurrentMembers] = useState(null);
 
    useEffect (()=>{
     const load = async ()=> {
-      const res = await fetch(`https://warm-earth-97575.herokuapp.com/users`);
+      const res = await fetch(`https://warm-earth-97575.herokuapp.com/fearured-members`);
       const result = await res.json();
       setMembers(result);
     }
@@ -25,15 +26,26 @@ const Home = () => {
       load();
     }
   }, [user]);
-  const currentUser = members?.filter(member => member?.email === user?.email)
-  const featuredMember = members?.slice(0,4);
+
+   useEffect (()=>{
+    const load = async ()=> {
+      const res = await fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`);
+      const result = await res.json();
+      setCurrentMembers(result);
+    }
+    if(user){
+      load();
+    }
+  }, [user]);
+  
+
   if(!members){
-    return <><Loading /> </>
+    return <>
+      <Loading />
+    </>
   }
 
-  const [thisUser] = currentUser;
-  console.log(thisUser)
-  if(!thisUser?.fullName || !thisUser?.phone || !thisUser?.roll || !thisUser?.reg || !thisUser?.blood){
+  if(!currentMembers?.fullName || !currentMembers?.phone || !currentMembers?.roll || !currentMembers?.reg || !currentMembers?.blood){
     navigate("/setup-information")
   }
   return (
@@ -65,7 +77,7 @@ const Home = () => {
           <h3 className="styled-heading mb-4">Featured Members:</h3>
           <Row xs={1} md={2} lg={4} className='g-4'>
             {
-              featuredMember?.map(member => <Members key={member?._id} member={member} />)
+              members?.map(member => <Members key={member?._id} member={member} />)
             }
           </Row>
         </Container>
