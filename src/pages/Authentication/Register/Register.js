@@ -33,7 +33,8 @@ const Register = () => {
           // Email verification sent!
           // ...
         });
-        navigate("/verify-your-account");
+        // navigate("/verify-your-account");
+        navigate("/setup-informaiton");
         
         // update userName
         const user = userCredential.user;

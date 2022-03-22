@@ -5,7 +5,7 @@ const ContactCard = ({member}) => {
   let profilePic = "";  
   if(!member?.profilePic.includes("http")){
   profilePic = `data:image/png;base64,${member?.profilePic}`;
-  } 
+  };
   return (
     <>
       <Col>
@@ -28,7 +28,7 @@ const ContactCard = ({member}) => {
             <Accordion.Header>
               <img className='contact-img me-3' src={profilePic ? profilePic : member?.profilePic} alt="" />
               <div>
-              <h3 className="title-font mb-0">{member?.phone?.toUpperCase()}</h3>
+              <h3 className="d-flex align-items-center mb-0"><a className='text-light title-font' href={`tel:${member?.phone}`}><i className="bx bx-phone "></i> {member?.phone}</a></h3>
               <p className="mb-0 text-light blood-name">{member?.fullName}, {member?.batchNo}<sup>th</sup></p>
               </div>
             </Accordion.Header>

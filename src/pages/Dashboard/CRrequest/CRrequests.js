@@ -69,8 +69,8 @@ const CRrequests = ({request}) => {
                   <td  style={{width:"60%"}}>: {request?.reg}</td>
                 </tr>
                 <tr>
-                  <td style={{width:"40%"}}>District</td>
-                  <td  style={{width:"60%"}}>: {request?.district}</td>
+                  <td style={{width:"40%"}}>Batch</td>
+                  <td  style={{width:"60%"}}>: {request?.batchNo}<sup>th</sup></td>
                 </tr>
                 <tr>
                   <td style={{width:"40%"}}>Registred</td>

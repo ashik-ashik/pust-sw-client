@@ -39,7 +39,7 @@ const Home = () => {
   }, [user]);
   
 
-  if(!members){
+  if(!currentMembers){
     return <>
       <Loading />
     </>
