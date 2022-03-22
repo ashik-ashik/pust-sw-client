@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Col, Container, Form, Row } from 'react-bootstrap';
+import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import Hearder from '../../CommonSections/Header/Hearder';
 import Loading from '../../CommonSections/Loading/Loading';
 import ContactCard from './ContactCard/ContactCard';
@@ -47,8 +47,19 @@ const Contacts = () => {
     document.getElementById("filter-by-batch").reset();
     document.getElementById("filter-only-cr").reset();
     const searchedKey = e.target.value;
-    const searched = members?.filter(member => member?.fullName?.toLowerCase().includes(searchedKey?.toLowerCase()));
-    setSearchedMembers(searched);
+    if(searchedKey){
+      const searched = members?.filter(member => member?.fullName?.toLowerCase().includes(searchedKey?.toLowerCase()));
+      setSearchedMembers(searched);
+    }
+    else{
+      setSearchedMembers(null);
+    }
+  }
+  const showAll = () => {
+    document.getElementById("filter-by-batch").reset();
+    document.getElementById("filter-only-cr").reset();
+    document.getElementById("filter-by-name").reset();
+    setSearchedMembers(null);
   }
 
   if(!members){
@@ -69,9 +80,9 @@ const Contacts = () => {
         <Container>
           <div className="py-3">
             <Row>
-              <Col xs="12" className='mt-3 mt-md-0'>
+              <Col>
                 <p className='mb-1 small'>Filter by batch:</p>
-                <form id="filter-by-batch">
+                <form id="filter-by-batch" onSubmit={e => e.preventDefault()}>
                   <Form.Select size="sm" name="batch" onChange={filterByBatch} id="batch">
                     <option value='no'>Select Batch</option>
                     <option value='8'>8th</option>
@@ -87,7 +98,7 @@ const Contacts = () => {
               </Col>
               <Col>
                 <p className="mb-1 small">CR only:</p>
-                <form id="filter-only-cr">
+                <form id="filter-only-cr" onSubmit={e => e.preventDefault()}>
                   <Form.Check 
                     onChange={filterByCR}
                     type="switch"
@@ -97,9 +108,9 @@ const Contacts = () => {
                   />
                 </form>
               </Col>
-              <Col>
+              <Col xs="12" md="4" className='mt-2 mt-md-0'>
               <p className='mb-1 small'>Filter by name:</p>
-                <form id='filter-by-name'>
+                <form id='filter-by-name' onSubmit={e => e.preventDefault()}>
                   <Form.Control 
                     type="text"
                     placeholder='Search name'
@@ -110,16 +121,30 @@ const Contacts = () => {
               </Col>
             </Row>
           </div>
+          {
+            searchedMembers?.length > 0 && <>
+              <div className="py-3">
+                <h5 className="title-font">{searchedMembers?.length} result found</h5>
+              </div>
+            </>
+          }
           <Row xs={1} md={2} lg={3} className="g-2">
           {
            (!searchedMembers) && members?.map(member => <ContactCard key={member?._id} member={member} />)
           }
           {
            ( !searchedMembers || (searchedMembers?.length > 0)) ? searchedMembers?.map(member => <ContactCard key={member?._id} member={member} />) : <>
-            <p className="text-danger title-font">Not Found</p>
+            <h3 className="text-danger title-font">Result Not Found</h3>
            </>
           }
           </Row>
+          {
+            searchedMembers?.length > 0 && <>
+              <div className="border-top pt-2 mt-3">
+                <Button variant="success" size="sm" className='rounded-0 px-4' onClick={showAll}>Show All</Button>
+              </div>
+            </>
+          }
         </Container>
       </section>
     </>

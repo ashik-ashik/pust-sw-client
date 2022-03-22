@@ -103,7 +103,7 @@ const ShowMemberDetail = ({member}) => {
               }
             <div className="mt-3">
               {
-                member?.email === user?.email && <>
+                member?.role === 'admin' && <>
                   <Button  onClick={clickFile} variant="success" size="sm" className="px-4 rounded-0"><i className='bx bxs-camera fs-6'></i> Upload Profile</Button>
                 </>
               }

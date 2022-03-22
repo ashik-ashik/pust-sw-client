@@ -11,6 +11,12 @@ import Verification from './pages/CommonSections/Verification/Verification';
 import CRrequestList from './pages/Dashboard/CRrquestList/CRrequestList';
 import Dashboard from './pages/Dashboard/Dashboard/Dashboard';
 import ManageMembers from './pages/Dashboard/ManageMembers/ManageMembers';
+import EditEvent from './pages/Events/EditEvent/EditEvent';
+import EventDetail from './pages/Events/EventDetail/EventDetail';
+import Events from './pages/Events/Events/Events';
+import ManageEvent from './pages/Events/ManageEvent/ManageEvent';
+import PublishEvent from './pages/Events/PublishEvent/PublishEvent';
+import Faqs from './pages/Faqs/Faqs';
 import Home from './pages/Home/Home';
 import Allmembers from './pages/Menbers/AllMembers/Allmembers';
 import SingleMember from './pages/Menbers/SingleMember/SingleMember';
@@ -70,6 +76,18 @@ function App() {
               <ManageNotice />
             </AdminRoute>
             }/>
+            <Route path='/publish-event' element={<AdminRoute>
+              <PublishEvent />
+            </AdminRoute>
+            }/>
+            <Route path='/manage-events' element={<AdminRoute>
+              <ManageEvent />
+            </AdminRoute>
+            }/>
+            <Route path='/event-edit/:id' element={<AdminRoute>
+              <EditEvent />
+            </AdminRoute>
+            }/>
             <Route path='/notice-board' element={<PrivateRoute>
               <Notices />
             </PrivateRoute>
@@ -94,10 +112,19 @@ function App() {
               <Contacts />
             </PrivateRoute>
             }/>
+            <Route path='/events' element={<PrivateRoute>
+              <Events />
+            </PrivateRoute>
+            }/>
+            <Route path='/event/:id' element={<PrivateRoute>
+              <EventDetail />
+            </PrivateRoute>
+            }/>
             <Route path='/verify-your-account' element={<Verification />}/>
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
             <Route path='/mission-vision' element={<MissionVision />} />
+            <Route path='/faqs' element={<Faqs />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
         </Router>

@@ -61,7 +61,7 @@ const FindBlood = () => {
             </InputGroup>          
           </Form>
         </div>
-        <Row xs={1} md={2} lg={3} className="g-3">
+        <Row xs={1} md={2} lg={3} className="g-2">
           {
          !blood ? members?.map(member => <BloodCard key={member._id} member={member} />) : <>
             {

@@ -34,7 +34,7 @@ const Register = () => {
           // ...
         });
         // navigate("/verify-your-account");
-        navigate("/setup-informaiton");
+        navigate("/setup-information");
         
         // update userName
         const user = userCredential.user;

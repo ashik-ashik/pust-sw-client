@@ -23,13 +23,13 @@ const ContactCard = ({member}) => {
             </a>
           </div>
         </div> */}
-        <Accordion>
+        <Accordion className='contact-accordion'>
           <Accordion.Item eventKey="0">
             <Accordion.Header>
               <img className='contact-img me-3' src={profilePic ? profilePic : member?.profilePic} alt="" />
               <div>
-              <h3 className="d-flex align-items-center mb-0"><a className='text-light title-font' href={`tel:${member?.phone}`}><i className="bx bx-phone "></i> {member?.phone}</a></h3>
-              <p className="mb-0 text-light blood-name">{member?.fullName}, {member?.batchNo}<sup>th</sup></p>
+              <h4 className="d-flex align-items-center mb-0"><a className='text-light title-font' href={`tel:${member?.phone}`}><i className="bx bxs-phone "></i> {member?.phone}</a></h4>
+              <p className="mb-0 text-light blood-name">{member?.fullName} {member?.CRstatus === 'verified' &&<sup className='border border-white rounded-circle' style={{padding:"2px"}}>CR</sup>}, {member?.batchNo}<sup>th</sup></p>
               </div>
             </Accordion.Header>
             <Accordion.Body>

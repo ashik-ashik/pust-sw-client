@@ -236,19 +236,42 @@ a{
   width: 50px;
   border-radius: 7px;
 }
-.accordion-button{
-  background: linear-gradient(90deg, #f00034, #02631b) !important;
+/* blood accordion */
+.blood-accordion .accordion-button{
+  background: green !important;
   box-shadow: none !important;
   color: #eee !important;
 }
-.accordion-button.collapsed{
-  background: linear-gradient(90deg, #010170, #b60202) !important;
+.blood-accordion .accordion-button.collapsed{
+  background: #d30505 !important;
   color: #fff;
 }
 .accordion-button::after{
   filter: brightness(100);
   background-size: 15px !important;
 }
+/* contact accordion */
+.contact-accordion .accordion-button.collapsed{
+  background: linear-gradient(90deg, #250d38, #084d4d) !important;
+  color: #fff;
+}
+.accordion-button{
+  background: linear-gradient(90deg, #410d4b, #121147) !important;
+  box-shadow: none !important;
+  color: #eee !important;
+}
+
+/* faq accordion */
+.faq-accordion .accordion-button.collapsed{
+  background: linear-gradient(90deg, #010170, #044f66) !important;
+  color: #fff;
+}
+.faq-accordion .accordion-button{
+  background: linear-gradient(90deg, #4c0d5f, #284930) !important;
+  box-shadow: none !important;
+  color: #eee !important;
+}
+
 .contact-img{
   width: 50px;
   height: 50px;
@@ -284,8 +307,33 @@ a{
 .admin-menu-items{
   color: #444 !important;
   font-size: 13px;
+  display: flex !important;
+  align-items: center;
+
 }
 .admin-menu-items:hover{
   color: rgb(22, 22, 22);
   background: #ddd;
+}
+
+.event-title{
+  color: #333;
+}
+.event-title:hover{
+  color: #d81900 !important;
+}
+.event-card-img{
+  height: 200px !important;
+  width: 100%;
+}
+.event-detail-img{
+  max-height: 500px;
+  width: 100%;
+}
+.event-content-list > li{
+  list-style-type: none;
+}
+.event-content-list > li::before{
+  content: '▣';
+  margin-right: 3px;
 }

@@ -20,7 +20,12 @@ const SetInformation = () => {
   const onSubmit = (info) => {
     let userInfo = {};
     info.phoneCount = 1;
-    info.profilePic = "https://i.ibb.co/17b0X70/profile-avatar.jpg";
+    if(info.gender === 'male'){
+      info.profilePic = "https://i.ibb.co/17b0X70/profile-avatar.jpg";
+    }else{
+      info.profilePic = "https://i.ibb.co/K5Rt8sH/femal-avatar.png";
+    }
+    
     info.auth = auth;
     if(info.isHall){
       const {messName, messAddress, ...inHall} = info;
@@ -145,21 +150,35 @@ const SetInformation = () => {
                 </Form.Select>
             </Form.Group>              
 
-            <Form.Group className="mb-3">
-              <Form.Label>Blood Group:</Form.Label>
-              <Form.Select {...register("blood", {required: true})}>
-                <option value='none'>Select Blood Group:</option>
-                <option value="a+">A+</option>
-                <option value="a-">A-</option>
-                <option value="b+">B+</option>
-                <option value="b-">B-</option>
-                <option value="o+">O+</option>
-                <option value="o-">O-</option>
-                <option value="ab+">AB+</option>
-                <option value="ab-">AB-</option>
-                <option value="unknown">Unkown</option>
-              </Form.Select>
-              </Form.Group> 
+            <Row>
+              <Col md="6">
+                <Form.Group className="mb-3">
+                <Form.Label>Blood Group:</Form.Label>
+                <Form.Select {...register("blood", {required: true})}>
+                  <option value='none'>Select Blood Group:</option>
+                  <option value="a+">A+</option>
+                  <option value="a-">A-</option>
+                  <option value="b+">B+</option>
+                  <option value="b-">B-</option>
+                  <option value="o+">O+</option>
+                  <option value="o-">O-</option>
+                  <option value="ab+">AB+</option>
+                  <option value="ab-">AB-</option>
+                  <option value="unknown">Unkown</option>
+                </Form.Select>
+              </Form.Group>  
+              </Col>  
+              <Col md="6">
+                <Form.Group className="mb-3">
+                <Form.Label>Gender:</Form.Label>
+                <Form.Select {...register("gender", {required: true})}>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="thers">Others</option>
+                </Form.Select>
+              </Form.Group>  
+              </Col>  
+            </Row> 
             
             {/* Present Address */}
               <div className="py-2">

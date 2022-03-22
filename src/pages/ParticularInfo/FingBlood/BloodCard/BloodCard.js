@@ -11,12 +11,12 @@ const BloodCard = ({member}) => {
   return (
     <>
       <Col>
-        <Accordion>
+        <Accordion className="blood-accordion">
           <Accordion.Item eventKey="0">
             <Accordion.Header>
               <img className='blood-card-img me-3' src={profilePic ? profilePic : member?.profilePic} alt="" />
               <div>
-              <h3 className="title-font mb-0">{member?.blood?.toUpperCase()}</h3>
+              <h4 className="title-font mb-0">{member?.blood?.toUpperCase()}</h4>
               <p className="mb-0 text-light blood-name">{member?.fullName}, {member?.batchNo}<sup>th</sup></p>
               </div>
             </Accordion.Header>
