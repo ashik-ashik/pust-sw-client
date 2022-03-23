@@ -5,6 +5,7 @@ import Hearder from '../../CommonSections/Header/Hearder';
 import MemberCard from './MemberCard/MemberCard';
 import { useForm } from "react-hook-form";
 import Loading from '../../CommonSections/Loading/Loading';
+import useMember from '../../../hooks/useMembers/useMembers';
 
 const Allmembers = () => {
   useEffect(()=>{
@@ -15,46 +16,19 @@ const Allmembers = () => {
   const [pageCount, setPageCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
   const [memberInAPage, setMemberInAPage] = useState(0);
-  const [allMember, setAllMember] = useState(null);
+  const allMembers = useMember();
   const [searchedUser, setSearched] = useState(null);
   // const history = 
-  useEffect(()=>{
-    const load = async()=> {
-      const res = await fetch(`https://warm-earth-97575.herokuapp.com/users`);
-      const result = await res.json();
-      setAllMember(result);
-    };
-    load();
-  },[user]);
+
 
   useEffect(()=> {
     fetch(`https://warm-earth-97575.herokuapp.com/member-show?page=${currentPage}&&size=${memberInAPage}`)
     .then(res => res.json())
     .then(data => {
       setUsers(data?.members);
-      let memberPerPage=0;
-      if(data?.counts <= 10){
-        memberPerPage = 10;
-      }else if((data?.counts > 10) && (data?.counts <= 30)){
-        memberPerPage = 6;
-      }
-      else if((data?.counts > 30) && (data?.counts <= 60)){
-        memberPerPage = 9;
-      }
-      else if((data?.counts > 60) && (data?.counts <= 100)){
-        memberPerPage = 15;
-      }
-      else if((data?.counts > 100) && (data?.counts <= 150)){
-        memberPerPage = 18;
-      }
-      else if((data?.counts > 150) && (data?.counts <= 250)){
-        memberPerPage = 24;
-      }
-      else{
-        memberPerPage = 30;
-      }
+      const memberPerPage=15;
       setMemberInAPage(memberPerPage)
-      const pages = Math.ceil(data?.counts / memberPerPage)
+      const pages = Math.ceil(data?.counts / memberPerPage);
       setPageCount(pages);
     });
   }, [currentPage, memberInAPage]);
@@ -62,7 +36,7 @@ const Allmembers = () => {
   const { register, handleSubmit, reset } = useForm();
   // let searchedData = '';
   const onSubmit = ({data}) => {
-    const rearch = allMember.filter(u => (u.roll === data) || (u.reg === data) || (u.fullName.toLowerCase().includes(data.toLowerCase())))
+    const rearch = allMembers.filter(u => (u.roll === data) || (u.reg === data) || (u.fullName.toLowerCase().includes(data.toLowerCase())))
     setSearched(rearch);
     reset();
   }
@@ -72,7 +46,7 @@ const Allmembers = () => {
   }
 
  
-  if(!members && !searchedUser){
+  if(!members ){
     return <>
       <Loading />
     </>

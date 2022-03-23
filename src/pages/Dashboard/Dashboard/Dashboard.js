@@ -1,27 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Col, Container, Nav, Row, Table } from 'react-bootstrap';
+import React, { useEffect } from 'react';
+import { Col, Container, Nav, Row} from 'react-bootstrap';
 import CRrequests from '../CRrequest/CRrequests';
 import Loading from '../../CommonSections/Loading/Loading';
 import DashboardHeader from '../DashboardHeader/DashboardHeader';
 import { Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth/useAuth';
 import ManageMembers from '../ManageMembers/ManageMembers';
+import useMember from '../../../hooks/useMembers/useMembers';
 
 const Dashboard = () => {
-  const {memberLogOut} = useAuth()
-  const [users, setUsers] = useState(null);
   useEffect(()=>{
-    const load = async ()=>{
-      const res = await fetch("https://warm-earth-97575.herokuapp.com/users");
-      const result = await res.json();
-      setUsers(result);
-    };
-    load();
-  }, [users]);
+    document.title = "Dashboard";
+  },[])
+  const {memberLogOut} = useAuth()
+  const members = useMember();
 
-  const CR_requests = users?.filter(ceReq => ceReq?.CRstatus === "pending");
+  const CR_requests = members?.filter(ceReq => ceReq?.CRstatus === "pending");
   
-  if(!users){
+  if(!members){
     return <>
     <Loading />
     </>

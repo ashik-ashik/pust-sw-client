@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
 import Hearder from '../../CommonSections/Header/Hearder';
+import Loading from '../../CommonSections/Loading/Loading';
 
 const EventDetail = () => {
  
@@ -28,6 +29,10 @@ const EventDetail = () => {
   useEffect(()=>{
     document.title = `Event- ${event?.eventTitle ? event?.eventTitle : ''}`;
   },[event]);
+
+  if(!event){
+    return <Loading />
+  }
 
   return (
     <>

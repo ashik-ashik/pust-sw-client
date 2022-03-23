@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import useMember from '../../../hooks/useMembers/useMembers';
 import Hearder from '../../CommonSections/Header/Hearder';
 import Loading from '../../CommonSections/Loading/Loading';
 import ContactCard from './ContactCard/ContactCard';
@@ -8,16 +9,9 @@ const Contacts = () => {
   useEffect(()=>{
     document.title = "Contacts Information of PUST-SW"
   },[])
-  const [members, setMembers] = useState(null);
+  const members = useMember();
   const [searchedMembers, setSearchedMembers] = useState(null);
-  useEffect(()=>{
-    const load = async () => {
-      const res = await fetch("https://warm-earth-97575.herokuapp.com/users");
-      const result = await res.json();
-      setMembers(result);
-    };
-    load();
-  }, []);
+
 
   const filterByBatch = (e) => {
     const searchedKey = (e.target.value);
@@ -62,11 +56,6 @@ const Contacts = () => {
     setSearchedMembers(null);
   }
 
-  if(!members){
-    return <>
-      <Loading />
-    </>
-  }
   return (
     <>
       <Hearder ></Hearder>

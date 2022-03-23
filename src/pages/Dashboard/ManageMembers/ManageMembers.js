@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
-import useAuth from '../../../hooks/useAuth/useAuth';
+import React, { useEffect } from 'react';
+import { Container, Row } from 'react-bootstrap';
+import useMember from '../../../hooks/useMembers/useMembers';
 import Loading from '../../CommonSections/Loading/Loading';
 import DashboardHeader from '../DashboardHeader/DashboardHeader';
 import Members from './Members/Members';
@@ -9,16 +9,8 @@ const ManageMembers = () => {
   useEffect(()=>{
     document.title = "Manage Members of PUST-SW";
   }, []);
-  const {user} = useAuth();
-  const [users, setUsers] = useState(null);
-  useEffect(()=> {
-    fetch("https://warm-earth-97575.herokuapp.com/users")
-    .then(res => res.json())
-    .then(data => {
-      setUsers(data)
-    });
-  }, [user]);
-  if(!users){
+  const members = useMember();
+  if(!members){
     return <>
       <Loading />
     </>
@@ -31,7 +23,7 @@ const ManageMembers = () => {
           <h3 className="styled-heading mb-4 text-success">Manage Members:</h3>
           <Row xs={1} md={2} lg={4} className="g-4">
             {
-              users?.map(single => <Members key={single?._id} member={single} />)
+              members?.map(single => <Members key={single?._id} member={single} />)
             }
           </Row>
         </Container>

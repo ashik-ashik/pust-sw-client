@@ -9,7 +9,7 @@ const Faqs = () => {
       <section className="py-4">
         <Container>
           <Row className='g-2'>
-            <Col>
+            <Col md="6">
               <Accordion className='faq-accordion'>
                 <Accordion.Item eventKey="0" className='mb-2'>
                   <Accordion.Header>Is there my info secure?</Accordion.Header>
@@ -19,7 +19,7 @@ const Faqs = () => {
                 </Accordion.Item>
               </Accordion>
             </Col>
-            <Col>
+            <Col md="6">
               <Accordion className='faq-accordion'>
                 <Accordion.Item eventKey="0" className='mb-2'>
                   <Accordion.Header>How can it will help me?</Accordion.Header>

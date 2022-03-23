@@ -3,20 +3,13 @@ import Loading from "../../CommonSections/Loading/Loading";
 import Header from "../../CommonSections/Header/Hearder";
 import { Container, Form, InputGroup, Row, Button } from 'react-bootstrap';
 import BloodCard from './BloodCard/BloodCard';
+import useMember from '../../../hooks/useMembers/useMembers';
 
 const FindBlood = () => {
   useEffect(()=>{
     document.title = "Find Blood Group"
   },[])
-  const [members, setMembers] = useState(null);
-  useEffect(()=>{
-    const load = async () => {
-      const res = await fetch("https://warm-earth-97575.herokuapp.com/users");
-      const result = await res.json();
-      setMembers(result);
-    };
-    load();
-  }, []);
+  const members = useMember()
 
   // search blood group
   const [blood, setBlood] = useState(null);

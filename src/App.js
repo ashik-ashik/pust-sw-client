@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import './App.css';
 import AuthProvider from './contex/AuthProvider/AuthProvider';
+import MemberProvider from './contex/MemberProvider/MemberProvider';
 import firebaseInit from './firebase/firebase.init/firebase.init';
 import AdminRoute from './pages/Authentication/AdminRoute/AdminRoute';
 import Login from './pages/Authentication/Login/Login';
@@ -37,97 +38,99 @@ function App() {
   return (
     <>
       <AuthProvider>
-        <Router>
-          <Routes>
-            <Route path='/' element={<PrivateRoute>
-              <Home />
-            </PrivateRoute>
-            }/>
-            <Route path='/profile' element={<PrivateRoute>
-              <Profile />
-            </PrivateRoute>
-            }/>
-            <Route path='/members' element={<PrivateRoute>
-              <Allmembers />
-            </PrivateRoute>
-            }/>
-            <Route path='/member/:id' element={<PrivateRoute>
-              <SingleMember />
-            </PrivateRoute>
-            }/>
-            <Route path='/update-profile/:id' element={<PrivateRoute>
-              <UpdateProfile />
-            </PrivateRoute>
-            }/>
-            <Route path='/dashboard' element={<AdminRoute>
-              <Dashboard />
-            </AdminRoute>
-              
-            }/>
-            <Route path='/manage-members' element={<AdminRoute>
-              <ManageMembers />
-            </AdminRoute>
-            }/>
-            <Route path='/cr-request' element={<AdminRoute>
-              <CRrequestList />
-            </AdminRoute>
-            }/>            
-            <Route path='/manage-notice' element={<AdminRoute>
-              <ManageNotice />
-            </AdminRoute>
-            }/>
-            <Route path='/publish-event' element={<AdminRoute>
-              <PublishEvent />
-            </AdminRoute>
-            }/>
-            <Route path='/manage-events' element={<AdminRoute>
-              <ManageEvent />
-            </AdminRoute>
-            }/>
-            <Route path='/event-edit/:id' element={<AdminRoute>
-              <EditEvent />
-            </AdminRoute>
-            }/>
-            <Route path='/notice-board' element={<PrivateRoute>
-              <Notices />
-            </PrivateRoute>
-            }/>
-            <Route path='/publish-notice' element={<PrivateRoute>
-              <PublishNotice />
-            </PrivateRoute>
-            }/>
-            <Route path='/notice/:id' element={<PrivateRoute>
-              <SingleNotice />
-            </PrivateRoute>
-            }/>
-            <Route path='/setup-information' element={<PrivateRoute>
-              <SetInformation />
-            </PrivateRoute>
-            }/>
-            <Route path='/find-blood' element={<PrivateRoute>
-              <FindBlood />
-            </PrivateRoute>
-            }/>
-            <Route path='/contacts' element={<PrivateRoute>
-              <Contacts />
-            </PrivateRoute>
-            }/>
-            <Route path='/events' element={<PrivateRoute>
-              <Events />
-            </PrivateRoute>
-            }/>
-            <Route path='/event/:id' element={<PrivateRoute>
-              <EventDetail />
-            </PrivateRoute>
-            }/>
-            <Route path='/verify-your-account' element={<Verification />}/>
-            <Route path='/login' element={<Login />} />
-            <Route path='/register' element={<Register />} />
-            <Route path='/mission-vision' element={<MissionVision />} />
-            <Route path='/faqs' element={<Faqs />} />
-            <Route path='*' element={<NotFound />} />
-          </Routes>
-        </Router>
+        <MemberProvider>
+          <Router>
+            <Routes>
+              <Route path='/' element={<PrivateRoute>
+                <Home />
+              </PrivateRoute>
+              }/>
+              <Route path='/profile' element={<PrivateRoute>
+                <Profile />
+              </PrivateRoute>
+              }/>
+              <Route path='/members' element={<PrivateRoute>
+                <Allmembers />
+              </PrivateRoute>
+              }/>
+              <Route path='/member/:id' element={<PrivateRoute>
+                <SingleMember />
+              </PrivateRoute>
+              }/>
+              <Route path='/update-profile/:id' element={<PrivateRoute>
+                <UpdateProfile />
+              </PrivateRoute>
+              }/>
+              <Route path='/dashboard' element={<AdminRoute>
+                <Dashboard />
+              </AdminRoute>
+                
+              }/>
+              <Route path='/manage-members' element={<AdminRoute>
+                <ManageMembers />
+              </AdminRoute>
+              }/>
+              <Route path='/cr-request' element={<AdminRoute>
+                <CRrequestList />
+              </AdminRoute>
+              }/>            
+              <Route path='/manage-notice' element={<AdminRoute>
+                <ManageNotice />
+              </AdminRoute>
+              }/>
+              <Route path='/publish-event' element={<AdminRoute>
+                <PublishEvent />
+              </AdminRoute>
+              }/>
+              <Route path='/manage-events' element={<AdminRoute>
+                <ManageEvent />
+              </AdminRoute>
+              }/>
+              <Route path='/event-edit/:id' element={<AdminRoute>
+                <EditEvent />
+              </AdminRoute>
+              }/>
+              <Route path='/notice-board' element={<PrivateRoute>
+                <Notices />
+              </PrivateRoute>
+              }/>
+              <Route path='/publish-notice' element={<PrivateRoute>
+                <PublishNotice />
+              </PrivateRoute>
+              }/>
+              <Route path='/notice/:id' element={<PrivateRoute>
+                <SingleNotice />
+              </PrivateRoute>
+              }/>
+              <Route path='/setup-information' element={<PrivateRoute>
+                <SetInformation />
+              </PrivateRoute>
+              }/>
+              <Route path='/find-blood' element={<PrivateRoute>
+                <FindBlood />
+              </PrivateRoute>
+              }/>
+              <Route path='/contacts' element={<PrivateRoute>
+                <Contacts />
+              </PrivateRoute>
+              }/>
+              <Route path='/events' element={<PrivateRoute>
+                <Events />
+              </PrivateRoute>
+              }/>
+              <Route path='/event/:id' element={<PrivateRoute>
+                <EventDetail />
+              </PrivateRoute>
+              }/>
+              <Route path='/verify-your-account' element={<Verification />}/>
+              <Route path='/login' element={<Login />} />
+              <Route path='/register' element={<Register />} />
+              <Route path='/mission-vision' element={<MissionVision />} />
+              <Route path='/faqs' element={<Faqs />} />
+              <Route path='*' element={<NotFound />} />
+            </Routes>
+          </Router>
+        </MemberProvider>
       </AuthProvider>
         <Footer />
     </>
