@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router-dom';
 import DashboardHeader from '../../Dashboard/DashboardHeader/DashboardHeader';
 import { useForm } from "react-hook-form";
 import Loading from '../../CommonSections/Loading/Loading';
 import axios from 'axios';
+import JoditEditor from "jodit-react";
+
 
 const EditEvent = () => {
   const {id} = useParams();
@@ -18,9 +20,17 @@ const EditEvent = () => {
     };
     load();
   }, [id]);
+  const preValue = event?.eventContent;
+
+  const editor = useRef(null)
+  const [content, setContent] = useState('');
+  const config = {
+    buttons : ["bold", "underline", "italic", "ol", "ul", "link", "brush", 'outdent', 'indent',]
+  };
 
   const { register, handleSubmit } = useForm();
   const editEvent = data => {
+    data.eventContent = content;
     axios.put(`https://warm-earth-97575.herokuapp.com/update-event/${id}`, data)
     .then(res => {
       navigate("/manage-events")
@@ -80,13 +90,18 @@ const EditEvent = () => {
               <Form.Control className='shadow-none transparent-field text-light' defaultValue={event?.eventBody} autoFocus as="textarea" {...register("eventBody", {required : true})} rows={3} placeholder="Write Event Body" />
             </Form.Group>
 
-            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-              <Form.Label className='small text-light'>Event Content:</Form.Label>
-              <p className="small text-white">
-                Write the event content here. And write Each content separate by double pype (||) sign.
-              </p>
-              <Form.Control className='shadow-none transparent-field text-light' defaultValue={event?.eventContent} autoFocus as="textarea" {...register("eventContent", {required : true})} rows={3} placeholder="Write Event Body" />
-            </Form.Group>
+            <div className="py-2">
+              <p className="small text-light">Event Content/Events</p>
+              <div className="transparent-field-event">
+                <JoditEditor 
+                  ref={editor}
+                  value={preValue}
+                  config={config}
+                  onBlur={newContent => setContent(newContent)}
+                  tabIndex={1} // tabIndex of textarea
+                  />
+              </div>
+            </div>
 
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
               <Form.Label className='small text-light'>Event Image Link:</Form.Label>

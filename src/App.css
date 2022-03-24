@@ -337,3 +337,6 @@ a{
   content: '▣';
   margin-right: 3px;
 }
+.transparent-field-event{
+  background: #ffffffc2 !important;
+}

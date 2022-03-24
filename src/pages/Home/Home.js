@@ -7,6 +7,7 @@ import Loading from '../CommonSections/Loading/Loading';
 import Members from '../Dashboard/ManageMembers/Members/Members';
 import Slider from './Slider/Slider';
 
+
 const Home = () => {
   useEffect(()=>{
     document.title = "Department of Social Work at PUST"
@@ -33,9 +34,7 @@ const Home = () => {
       const result = await res.json();
       setCurrentMembers(result);
     }
-    if(user){
-      load();
-    }
+    load();
   }, [user]);
   
 

@@ -16,7 +16,7 @@ const EventDetail = () => {
     };
     load();
   },[id]);
-  const contents = event?.eventContent?.split("|| ");
+  const eventContent = event?.eventContent
 
   let date = ['','','']
    if(event){
@@ -55,9 +55,7 @@ const EventDetail = () => {
 
               <h3 className="styled-heading">EVENT CONTENT:</h3>
               <ul className='text-dark event-content-list m-0 p-0'>
-                {
-                  contents?.map(content => <li className='mb-2' key={content}>{content}</li>)
-                }
+                <span dangerouslySetInnerHTML={{ __html : eventContent }} />
               </ul>
             </Col>
             <Col md="3" className='border-start'>
