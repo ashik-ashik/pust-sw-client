@@ -33,10 +33,13 @@ const BloodCard = ({member}) => {
                     <td>Batch:</td>
                     <td>{member?.batchNo}<sup>th</sup></td>
                   </tr>
-                  <tr>
-                    <td>Phone:</td>
-                    <td> <a href={`tel:${member?.phone}`}>{member?.phone}</a> </td>
+                  {
+                    member?.phone?.map((phone, index )=> <tr key={index}>
+                    <td>Phone {index > 0 && index}:</td>
+                    <td> <a href={`tel:${phone}`}>{phone}</a> </td>
                   </tr>
+                  )
+                  }
                 </tbody>
               </Table>
             </Accordion.Body>

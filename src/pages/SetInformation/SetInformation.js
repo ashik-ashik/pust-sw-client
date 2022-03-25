@@ -7,7 +7,7 @@ import Loading from '../CommonSections/Loading/Loading';
 const axios = require('axios');
 
 const SetInformation = () => {
-  const {user, name, auth} = useAuth();
+  const {user, name} = useAuth();
   useEffect(()=>{
     document.title = "Setup Basic Information";
   }, []);
@@ -18,15 +18,15 @@ const SetInformation = () => {
   // manage submited data
   const { register, handleSubmit } = useForm();
   const onSubmit = (info) => {
-    let userInfo = {};
-    info.phoneCount = 1;
+
     if(info.gender === 'male'){
       info.profilePic = "https://i.ibb.co/17b0X70/profile-avatar.jpg";
     }else{
       info.profilePic = "https://i.ibb.co/K5Rt8sH/femal-avatar.png";
     }
-    
-    info.auth = auth;
+
+    info.phone = [info.phone];
+    let userInfo = {};
     if(info.isHall){
       const {messName, messAddress, ...inHall} = info;
       userInfo = inHall;
@@ -42,7 +42,7 @@ const SetInformation = () => {
         navigate("/profile");
       }
     });
-    
+    console.log(userInfo)
   }
 
   const yes = e => {

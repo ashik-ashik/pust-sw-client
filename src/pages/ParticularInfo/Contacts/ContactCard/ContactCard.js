@@ -41,34 +41,12 @@ const ContactCard = ({member}) => {
                     </tr>
                 </thead>
                 <tbody>
-                  
-                  <tr>
-                    <td>Phone:</td>
-                    <td> <a href={`tel:${member?.phone}`}>{member?.phone}</a> </td>
+                  {
+                    member?.phone?.map((phone, index )=> <tr key={index}>
+                    <td>Phone {index > 0 && index}:</td>
+                    <td> <a href={`tel:${phone}`}>{phone}</a> </td>
                   </tr>
-                  {
-                    member?.phone2 && <>
-                      <tr>
-                        <td>Phone 2:</td>
-                        <td> <a href={`tel:${member?.phone2}`}>{member?.phone2}</a> </td>
-                      </tr>
-                    </>
-                  }
-                  {
-                    member?.phone3 && <>
-                      <tr>
-                        <td>Phone 3:</td>
-                        <td> <a href={`tel:${member?.phone3}`}>{member?.phone3}</a> </td>
-                      </tr>
-                    </>
-                  }
-                  {
-                    member?.phone4 && <>
-                      <tr>
-                        <td>Phone 4:</td>
-                        <td> <a href={`tel:${member?.phone4}`}>{member?.phone4}</a> </td>
-                      </tr>
-                    </>
+                  )
                   }
                 </tbody>
               </Table>

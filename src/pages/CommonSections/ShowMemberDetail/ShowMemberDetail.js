@@ -103,7 +103,7 @@ const ShowMemberDetail = ({member}) => {
               }
             <div className="mt-3">
               {
-                member?.role === 'admin' && <>
+               (user?.email === member?.email) && (member?.role === 'admin') && <>
                   <Button  onClick={clickFile} variant="success" size="sm" className="px-4 rounded-0"><i className='bx bxs-camera fs-6'></i> Upload Profile</Button>
                 </>
               }
@@ -151,6 +151,7 @@ const ShowMemberDetail = ({member}) => {
                     <li><a href={member?.instagramLink || "#"}><i className='bx bxl-instagram'></i></a></li>
                     <li><a href={member?.twitterLink || "#"}><i className='bx bxl-twitter'></i></a></li>
                     <li><a href={member?.linkedinLink || "#"}><i className='bx bxl-linkedin'></i></a></li>
+                    <li><a href={member?.messengerLink || "#"}><i className='bx bxl-messenger'></i></a></li>
                   </ul>
                 </div>
                 
