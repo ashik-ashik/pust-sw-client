@@ -1,11 +1,18 @@
 import React from 'react';
 import { Accordion, Col, Container, Row } from 'react-bootstrap';
+import useAuth from '../../hooks/useAuth/useAuth';
 import Hearder from '../CommonSections/Header/Hearder';
+import UnLoggedHeader from '../CommonSections/UnLoggedHeader/UnLoggedHeader';
 
 const Faqs = () => {
+  const {user} = useAuth();
   return (
     <>
-      <Hearder />
+      {
+        user ? <Hearder /> : <>
+              <UnLoggedHeader />
+        </>
+      } 
       <section className="py-4">
         <Container>
           <Row className='g-2'>

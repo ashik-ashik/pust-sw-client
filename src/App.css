@@ -340,3 +340,10 @@ a{
 .transparent-field-event{
   background: #ffffffc2 !important;
 }
+.contact-link{
+  color: #ff6701 !important;
+  font-weight: bold;
+}
+.delete-phone{
+  cursor: pointer;
+}

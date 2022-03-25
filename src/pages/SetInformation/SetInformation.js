@@ -24,8 +24,10 @@ const SetInformation = () => {
     }else{
       info.profilePic = "https://i.ibb.co/K5Rt8sH/femal-avatar.png";
     }
+    // ensure phone number with country code
+    const setCode = !info.phone.startsWith('+880') ? '+88'+info.phone : info.phone
+    info.phone = [setCode];
 
-    info.phone = [info.phone];
     let userInfo = {};
     if(info.isHall){
       const {messName, messAddress, ...inHall} = info;

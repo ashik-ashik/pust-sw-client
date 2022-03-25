@@ -32,6 +32,7 @@ import FindBlood from './pages/ParticularInfo/FingBlood/FindBlood';
 import Profile from './pages/Profile/Profile';
 import UpdateProfile from './pages/Profile/UpdateProfile/UpdateProfile';
 import SetInformation from './pages/SetInformation/SetInformation';
+import ContactInfo from './pages/CommonSections/ShowMemberDetail/ContactInfo/ContactInfo';
 firebaseInit();
 function App() {
   
@@ -45,10 +46,10 @@ function App() {
                 <Home />
               </PrivateRoute>
               }/>
-              <Route path='/profile' element={<PrivateRoute>
-                <Profile />
-              </PrivateRoute>
-              }/>
+
+              <Route path='/profile' element={<PrivateRoute><Profile /></PrivateRoute>}>
+              </Route>
+
               <Route path='/members' element={<PrivateRoute>
                 <Allmembers />
               </PrivateRoute>

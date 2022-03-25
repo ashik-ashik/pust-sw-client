@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, Table, Modal, Form } from 'react-bootstrap';
 import useAuth from '../../../../hooks/useAuth/useAuth';
 import { useForm } from "react-hook-form";
@@ -7,6 +7,7 @@ import axios from 'axios';
 const ContactInfo = ({member}) => {
   const {user} = useAuth();
 
+  const [phones, setPhones] = useState(member?.phone);
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -16,20 +17,38 @@ const ContactInfo = ({member}) => {
     const updatePhone = [...member?.phone, data.phone]
     axios.put(`https://warm-earth-97575.herokuapp.com/add-contact/${member._id}`, updatePhone)
     .then(res => {
-      console.log(res.starus)
       if(res.status === 200){
         window.location.reload();
       }
     })
-    console.log(updatePhone)
+    
   };
+  
   const removePhone = index => {
-
+    phones.splice(index, 1);
+    setPhones(phones);
+    
+    axios.put(`https://warm-earth-97575.herokuapp.com/remove-phone/${member._id}`, {phones})
+    .then(res => {
+      if(res.status === 200){
+        window.location.reload();
+      }
+    })
   }
-
+  
+  const makeWhatsApp = number => {
+    axios.put(`https://warm-earth-97575.herokuapp.com/add-whatsapp/${member._id}`, {number})
+    .then(res => {
+      if(res.status === 200){
+        window.location.reload();
+      }
+    })
+  }
+  
 
   return (
     <>
+
       <Table responsive striped bordered size="sm">
         <thead>
           <tr>
@@ -44,23 +63,32 @@ const ContactInfo = ({member}) => {
             <td>{member?.fullName}</td>
             <td></td>
           </tr>
-          <tr>
+          <tr className='py-3'>
             <td>Email:</td>
-            <td> <a className='text-decoration-none text-lowercase' href={`mailto:${member?.email}`}>{member?.email}</a></td>
+            <td> <a className='text-decoration-none text-lowercase contact-link' href={`mailto:${member?.email}`}>{member?.email}</a></td>
             <td></td>
           </tr>
           {
-            member?.phone?.map((phone, indx)=> <tr key={indx}>
-                <td>Phone {indx === 0 ? '' : indx} :</td>
-                <td><a className='text-decoration-none' href={`tel:${phone}`}> {phone} </a></td>
+            phones?.map((phone, indx)=> <tr key={indx}>
+                <td>{indx === 0 ? 'Primary' : "Phone "+indx} :</td>
+                <td><a className='text-decoration-none contact-link' href={`tel:${phone}`}> {phone} </a></td>
                 <td>
-                  <i onClick={removePhone} className="bx bxs-trash text-danger fs-5"></i>
+                  {user?.email === member?.email && <> 
+                    <i onClick={()=>removePhone(indx)} className="bx bxs-trash text-danger delete-phone fs-5"></i>
+                  </>}
                 </td>
             </tr> 
             )
-          }         
-
+          }
+          {member?.whatsApp && <tr>
+            <td>WhatsApp:</td>
+            <td> <a className='text-decoration-none text-lowercase contact-link' href={`https://api.whatsapp.com/send?phone=${member?.whatsApp}`}>{member?.whatsApp}</a></td> 
+            <td><i className="bx bxl-whatsapp-square fs-5 text-success"></i></td>
+          </tr>
+          }
+          
         </tbody>
+
       </Table>
       <div className="py-3">
         {
@@ -89,17 +117,15 @@ const ContactInfo = ({member}) => {
                 <td>1</td>
                 <td className='small text-nowrap'>{member?.email}</td>
                 <td className='text-nowrap'>
-                  <i className="bx bx-edit me-2 test-success fs-4"></i>
-                  <i className="bx bx-trash text-danger fs-4"></i>
                 </td>
               </tr>
               {
-                member?.phone?.map((phone, indx)=> <tr key={indx}>
+                phones?.map((phone, indx)=> <tr key={indx}>
                     <td>{2+indx}</td>
                     <td className='small text-nowrap'>{phone}</td>
                     <td>
-                      <i className="bx bx-edit me-2 test-success fs-4"></i>
-                      <i className="bx bx-trash text-danger fs-4"></i>
+                      {/* <i className="bx bx-edit me-2 test-success fs-4"></i> */}
+                      <Form.Check onChange={()=> makeWhatsApp(phone)} type="radio" defaultChecked={phone === member?.whatsApp ? true : false} disabled={phone === member?.whatsApp ? true : false} label={`${phone === member?.whatsApp ? "Added" : "Make as Whats App"}`} style={{fontSize:"11px"}} name='make-whatsapp'></Form.Check>
                     </td>
                   </tr>
                 )
