@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Container } from 'react-bootstrap';
 import useAuth from '../../../hooks/useAuth/useAuth';
 import Loading from '../../CommonSections/Loading/Loading';
-import DashboardHeader from '../../Dashboard/DashboardHeader/DashboardHeader';
 import EventCard from '../EventCard/EventCard';
 
 const ManageEvent = () => {
@@ -33,7 +32,6 @@ const ManageEvent = () => {
   }
   return (
     <>
-      <DashboardHeader />
       <section className="py-5 publish-notice">
         <Container>
           <h2 className="text-white border-start border-3 border-warning ps-3">Manage Events</h2>

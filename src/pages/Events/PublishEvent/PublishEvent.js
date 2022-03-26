@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth/useAuth';
 import { useForm } from "react-hook-form";
 import axios from 'axios';
-import DashboardHeader from '../../Dashboard/DashboardHeader/DashboardHeader';
 import JoditEditor from "jodit-react";
 
 const PublishEvent = () => {
@@ -76,8 +75,6 @@ const PublishEvent = () => {
 
   return (
     <>
-      <DashboardHeader />
-
       <section className="py-4 publish-notice">
       <Container className='pt-4 pb-5'>
         <h2 className="border-start border-3 border-warning display-5 fw-bold text-white ps-3">Event</h2>

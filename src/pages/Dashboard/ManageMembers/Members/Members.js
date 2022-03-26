@@ -94,7 +94,7 @@ const Members = ({member}) => {
                     <Button onClick={()=> makeCR(member?._id)} variant="primary" size="sm" className='px-4 small shadow-none rounded-0 me-3' >Make CR</Button>
                     </>
                   }
-                  <Button onClick={()=> removeAccount(member)} variant="danger" size="sm" className='px-4 small shadow-none rounded-0 mt-3' >Delete Account</Button>
+                  <Button onClick={()=> removeAccount(member)} variant="danger" size="sm" className='px-4 small shadow-none rounded-0 mt-2' >Delete Account</Button>
                 </div>
               </>
             }

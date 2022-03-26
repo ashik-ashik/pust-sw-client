@@ -97,7 +97,7 @@ const ShowMemberDetail = ({member}) => {
           <div className="pt-4 pb-3 text-center border-bottom brder-2 mb-3">
           <img className='profile-pic' src="https://i.ibb.co/17b0X70/profile-avatar.jpg" alt="" />
           <h4 className='mt-2 text-danger styled-heading'>{member?.fullName} {member?.CRstatus === "verified" && <sup className="cr-badge">CR</sup>}</h4>
-          <p className="text-light small">{member?.batchNo}<sup>th</sup> Batch</p>
+          <p className="text-light small m-0">{member?.batchNo}<sup>th</sup> Batch</p>
           </div>
           <h4 className="text-light title-font">Information:</h4>
           <Nav variant="pills" className="flex-column">

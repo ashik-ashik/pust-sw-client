@@ -19,7 +19,7 @@ const SingleMember = () => {
   return (
     <>
      <Hearder /> 
-     <section className="py-4">
+     <section className="">
         <Container>
             <ShowMemberDetail member={member} />
           

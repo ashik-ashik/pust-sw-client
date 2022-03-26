@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router-dom';
-import DashboardHeader from '../../Dashboard/DashboardHeader/DashboardHeader';
 import { useForm } from "react-hook-form";
 import Loading from '../../CommonSections/Loading/Loading';
 import axios from 'axios';
@@ -47,7 +46,6 @@ const EditEvent = () => {
   }
   return (
     <>
-      <DashboardHeader />
       <section className="py-4 publish-notice">
       <Container className='pt-4 pb-5'>
         <h2 className="border-start border-3 border-warning display-5 fw-bold text-white ps-3">Event</h2>

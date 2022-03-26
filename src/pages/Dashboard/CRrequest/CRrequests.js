@@ -82,7 +82,7 @@ const CRrequests = ({request}) => {
               <p className="small">{request?.fullName} has sent a CR-ship request. Is he/she CR of his/her class? Take an action about this.</p>
              
                   <Button onClick={requestApproveCr} variant="primary" size="sm" className='px-4 small shadow-none rounded-0 me-3' >Approve</Button>
-              <Button onClick={requestDeleteCR} variant="danger" size="sm" className='px-4 small shadow-none rounded-0' >Delete</Button>
+              <Button onClick={requestDeleteCR} variant="danger" size="sm" className='px-4 small shadow-none rounded-0 mt-2 mt-lg-0' >Delete</Button>
             </div>
           </div>
         </div>

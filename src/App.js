@@ -11,6 +11,7 @@ import Footer from './pages/CommonSections/Footer/Footer';
 import Verification from './pages/CommonSections/Verification/Verification';
 import CRrequestList from './pages/Dashboard/CRrquestList/CRrequestList';
 import Dashboard from './pages/Dashboard/Dashboard/Dashboard';
+import DashboardHome from './pages/Dashboard/DashboardHome/DashboardHome';
 import ManageMembers from './pages/Dashboard/ManageMembers/ManageMembers';
 import EditEvent from './pages/Events/EditEvent/EditEvent';
 import EventDetail from './pages/Events/EventDetail/EventDetail';
@@ -61,35 +62,36 @@ function App() {
                 <UpdateProfile />
               </PrivateRoute>
               }/>
-              <Route path='/dashboard' element={<AdminRoute>
-                <Dashboard />
-              </AdminRoute>
-                
-              }/>
-              <Route path='/manage-members' element={<AdminRoute>
-                <ManageMembers />
-              </AdminRoute>
-              }/>
-              <Route path='/cr-request' element={<AdminRoute>
-                <CRrequestList />
-              </AdminRoute>
-              }/>            
-              <Route path='/manage-notice' element={<AdminRoute>
+              <Route path='/dashboard' element={<AdminRoute><Dashboard /></AdminRoute>}> 
+                <Route path='overview' element={<AdminRoute>
+                  <DashboardHome />
+                </AdminRoute>
+                }/>
+                <Route path='manage-members' element={<AdminRoute>
+                  <ManageMembers />
+                </AdminRoute>
+                }/>
+                <Route path='cr-request' element={<AdminRoute>
+                  <CRrequestList />
+                </AdminRoute>
+                }/>            
+              <Route path='manage-notice' element={<AdminRoute>
                 <ManageNotice />
               </AdminRoute>
               }/>
-              <Route path='/publish-event' element={<AdminRoute>
+              <Route path='publish-event' element={<AdminRoute>
                 <PublishEvent />
               </AdminRoute>
               }/>
-              <Route path='/manage-events' element={<AdminRoute>
+              <Route path='manage-events' element={<AdminRoute>
                 <ManageEvent />
               </AdminRoute>
               }/>
-              <Route path='/event-edit/:id' element={<AdminRoute>
+              <Route path='event-edit/:id' element={<AdminRoute>
                 <EditEvent />
               </AdminRoute>
               }/>
+              </Route>
               <Route path='/notice-board' element={<PrivateRoute>
                 <Notices />
               </PrivateRoute>

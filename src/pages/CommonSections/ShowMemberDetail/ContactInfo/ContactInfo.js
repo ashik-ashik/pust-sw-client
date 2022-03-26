@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Table, Modal, Form } from 'react-bootstrap';
 import useAuth from '../../../../hooks/useAuth/useAuth';
 import { useForm } from "react-hook-form";
@@ -123,7 +123,7 @@ const ContactInfo = ({member}) => {
                 phones?.map((phone, indx)=> <tr key={indx}>
                     <td>{2+indx}</td>
                     <td className='small text-nowrap'>{phone}</td>
-                    <td>
+                    <td className='text-nowrap'>
                       {/* <i className="bx bx-edit me-2 test-success fs-4"></i> */}
                       <Form.Check onChange={()=> makeWhatsApp(phone)} type="radio" defaultChecked={phone === member?.whatsApp ? true : false} disabled={phone === member?.whatsApp ? true : false} label={`${phone === member?.whatsApp ? "Added" : "Make as Whats App"}`} style={{fontSize:"11px"}} name='make-whatsapp'></Form.Check>
                     </td>
