@@ -91,10 +91,29 @@ const ShowMemberDetail = ({member}) => {
         </div>
         
         
-      <Row>
-        <Col></Col>
-        <Col md="10">
-          <div className={`profilePic text-center ${member?.email !== user?.email ? "py-5" : "py-4"}`} style={{backgroundImage:`url(${imageURL ? imageURL : member.profilePic})`}}>
+      <Tab.Container id="left-tabs-example" defaultActiveKey="basic">
+      <Row className='profile-sticky pb-4'>
+        <Col md='3' className='bg-dark profile-nav-sticky border-top border-light'>
+          <div className="pt-4 pb-3 text-center border-bottom brder-2 mb-3">
+          <img className='profile-pic' src="https://i.ibb.co/17b0X70/profile-avatar.jpg" alt="" />
+          <h4 className='mt-2 text-danger styled-heading'>{member?.fullName} {member?.CRstatus === "verified" && <sup className="cr-badge">CR</sup>}</h4>
+          <p className="text-light small">{member?.batchNo}<sup>th</sup> Batch</p>
+          </div>
+          <h4 className="text-light title-font">Information:</h4>
+          <Nav variant="pills" className="flex-column">
+            <Nav.Item>
+              <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light' eventKey="basic">Basic</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light' eventKey="contact">Contact</Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+              <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light' eventKey="address">Address</Nav.Link>
+            </Nav.Item>
+          </Nav>
+        </Col>
+        <Col md="9">
+          <div className={`profilePic text-center ${member?.email !== user?.email ? "py-5" : "py-4"} d-none d-md-block`} style={{backgroundImage:`url(${imageURL ? imageURL : member.profilePic})`}}>
             
             {
               member?.profilePic ?
@@ -116,22 +135,7 @@ const ShowMemberDetail = ({member}) => {
             </>
           }
 
-          <Tab.Container id="left-tabs-example" defaultActiveKey="basic">
-            <Row className='g-4'>
-              <Col sm={3}>
-                <Nav variant="pills" className="flex-column">
-                  <Nav.Item>
-                    <Nav.Link className='rounded-0 cursor-pointer' eventKey="basic">Basic</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link className='rounded-0 cursor-pointer' eventKey="contact">Contact</Nav.Link>
-                  </Nav.Item>
-                  <Nav.Item>
-                    <Nav.Link className='rounded-0 cursor-pointer' eventKey="address">Address</Nav.Link>
-                  </Nav.Item>
-                </Nav>
-              </Col>
-              <Col sm={9}>
+          
                 <Tab.Content>
                   <Tab.Pane eventKey="basic">
                     <BasicInfo member={member} />
@@ -165,14 +169,12 @@ const ShowMemberDetail = ({member}) => {
                     </div>
                   </>
                 }
-              </Col>
-            </Row>
-          </Tab.Container>
           
           
         </Col>
         <Col></Col>
       </Row>
+    </Tab.Container>
 
       {/* profile pic upload */}
       <Modal show={show} onHide={handleClose} centered animation={true}>

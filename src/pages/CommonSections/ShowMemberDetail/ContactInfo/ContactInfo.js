@@ -59,20 +59,20 @@ const ContactInfo = ({member}) => {
         </thead>
         <tbody  className='text-capitalize'>
           <tr>
-            <td>Name:</td>
-            <td>{member?.fullName}</td>
-            <td></td>
+            <td className='text-nowrap'>Name:</td>
+            <td className='text-nowrap'>{member?.fullName}</td>
+            <td className='text-nowrap'></td>
           </tr>
           <tr className='py-3'>
-            <td>Email:</td>
-            <td> <a className='text-decoration-none text-lowercase contact-link' href={`mailto:${member?.email}`}>{member?.email}</a></td>
-            <td></td>
+            <td className='text-nowrap'>Email:</td>
+            <td className='text-nowrap'> <a className='text-decoration-none text-lowercase contact-link' href={`mailto:${member?.email}`}>{member?.email}</a></td>
+            <td className='text-nowrap'></td>
           </tr>
           {
             phones?.map((phone, indx)=> <tr key={indx}>
-                <td>{indx === 0 ? 'Primary' : "Phone "+indx} :</td>
-                <td><a className='text-decoration-none contact-link' href={`tel:${phone}`}> {phone} </a></td>
-                <td>
+                <td className='text-nowrap'>{indx === 0 ? 'Primary' : "Phone "+indx} :</td>
+                <td className='text-nowrap'><a className='text-decoration-none contact-link' href={`tel:${phone}`}> {phone} </a></td>
+                <td className='text-nowrap text-center'>
                   {user?.email === member?.email && <> 
                     <i onClick={()=>removePhone(indx)} className="bx bxs-trash text-danger delete-phone fs-5"></i>
                   </>}
@@ -81,9 +81,9 @@ const ContactInfo = ({member}) => {
             )
           }
           {member?.whatsApp && <tr>
-            <td>WhatsApp:</td>
-            <td> <a className='text-decoration-none text-lowercase contact-link' href={`https://api.whatsapp.com/send?phone=${member?.whatsApp}`}>{member?.whatsApp}</a></td> 
-            <td><i className="bx bxl-whatsapp-square fs-5 text-success"></i></td>
+            <td className='text-nowrap'>WhatsApp:</td>
+            <td className='text-nowrap'> <a className='text-decoration-none text-lowercase contact-link' href={`https://api.whatsapp.com/send?phone=${member?.whatsApp}`}>{member?.whatsApp}</a></td> 
+            <td className='text-nowrap text-center'><i className="bx bxl-whatsapp-square fs-5 text-success"></i></td>
           </tr>
           }
           

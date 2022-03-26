@@ -347,3 +347,16 @@ a{
 .delete-phone{
   cursor: pointer;
 }
+@media screen and (min-width:991px)  {
+  .profile-sticky{
+    position: sticky;
+    position: -webkit-sticky;
+    top: 65px;
+  }
+  .profile-nav-sticky{
+    position: sticky;
+    position: -webkit-sticky;
+    top: 65px;
+    height: 90vh;
+  }
+}

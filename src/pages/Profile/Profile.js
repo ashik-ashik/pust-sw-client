@@ -19,7 +19,7 @@ const Profile = () => {
   return (
     <>
     <Hearder />
-      <section className="py-4">
+      <section className="pb-4">
         <Container>
           <ShowMemberDetail member={currentUser} />
           
