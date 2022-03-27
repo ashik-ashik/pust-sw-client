@@ -10,7 +10,7 @@ const NotFound = () => {
   return (
     <>
     <Hearder />
-      <section className="not-found-page text-center bg-dark py-5">
+      <section className="not-found-page text-center bg-dark py-5 border-top ">
         <Container >
           <img src="https://i.ibb.co/TKndJCs/not-found.png" alt="" className="img-fluid" />
           <h3 className="mt-4 text-light styled-heading">OPPS! Page Not Found.</h3>

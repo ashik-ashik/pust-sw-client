@@ -8,7 +8,8 @@ import ContactInfo from './ContactInfo/ContactInfo';
 import AddressInfo from './AddressInfo/AddressInfo';
 
 const ShowMemberDetail = ({member}) => {
-  const {user, auth} = useAuth();
+  console.log(member)
+  const {user, deleteAccount} = useAuth();
   const navigate = useNavigate();
 
 
@@ -67,8 +68,28 @@ const ShowMemberDetail = ({member}) => {
       classa.style.display = "none";
     }
   }
+
+
+  const [deleteConfirmModal, setDeleteComfirmModal] = useState(false);
+  const [deleteSuccessModal, setDeleteSuccessModal] = useState(false);
+
+  const deleteUserDate = id => {
+    axios.delete(`https://warm-earth-97575.herokuapp.com/delete-member/${id}`)
+    .then(res => {
+      if(res?.status === 200){
+          setDeleteSuccessModal(true)
+      }
+    })
+  }
   
-  
+  const handleDeleteAccount = () => {
+    setDeleteComfirmModal(true)
+  }
+  const deleteAccountConfirm = id => {
+      deleteAccount();
+      deleteUserDate(id);
+      setDeleteComfirmModal(false)
+  }
   
 
 
@@ -81,6 +102,7 @@ const ShowMemberDetail = ({member}) => {
           </Row>
     </>
   }
+
 
 
   return (
@@ -169,7 +191,11 @@ const ShowMemberDetail = ({member}) => {
                   </>
                 }
           
-          
+          {user?.email === member?.email && <>
+            <div className="py-4 text-center">
+              <Button onClick={()=>handleDeleteAccount()} variant='danger' className="small px-4 rounded-0 shadow-none">Delete Account</Button>
+            </div>
+          </>}
         </Col>
         <Col></Col>
       </Row>
@@ -225,6 +251,51 @@ const ShowMemberDetail = ({member}) => {
         <Modal.Footer>
           <Button variant="secondary" onClick={handleCloseCR}>
             Cancel
+          </Button>
+          {/* <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button> */}
+        </Modal.Footer>
+      </Modal>
+
+
+      {/* Delete My Account */}
+      <Modal show={deleteConfirmModal} onHide={()=>setDeleteComfirmModal(false)} centered animation={true}>
+        <Modal.Body>
+          <div className="py-5 text-center">
+            <i className="bx bx-trash display-2 text-danger"></i>
+            <p className="m-0">
+              Do you want to <span className="text-danger fw-bold">delete</span> your account parmanently?
+            </p>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="danger" className='px-4' size='sm' onClick={()=>deleteAccountConfirm(member?._id)}>
+            Confirm
+          </Button>
+          <Button variant="dark" className='px-4' size='sm' onClick={()=>setDeleteComfirmModal(false)}>
+            Cancel
+          </Button>
+          {/* <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button> */}
+        </Modal.Footer>
+      </Modal>
+
+      {/* Deleted My Account successfully */}
+      <Modal show={deleteSuccessModal} onHide={()=>setDeleteSuccessModal(false)} centered animation={true}>
+        
+        <Modal.Body>
+          <div className="py-5 text-center">
+            <h3 className="m-0">
+              Your Account Deleted Successfully
+            </h3>
+            <i className="bx bx-check-circle display-2 text-success"></i>
+          </div>
+        </Modal.Body>
+        <Modal.Footer className="text-start">
+          <Button variant="primary" className="px-4" size='sm' onClick={()=> {setDeleteSuccessModal(false); navigate('/')}}>
+            Okay
           </Button>
           {/* <Button variant="primary" onClick={handleClose}>
             Save Changes

@@ -44,13 +44,13 @@ const useFirebase = () => {
   }
 
   // account delete
-  const deleteAccount = (email) => {
+  const deleteAccount = () => {
     
-    // deleteUser(userAuth.currentUser).then(() => {
-    //   console.log("Member deleted")
-    // }).catch((error) => {
-    //   console.log(error.message)
-    // });
+    deleteUser(auth.currentUser).then(() => {
+      console.log("Member deleted")
+    }).catch((error) => {
+      console.log(error.message)
+    });
   }
 
   return {
