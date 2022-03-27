@@ -7,11 +7,9 @@ const useFirebase = () => {
   const [isUnload, setUnload] = useState(true);
   const [name, setName] = useState(null);
   
-console.log(auth)
   // Registration by email and password
   const memberRegister = (email, password, fullName) => {
     setName(fullName);
-    console.log(email, password)
     return createUserWithEmailAndPassword(auth, email, password)
     
   };
@@ -54,7 +52,6 @@ console.log(auth)
     //   console.log(error.message)
     // });
   }
-  console.log(user)
 
   return {
     auth,

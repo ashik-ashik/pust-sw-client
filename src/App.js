@@ -86,12 +86,12 @@ function App() {
               <Route path='manage-events' element={<AdminRoute>
                 <ManageEvent />
               </AdminRoute>
-              }/>
-              <Route path='event-edit/:id' element={<AdminRoute>
-                <EditEvent />
-              </AdminRoute>
-              }/>
+              } />
               </Route>
+              <Route path='/event-edit/:id' element={<AdminRoute>
+                  <EditEvent />
+                </AdminRoute>
+              }/>
               <Route path='/notice-board' element={<PrivateRoute>
                 <Notices />
               </PrivateRoute>

@@ -40,7 +40,6 @@ const CRrequests = ({request}) => {
       window.location.reload();
     })
   }
-  console.log(request)
 
   return (
     <>

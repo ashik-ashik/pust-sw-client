@@ -70,7 +70,6 @@ const PublishEvent = () => {
         navigate('/events')
       }
     })
-    console.log(event)
   };
 
   return (

@@ -14,7 +14,6 @@ const Verification = () => {
     // navigate("/setup-information");
   }
   if(user?.emailVerified){
-    console.log("varifyed")
     navigate("/setup-information");
   }
   return (

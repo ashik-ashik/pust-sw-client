@@ -17,7 +17,6 @@ const FindBlood = () => {
     const searchKey = document.getElementById("blood").value;
     const searched = members.filter(member => member.blood.toLowerCase() === searchKey.toLowerCase())
     setBlood(searched)
-    console.log(searchKey, members);
   }
 
   

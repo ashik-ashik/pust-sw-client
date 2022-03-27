@@ -4,7 +4,6 @@ import { Button, Col, Modal } from 'react-bootstrap';
 import useAuth from '../../../../hooks/useAuth/useAuth';
 
 const Members = ({member}) => {
-  console.log(member);
   const {user, deleteAccount, auth} = useAuth();
   
   // current logged in user
@@ -41,7 +40,6 @@ const Members = ({member}) => {
     //   window.location.reload();
     // })
   };
-  console.log(member.auth)
 
   
   let profilePic = "";  

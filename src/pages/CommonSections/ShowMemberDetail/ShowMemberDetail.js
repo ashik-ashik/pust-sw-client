@@ -24,7 +24,6 @@ const ShowMemberDetail = ({member}) => {
   }
   const submitCRship = (e) => {
     const isCR = document.getElementById("CRship").checked;
-    console.log(isCR)
     axios.put(`https://warm-earth-97575.herokuapp.com/upload-cr-ship/${member?._id}`, {isCR, CRstatus:'pending'})
     .then(res => {
       setShow(false);

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Alert, Button, Container, Nav, Navbar, Offcanvas } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth/useAuth';
 
 const Hearder = () => {
@@ -28,19 +28,19 @@ const Hearder = () => {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link as={Link} className="menu-items" to="/"><i className='fs-4 bx bx-home me-2'></i> <span>Home</span></Nav.Link>
+                <Nav.Link as={NavLink} className="menu-items" to="/"><i className='fs-4 bx bx-home me-2'></i> <span>Home</span></Nav.Link>
                 {
                   currentUser?.role === "admin" && <>
-                    <Nav.Link as={Link} className="menu-items" to="/dashboard"><i className='fs-4 bx bxs-dashboard me-2'></i> <span>Dashboard</span></Nav.Link>
+                    <Nav.Link as={Link} className="menu-items" to="/dashboard/overview"><i className='fs-4 bx bxs-dashboard me-2'></i> <span>Dashboard</span></Nav.Link>
                   </>
                 }
-                <Nav.Link as={Link} className="menu-items" to="/notice-board"><i className='fs-4 bx bxs-bell-ring me-2'></i> <span>Notice</span></Nav.Link>
-                <Nav.Link as={Link} className="menu-items" to="/events"><i className='fs-4 bx bx-calendar-event me-2' ></i> Events</Nav.Link>
-                <Nav.Link as={Link} className="menu-items" to="/find-blood"><i className='fs-4 bx bx-donate-blood me-2' ></i> Find Blood</Nav.Link>
-                <Nav.Link as={Link} className="menu-items" to="/contacts"><i className='fs-4 bx bx-phone me-2' ></i> Contacts</Nav.Link>
-                <Nav.Link as={Link} className="menu-items" to="/mission-vision"><i className='fs-4 bx bx-target-lock me-2' ></i> Mission & Vision</Nav.Link>
-                <Nav.Link as={Link} className="menu-items" to="/members"><i className='fs-4 bx bxs-group me-2'></i> Members</Nav.Link>
-                <Nav.Link as={Link} className="menu-items" to="/profile"><i className='fs-4 bx bxs-user-circle me-2' ></i> Profile</Nav.Link>
+                <Nav.Link as={NavLink} className="menu-items" to="/notice-board"><i className='fs-4 bx bxs-bell-ring me-2'></i> <span>Notice</span></Nav.Link>
+                <Nav.Link as={NavLink} className="menu-items" to="/events"><i className='fs-4 bx bx-calendar-event me-2' ></i> Events</Nav.Link>
+                <Nav.Link as={NavLink} className="menu-items" to="/find-blood"><i className='fs-4 bx bx-donate-blood me-2' ></i> Find Blood</Nav.Link>
+                <Nav.Link as={NavLink} className="menu-items" to="/contacts"><i className='fs-4 bx bx-phone me-2' ></i> Contacts</Nav.Link>
+                <Nav.Link as={NavLink} className="menu-items" to="/mission-vision"><i className='fs-4 bx bx-target-lock me-2' ></i> Mission & Vision</Nav.Link>
+                <Nav.Link as={NavLink} className="menu-items" to="/members"><i className='fs-4 bx bxs-group me-2'></i> Members</Nav.Link>
+                <Nav.Link as={NavLink} className="menu-items" to="/profile"><i className='fs-4 bx bxs-user-circle me-2' ></i> Profile</Nav.Link>
                 {
                   user ? <Nav.Link as={Button} variant='danger' className='text-white small mt-2' onClick={memberLogOut}>Log Out</Nav.Link> : <>
                     <Nav.Link to="/login">Log In</Nav.Link>

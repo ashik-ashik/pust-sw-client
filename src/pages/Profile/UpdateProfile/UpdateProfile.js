@@ -13,19 +13,16 @@ const UpdateProfile = () => {
     fetch(`https://warm-earth-97575.herokuapp.com/getUser/${id}`)
     .then(res => res.json())
     .then(data => setUser(data))
-  }, []);
-  console.log(user?._id)
+  }, [id]);
 
   const { register, handleSubmit } = useForm();
   const onSubmit = data => {
     axios.put(`https://warm-earth-97575.herokuapp.com/add-social/${id}`, data)
     .then(res => {
-      console.log(res.starus)
       if(res.status === 200){
         navigate("/profile");
       }
     })
-    console.log(data)
   }
   return (
 

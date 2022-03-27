@@ -47,6 +47,11 @@ a{
   align-items: center;
   padding-left: 10px !important;
 }
+.menu-items.active{
+  color: #990505 !important;
+  /* background: #0067a3; */
+  font-weight: bold;
+}
 .menu-items:hover{
   background: #d1032f;
   color: #fff !important;
@@ -224,7 +229,8 @@ a{
 }
 
 .cursor-pointer.active{
-  background: #3c057a !important;
+  background: #802fdd !important;
+  color: #fff;
 }
 .cursor-pointer:hover{
   cursor: pointer !important;
@@ -309,15 +315,18 @@ a{
   font-size: 13px;
   display: flex !important;
   align-items: center;
-
+  margin-bottom: 2px;
 }
 .admin-menu-items:hover{
-  color: rgb(22, 22, 22);
+  color: #161616;
+  background: #ddd;
+}
+.admin-menu-items.active{
   background: #ddd;
 }
 
 .event-title{
-  color: #333;
+  color: #333333;
 }
 .event-title:hover{
   color: #d81900 !important;
@@ -358,5 +367,60 @@ a{
     position: -webkit-sticky;
     top: 65px;
     height: 90vh;
+    overflow-y: scroll;
   }
+}
+.profile-nav-sticky::-webkit-scrollbar{
+  width: 1px;
+}
+.profile-nav-sticky::-webkit-scrollbar-track{
+  background: none;
+}
+.profile-nav-sticky::-webkit-scrollbar-thumb{
+  background: #b10000;
+}
+.dashboard-box{
+  box-shadow: #63636333 0px 2px 8px 0px;
+  transition: .2s;
+  position: relative;
+  z-index: 1;
+}
+.dashboard-box::before{
+  content: '';
+  height: 100%;
+  width: 30%;
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
+  background: #ff6924 !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: .2s;
+}
+.dashboard-box:hover::before{
+  width: 100%;
+  border-top-right-radius: 0%;
+  border-bottom-right-radius: 0%;
+}
+.dashboard-box:hover{
+  box-shadow: #00000017 0px 3px 12px;
+  color: #fff;
+}
+@media screen and (max-width:1100px) {
+  .dashboard-box::before{
+    width: 40%;
+  }
+}
+@media screen and (max-width:768px) {
+  .dashboard-box::before{
+    width: 20%;
+  }
+}
+.dashboard-off .offcanvas-header .btn-close{
+  font-size: 10px;
+  box-shadow: none !important;
+}
+.dashboard-off.offcanvas-start{
+  width: 300px;
 }

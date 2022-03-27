@@ -32,7 +32,7 @@ const EditEvent = () => {
     data.eventContent = content;
     axios.put(`https://warm-earth-97575.herokuapp.com/update-event/${id}`, data)
     .then(res => {
-      navigate("/manage-events")
+      navigate("/dashboard/manage-events")
     })
   };
 
@@ -40,7 +40,6 @@ const EditEvent = () => {
     document.title = `Edit Event- ${event && event?.eventTitle}`
   },[event])
 
-  console.log(event);
   if(!event){
     return <Loading />
   }

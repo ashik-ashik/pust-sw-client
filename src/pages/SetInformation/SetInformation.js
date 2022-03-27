@@ -39,12 +39,10 @@ const SetInformation = () => {
     // save user informaiton to database
     axios.put("https://warm-earth-97575.herokuapp.com/user", userInfo)
     .then(res => {
-      console.log(res.starus)
       if(res.status === 200){
         navigate("/profile");
       }
     });
-    console.log(userInfo)
   }
 
   const yes = e => {

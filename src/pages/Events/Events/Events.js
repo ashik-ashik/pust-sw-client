@@ -18,7 +18,6 @@ const Events = () => {
     }
     load();
   },[]);
-  console.log(events);
   if(!events){
     return <>
       <Loading />

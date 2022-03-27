@@ -21,7 +21,6 @@ const SingleNotice = () => {
       document.title = notice?.noticeTitle || "Notice";
     }, [notice]);
 
-    console.log(notice);
     if(!notice){
       return <>
         <Loading />

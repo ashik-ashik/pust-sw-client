@@ -15,7 +15,6 @@ const Profile = () => {
     .then(res => res.json())
     .then(data => setCurrentUser(data))
   }, [user]);
-  console.log(currentUser)
   return (
     <>
     <Hearder />

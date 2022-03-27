@@ -16,7 +16,6 @@ const AdminRoute = ({children, ...rest}) => {
     load();
   },[user]);
 
-  console.log(admin);
   
   if(isLoading || !admin){
     return <Loading />
