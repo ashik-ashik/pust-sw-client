@@ -23,7 +23,7 @@ const AdminRoute = ({children, ...rest}) => {
   if(!user){
     return <Navigate to={"/login"} state={{from:location}} />
   }
-  if(user?.emailVerified || admin?.role === "admin" ){
+  if(admin?.isVerified && admin?.role === "admin" ){
     return children
   }
   else if(user && admin?.role !== "admin"){

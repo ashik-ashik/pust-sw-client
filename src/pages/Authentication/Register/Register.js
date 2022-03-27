@@ -4,6 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import useAuth from '../../../hooks/useAuth/useAuth';
 import Hearder from '../../CommonSections/Header/Hearder';
+import emailjs from 'emailjs-com';
 const axios = require('axios');
 
 const Register = () => {
@@ -28,28 +29,47 @@ const Register = () => {
     }
 
  
-
+    
 
 
     if(email !== '' && password === comfirmPassword){
       memberRegister(email, password, fullName)
       .then((userCredential) => {
         // Signed in
-        sendEmailVerification(auth.currentUser)
-        .then(() => {
-          // Email verification sent!
-          // ...
-        });
+        // sendEmailVerification(auth.currentUser)
+        // .then(() => {
+        //   // Email verification sent!
+        //   // ...
+        // });
+
+        const verificationCode = Math.random().toString(16).slice(2,8).toUpperCase()
+        const templateParams = {
+          name: fullName,
+          subject: "Verify your PUST-SW Account",
+          userEmail: email,
+          message: verificationCode
+      };
+
+      emailjs.send('pust-sw', 'template_72js4dk', templateParams, "user_91tDIdVCWF47uYlqNnlFd")
+      .then(function(response) {
+         console.log('SUCCESS!', response.status, response.text);
+         if(response.status === 200){
+           console.log("Mail sent")
+         }
+      }, function(error) {
+         console.log('FAILED...', error);
+      });
+
         navigate("/verify-your-account");
-        
+        const userInfo = {fullName : fullName, email : email, verificationCode: verificationCode}
         // update userName
         const user = userCredential.user;
         console.log(user)
         updateProfile(auth.currentUser, {
           displayName: fullName, 
         }).then(() => {
-        // updated
-          axios.post("https://warm-earth-97575.herokuapp.com/user", user)
+        // updated https://warm-earth-97575.herokuapp.com
+          axios.post("https://warm-earth-97575.herokuapp.com/user", userInfo)
           .then(res => {
 
           })

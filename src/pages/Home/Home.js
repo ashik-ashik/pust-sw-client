@@ -15,7 +15,7 @@ const Home = () => {
   const {user} = useAuth();
   const navigate = useNavigate();
   const [members, setMembers] = useState(null);
-  const [currentMembers, setCurrentMembers] = useState(null);
+  const [currentMember, setCurrentMember] = useState(null);
 
    useEffect (()=>{
     const load = async ()=> {
@@ -32,22 +32,22 @@ const Home = () => {
     const load = async ()=> {
       const res = await fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`);
       const result = await res.json();
-      setCurrentMembers(result);
+      setCurrentMember(result);
     }
     load();
   }, [user]);
   
 
-  if(!currentMembers || !user){
+  if(!currentMember || !user){
     return <>
       <Loading />
     </>
   }
 
-  if(!currentMembers?.fullName || !currentMembers?.phone || !currentMembers?.roll || !currentMembers?.reg || !currentMembers?.blood){
+  if(!currentMember?.fullName || !currentMember?.phone || !currentMember?.roll || !currentMember?.reg || !currentMember?.blood){
     navigate("/setup-information")
   }
-  if(!user?.emailVerified){
+  if(!currentMember?.isVerified){
     navigate("/verify-your-account")
   }
   return (
