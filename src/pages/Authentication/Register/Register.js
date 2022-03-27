@@ -36,13 +36,16 @@ const Register = () => {
         // navigate("/verify-your-account");
         navigate("/setup-information");
         
+        const verificationCode = Math.random().toString().slice(2, 10);;
         // update userName
         const user = userCredential.user;
+        user.verificationCode = verificationCode;
+        console.log(user)
         updateProfile(auth.currentUser, {
           displayName: fullName, 
         }).then(() => {
         // updated
-          axios.post("https://warm-earth-97575.herokuapp.com/user", user)
+          axios.post("https://warm-earth-97575.herokuapp.com/user", {user, verificationCode})
           .then(res => {
 
           })
