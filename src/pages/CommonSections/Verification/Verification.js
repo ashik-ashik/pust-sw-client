@@ -9,7 +9,7 @@ const Verification = () => {
   useEffect(()=>{
     document.title = "Verify Your Account"
   }, [])
-  const {user, auth, sendEmailVerification} = useAuth();
+  const {user} = useAuth();
   const navigate = useNavigate();
   const [getUser, setGetUser] = useState(null);
   const [notify, setNotify] = useState(false);
@@ -47,16 +47,32 @@ const Verification = () => {
 
     };
 
+    const verifySuccess = () => {
+      setNotify(false);
+      document.location.reload();
+    };
+    const backToHome = () => {
+      navigate("/")
+    }
       
   return (
     <>
       <section className="py-4 notice-board">
         <Container>
-          {
-            !user?.emailVerified && "You have to verify your account"
-          }
+
+         { getUser?.isVerified ? <>
+         
+          <Alert variant="success">
+              <Alert.Heading className="title-font">Verification Successful!</Alert.Heading>
+              <p className='small'>
+                We have Successfully verified your account.
+              </p>
+              <Button onClick={backToHome} variant="success" size="sm" className="px-4 rounded-0"><i className="bx bx-left-arrow-alt"></i> Back to Home</Button>
+            </Alert>
+         </> : <>
+         
           <Alert variant="danger">
-              <Alert.Heading className="title-font">Verify you account</Alert.Heading>
+              <Alert.Heading className="title-font">You have to verify your account</Alert.Heading>
               <p className='small'>
                 We have sent you a verification mail to your account email [{user?.email}]. Check your inbox and Verify your account now. 
                 <a href="http://mail.google.com/" rel='noreferrer' target="_blank">Click Here</a>
@@ -75,6 +91,7 @@ const Verification = () => {
                 <Button onClick={verifyCode} className="px-4 rounded-0" variant="primary"  >Verify</Button>
               </div>
             </Form>
+         </>}
         </Container>
       </section>
 
@@ -90,7 +107,7 @@ const Verification = () => {
           </div>
         </Modal.Body>
         <Modal.Footer className="text-start">
-          <Button variant="primary" className="px-4" size='sm' onClick={()=> {setNotify(false); navigate('/setup-information')}}>
+          <Button variant="primary" className="px-4" size='sm' onClick={verifySuccess}>
             Okay
           </Button>
         </Modal.Footer>

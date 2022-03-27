@@ -42,7 +42,7 @@ const Contacts = () => {
     document.getElementById("filter-only-cr").reset();
     const searchedKey = e.target.value;
     if(searchedKey){
-      const searched = members?.filter(member => member?.fullName?.toLowerCase().includes(searchedKey?.toLowerCase()));
+      const searched = members?.filter(member => member?.fullName?.toLowerCase()?.includes(searchedKey?.toLowerCase()));
       setSearchedMembers(searched);
     }
     else{

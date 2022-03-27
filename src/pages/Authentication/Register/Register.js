@@ -52,15 +52,11 @@ const Register = () => {
 
       emailjs.send('pust-sw', 'template_72js4dk', templateParams, "user_91tDIdVCWF47uYlqNnlFd")
       .then(function(response) {
-         console.log('SUCCESS!', response.status, response.text);
-         if(response.status === 200){
-           console.log("Mail sent")
-         }
+         
       }, function(error) {
          console.log('FAILED...', error);
       });
 
-        navigate("/verify-your-account");
         const userInfo = {fullName : fullName, email : email, verificationCode: verificationCode}
         // update userName
         const user = userCredential.user;
@@ -71,7 +67,9 @@ const Register = () => {
         // updated https://warm-earth-97575.herokuapp.com
           axios.post("https://warm-earth-97575.herokuapp.com/user", userInfo)
           .then(res => {
-
+            if(res.status === 200){
+              navigate("/verify-your-account");
+            }
           })
         }).catch((error) => {
           console.log(error.message)

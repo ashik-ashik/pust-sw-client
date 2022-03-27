@@ -14,19 +14,24 @@ const PrivateRoute = ({children, ...rest}) => {
       setMember(result);
     }
     load();
-  },[user]);
+  },[user, isLoading]);
+  console.log(member, isLoading)
 
   if(isLoading){
     return <>
           <Loading />
         </>
   }
-  if(user && member?.isVerified){
+  if(user){
     return children;
+    // return <Navigate to={"/register"} state={{from:location}} />
   }
-  else if(user && !member?.isVerified){
-    return <Navigate to={"/verify-your-account"} state={{from:location}} />
-  }
+  // if(user && member?.isVerified){
+  //   return children;
+  // }
+  // else if(user && !member?.isVerified){
+  //   return <Navigate to={"/verify-your-account"} state={{from:location}} />
+  // }
   else{
     return <Navigate to={"/register"} state={{from:location}} />
   }

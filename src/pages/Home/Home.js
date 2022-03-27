@@ -12,7 +12,7 @@ const Home = () => {
   useEffect(()=>{
     document.title = "Department of Social Work at PUST"
   }, []);
-  const {user} = useAuth();
+  const {user, isLoading} = useAuth();
   const navigate = useNavigate();
   const [members, setMembers] = useState(null);
   const [currentMember, setCurrentMember] = useState(null);
@@ -37,8 +37,9 @@ const Home = () => {
     load();
   }, [user]);
   
+  console.log(currentMember)
 
-  if(!currentMember || !user){
+  if(isLoading || !currentMember  ){
     return <>
       <Loading />
     </>
@@ -47,9 +48,9 @@ const Home = () => {
   if(!currentMember?.fullName || !currentMember?.phone || !currentMember?.roll || !currentMember?.reg || !currentMember?.blood){
     navigate("/setup-information")
   }
-  if(!currentMember?.isVerified){
-    navigate("/verify-your-account")
-  }
+  // if(!currentMember?.isVerified){
+  //   navigate("/verify-your-account")
+  // }
   return (
     <>
       <Hearder />
