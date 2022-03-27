@@ -38,7 +38,7 @@ const Home = () => {
   }, [user]);
   
 
-  if(!currentMembers){
+  if(!currentMembers || !user){
     return <>
       <Loading />
     </>
@@ -46,6 +46,9 @@ const Home = () => {
 
   if(!currentMembers?.fullName || !currentMembers?.phone || !currentMembers?.roll || !currentMembers?.reg || !currentMembers?.blood){
     navigate("/setup-information")
+  }
+  if(!user?.emailVerified){
+    navigate("/verify-your-account")
   }
   return (
     <>

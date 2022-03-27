@@ -4,6 +4,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import useAuth from '../../../hooks/useAuth/useAuth';
 import Hearder from '../../CommonSections/Header/Hearder';
+import emailjs from 'emailjs-com';
+import{ init } from '@emailjs/browser';
 const axios = require('axios');
 
 const Register = () => {
@@ -12,6 +14,8 @@ const Register = () => {
   useEffect(()=>{
     document.title = "Register to Department of Social Work at PUST"
   }, []);
+
+
   // get values from the form
   const { register, handleSubmit } = useForm();
   const [errPass, setErrPass] = useState('');
@@ -24,6 +28,11 @@ const Register = () => {
     if(password !== comfirmPassword){
       setErrPass("Password didn't match.")
     }
+
+ 
+
+
+
     if(email !== '' && password === comfirmPassword){
       memberRegister(email, password, fullName)
       .then((userCredential) => {
@@ -33,19 +42,16 @@ const Register = () => {
           // Email verification sent!
           // ...
         });
-        // navigate("/verify-your-account");
-        navigate("/setup-information");
+        navigate("/verify-your-account");
         
-        const verificationCode = Math.random().toString().slice(2, 10);;
         // update userName
         const user = userCredential.user;
-        user.verificationCode = verificationCode;
         console.log(user)
         updateProfile(auth.currentUser, {
           displayName: fullName, 
         }).then(() => {
         // updated
-          axios.post("https://warm-earth-97575.herokuapp.com/user", {user, verificationCode})
+          axios.post("https://warm-earth-97575.herokuapp.com/user", user)
           .then(res => {
 
           })

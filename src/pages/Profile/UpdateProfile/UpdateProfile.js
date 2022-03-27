@@ -39,22 +39,26 @@ const UpdateProfile = () => {
           <Form  onSubmit={handleSubmit(onSubmit)}>
             
             <Form.Group className="mb-3">
-              <Form.Label>FaceBook Link</Form.Label>
+              <Form.Label> <i className="bx bxl-messenger"></i> Messenter Link</Form.Label>
+              <Form.Control {...register("messengerLink")} type="url" placeholder='Add your messenger link' />                
+            </Form.Group>
+            <Form.Group className="mb-3">
+              <Form.Label> <i className="bx bxl-facebook"></i> FaceBook Link</Form.Label>
               <Form.Control {...register("facebookLink")} type="url" placeholder='Add your facebook link' />                
             </Form.Group>
 
             <Form.Group className="mb-3">
-              <Form.Label>Twitter Link</Form.Label>
+              <Form.Label> <i className="bx bxl-twitter"></i> Twitter Link</Form.Label>
               <Form.Control {...register("twitterLink")} type="url" placeholder='Add your twitter link'/>                
             </Form.Group>
 
             <Form.Group className="mb-3">
-              <Form.Label>Instagram Link</Form.Label>
+              <Form.Label> <i className="bx bxl-instagram"></i> Instagram Link</Form.Label>
               <Form.Control {...register("instagramLink")} type="url" placeholder='Add your instagram link'/>                
             </Form.Group>
 
             <Form.Group className="mb-3">
-              <Form.Label>Linkedin Link</Form.Label>
+              <Form.Label> <i className="bx bxl-linkedin"></i> Linkedin Link</Form.Label>
               <Form.Control {...register("linkedinLink")} type="url" placeholder='Add your linkedin link'/>                
             </Form.Group>
 
