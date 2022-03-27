@@ -12,6 +12,7 @@ import Verification from './pages/CommonSections/Verification/Verification';
 import CRrequestList from './pages/Dashboard/CRrquestList/CRrequestList';
 import Dashboard from './pages/Dashboard/Dashboard/Dashboard';
 import DashboardHome from './pages/Dashboard/DashboardHome/DashboardHome';
+import ManageAdmin from './pages/Dashboard/ManageAdmin/ManageAdmin';
 import ManageMembers from './pages/Dashboard/ManageMembers/ManageMembers';
 import EditEvent from './pages/Events/EditEvent/EditEvent';
 import EventDetail from './pages/Events/EventDetail/EventDetail';
@@ -85,6 +86,10 @@ function App() {
               }/>
               <Route path='manage-events' element={<AdminRoute>
                 <ManageEvent />
+              </AdminRoute>
+              } />
+              <Route path='manage-an-admin' element={<AdminRoute>
+                <ManageAdmin />
               </AdminRoute>
               } />
               </Route>

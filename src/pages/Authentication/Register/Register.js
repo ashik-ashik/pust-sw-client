@@ -4,8 +4,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import useAuth from '../../../hooks/useAuth/useAuth';
 import Hearder from '../../CommonSections/Header/Hearder';
-import emailjs from 'emailjs-com';
-import{ init } from '@emailjs/browser';
 const axios = require('axios');
 
 const Register = () => {
