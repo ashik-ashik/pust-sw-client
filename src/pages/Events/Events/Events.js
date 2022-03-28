@@ -13,8 +13,7 @@ const Events = () => {
   useEffect(()=>{
       fetch(`https://warm-earth-97575.herokuapp.com/events`)
       .then(res => res.json())
-      .then(result => setEvents(result))
-    
+      .then(result => setEvents(result))    
   },[]);
   if(!events){
     return <>
