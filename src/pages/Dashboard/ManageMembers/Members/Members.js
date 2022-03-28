@@ -9,12 +9,9 @@ const Members = ({member}) => {
   // current logged in user
   const [currentUser, setCurrentuser] = useState(null);
   useEffect(()=>{
-    const load = async () => {
-      const res = await fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`);
-      const result = await res.json();
-      setCurrentuser(result)
-    }
-    load();
+      fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`)
+      .then(res => res.json())
+      .then(result => setCurrentuser(result))
   }, [user]);
 
   // remove cr ship

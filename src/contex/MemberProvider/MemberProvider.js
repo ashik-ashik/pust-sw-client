@@ -6,13 +6,11 @@ const MemberProvider = ({children}) => {
   const {user} = useAuth()
   const [members, setMembers] = useState(null);
   useEffect(()=>{
-    const load = async () => {
-      const res = await fetch('https://warm-earth-97575.herokuapp.com/users');
-      const result = await res.json();
-      setMembers(result);
-    };
-    load();
+    fetch('https://warm-earth-97575.herokuapp.com/users')
+      .then(res => res.json())
+      .then(result => setMembers(result))
   },[user]);
+  
   if(!members){
     return <Loading />
   }

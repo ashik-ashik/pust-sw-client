@@ -12,12 +12,9 @@ const EditEvent = () => {
   const [event, setEvent] = useState(null);
   const navigate = useNavigate();
   useEffect(()=>{
-    const load = async () => {
-      const res = await fetch(`https://warm-earth-97575.herokuapp.com/event/${id}`);
-      const result = await res.json();
-      setEvent(result)
-    };
-    load();
+      fetch(`https://warm-earth-97575.herokuapp.com/event/${id}`)
+      .then(res => res.json())
+      .then(result => setEvent(result))
   }, [id]);
   const preValue = event?.eventContent;
 

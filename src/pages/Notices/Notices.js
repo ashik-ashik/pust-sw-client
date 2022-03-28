@@ -15,21 +15,15 @@ const Notices = () => {
   }, []);
 
   useEffect (()=>{
-    const load = async ()=> {
-      const res = await fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`);
-      const result = await res.json();
-      setMember(result);
-    }
-    load();
+      fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`)
+      .then(res => res.json())
+      .then(result => setMember(result))
   }, [user]);
 
   useEffect(()=>{
-    const load = async ()=>{
-      const res = await fetch('https://warm-earth-97575.herokuapp.com/notices');
-      const result = await res.json();
-      setNotices(result)
-    }
-    load();
+      fetch('https://warm-earth-97575.herokuapp.com/notices')
+      .then(res => res.json())
+      .then(result => setNotices(result))
   }, [])
 
   if(!notices){

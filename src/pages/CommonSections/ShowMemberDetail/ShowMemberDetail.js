@@ -12,7 +12,6 @@ const ShowMemberDetail = ({member}) => {
   const {user, deleteAccount} = useAuth();
   const navigate = useNavigate();
 
-
   const updateProfile = id => {
     navigate(`/update-profile/${id}`);
   };
@@ -116,7 +115,7 @@ const ShowMemberDetail = ({member}) => {
       <Row className='profile-sticky pb-4'>
         <Col md='3' className='bg-dark profile-nav-sticky border-top border-light'>
           <div className="pt-4 pb-3 text-center border-bottom brder-2 mb-3">
-          <img className='profile-pic' src="https://i.ibb.co/17b0X70/profile-avatar.jpg" alt="" />
+          <img className='profile-pic' src={member?.profilePic} alt="" />
           <h4 className='mt-2 text-danger styled-heading'>{member?.fullName} {member?.CRstatus === "verified" && <sup className="cr-badge">CR</sup>}</h4>
           <p className="text-light small m-0">{member?.batchNo}<sup>th</sup> Batch</p>
           </div>

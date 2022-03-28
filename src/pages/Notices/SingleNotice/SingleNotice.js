@@ -9,12 +9,9 @@ const SingleNotice = () => {
     const {id} = useParams();
     const [notice, setNotice] = useState(null);
     useEffect(()=>{
-      const load = async () => {
-        const res = await fetch(`https://warm-earth-97575.herokuapp.com/notice/${id}`);
-        const result = await res.json();
-        setNotice(result);
-      };
-      load();
+        fetch(`https://warm-earth-97575.herokuapp.com/notice/${id}`)
+        .then(res => res.json())
+        .then(result => setNotice(result))
     },[id]);
 
     useEffect(()=>{

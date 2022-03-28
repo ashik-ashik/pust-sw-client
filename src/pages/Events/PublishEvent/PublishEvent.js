@@ -15,12 +15,9 @@ const PublishEvent = () => {
   const navigate = useNavigate();
   const [member, setMember] = useState(null);
   useEffect (()=>{
-    const load = async ()=> {
-      const res = await fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`);
-      const result = await res.json();
-      setMember(result);
-    }
-    load();
+      fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`)
+      .then(res => res.json())
+      .then(result => setMember(result))
   }, [user]);
 
   const editor = useRef(null)

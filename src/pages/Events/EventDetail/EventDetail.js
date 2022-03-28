@@ -9,12 +9,9 @@ const EventDetail = () => {
   const [event, setEvent] = useState(null);
   const {id} = useParams();
   useEffect(()=>{
-    const load = async () => {
-      const res = await fetch(`https://warm-earth-97575.herokuapp.com/event/${id}`);
-      const result = await res.json();
-      setEvent(result);
-    };
-    load();
+      fetch(`https://warm-earth-97575.herokuapp.com/event/${id}`)
+      .then(res => res.json())
+      .then(result => setEvent(result))
   },[id]);
   const eventContent = event?.eventContent
 

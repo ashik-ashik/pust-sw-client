@@ -8,16 +8,13 @@ const AdminRoute = ({children, ...rest}) => {
   const {user, isLoading} = useAuth();
   const [admin, setAdmin] = useState(null);
   useEffect(()=>{
-    const load = async () => {
-      const res = await fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`);
-      const result = await (await res).json();
-      setAdmin(result);
-    };
-    load();
+      fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`)
+      .then(res => res.json())
+      .then(result => setAdmin(result))
   },[user]);
 
   
-  if(isLoading || !admin){
+  if(isLoading){
     return <Loading />
   }
   if(!user){

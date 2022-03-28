@@ -9,21 +9,19 @@ const Verification = () => {
   useEffect(()=>{
     document.title = "Verify Your Account"
   }, [])
-  const {user} = useAuth();
+  const {user, isLoading} = useAuth();
   const navigate = useNavigate();
   const [getUser, setGetUser] = useState(null);
   const [notify, setNotify] = useState(false);
   const [matching, setMatching] = useState(true);
 
-  useEffect(()=>{
-    const load = async () => {
-      const res = await fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`)
-      const result = await res.json();
-      setGetUser(result);
-    }
-    load();
-  },[user]);
-  if(!user){
+  useEffect(()=>{    
+      fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`)
+      .then(res => res.json())
+      .then(result => setGetUser(result))
+  },[user, isLoading]);
+  
+  if(isLoading){
     return <Loading />
   }
 

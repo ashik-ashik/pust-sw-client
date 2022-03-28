@@ -50,7 +50,7 @@ const Register = () => {
           message: verificationCode
       };
 
-      emailjs.send('pust-sw', 'template_72js4dk', templateParams, "user_91tDIdVCWF47uYlqNnlFd")
+      emailjs.send('service_socialwork_at', 'template_64vpsqw', templateParams, "vo222LW47_hw7gU93")
       .then(function(response) {
          
       }, function(error) {

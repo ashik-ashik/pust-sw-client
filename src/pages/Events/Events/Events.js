@@ -11,12 +11,10 @@ const Events = () => {
   const [events, setEvents] = useState(null)
 
   useEffect(()=>{
-    const load = async () => {
-      const res = await fetch(`https://warm-earth-97575.herokuapp.com/events`);
-      const result = await res.json();
-      setEvents(result)
-    }
-    load();
+      fetch(`https://warm-earth-97575.herokuapp.com/events`)
+      .then(res => res.json())
+      .then(result => setEvents(result))
+    
   },[]);
   if(!events){
     return <>

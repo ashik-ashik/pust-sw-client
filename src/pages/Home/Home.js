@@ -18,28 +18,22 @@ const Home = () => {
   const [currentMember, setCurrentMember] = useState(null);
 
    useEffect (()=>{
-    const load = async ()=> {
-      const res = await fetch(`https://warm-earth-97575.herokuapp.com/fearured-members`);
-      const result = await res.json();
-      setMembers(result);
-    }
-    if(user){
-      load();
-    }
+      fetch(`https://warm-earth-97575.herokuapp.com/fearured-members`)
+      .then(res => res.json())
+      .then(result => setMembers(result))    
   }, [user]);
 
    useEffect (()=>{
-    const load = async ()=> {
-      const res = await fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`);
-      const result = await res.json();
-      setCurrentMember(result);
-    }
-    load();
+      fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`)
+      .then(res => res.json())
+      .then(result => setCurrentMember(result))
+      
+    
   }, [user]);
   
   console.log(currentMember)
 
-  if(isLoading || !currentMember  ){
+  if(isLoading){
     return <>
       <Loading />
     </>

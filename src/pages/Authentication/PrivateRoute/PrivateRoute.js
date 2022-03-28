@@ -8,14 +8,11 @@ const PrivateRoute = ({children, ...rest}) => {
   const {user, isLoading} = useAuth();
   const [member, setMember] = useState(null)
   useEffect(()=>{
-    const load = async () => {
-      const res = await fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`)
-      const result = await res.json();
-      setMember(result);
-    }
-    load();
+      fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`)
+      .then(res => res.json())
+      .then(result => setMember(result))
+      
   },[user, isLoading]);
-  console.log(member, isLoading)
 
   if(isLoading){
     return <>

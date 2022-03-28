@@ -6,12 +6,9 @@ import Loading from '../../CommonSections/Loading/Loading';
 const CRrequestList = () => {
   const [user, setUser] = useState(null);
   useEffect(()=>{
-    const load = async ()=>{
-      const res = await fetch("https://warm-earth-97575.herokuapp.com/users");
-      const result = await res.json();
-      setUser(result);
-    };
-    load();
+      fetch("https://warm-earth-97575.herokuapp.com/users")
+      .then(res=> res.json())
+      .then(result => setUser(result))
   }, [])
   const CR_requests = user?.filter(ceReq => ceReq?.CRstatus === "pending");
   
