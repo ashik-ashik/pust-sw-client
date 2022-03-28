@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import useMember from '../../../hooks/useMembers/useMembers';
 import Hearder from '../../CommonSections/Header/Hearder';
 import Loading from '../../CommonSections/Loading/Loading';
@@ -9,9 +10,17 @@ const Contacts = () => {
   useEffect(()=>{
     document.title = "Contacts Information of PUST-SW"
   },[])
-  const {members} = useMember();
+  const {members, currentMember} = useMember();
+  const navigate = useNavigate()
   const [searchedMembers, setSearchedMembers] = useState(null);
-
+  if(!currentMember?.isVerified){
+    navigate("/verify-account")
+  }
+  if(!members){
+    return <>
+      <Loading />
+    </>
+  }
 
   const filterByBatch = (e) => {
     const searchedKey = (e.target.value);

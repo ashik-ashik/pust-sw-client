@@ -4,12 +4,17 @@ import Header from "../../CommonSections/Header/Hearder";
 import { Container, Form, InputGroup, Row, Button } from 'react-bootstrap';
 import BloodCard from './BloodCard/BloodCard';
 import useMember from '../../../hooks/useMembers/useMembers';
+import { useNavigate } from 'react-router-dom';
 
 const FindBlood = () => {
   useEffect(()=>{
     document.title = "Find Blood Group"
   },[])
-  const {members} = useMember()
+  const {members, currentMember} = useMember();
+  const navigate = useNavigate();
+  if(!currentMember?.isVerified){
+    navigate("/verify-account")
+  }
 
   // search blood group
   const [blood, setBlood] = useState(null);
@@ -20,7 +25,7 @@ const FindBlood = () => {
   }
 
   
-  if(!members){
+  if(!members || !currentMember){
     return <>
       <Loading />
     </>

@@ -23,6 +23,9 @@ const Home = () => {
   const [notices, setNotices] = useState(null);
   const {currentMember} = useMember();
 
+  if(currentMember && !currentMember?.isVerified){
+    navigate("/verify-account")
+  }
 
    useEffect (()=>{
       fetch(`https://warm-earth-97575.herokuapp.com/fearured-members`)
@@ -48,22 +51,20 @@ const Home = () => {
     setUserLoad(false)
   },[]);
 
-  console.log(notices)
+  console.log(currentMember)
 
-  if(isLoading || userLoad){
+  if(isLoading || !currentMember){
     return <>
       <Loading />
     </>
   }
 
-  if(currentMember){
+  if(currentMember?.email){
     if(!currentMember?.fullName || !currentMember?.phone || !currentMember?.roll || !currentMember?.reg || !currentMember?.blood){
       navigate("/setup-information")
     }
   }
-  if(currentMember && !currentMember?.isVerified){
-    navigate("/verify-account")
-  }
+  
   return (
     <>
       <Hearder />

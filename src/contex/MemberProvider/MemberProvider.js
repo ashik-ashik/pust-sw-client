@@ -12,7 +12,7 @@ const MemberProvider = ({children}) => {
     fetch('https://warm-earth-97575.herokuapp.com/users')
       .then(res => res.json())
       .then(result => {
-        setMembers(result)
+        setMembers(result ? result : {})
         setUserLoading(false)
       });
   },[user]);
@@ -21,19 +21,21 @@ const MemberProvider = ({children}) => {
     setUserLoading(true)
       fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`)
       .then(res => res.json())
-      .then(result => setMember(result))
-      setUserLoading(false)
+      .then(result => {
+        setMember(result ? result : {})
+        setUserLoading(false)
+        })
   },[user]);
   
-  if(usersLoding){
+  if(usersLoding  || currentMember === null){
     return <Loading />
   }
   const sendMember = {members, currentMember}
-  return (
+  if(currentMember){return (
     <MemberContext.Provider value={sendMember}>
       {children}
     </MemberContext.Provider>
-  );
+  );}
 };
 
 export default MemberProvider;
