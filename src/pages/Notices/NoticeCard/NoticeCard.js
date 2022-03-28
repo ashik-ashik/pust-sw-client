@@ -7,6 +7,7 @@ const NoticeCard = ({notice}) => {
   const singleNotice = (id) => {
     navigate(`/notice/${id}`);
   }
+  console.log(notice)
   return (
     <>
       <Col>
@@ -14,7 +15,7 @@ const NoticeCard = ({notice}) => {
           <Card.Header className="notice-head py-3 text-light">
             <small className="small title-font">Published By: </small>
           <span className="fw-bold"> {notice?.publisherName}</span>
-            <sup className="cr-badge ms-1 fw-normal">{notice.isFromCR ? "CR" : "AD"}</sup>
+            <sup className="cr-badge ms-1 fw-normal">{notice?.isFromCR ? "CR" : "AD"}</sup>
           </Card.Header>
           <Card.Body>
             <Card.Title className="fw-bold title-font fs-2">{notice?.noticeTitle}</Card.Title>

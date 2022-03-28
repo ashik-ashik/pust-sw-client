@@ -49,6 +49,8 @@ const Home = () => {
     .then(result => setNotices(result))    
   },[]);
 
+  console.log(notices)
+
   if(isLoading || userLoad){
     return <>
       <Loading />
@@ -97,9 +99,11 @@ const Home = () => {
           </Row>
 
             <h3 className="styled-heading my-4">Recent Notice:</h3>
+          <Row md={2} className="g-3">
           {
-            notices?.map(notice => <NoticeCard key={notice?._id} event={notice} />)
+            notices?.map(notice => <NoticeCard key={notice?._id} notice={notice} />)
           }
+          </Row>
 
             <h3 className="styled-heading my-4">Recent Events:</h3>
           {
