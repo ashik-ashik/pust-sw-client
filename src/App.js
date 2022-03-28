@@ -129,9 +129,9 @@ function App() {
                 <EventDetail />
               </PrivateRoute>
               }/>
-              <Route path='/verify-your-account' element={<Verification />}/>
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
+              <Route path='/verify-account' element={<Verification />}/>
               <Route path='/mission-vision' element={<MissionVision />} />
               <Route path='/faqs' element={<Faqs />} />
               <Route path='*' element={<NotFound />} />

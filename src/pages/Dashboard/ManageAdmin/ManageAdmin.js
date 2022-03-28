@@ -4,7 +4,7 @@ import useMember from '../../../hooks/useMembers/useMembers';
 import AdminCard from './AdminCard/AdminCard';
 
 const ManageAdmin = () => {
-  const members = useMember();
+  const {members} = useMember();
   return (
     <>
       <section className="py-4">

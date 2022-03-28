@@ -8,11 +8,12 @@ import emailjs from 'emailjs-com';
 const axios = require('axios');
 
 const Register = () => {
-  const {user, setNewUser, memberRegister, updateProfile, auth, sendEmailVerification} = useAuth();
-  const navigate = useNavigate();
   useEffect(()=>{
     document.title = "Register to Department of Social Work at PUST"
   }, []);
+  
+  const {user, setNewUser, memberRegister, updateProfile, auth} = useAuth();
+  const navigate = useNavigate();
 
 
   // get values from the form
@@ -27,21 +28,9 @@ const Register = () => {
     if(password !== comfirmPassword){
       setErrPass("Password didn't match.")
     }
-
- 
-    
-
-
     if(email !== '' && password === comfirmPassword){
       memberRegister(email, password, fullName)
       .then((userCredential) => {
-        // Signed in
-        // sendEmailVerification(auth.currentUser)
-        // .then(() => {
-        //   // Email verification sent!
-        //   // ...
-        // });
-
         const verificationCode = Math.random().toString(16).slice(2,8).toUpperCase()
         const templateParams = {
           name: fullName,
@@ -67,9 +56,7 @@ const Register = () => {
         // updated https://warm-earth-97575.herokuapp.com
           axios.post("https://warm-earth-97575.herokuapp.com/user", userInfo)
           .then(res => {
-            if(res.status === 200){
-              navigate("/verify-your-account");
-            }
+            gotoVerify();
           })
         }).catch((error) => {
           console.log(error.message)
@@ -86,6 +73,8 @@ const Register = () => {
     
   };
 
+
+  const gotoVerify=()=>navigate("/verify-account");
 
   // Show and hide password
   const togglePassword = (isShow) => {

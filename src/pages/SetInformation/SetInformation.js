@@ -57,7 +57,7 @@ const SetInformation = () => {
 
   // if(!user?.emailVerified){
   //   console.log(user?.emailVerified)
-  //   navigate("/verify-your-account");
+  //   navigate("/verify-account");
   // }
   return (
     <>

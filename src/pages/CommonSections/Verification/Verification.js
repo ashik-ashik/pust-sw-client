@@ -52,7 +52,10 @@ const Verification = () => {
     const backToHome = () => {
       navigate("/")
     }
-      
+    if(!user){
+      console.log(user)
+      navigate("/register")
+    }
   return (
     <>
       <section className="py-4 notice-board">

@@ -8,7 +8,7 @@ const ManageMembers = () => {
   useEffect(()=>{
     document.title = "Manage Members of PUST-SW";
   }, []);
-  const members = useMember();
+  const {members} = useMember();
   if(!members){
     return <>
       <Loading />

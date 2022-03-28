@@ -3,7 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import useMember from '../../../hooks/useMembers/useMembers';
 
 const DashboardHome = () => {
-  const members = useMember();
+  const {members} = useMember();
   const crs = members?.filter(member => member?.CRstatus === 'verified');
   const crRequest = members?.filter(member => member?.CRstatus === "pending");
   const batch11 = members?.filter(member => member?.batchNo === "11");

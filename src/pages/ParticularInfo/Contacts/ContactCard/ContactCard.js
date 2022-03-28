@@ -6,6 +6,7 @@ const ContactCard = ({member}) => {
   if(!member?.profilePic?.includes("http")){
   profilePic = `data:image/png;base64,${member?.profilePic}`;
   };
+  console.log(member)
   return (
     <>
       <Col>

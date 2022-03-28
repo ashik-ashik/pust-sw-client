@@ -9,7 +9,7 @@ const FindBlood = () => {
   useEffect(()=>{
     document.title = "Find Blood Group"
   },[])
-  const members = useMember()
+  const {members} = useMember()
 
   // search blood group
   const [blood, setBlood] = useState(null);

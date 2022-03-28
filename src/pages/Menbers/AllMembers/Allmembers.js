@@ -12,11 +12,11 @@ const Allmembers = () => {
     document.title = "Members of Department of Social Work at PUST"
   }, []);
   const {user} = useAuth();
-  const [members, setUsers] = useState(null);
+  const [uaers, setUsers] = useState(null);
   const [pageCount, setPageCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(0);
   const [memberInAPage, setMemberInAPage] = useState(0);
-  const allMembers = useMember();
+  const {members} = useMember();
   const [searchedUser, setSearched] = useState(null);
   // const history = 
 
@@ -36,7 +36,7 @@ const Allmembers = () => {
   const { register, handleSubmit, reset } = useForm();
   // let searchedData = '';
   const onSubmit = ({data}) => {
-    const rearch = allMembers.filter(u => (u.roll === data) || (u.reg === data) || (u.fullName.toLowerCase().includes(data.toLowerCase())))
+    const rearch = members.filter(u => (u.roll === data) || (u.reg === data) || (u.fullName.toLowerCase().includes(data.toLowerCase())))
     setSearched(rearch);
     reset();
   }
@@ -46,7 +46,7 @@ const Allmembers = () => {
   }
 
  
-  if(!members ){
+  if(!uaers ){
     return <>
       <Loading />
     </>
@@ -87,12 +87,12 @@ const Allmembers = () => {
               {searchedUser && <h3 className='title-font'>Searched Result(s):</h3>}
               <Row xs={1} md={2} lg={3} className="g-4 mb-3">
                   {
-                   !searchedUser && members?.map(user => <MemberCard key={user?._id} userInfo={user} />)
+                   !searchedUser && uaers?.map(user => <MemberCard key={user?._id} userInfo={user} />)
                   }
                     
                   {
                    searchedUser?.length > 0 ? searchedUser?.map(user => <MemberCard key={user?._id} userInfo={user} />) : <>
-                    {(!members || (searchedUser?.length === 0)) && <h4 className="text-danger title-font">No result</h4>}
+                    {(!uaers || (searchedUser?.length === 0)) && <h4 className="text-danger title-font">No result</h4>}
                    </>
                   }
                 </Row>

@@ -9,7 +9,7 @@ const Contacts = () => {
   useEffect(()=>{
     document.title = "Contacts Information of PUST-SW"
   },[])
-  const members = useMember();
+  const {members} = useMember();
   const [searchedMembers, setSearchedMembers] = useState(null);
 
 

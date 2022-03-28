@@ -5,6 +5,7 @@ export const MemberContext = new createContext();
 const MemberProvider = ({children}) => {
   const {user} = useAuth()
   const [members, setMembers] = useState(null);
+  const [currentMember, setMember] = useState(null);
   const [usersLoding, setUserLoading] = useState(true)
   useEffect(()=>{
     setUserLoading(true)
@@ -15,12 +16,21 @@ const MemberProvider = ({children}) => {
         setUserLoading(false)
       });
   },[user]);
+
+  useEffect(()=>{
+    setUserLoading(true)
+      fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`)
+      .then(res => res.json())
+      .then(result => setMember(result))
+      setUserLoading(false)
+  },[user]);
   
   if(usersLoding){
     return <Loading />
   }
+  const sendMember = {members, currentMember}
   return (
-    <MemberContext.Provider value={members}>
+    <MemberContext.Provider value={sendMember}>
       {children}
     </MemberContext.Provider>
   );

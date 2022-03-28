@@ -11,7 +11,7 @@ const Dashboard = () => {
     document.title = "Dashboard";
   },[])
   const {memberLogOut} = useAuth()
-  const members = useMember();
+  const {members} = useMember();
 
   const [ofcanvasHandle, setOffcanvasHandle] = useState(false)
 

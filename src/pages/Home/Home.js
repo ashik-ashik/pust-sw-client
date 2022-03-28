@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth/useAuth';
+import useMember from '../../hooks/useMembers/useMembers';
 import Hearder from '../CommonSections/Header/Hearder';
 import Loading from '../CommonSections/Loading/Loading';
 import Members from '../Dashboard/ManageMembers/Members/Members';
@@ -17,10 +18,10 @@ const Home = () => {
   const {user, isLoading} = useAuth();
   const navigate = useNavigate();
   const [members, setMembers] = useState(null);
-  const [currentMember, setCurrentMember] = useState(null);
   const [userLoad, setUserLoad] = useState(true);
   const [events, setEvents] = useState(null);
   const [notices, setNotices] = useState(null);
+  const {currentMember} = useMember();
 
 
    useEffect (()=>{
@@ -29,24 +30,22 @@ const Home = () => {
       .then(result => setMembers(result))    
   }, [user]);
 
-   useEffect (()=>{
-    setUserLoad(true)
-      fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`)
-      .then(res => res.json())
-      .then(result => setCurrentMember(result))
-      setUserLoad(false)    
-  }, [user]);
+   
   
   useEffect(()=>{
+    setUserLoad(true)
     fetch(`https://warm-earth-97575.herokuapp.com/events-home`)
     .then(res => res.json())
     .then(result => setEvents(result))    
+    setUserLoad(false)
   },[]);
   
   useEffect(()=>{
+    setUserLoad(true)
     fetch(`https://warm-earth-97575.herokuapp.com/notice-home`)
     .then(res => res.json())
     .then(result => setNotices(result))    
+    setUserLoad(false)
   },[]);
 
   console.log(notices)
@@ -62,9 +61,9 @@ const Home = () => {
       navigate("/setup-information")
     }
   }
-  // if(!currentMember?.isVerified){
-  //   navigate("/verify-your-account")
-  // }
+  if(currentMember && !currentMember?.isVerified){
+    navigate("/verify-account")
+  }
   return (
     <>
       <Hearder />
