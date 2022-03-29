@@ -16,7 +16,7 @@ const Footer = () => {
           </div>
         </Container>
       </footer>
-        <p className="small text-center text-white bg-dark m-0 py-2">Wishes to Depatrment of Social Work</p>
+        <p className="small d-block text-center text-white bg-dark m-0 py-2">Wishes to Depatrment of Social Work</p>
     </>
   );
 };

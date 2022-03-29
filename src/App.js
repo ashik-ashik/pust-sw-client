@@ -7,6 +7,9 @@ import AdminRoute from './pages/Authentication/AdminRoute/AdminRoute';
 import Login from './pages/Authentication/Login/Login';
 import PrivateRoute from './pages/Authentication/PrivateRoute/PrivateRoute';
 import Register from './pages/Authentication/Register/Register';
+import AllBlogs from './pages/Blogs/AllBlogs/AllBlogs';
+import BlogDetail from './pages/Blogs/BlogDetail/BlogDetail';
+import PublishBlog from './pages/Blogs/PublishBlog/PublishBlog';
 import Footer from './pages/CommonSections/Footer/Footer';
 import Verification from './pages/CommonSections/Verification/Verification';
 import CRrequestList from './pages/Dashboard/CRrquestList/CRrequestList';
@@ -127,6 +130,18 @@ function App() {
               }/>
               <Route path='/event/:id' element={<PrivateRoute>
                 <EventDetail />
+              </PrivateRoute>
+              }/>
+              <Route path='/blogs' element={<PrivateRoute>
+                <AllBlogs />
+              </PrivateRoute>
+              }/>
+              <Route path='/publish-blog' element={<PrivateRoute>
+                <PublishBlog />
+              </PrivateRoute>
+              }/>
+              <Route path='/blog/:id' element={<PrivateRoute>
+                <BlogDetail />
               </PrivateRoute>
               }/>
               <Route path='/login' element={<Login />} />

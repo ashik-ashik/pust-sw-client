@@ -5,6 +5,7 @@ import useAuth from '../../../hooks/useAuth/useAuth';
 import { useForm } from "react-hook-form";
 import axios from 'axios';
 import JoditEditor from "jodit-react";
+import useMember from '../../../hooks/useMembers/useMembers';
 
 const PublishEvent = () => {
   useEffect(()=>{
@@ -13,12 +14,7 @@ const PublishEvent = () => {
 
   const {user} = useAuth();
   const navigate = useNavigate();
-  const [member, setMember] = useState(null);
-  useEffect (()=>{
-      fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`)
-      .then(res => res.json())
-      .then(result => setMember(result))
-  }, [user]);
+  const {currentMember} = useMember();
 
   const editor = useRef(null)
   const [content, setContent] = useState('');
@@ -32,7 +28,7 @@ const PublishEvent = () => {
 
   const { register, handleSubmit } = useForm();
   const publishEvent = event => {
-    event.publisherName = member.fullName;
+    event.publisherName = currentMember.fullName;
     event.publisherEmail = user.email;
 
 

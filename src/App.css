@@ -424,3 +424,12 @@ a{
 .dashboard-off.offcanvas-start{
   width: 300px;
 }
+
+.jodit-status-bar {
+  display: none !important;
+}
+.blog-card-content > h3, h4, p{
+  display: inline;
+  font-size: 14px;
+  margin-right: 6px;
+}
