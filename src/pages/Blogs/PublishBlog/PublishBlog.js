@@ -26,6 +26,7 @@ const PublishBlog = () => {
     blog.blogContent = content;
     blog.publisherName = currentMember?.fullName;
     blog.publisherEmail = currentMember?.email;
+    blog.publisherId = currentMember?._id;
     blog.publishedAt = new Date().toDateString().split(" ").slice(1,4);
     console.log(blog)
     axios.post(`https://warm-earth-97575.herokuapp.com/publish-blog`, blog)
@@ -46,6 +47,14 @@ const PublishBlog = () => {
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label className='text-white small'>Blog Title</Form.Label>
                 <Form.Control className='shadow-none transparent-field-event' {...register("blogTitle", {required : true})} type="text" placeholder="Enter Blog Title" />
+              </Form.Group>
+
+              <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                <Form.Label className='text-white small'>Short Description: <small>(minimum 25 words)</small></Form.Label>
+                <Form.Control {...register("blogShortDesc", {required : true})} as="textarea" className='shadow-none transparent-field-event' rows={3} placeholder="Write short description" />
+                <Form.Text className="text-light">
+                  Write the short description about your blog. This will show in the blog card as summary of your blog. So you have to add a short description.
+                </Form.Text>
               </Form.Group>
 
               <Form.Group className="mb-3" controlId="formBasicEmail">

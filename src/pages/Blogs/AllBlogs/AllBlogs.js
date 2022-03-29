@@ -30,11 +30,16 @@ const AllBlogs = () => {
       </div>
       <section className="py-3">
         <Container>
+          {blogs?.length > 0 ? <>
           <Row xs={1} md={2} className="g-3" >
             {
               blogs?.map(blog=> <BlogCard key={blog?._id} blog={blog} />)
             }
           </Row>
+          </> : <>
+            <h4 className="styled-heading">Nothing found</h4>
+          </>
+          }
         </Container>
       </section>
     </>

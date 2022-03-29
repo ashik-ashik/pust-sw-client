@@ -428,8 +428,31 @@ a{
 .jodit-status-bar {
   display: none !important;
 }
-.blog-card-content > h3, h4, p{
-  display: inline;
+.blog-card-content > * > *{
+  display: inline !important;
   font-size: 14px;
   margin-right: 6px;
+}
+
+.blog-content-detail > div > p{
+  text-align: justify;
+}
+.blog-content-detail > div > p > img {
+  margin-bottom: 10px;
+  width: 90% !important;
+  margin: 0 auto !important;
+  display: block;
+}
+.blog-content-detail > div > table{
+  overflow-x: scroll;
+}
+.blog-content-detail > div > table,
+.blog-content-detail > div > table tr,
+.blog-content-detail > div > table tr td{
+  word-wrap: nowrap;
+  border: 1px solid;
+  border-collapse: collapse;
+}
+.publisherLink:hover{
+  text-decoration: underline !important;
 }
