@@ -39,6 +39,10 @@ const BlogDetail = () => {
           <div className='blog-content-detail'>
             <div className='mb-3' dangerouslySetInnerHTML={{ __html : blog?.blogContent }} ></div>
           </div>
+            <div className="p-3 bg-light border-start border-3 border-dark">
+              <h4 className="title-font">Summary:</h4>
+              <p style={{fontStyle:"italic", fontSize:"16px"}}>{blog?.blogShortDesc}</p>
+            </div>
           </> : <>
             <h4 className="styled-heading">Nothing found</h4>
           </>
