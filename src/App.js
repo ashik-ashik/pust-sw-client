@@ -131,6 +131,7 @@ function App() {
               }/>
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
+              {/* <Route path='/verify-account' element={<PrivateRoute><Verification /></PrivateRoute>}/> */}
               <Route path='/verify-account' element={<Verification />}/>
               <Route path='/mission-vision' element={<MissionVision />} />
               <Route path='/faqs' element={<Faqs />} />

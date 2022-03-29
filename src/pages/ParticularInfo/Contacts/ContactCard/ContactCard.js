@@ -6,6 +6,7 @@ const ContactCard = ({member}) => {
   if(!member?.profilePic?.includes("http")){
   profilePic = `data:image/png;base64,${member?.profilePic}`;
   };
+  const phone = member?.phone;
   console.log(member)
   return (
     <>
@@ -15,7 +16,7 @@ const ContactCard = ({member}) => {
             <Accordion.Header>
               <img className='contact-img me-3' src={profilePic ? profilePic : member?.profilePic} alt="" />
               <div>
-              <h4 className="d-flex align-items-center mb-0"><a className='text-light title-font' href={`tel:${member?.phone[0]}`}><i className="bx bxs-phone "></i> {member?.phone[0]}</a></h4>
+              <h4 className="d-flex align-items-center mb-0"><a className='text-light title-font' href={`tel:${phone}`}><i className="bx bxs-phone "></i> {phone}</a></h4>
               <p className="mb-0 text-light blood-name">{member?.fullName} {member?.CRstatus === 'verified' &&<sup className='border border-white rounded-circle' style={{padding:"2px"}}>CR</sup>}, {member?.batchNo}<sup>th</sup></p>
               </div>
             </Accordion.Header>

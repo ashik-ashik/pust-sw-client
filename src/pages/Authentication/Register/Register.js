@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Col, Container, Form, Row } from 'react-bootstrap';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import useAuth from '../../../hooks/useAuth/useAuth';
-import Hearder from '../../CommonSections/Header/Hearder';
 import emailjs from 'emailjs-com';
 const axios = require('axios');
 
@@ -13,12 +12,11 @@ const Register = () => {
   }, []);
   
   const {user, setNewUser, memberRegister, updateProfile, auth} = useAuth();
-  const navigate = useNavigate();
-
 
   // get values from the form
   const { register, handleSubmit } = useForm();
   const [errPass, setErrPass] = useState('');
+
   const onSubmit = ({email, password, comfirmPassword, fullName}) => {
     if(password?.length < 8 ){
       setErrPass("Password Should contain at least 8 characters.");
@@ -29,7 +27,7 @@ const Register = () => {
       setErrPass("Password didn't match.")
     }
     if(email !== '' && password === comfirmPassword){
-      memberRegister(email, password, fullName)
+      memberRegister(email, password, fullName) // email, password,
       .then((userCredential) => {
         const verificationCode = Math.random().toString(16).slice(2,8).toUpperCase()
         const templateParams = {
@@ -56,13 +54,11 @@ const Register = () => {
         // updated https://warm-earth-97575.herokuapp.com
           axios.post("https://warm-earth-97575.herokuapp.com/user", userInfo)
           .then(res => {
-            gotoVerify();
           })
         }).catch((error) => {
           console.log(error.message)
         });
-        setNewUser(user);
-        
+        setNewUser(user);        
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -70,11 +66,10 @@ const Register = () => {
         // ..
       });
     }
-    
+
   };
 
 
-  const gotoVerify=()=>navigate("/verify-account");
 
   // Show and hide password
   const togglePassword = (isShow) => {
@@ -92,9 +87,7 @@ const Register = () => {
   }
   return (
     <>
-    {
-      user && <Hearder />
-    }
+      { !user ? <>
       <section className='register-page text-white'>
         <Container>
           <Row className='py-4 align-items-center'style={{"minHeight": "100vh"}}>
@@ -153,6 +146,19 @@ const Register = () => {
             </Row>
         </Container>
       </section>
+      </> : <>
+      <section className="registred-done text-center py-5">
+        <Container>
+          <h3 className="styled-heading text-success">Well Done</h3>
+          <p className="small">You have successfully registered.</p>
+          <Link to='/verify-account'>
+            <Button variant='success' className='rounded-0 px-4 d-flex align-items-center'>Continue <i className="bx bx-right-arrow-alt"></i></Button>
+          </Link>
+        </Container>
+      </section>
+      </>
+      }
+      
     </>
   );
 };

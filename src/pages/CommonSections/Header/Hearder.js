@@ -49,7 +49,7 @@ const Hearder = () => {
                 
               </Nav>
               <div className="canvas-logo py-4">
-                <Link to="https://social-work-at-pust.web.app/"><img className='img-fluid' src="https://i.ibb.co/Q9PRVg1/logo.png" alt="pust-sw" /></Link>
+                <a href="https://social-work-at-pust.web.app/" rel='noreferrer' target='_blank'><img className='img-fluid' src="https://i.ibb.co/Q9PRVg1/logo.png" alt="pust-sw" /></a>
                 <h4 className="styled-heading text-center text-success mt-4">Department of Social Work at PUST</h4>
               </div>
             </Offcanvas.Body>

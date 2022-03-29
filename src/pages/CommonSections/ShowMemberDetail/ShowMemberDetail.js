@@ -190,11 +190,11 @@ const ShowMemberDetail = ({member}) => {
                   </>
                 }
           
-          {user?.email === member?.email && <>
+          {/* {user?.email === member?.email && <>
             <div className="py-4 text-center">
               <Button onClick={()=>handleDeleteAccount()} variant='danger' className="small px-4 rounded-0 shadow-none">Delete Account</Button>
             </div>
-          </>}
+          </>} */}
         </Col>
         <Col></Col>
       </Row>
@@ -293,7 +293,7 @@ const ShowMemberDetail = ({member}) => {
           </div>
         </Modal.Body>
         <Modal.Footer className="text-start">
-          <Button variant="primary" className="px-4" size='sm' onClick={()=> {setDeleteSuccessModal(false); navigate('/')}}>
+          <Button variant="primary" className="px-4" size='sm' onClick={()=> {setDeleteSuccessModal(false); navigate('/register')}}>
             Okay
           </Button>
           {/* <Button variant="primary" onClick={handleClose}>

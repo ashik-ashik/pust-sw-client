@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Alert, Button, Container, Form, Modal } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth/useAuth';
 import Loading from '../Loading/Loading';
 
@@ -49,12 +49,12 @@ const Verification = () => {
       setNotify(false);
       document.location.reload();
     };
-    const backToHome = () => {
-      navigate("/")
-    }
+
     if(!user){
-      console.log(user)
       navigate("/register")
+    }
+    if(getUser?.isVerified){
+      navigate("/")
     }
   return (
     <>
@@ -66,9 +66,11 @@ const Verification = () => {
           <Alert variant="success">
               <Alert.Heading className="title-font">Verification Successful!</Alert.Heading>
               <p className='small'>
-                We have Successfully verified your account.
+                Successfully verified your account.
               </p>
-              <Button onClick={backToHome} variant="success" size="sm" className="px-4 rounded-0"><i className="bx bx-left-arrow-alt"></i> Back to Home</Button>
+              <Link to="/">
+                <Button variant="success" size="sm" className="px-4 rounded-0"><i className="bx bx-left-arrow-alt"></i> Back to Home</Button>
+              </Link>
             </Alert>
          </> : <>
          
@@ -108,8 +110,8 @@ const Verification = () => {
           </div>
         </Modal.Body>
         <Modal.Footer className="text-start">
-          <Button variant="primary" className="px-4" size='sm' onClick={verifySuccess}>
-            Okay
+          <Button variant="primary" className="px-4 df-flex align-items-center" size='sm' onClick={verifySuccess}>
+            Continue <i className="bx bx-right-arrow-alt"></i>
           </Button>
         </Modal.Footer>
       </Modal>

@@ -23,9 +23,7 @@ const Home = () => {
   const [notices, setNotices] = useState(null);
   const {currentMember} = useMember();
 
-  if(currentMember && !currentMember?.isVerified){
-    navigate("/verify-account")
-  }
+
 
    useEffect (()=>{
       fetch(`https://warm-earth-97575.herokuapp.com/fearured-members`)
@@ -51,7 +49,6 @@ const Home = () => {
     setUserLoad(false)
   },[]);
 
-  console.log(currentMember)
 
   if(isLoading || !currentMember){
     return <>
@@ -64,7 +61,9 @@ const Home = () => {
       navigate("/setup-information")
     }
   }
-  
+  if(currentMember.email && !currentMember?.isVerified){
+    navigate("/verify-account");
+  }
   return (
     <>
       <Hearder />
@@ -99,7 +98,7 @@ const Home = () => {
           </Row>
 
             <h3 className="styled-heading my-4">Recent Notice:</h3>
-          <Row md={2} className="g-3">
+          <Row xs={1} md={2} className="g-3">
           {
             notices?.map(notice => <NoticeCard key={notice?._id} notice={notice} />)
           }
