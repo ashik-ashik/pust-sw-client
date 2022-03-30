@@ -456,3 +456,37 @@ a{
 .publisherLink:hover{
   text-decoration: underline !important;
 }
+
+/* blog home image overlay */
+.blog-image-overlay{
+  position: relative;
+  overflow: hidden;
+}
+.blog-image-overlay img{
+  transform: scale(1.3);
+  transition: .4s;
+  filter: grayscale(100);
+  height: 200px;
+  width: 100%;
+}
+.blog-image-overlay:hover img{
+  transform: scale(1);
+  filter: grayscale(0);
+}
+.blog-image-overlay .blogDate{
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 5px 15px;
+  background: #000;
+  color: #fff;
+  border-radius: 15px;
+}
+.home-blog-title{
+  color: #444;
+  transition: .2s;
+}
+.home-blog-title:hover{
+  color: #a70c0c;
+  text-decoration: underline !important;
+}

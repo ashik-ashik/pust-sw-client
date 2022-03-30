@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import { Button, Col, Container, Form, Modal, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth/useAuth';
 import { useForm } from "react-hook-form";
@@ -13,7 +13,7 @@ const SetInformation = () => {
   }, []);
   const [isHall, setHall] = useState(false);
   const navigate = useNavigate();
- 
+  const [setupDoneModal, setSetupDoneModal] = useState(false);
 
   // manage submited data
   const { register, handleSubmit } = useForm();
@@ -40,7 +40,7 @@ const SetInformation = () => {
     axios.put("https://warm-earth-97575.herokuapp.com/user", userInfo)
     .then(res => {
       if(res.status === 200){
-        navigate("/profile");
+        setSetupDoneModal(true);
       }
     });
   }
@@ -337,6 +337,36 @@ const SetInformation = () => {
           </Form>
         </Container>
       </section>
+
+      <Modal 
+        show={setupDoneModal} 
+        centered
+        backdrop="static"
+        keyboard={false} 
+        onHide={()=>setSetupDoneModal(false)}>
+        {/* <Modal.Header closeButton>
+          <Modal.Title>Modal heading</Modal.Title>
+        </Modal.Header> */}
+        <Modal.Body>
+          <div className="text-center">
+            <i className="bx bxs-check-circle display-1 text-success"></i>
+            <h3 className="title-font">That's Greate!</h3>
+            <h2 className="title-font display-4 fw-bold text-success">Almost done</h2>
+          </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <a href="/">
+            <Button variant="danger" className="px-4 rounded-0 d-flex align-items-center" size="sm">
+              <i className="bx bx-left-arrow-alt me-2"></i> Back to Home
+            </Button>
+          </a>
+          <a href="/profile">
+            <Button variant="success" className="px-4 rounded-0 d-flex align-items-center" size="sm">
+            View Profile <i className="bx bx-right-arrow-alt ms-2"></i>
+            </Button>
+          </a>
+        </Modal.Footer>
+      </Modal>
     </>
   );
 };

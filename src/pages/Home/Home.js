@@ -8,6 +8,7 @@ import Loading from '../CommonSections/Loading/Loading';
 import Members from '../Dashboard/ManageMembers/Members/Members';
 import EventCard from '../Events/EventCard/EventCard';
 import NoticeCard from '../Notices/NoticeCard/NoticeCard';
+import HomeBlogCard from './HomeBlogCard/HomeBlogCard';
 import Slider from './Slider/Slider';
 
 
@@ -22,6 +23,7 @@ const Home = () => {
   const [events, setEvents] = useState(null);
   const [notices, setNotices] = useState(null);
   const {currentMember} = useMember();
+  const [blogs, setBlogs] = useState(null);
 
 
 
@@ -49,8 +51,14 @@ const Home = () => {
     setUserLoad(false)
   },[]);
 
+  useEffect(()=>{
+    fetch(`https://warm-earth-97575.herokuapp.com/blogs-home`)
+    .then(res => res.json())
+    .then(result => setBlogs(result ? result : {}))
+  },[]);
 
-  if(isLoading || !currentMember){
+
+  if(isLoading || !currentMember || !blogs){
     return <>
       <Loading />
     </>
@@ -90,15 +98,15 @@ const Home = () => {
 
       <section className="py-4">
         <Container>
-          <h3 className="styled-heading mb-4">Newest Members:</h3>
-          <Row xs={1} md={2} lg={4} className='g-4'>
+          <h3 className="styled-heading">Newest Members:</h3>
+          <Row xs={1} md={2} lg={4} className='g-4 py-4 border-bottom border-2 border-dark'>
             {
               members?.map(member => <Members key={member?._id} member={member} />)
             }
           </Row>
 
-            <h3 className="styled-heading my-4">Recent Notice:</h3>
-          <Row xs={1} md={2} className="g-3">
+            <h3 className="styled-heading mt-3">Recent Notice:</h3>
+          <Row xs={1} md={2} className="g-3 py-4 border-bottom border-2 border-dark">
           {
             notices?.map(notice => <NoticeCard key={notice?._id} notice={notice} />)
           }
@@ -108,6 +116,14 @@ const Home = () => {
           {
             events?.map(event => <EventCard key={event?._id} event={event} />)
           }
+
+          <h3 className="styled-heading py-4 border-top border-2 border-dark">Latest Blogs:</h3>
+          <Row xs={1} md={2} lg={3}>
+            {
+              blogs?.map(blog => <HomeBlogCard key={blog?._id} blog={blog} />)
+            }
+          </Row>
+
         </Container>
       </section>
     </>
