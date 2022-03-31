@@ -19,11 +19,11 @@ const HomeBlogCard = ({blog}) => {
             <p className="small" style={{textAlign:"justify"}}>
               {blog?.blogShortDesc?.split(" ")?.slice(0,20)?.join(" ")}...
             </p>
-            <Button variant="success" size="sm" className="px-4 rounded-0">
-              <Link to={`/blog/${blog?._id}`}>
-                Read More
-              </Link>
-            </Button>
+            <Link to={`/blog/${blog?._id}`}>
+              <Button variant="success" size="sm" className="px-4 rounded-0">
+                  Read More
+              </Button>
+            </Link>
           </div>
         </div>
       </Col>

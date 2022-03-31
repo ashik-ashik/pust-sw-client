@@ -13,7 +13,7 @@ const ManageAdmin = () => {
           <div className="search-box-admin py-3">
             <p className="small">Search a user:</p>
           </div>
-          <Row classNmae="g-3 mt-4" sx="1" md="3" lg="4">
+          <Row classNmae="mt-4" xs="1" md="3" lg="4">
             {
               members?.map(member => <AdminCard key={member?._id} member={member} />)
             }

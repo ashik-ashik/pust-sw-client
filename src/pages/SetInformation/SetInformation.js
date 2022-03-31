@@ -357,12 +357,12 @@ const SetInformation = () => {
         <Modal.Footer>
           <a href="/">
             <Button variant="danger" className="px-4 rounded-0 d-flex align-items-center" size="sm">
-              <i className="bx bx-left-arrow-alt me-2"></i> Back to Home
+              <i className="bx bx-left-arrow-alt me-2"></i>Home
             </Button>
           </a>
           <a href="/profile">
             <Button variant="success" className="px-4 rounded-0 d-flex align-items-center" size="sm">
-            View Profile <i className="bx bx-right-arrow-alt ms-2"></i>
+            Profile <i className="bx bx-right-arrow-alt ms-2"></i>
             </Button>
           </a>
         </Modal.Footer>

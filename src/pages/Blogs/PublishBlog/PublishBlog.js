@@ -40,7 +40,7 @@ const PublishBlog = () => {
       <Hearder />
 
       <section className="py-4 publish-notice">
-        <Container>
+        <Container fluid>
           <h2 className="border-start border-3 styled-heading text-light border-warning ps-3 mb-4">Publish A New Blog:</h2>
 
           <Form onSubmit={handleSubmit(publishBlog)}>

@@ -17,7 +17,7 @@ const ManageMembers = () => {
   return (
     <>
       <section className="py-4">
-        <Container>
+        <Container fluid>
           <h3 className="styled-heading mb-4 text-success">Manage Members:</h3>
           <Row xs={1} md={2} lg={3} className="g-4">
             {

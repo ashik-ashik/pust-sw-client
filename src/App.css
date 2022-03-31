@@ -490,3 +490,6 @@ a{
   color: #a70c0c;
   text-decoration: underline !important;
 }
+table td {
+  vertical-align: middle;
+}
