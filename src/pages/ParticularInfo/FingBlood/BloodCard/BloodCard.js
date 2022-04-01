@@ -1,7 +1,7 @@
 import React from 'react';
 import { Accordion, Col, Table } from 'react-bootstrap';
 
-const BloodCard = ({member}) => {
+const BloodCard = ({member, index}) => {
   let profilePic = "";
   
   if(!member?.profilePic.includes("http")){
@@ -11,8 +11,7 @@ const BloodCard = ({member}) => {
   return (
     <>
       <Col>
-        <Accordion className="blood-accordion">
-          <Accordion.Item eventKey="0">
+          <Accordion.Item eventKey={index} style={{border:"none", boxShadow: '#00000017 2px 2px 12px'}}>
             <Accordion.Header>
               <img className='blood-card-img me-3' src={profilePic ? profilePic : member?.profilePic} alt="" />
               <div>
@@ -20,8 +19,8 @@ const BloodCard = ({member}) => {
               <p className="mb-0 text-light blood-name">{member?.fullName}, {member?.batchNo}<sup>th</sup></p>
               </div>
             </Accordion.Header>
-            <Accordion.Body>
-              <Table striped bordered responsive>
+            <Accordion.Body className="p-0">
+              <Table striped bordered responsive className='m-0'>
                 <thead>
                   <tr>
                     <th>Name:</th>
@@ -44,7 +43,6 @@ const BloodCard = ({member}) => {
               </Table>
             </Accordion.Body>
           </Accordion.Item>
-        </Accordion>
       </Col>
     </>
   );

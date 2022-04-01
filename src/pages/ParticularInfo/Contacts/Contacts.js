@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import { Accordion, Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import useMember from '../../../hooks/useMembers/useMembers';
 import Hearder from '../../CommonSections/Header/Hearder';
@@ -126,16 +126,18 @@ const Contacts = () => {
               </div>
             </>
           }
+          <Accordion className='contact-accordion'>
           <Row xs={1} md={2} lg={3} className="g-2">
           {
-           (!searchedMembers) && members?.map(member => <ContactCard key={member?._id} member={member} />)
+           (!searchedMembers) && members?.map((member, index) => <ContactCard key={member?._id} member={member} index={index} />)
           }
           {
-           ( !searchedMembers || (searchedMembers?.length > 0)) ? searchedMembers?.map(member => <ContactCard key={member?._id} member={member} />) : <>
+           ( !searchedMembers || (searchedMembers?.length > 0)) ? searchedMembers?.map((member, index) => <ContactCard key={member?._id} member={member} index={index} />) : <>
             <h3 className="text-danger title-font">Result Not Found</h3>
            </>
           }
           </Row>
+          </Accordion>
           {
             searchedMembers?.length > 0 && <>
               <div className="border-top pt-2 mt-3">

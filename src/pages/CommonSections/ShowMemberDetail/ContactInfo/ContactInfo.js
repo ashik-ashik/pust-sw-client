@@ -14,7 +14,13 @@ const ContactInfo = ({member}) => {
   const handleShow = () => setShow(true);
   const { register, handleSubmit } = useForm();
   const addContact = data => {
-    const updatePhone = [...member?.phone, data.phone]
+    let newPhone = '';
+    if(!data.phone.startsWith('+88')){
+      newPhone = "+88"+data.phone;
+    }else{
+      newPhone = data.phone;
+    }
+    const updatePhone = [...member?.phone, newPhone]
     axios.put(`https://warm-earth-97575.herokuapp.com/add-contact/${member._id}`, updatePhone)
     .then(res => {
       if(res.status === 200){
@@ -26,8 +32,7 @@ const ContactInfo = ({member}) => {
   
   const removePhone = index => {
     phones.splice(index, 1);
-    setPhones(phones);
-    
+    setPhones(phones);    
     axios.put(`https://warm-earth-97575.herokuapp.com/remove-phone/${member._id}`, {phones})
     .then(res => {
       if(res.status === 200){
@@ -74,7 +79,9 @@ const ContactInfo = ({member}) => {
                 <td className='text-nowrap'><a className='text-decoration-none contact-link' href={`tel:${phone}`}> {phone} </a></td>
                 <td className='text-nowrap text-center'>
                   {user?.email === member?.email && <> 
-                    <i onClick={()=>removePhone(indx)} className="bx bxs-trash text-danger delete-phone fs-5"></i>
+                  <Button className='p-0 bg-transparent border-0 shadow-none' disabled={indx === 0 ? true : false} onClick={()=>removePhone(indx)}>
+                    <i className="bx bxs-trash text-danger delete-phone fs-5"></i>
+                  </Button>
                   </>}
                 </td>
             </tr> 

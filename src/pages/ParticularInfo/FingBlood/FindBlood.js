@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Loading from "../../CommonSections/Loading/Loading";
 import Header from "../../CommonSections/Header/Hearder";
-import { Container, Form, InputGroup, Row, Button } from 'react-bootstrap';
+import { Container, Form, InputGroup, Row, Button, Accordion } from 'react-bootstrap';
 import BloodCard from './BloodCard/BloodCard';
 import useMember from '../../../hooks/useMembers/useMembers';
 import { useNavigate } from 'react-router-dom';
@@ -58,15 +58,17 @@ const FindBlood = () => {
             </InputGroup>          
           </Form>
         </div>
+        <Accordion className='blood-accordion'>
+
         <Row xs={1} md={2} lg={3} className="g-2">
           {
-         !blood ? members?.map(member => <BloodCard key={member._id} member={member} />) : <>
+         !blood ? members?.map((member, index) => <BloodCard key={member._id} member={member} index={index} />) : <>
             {
-             blood.length > 0 ? blood?.map(member => <BloodCard key={member._id} member={member} />) : <h3 className="title-font text-danger">No result found...</h3>}
+             blood.length > 0 ? blood?.map((member, index) => <BloodCard key={member._id} member={member} index={index} />) : <h3 className="title-font text-danger">No result found...</h3>}
           </>
           }
         </Row>
-
+        </Accordion>
         </Container>
       </section>
     </>
