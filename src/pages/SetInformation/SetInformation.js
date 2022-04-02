@@ -114,7 +114,7 @@ const SetInformation = () => {
               <Form.Group as={Col} md="6" className="mb-3">
                 <Form.Label>University Batch No:</Form.Label>
                   <Form.Select {...register("batchNo")}>
-                    <option value={null}>Select you batch</option>
+                    <option >Select you batch</option>
                     <option value="8">8th Batch</option>
                     <option value="9">9th Batch</option>
                     <option value="10">10th Batch</option>
@@ -135,7 +135,7 @@ const SetInformation = () => {
             <Form.Group className="mb-3">
               <Form.Label>Department:</Form.Label>
                 <Form.Select {...register("dept")}>
-                  <option value='none'>Select Dept.</option>
+                  <option >Select Dept.</option>
                   <option value="Social Work">Social Work</option>
                   <option value="Economics">Economics</option>
                   <option value="English">English</option>
@@ -155,7 +155,7 @@ const SetInformation = () => {
                 <Form.Group className="mb-3">
                 <Form.Label>Blood Group:</Form.Label>
                 <Form.Select {...register("blood", {required: true})}>
-                  <option value='none'>Select Blood Group:</option>
+                  <option >Select Blood Group:</option>
                   <option value="a+">A+</option>
                   <option value="a-">A-</option>
                   <option value="b+">B+</option>
@@ -317,7 +317,7 @@ const SetInformation = () => {
                     <Form.Group as={Col} xs="12" className="mb-3">
                     <Form.Label>Division:</Form.Label>
                       <Form.Select {...register("division", {required: true})}>
-                        <option value='none'>Select Devision</option>
+                        <option >Select Devision</option>
                         <option value="rajshahi">Rajshahi</option>
                         <option value="rangpur">Rangpur</option>
                         <option value="maymanshing">Maymanshing</option>

@@ -8,7 +8,10 @@ import ContactInfo from './ContactInfo/ContactInfo';
 import AddressInfo from './AddressInfo/AddressInfo';
 
 const ShowMemberDetail = ({member}) => {
-  console.log(member)
+  console.log(member);
+  const {memberLogOut} = useAuth();
+  const [primaryPhone] = member?.phone || [];
+
   const {user, deleteAccount} = useAuth();
   const navigate = useNavigate();
 
@@ -71,6 +74,7 @@ const ShowMemberDetail = ({member}) => {
 
   const [deleteConfirmModal, setDeleteComfirmModal] = useState(false);
   const [deleteSuccessModal, setDeleteSuccessModal] = useState(false);
+  const [menuShow, setMenuShow] = useState(false);
 
   const deleteUserDate = id => {
     axios.delete(`https://warm-earth-97575.herokuapp.com/delete-member/${id}`)
@@ -89,8 +93,6 @@ const ShowMemberDetail = ({member}) => {
       deleteUserDate(id);
       setDeleteComfirmModal(false)
   }
-  
-
 
   if (!member){
     return <>
@@ -114,23 +116,79 @@ const ShowMemberDetail = ({member}) => {
       <Tab.Container id="left-tabs-example" defaultActiveKey="basic">
       <Row className='profile-sticky pb-4'>
         <Col md='3' className='bg-dark profile-nav-sticky border-top border-light'>
+          
           <div className="pt-4 pb-3 text-center border-bottom brder-2 mb-3">
-          <img className='profile-pic' src={member?.profilePic} alt="" />
-          <h4 className='mt-2 text-danger styled-heading'>{member?.fullName} {member?.CRstatus === "verified" && <sup className="cr-badge">CR</sup>}</h4>
-          <p className="text-light small m-0">{member?.batchNo}<sup>th</sup> Batch</p>
+            <img className='profile-pic' src={member?.profilePic} alt="" />
+            <h4 className='mt-2 text-danger styled-heading'>{member?.fullName} {member?.CRstatus === "verified" && <sup className="cr-badge">CR</sup>}</h4>
+            <p className="text-light small m-0">{member?.batchNo}<sup>th</sup> Batch</p>
+            <small style={{fontSize:"12px"}} className="text-light text-break">{member?.email}</small>
+            <div className="quick-contact py-3">
+                <ul className="list-unstyled d-flex justify-content-center">
+                  <li className='quick-contact-item'>
+                    <a href={`tel:${primaryPhone}`}><i className='bx bxs-phone'></i></a>
+                  </li>
+                  <li className='quick-contact-item'>
+                    <a href={`sms:${primaryPhone}`}><i className='bx bxs-message-rounded-detail'></i></a>
+                  </li>
+                  {member?.whatsApp ? <li className='quick-contact-item'>
+                    <a  href={`https://api.whatsapp.com/send?phone=${member?.whatsApp}`}><i className='bx bxl-whatsapp'></i></a>
+                  </li> : <>
+                  </>
+                  }
+                  <li className='quick-contact-item'>
+                    <a href={member?.messengerLink || member?.facebookLink}><i className='bx bxl-messenger'></i></a>
+                  </li>
+                  
+                </ul>
+            </div>
           </div>
-          <h4 className="text-light title-font">Information:</h4>
-          <Nav variant="pills" className="flex-column">
-            <Nav.Item>
-              <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light' eventKey="basic">Basic</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light' eventKey="contact">Contact</Nav.Link>
-            </Nav.Item>
-            <Nav.Item>
-              <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light' eventKey="address">Address</Nav.Link>
-            </Nav.Item>
-          </Nav>
+
+          {/* custom toggle mobile menu */}
+          <div onClick={()=>setMenuShow(true)} className="my-side-toggle-menu-icon d-md-none">
+            <i className='bx bxs-chevron-right text-white  bx-tada fs-1'></i>
+          </div>
+          <div className={`my-side-toggle-menu-items ${menuShow ? "active" : ""}`}>
+            <i onClick={()=>setMenuShow(false)} className='bx bxs-chevron-left text-white menu-close fs-1 bx-tada'></i>
+            <h5 className="text-light mb-3 border-bottom pb-2">Menu</h5>
+            <Nav  onClick={()=>setMenuShow(false)} variant="pills" className="flex-column">
+              <Nav.Item >
+                <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light' eventKey="basic">Basic</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light' eventKey="contact">Contact</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light' eventKey="address">Address</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light' eventKey="myblog">My Blog</Nav.Link>
+              </Nav.Item>
+
+              <Nav.Item>
+                <Nav.Link onClick={memberLogOut} className='rounded-0 small cursor-pointer mb-2 bg-light' eventKey="myblog"> <i className="bx bx-power-off me-2"></i> Log Out</Nav.Link>
+              </Nav.Item>
+            </Nav>
+          </div>
+
+          <div className="d-md-block d-none pb-md-5">
+            <Nav variant="pills" className="flex-column">
+              <Nav.Item>
+                <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light' eventKey="basic">Basic</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light' eventKey="contact">Contact</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light' eventKey="address">Address</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light' eventKey="myblog">My Blog</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link onClick={memberLogOut} className='rounded-0 small cursor-pointer mb-2 bg-light d-flex align-items-center' eventKey="myblog"> <i className="bx bx-power-off me-2"></i> Log Out</Nav.Link>
+              </Nav.Item>
+            </Nav>
+          </div>
         </Col>
         <Col md="9">
           <div className={`profilePic text-center ${member?.email !== user?.email ? "py-5" : "py-4"} d-none d-md-block`} style={{backgroundImage:`url(${imageURL ? imageURL : member.profilePic})`}}>
@@ -158,13 +216,22 @@ const ShowMemberDetail = ({member}) => {
           
                 <Tab.Content>
                   <Tab.Pane eventKey="basic">
+                    <h5 className="title-font"><span className="text-danger">||</span> Basic Information</h5>
                     <BasicInfo member={member} />
                   </Tab.Pane>
+
                   <Tab.Pane eventKey="contact">
+                    <h5 className="title-font"><span className="text-danger">||</span> Contact Information</h5>
                     <ContactInfo member={member} />
                   </Tab.Pane>
+
                   <Tab.Pane eventKey="address">
+                    <h5 className="title-font"><span className="text-danger">||</span> Address</h5>
                     <AddressInfo member={member} />
+                  </Tab.Pane>
+
+                  <Tab.Pane eventKey="myblog">
+                    <h5 className="title-font"><span className="text-danger">||</span> Blogs</h5>
                   </Tab.Pane>
                 </Tab.Content>
 

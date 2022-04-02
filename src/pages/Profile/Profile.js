@@ -21,7 +21,7 @@ const Profile = () => {
     <>
     <Hearder />
       <section className="pb-4">
-        <Container>
+        <Container fluid>
           <ShowMemberDetail member={currentUser} />
           
         </Container>

@@ -39,11 +39,11 @@ const UpdateProfile = () => {
           <Form  onSubmit={handleSubmit(onSubmit)}>
             
             <Form.Group className="mb-3">
-              <Form.Label> <i className="bx bxl-messenger"></i> Messenter Link</Form.Label>
+              <Form.Label> <i className="bx bxl-messenger"></i> Messenger Link</Form.Label>
               <Form.Control {...register("messengerLink")} type="url" placeholder='Add your messenger link' />                
             </Form.Group>
             <Form.Group className="mb-3">
-              <Form.Label> <i className="bx bxl-facebook"></i> FaceBook Link</Form.Label>
+              <Form.Label> <i className="bx bxl-facebook"></i> Facebook Link</Form.Label>
               <Form.Control {...register("facebookLink")} type="url" placeholder='Add your facebook link' />                
             </Form.Group>
 

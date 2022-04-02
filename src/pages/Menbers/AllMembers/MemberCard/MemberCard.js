@@ -10,6 +10,7 @@ const MemberCard = ({userInfo}) => {
     navigate(`/member/${id}`)
 };
 
+  const [primaryPhone] = userInfo?.phone || [];
 
   let profilePic = "";  
   if(!userInfo?.profilePic?.includes("http")){
@@ -64,12 +65,29 @@ const MemberCard = ({userInfo}) => {
               </Button>
             </div>
             <div className="pt-3">
-              <ul className='list-unstyled member-social-media'>
+              {/* <ul className='list-unstyled member-social-media'>
                 <li><a href={userInfo?.facebookLink || "#"}><i className='bx bxl-facebook'></i></a></li>
                 <li><a href={userInfo?.instagramLink || "#"}><i className='bx bxl-instagram'></i></a></li>
                 <li><a href={userInfo?.twitterLink || "#"}><i className='bx bxl-twitter'></i></a></li>
                 <li><a href={userInfo?.linkedinLink || "#"}><i className='bx bxl-linkedin'></i></a></li>
-              </ul>
+              </ul> */}
+              <ul className="list-unstyled d-flex justify-content-center">
+                  <li className='quick-contact-item'>
+                    <a href={`tel:${primaryPhone}`}><i className='bx bxs-phone'></i></a>
+                  </li>
+                  <li className='quick-contact-item'>
+                    <a href={`sms:${primaryPhone}`}><i className='bx bxs-message-rounded-detail'></i></a>
+                  </li>
+                  {userInfo?.whatsApp ? <li className='quick-contact-item'>
+                    <a  href={`https://api.whatsapp.com/send?phone=${userInfo?.whatsApp}`}><i className='bx bxl-whatsapp'></i></a>
+                  </li> : <>
+                  </>
+                  }
+                  <li className='quick-contact-item'>
+                    <a href={userInfo?.messengerLink || userInfo?.facebookLink}><i className='bx bxl-messenger'></i></a>
+                  </li>
+                  
+                </ul>
             </div>
           </div>
         </div>

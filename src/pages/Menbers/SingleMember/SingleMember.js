@@ -20,7 +20,7 @@ const SingleMember = () => {
     <>
      <Hearder /> 
      <section className="">
-        <Container>
+        <Container fluid>
             <ShowMemberDetail member={member} />
           
         </Container>

@@ -98,26 +98,26 @@ const Home = () => {
 
       <section className="py-4">
         <Container>
-          <h3 className="styled-heading">Newest Members:</h3>
+          <h3 className="styled-heading"><span className="text-danger fw-bolder">||</span> Newest <span className="text-danger fw-bolder styled-heading">Members</span>  :</h3>
           <Row xs={1} md={2} lg={4} className='g-4 py-4 border-bottom border-2 border-dark'>
             {
               members?.map(member => <Members key={member?._id} member={member} />)
             }
           </Row>
 
-            <h3 className="styled-heading mt-3">Recent Notice:</h3>
+            <h3 className="styled-heading mt-3"><span className="text-danger fw-bolder">||</span> Recent <span className="text-danger fw-bolder styled-heading">Notice</span> :</h3>
           <Row xs={1} md={2} className="g-3 py-4 border-bottom border-2 border-dark">
           {
             notices?.map(notice => <NoticeCard key={notice?._id} notice={notice} />)
           }
           </Row>
 
-            <h3 className="styled-heading my-4">Recent Events:</h3>
+            <h3 className="styled-heading my-4"><span className="text-danger fw-bolder">||</span> Recent <span className="text-danger fw-bolder styled-heading">Events</span> :</h3>
           {
             events?.map(event => <EventCard key={event?._id} event={event} />)
           }
 
-          <h3 className="styled-heading py-4 border-top border-2 border-dark">Latest Blogs:</h3>
+          <h3 className="py-4 styled-heading border-top fw-bold border-secondary"><span className="text-danger fw-bolder">||</span> Latest <span className="text-danger fw-bolder styled-heading">Blogs</span>:</h3>
           <Row xs={1} md={2} lg={3}>
             {
               blogs?.map(blog => <HomeBlogCard key={blog?._id} blog={blog} />)
