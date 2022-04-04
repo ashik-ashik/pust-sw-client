@@ -683,33 +683,35 @@ table td {
 	position:absolute;
 	top:50%;
 	left:50%;
-	transform:translate(-50%, -50%);
-	animation: ani 2.5s ease-in infinite;
+	transform:translate(-50%, -50%) scale(0);
+	animation: ani 1.5s ease-in infinite;
 }
 .spin-1{
-	animation-delay: .2s;
   background: #ff5e00;
 }
 
 .spin-2{
-	animation-delay: .4s;
+	animation-delay: 0.15s;
   background: #1aff53;
 }
 .spin-3{
-	animation-delay: .6s;
+	animation-delay: .3s;
   background: #fffb00;
 }
 .spin-4{
-	animation-delay: .8s;
+	animation-delay: .45s;
   background: #ff00c8;
 }
 .spin-5{
-	animation-delay: 1s;
+	animation-delay: .6s;
   background: #ffffff;
 }
 .spin-6{
   background: #0145ff;
-	animation-delay: 1.2s;
+	animation-delay: .75s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 @keyframes ani{
 	0%{

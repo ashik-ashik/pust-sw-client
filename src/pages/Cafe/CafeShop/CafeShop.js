@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import Hearder from '../../CommonSections/Header/Hearder';
+import Loading from '../../CommonSections/Loading/Loading';
 import ProductCard from '../ProductCard/ProductCard';
 
 const CafeShop = () => {
@@ -14,7 +15,9 @@ const CafeShop = () => {
     .then(result => setProducts(result ? result : {}))
   },[]);
   
-
+if(!products){
+  return <Loading />
+}
   return (
     <>
       <Hearder />

@@ -14,7 +14,7 @@ const Loading = () => {
           <div className='spin-3 spnning'></div>
           <div className='spin-4 spnning'></div>
           <div className='spin-5 spnning'></div>
-          <div className='spin-6 spnning'></div>
+          <div className='spin-6 spnning text-white fs-1 fw-bolder title-font'>SW</div>
         </div>
 
       </section>

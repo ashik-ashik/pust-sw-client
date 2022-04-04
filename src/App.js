@@ -11,6 +11,7 @@ import AllBlogs from './pages/Blogs/AllBlogs/AllBlogs';
 import BlogDetail from './pages/Blogs/BlogDetail/BlogDetail';
 import PublishBlog from './pages/Blogs/PublishBlog/PublishBlog';
 import CafeShop from './pages/Cafe/CafeShop/CafeShop';
+import MyCart from './pages/Cafe/MyCart/MyCart';
 import ProductDetails from './pages/Cafe/ProductDetails/ProductDetails';
 import Footer from './pages/CommonSections/Footer/Footer';
 import Verification from './pages/CommonSections/Verification/Verification';
@@ -84,6 +85,7 @@ function App() {
 
               <Route path='/cafeteria' element={<PrivateRoute><CafeShop /></PrivateRoute>}/>
               <Route path='/product/:id' element={<PrivateRoute><ProductDetails /></PrivateRoute>}/>
+              <Route path='/my-cart' element={<PrivateRoute><MyCart /></PrivateRoute>}/>
               <Route path='/notice-board' element={<PrivateRoute><Notices /></PrivateRoute>}/>
               <Route path='/publish-notice' element={<PrivateRoute><PublishNotice /></PrivateRoute>}/>
               <Route path='/notice/:id' element={<PrivateRoute><SingleNotice /></PrivateRoute>}/>

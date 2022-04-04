@@ -1,12 +1,18 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Button, Col, Container, Row } from 'react-bootstrap';
-import { useParams } from 'react-router-dom';
+import { Alert, Button, Col, Container, Row } from 'react-bootstrap';
+import { Link, useParams } from 'react-router-dom';
+import useMember from '../../../hooks/useMembers/useMembers';
 import Hearder from '../../CommonSections/Header/Hearder';
 import Loading from '../../CommonSections/Loading/Loading';
 
+
 const ProductDetails = () => {
   const {id} = useParams();
+  const {currentMember} = useMember();
   const [product, setProduct] = useState(null);
+  const [addingCart, setAddingCart] = useState(false);
+  const [showAdded, setShowAdded] = useState(false);
   useEffect(()=>{
     fetch(`https://warm-earth-97575.herokuapp.com/product/${id}`)
     .then(res => res.json())
@@ -30,6 +36,19 @@ const ProductDetails = () => {
     cc.value = val;
   }
 
+  const addtocart = (id) => {
+    setAddingCart(true);
+    const qty = document.getElementById("product-qty").value;
+    console.log(id,qty);
+    const data = {customerId : currentMember?._id, productId : product?._id, qty: qty}
+    axios.put('https://warm-earth-97575.herokuapp.com/addtocart', data)
+    .then(res=>{
+      console.log(res.status);
+      setShowAdded(true)
+      setAddingCart(false);
+    })
+  }
+
   console.log(product);
   if(!product){
     return <Loading />
@@ -41,6 +60,7 @@ const ProductDetails = () => {
         <Container>
           <Row>
             <Col md='7'>
+              
               <div className="img mb-3">
                 <img style={{maxHeight:'250px'}} src={product?.imgUrl} alt="" className="img-fluid" />
               </div>
@@ -48,10 +68,17 @@ const ProductDetails = () => {
               <h2 className="text-danger">{product?.price} ৳</h2>
               <div className="item-qty py-3">
                 <i onClick={qtyMinus} className="bx bxs-minus-circle qty-minus fs-3"></i>
-                <input type="number" name="countqty" id="" defaultValue={1} />
+                <input type="number" name="countqty" id="product-qty" defaultValue={1} />
                 <i onClick={qtyPlus} className="bx bxs-plus-circle qty-plus fs-3"></i>
               </div>
-              <Button variant='primary' className='rounded-1 px-3 d-flex align-items-center' size='sm'><i className='bx bx-cart-add me-2 fs-3' ></i> Add to cart</Button>
+              <div className="d-flex align-items-center">
+                <Button onClick={()=>addtocart(product?._id)} variant='primary' className='rounded-1 px-3 d-flex align-items-center me-2' size="sm">
+                  {addingCart ? "Adding..." : <>
+                  <i className='bx bx-cart-add me-2 fs-4' ></i> Add to cart
+                  </>}
+                  </Button>
+                  {showAdded && <Link to='/my-cart'><Button size="sm">View Cart</Button></Link>}
+              </div>
               <p className='mt-3' style={{fontSize:"13px"}}>
                 <strong>Categories: </strong>{product?.categories} <br />
                 <strong>Tags: </strong>{product?.tag?.map(tt => tt + ", ")}
