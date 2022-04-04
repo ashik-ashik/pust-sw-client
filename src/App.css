@@ -521,11 +521,12 @@ table td {
   position: fixed;
   top: 70px;
   left: -110%;
-  max-width: 300px;
+  width: 300px;
   height: 100vh;
   padding: 20px 10px 0;
   transition: ease-in .5s;
   z-index: 9999;
+  background: #2c2c2c;
 }
 .my-side-toggle-menu-items.active{
   /* display: block; */
@@ -565,6 +566,7 @@ table td {
 .quick-contact-item:first-child a{
   background: #049434;
   position: relative;
+  z-index: 1;
 }
 .quick-contact-item:nth-child(2) a{
   background: #ff6f10;
@@ -589,8 +591,19 @@ table td {
   border-radius: 50%;
   z-index: -1;
   transform: translate(-50%, -50%) scale(0);
-  animation: ani 2s ease infinite;
+  animation: ani 2s ease infinite !important;
   transition: .2s;
+}
+@media screen and (max-width:991px) {
+  .quick-contact-item:first-child a::after{
+ 
+    z-index: -1;
+    transform: translate(-50%, -50%) scale(0);
+    animation: ani 2s ease infinite !important;
+  }
+  .quick-contact-item:first-child a{
+    z-index: 1;
+  }
 }
 @keyframes ani {
   from{
@@ -598,7 +611,113 @@ table td {
     opacity: 1;
   }  
   to{
-    transform:  translate(-50%, -50%) scale(1.4);
+    transform:  translate(-50%, -50%) scale(1.5);
     opacity: 0.05;
   }  
+}
+
+/*  */
+.add-member-bg{
+  background: #0c24ff3d url(https://i.ibb.co/2NxgbgL/bg-ss.jpg) center center;
+  background-attachment: fixed;
+  background-blend-mode: overlay;
+}
+.add-profile-bg{
+  background: #030c5e54 url(https://i.ibb.co/7X1gCD4/bg-ser.jpg) center right;
+  background-attachment: fixed;
+  background-size: 100vw 100vh;
+  background-repeat: no-repeat;
+  background-blend-mode: multiply;
+}
+
+/* qty-plus */
+.item-qty{
+  display: flex !important;
+  flex-direction: row;
+  align-items: center;
+  /* justify-content: center; */
+}
+[name="countqty"]{
+  width: 50px;
+  margin: 0 10px;
+  text-align: center;
+  appearance: none;
+  border: 1px solid #000;
+}
+[name="countqty"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+.qty-minus,
+.qty-plus{
+  cursor: pointer;
+  font-size: 20px;
+}
+
+
+/* loding spenner */
+.spiner-container{
+	display:flex;
+	width:100%;
+	height:100vh;
+	align-items:center;
+	justify-content:center;
+	background: #09097a url(https://i.ibb.co/2NxgbgL/bg-ss.jpg);
+	background-position: center center;
+	background-size:cover;
+	background-blend-mode: multiply;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.spin{
+	border-radius:50%;
+	position:relative;
+	
+}
+
+.spnning{
+	width:200px;
+	height:200px;
+	border-radius:50%;
+	background:#ffffff;
+	position:absolute;
+	top:50%;
+	left:50%;
+	transform:translate(-50%, -50%);
+	animation: ani 2.5s ease-in infinite;
+}
+.spin-1{
+	animation-delay: .2s;
+  background: #ff5e00;
+}
+
+.spin-2{
+	animation-delay: .4s;
+  background: #1aff53;
+}
+.spin-3{
+	animation-delay: .6s;
+  background: #fffb00;
+}
+.spin-4{
+	animation-delay: .8s;
+  background: #ff00c8;
+}
+.spin-5{
+	animation-delay: 1s;
+  background: #ffffff;
+}
+.spin-6{
+  background: #0145ff;
+	animation-delay: 1.2s;
+}
+@keyframes ani{
+	0%{
+		transform: translate(-50%, -50%) scale(0);
+		opacity:1;
+	}
+	100%{
+		transform: translate(-50%, -50%) scale(1);
+		opacity:0;
+	}
 }

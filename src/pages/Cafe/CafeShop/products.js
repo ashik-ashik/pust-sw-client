@@ -1,0 +1,76 @@
+const products = [
+  {
+    title:"Singara",
+    price: 5,
+    categories:"Fast food",
+    tag:['singara','সিংগাড়া'],
+    detail:"",
+    imgUrl:"https://i.ibb.co/YjJ7Srv/singara.jpg",
+  },
+  {
+    title:"Potato Chop",
+    price: 5,
+    categories:"Fast food",
+    tag:['alu','আলু','চপ','chop' ],
+    detail:"",
+    imgUrl:"https://i.ibb.co/WW9PbxP/alur-chop.jpg",
+  },
+  {
+    title:"Beguner Chop",
+    price: 5,
+    categories:"Fast food",
+    tag:['Begun','বেগুন','চপ',"chop"],
+    detail:"",
+    imgUrl:"https://i.ibb.co/hgjKNxL/brguner-chop.jpg",
+  },
+  {
+    title:"Vegetable Roll",
+    price: 10,
+    categories:"Fast food",
+    tag:['roll',"vegetable"],
+    detail:"",
+    imgUrl:"https://i.ibb.co/9hMgg3z/vegetable-roll.jpg",
+  },
+  {
+    title:"Cocacola 400ml",
+    price: 30,
+    categories:"Fast food",
+    tag:['Drinks','Cocacola'],
+    detail:"",
+    imgUrl:"https://i.ibb.co/Qkkd8p6/cocacola.jpg",
+  },
+  {
+    title:"Miranda 400ml",
+    price: 25,
+    categories:"Fast food",
+    tag:['Drinks','Miranda'],
+    detail:"",
+    imgUrl:"https://i.ibb.co/ws03TjJ/Mirinda.jpg",
+  },
+  {
+    title:"Sprite 500ml",
+    price: 35,
+    categories:"Fast food",
+    tag:['Drinks','Sprite'],
+    detail:"",
+    imgUrl:"https://i.ibb.co/FHjVZn9/sprait.jpg",
+  },
+  {
+    title:"7UP 500ml",
+    price: 40,
+    categories:"Fast food",
+    tag:['Drinks','7up'],
+    detail:"",
+    imgUrl:"https://i.ibb.co/bQTXNjM/7up.jpg",
+  },
+  {
+    title:"Polar 100ml",
+    price: 20,
+    categories:"Fast food",
+    tag:['ice','icecreame', 'polar'],
+    detail:"",
+    imgUrl:"https://i.ibb.co/GvSwNW7/polar.jpg",
+  }
+];
+
+console.log(products)

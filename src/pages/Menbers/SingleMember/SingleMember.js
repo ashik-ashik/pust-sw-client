@@ -19,7 +19,7 @@ const SingleMember = () => {
   return (
     <>
      <Hearder /> 
-     <section className="">
+     <section className="add-member-bg">
         <Container fluid>
             <ShowMemberDetail member={member} />
           

@@ -10,6 +10,7 @@ import Register from './pages/Authentication/Register/Register';
 import AllBlogs from './pages/Blogs/AllBlogs/AllBlogs';
 import BlogDetail from './pages/Blogs/BlogDetail/BlogDetail';
 import PublishBlog from './pages/Blogs/PublishBlog/PublishBlog';
+import CafeShop from './pages/Cafe/CafeShop/CafeShop';
 import Footer from './pages/CommonSections/Footer/Footer';
 import Verification from './pages/CommonSections/Verification/Verification';
 import CRrequestList from './pages/Dashboard/CRrquestList/CRrequestList';
@@ -78,54 +79,22 @@ function App() {
                 <Route path='manage-blogs' element={<ManageBlogs />} />
               </Route>
 
-              <Route path='/event-edit/:id' element={<AdminRoute>
-                  <EditEvent />
-                </AdminRoute>
-              }/>
-              <Route path='/notice-board' element={<PrivateRoute>
-                <Notices />
-              </PrivateRoute>
-              }/>
-              <Route path='/publish-notice' element={<PrivateRoute>
-                <PublishNotice />
-              </PrivateRoute>
-              }/>
-              <Route path='/notice/:id' element={<PrivateRoute>
-                <SingleNotice />
-              </PrivateRoute>
-              }/>
-              <Route path='/setup-information' element={<PrivateRoute>
-                <SetInformation />
-              </PrivateRoute>
-              }/>
-              <Route path='/find-blood' element={<PrivateRoute>
-                <FindBlood />
-              </PrivateRoute>
-              }/>
-              <Route path='/contacts' element={<PrivateRoute>
-                <Contacts />
-              </PrivateRoute>
-              }/>
-              <Route path='/events' element={<PrivateRoute>
-                <Events />
-              </PrivateRoute>
-              }/>
-              <Route path='/event/:id' element={<PrivateRoute>
-                <EventDetail />
-              </PrivateRoute>
-              }/>
-              <Route path='/blogs' element={<PrivateRoute>
-                <AllBlogs />
-              </PrivateRoute>
-              }/>
-              <Route path='/publish-blog' element={<PrivateRoute>
-                <PublishBlog />
-              </PrivateRoute>
-              }/>
-              <Route path='/blog/:id' element={<PrivateRoute>
-                <BlogDetail />
-              </PrivateRoute>
-              }/>
+              <Route path='/event-edit/:id' element={<AdminRoute><EditEvent /></AdminRoute>}/>
+
+              <Route path='/cafeteria' element={<PrivateRoute><CafeShop /></PrivateRoute>}/>
+              <Route path='/notice-board' element={<PrivateRoute><Notices /></PrivateRoute>}/>
+              <Route path='/publish-notice' element={<PrivateRoute><PublishNotice /></PrivateRoute>}/>
+              <Route path='/notice/:id' element={<PrivateRoute><SingleNotice /></PrivateRoute>}/>
+              <Route path='/setup-information' element={<PrivateRoute><SetInformation /></PrivateRoute>}/>
+              <Route path='/find-blood' element={<PrivateRoute><FindBlood /></PrivateRoute>}/>
+              <Route path='/contacts' element={<PrivateRoute><Contacts /></PrivateRoute>}/>
+              <Route path='/events' element={<PrivateRoute><Events /></PrivateRoute>}/>
+              <Route path='/event/:id' element={<PrivateRoute><EventDetail /></PrivateRoute>}/>
+              <Route path='/blogs' element={<PrivateRoute><AllBlogs /></PrivateRoute>}/>
+              <Route path='/publish-blog' element={<PrivateRoute><PublishBlog /></PrivateRoute>}/>
+              <Route path='/blog/:id' element={<PrivateRoute><BlogDetail /></PrivateRoute>}/>
+
+
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />
               {/* <Route path='/verify-account' element={<PrivateRoute><Verification /></PrivateRoute>}/> */}

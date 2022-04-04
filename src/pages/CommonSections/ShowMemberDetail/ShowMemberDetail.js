@@ -125,7 +125,7 @@ const ShowMemberDetail = ({member}) => {
             <div className="quick-contact py-3">
                 <ul className="list-unstyled d-flex justify-content-center">
                   <li className='quick-contact-item'>
-                    <a href={`tel:${primaryPhone}`}><i className='bx bxs-phone'></i></a>
+                    <a className='quick-phone' href={`tel:${primaryPhone}`}><i className='bx bxs-phone'></i></a>
                   </li>
                   <li className='quick-contact-item'>
                     <a href={`sms:${primaryPhone}`}><i className='bx bxs-message-rounded-detail'></i></a>
@@ -165,7 +165,7 @@ const ShowMemberDetail = ({member}) => {
               </Nav.Item>
 
               <Nav.Item>
-                <Nav.Link onClick={memberLogOut} className='rounded-0 small cursor-pointer mb-2 bg-light' eventKey="myblog"> <i className="bx bx-power-off me-2"></i> Log Out</Nav.Link>
+                <Nav.Link onClick={memberLogOut} className='rounded-0 small cursor-pointer mb-2 bg-light' > <i className="bx bx-power-off me-2"></i> Log Out</Nav.Link>
               </Nav.Item>
             </Nav>
           </div>
@@ -185,7 +185,7 @@ const ShowMemberDetail = ({member}) => {
                 <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light' eventKey="myblog">My Blog</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link onClick={memberLogOut} className='rounded-0 small cursor-pointer mb-2 bg-light d-flex align-items-center' eventKey="myblog"> <i className="bx bx-power-off me-2"></i> Log Out</Nav.Link>
+                <Nav.Link onClick={memberLogOut} className='rounded-0 small cursor-pointer mb-2 bg-light d-flex align-items-center'> <i className="bx bx-power-off me-2"></i> Log Out</Nav.Link>
               </Nav.Item>
             </Nav>
           </div>
@@ -236,7 +236,7 @@ const ShowMemberDetail = ({member}) => {
                 </Tab.Content>
 
 
-                <div className="socital-media py-4 bg-light">
+                <div className="socital-media py-4">
                   <ul className='list-unstyled member-social-media w-75 mx-auto'>
                     <li><a href={member?.facebookLink || "#"}><i className='bx bxl-facebook'></i></a></li>
                     <li><a href={member?.instagramLink || "#"}><i className='bx bxl-instagram'></i></a></li>

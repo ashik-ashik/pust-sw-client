@@ -20,7 +20,7 @@ const Profile = () => {
   return (
     <>
     <Hearder />
-      <section className="pb-4">
+      <section className="pb-4 add-profile-bg">
         <Container fluid>
           <ShowMemberDetail member={currentUser} />
           
