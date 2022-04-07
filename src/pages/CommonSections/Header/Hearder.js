@@ -3,7 +3,7 @@ import { Alert, Button, Container, Nav, Navbar, Offcanvas } from 'react-bootstra
 import { NavLink, Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth/useAuth';
 
-const Hearder = () => {
+const Hearder = ({children}) => {
   const {user, memberLogOut} = useAuth();
   const [currentUser, setCurrentUser]=useState(null);
   useEffect(()=> {
@@ -17,6 +17,9 @@ const Hearder = () => {
       <Navbar sticky="top" bg="dark" variant="dark" expand={false}>
         <Container>
           <Navbar.Brand as={Link} to="/"><img className='menubar-logo' src="https://i.ibb.co/Q9PRVg1/logo.png" alt="Pust sw" /></Navbar.Brand>
+          <Nav className='ms-auto me-2'>
+            {children}
+          </Nav>
           <Navbar.Toggle aria-controls="offcanvasNavbar" className='shahow-none rounded-0 border-2' />
           <Navbar.Offcanvas
             id="offcanvasNavbar"
@@ -27,7 +30,7 @@ const Hearder = () => {
               <Offcanvas.Title id="offcanvasNavbarLabel">Menu</Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <Nav className="justify-content-end flex-grow-1 pe-3">
+              <Nav className="justify-content-end  pe-3">
                 <Nav.Link as={NavLink} className="menu-items" to="/"><i className='fs-4 bx bx-home me-2'></i> <span>Home</span></Nav.Link>
                 {
                   currentUser?.role === "admin" && <>

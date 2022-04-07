@@ -1,8 +1,14 @@
-import React from 'react';
-import { Button, Col } from 'react-bootstrap';
+import axios from 'axios';
+import React, { useState } from 'react';
+import { Button, Col, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import useMember from '../../../hooks/useMembers/useMembers';
 
-const ProductCard = ({product}) => {
+const ProductCard = ({product, index, setIsAddNew}) => {
+
+  const {currentMember} = useMember();
+  const [addingCart, setAddingCart] = useState(false);
+  const [added, setAdded] = useState(false)
   const qtyMinus = (e) => {
     const cc = e.target.nextElementSibling;
     let val = parseInt(cc.value);
@@ -18,7 +24,27 @@ const ProductCard = ({product}) => {
       val += 1;
     }
     cc.value = val;
+  };
+
+  const addToCart = () => {
+    setAddingCart(true);
+    const qty = parseInt(document.getElementById(`qty${index}`).value);
+    const {detail,tag, ...toCart} = product;
+    toCart.customerId = currentMember?._id;
+    toCart.productId = product?._id
+    toCart.qty= parseInt(qty);
+    
+
+    console.log(toCart)
+    axios.put('https://warm-earth-97575.herokuapp.com/addtocart', toCart)
+    .then(res=>{
+      console.log(res.status);
+      setAddingCart(false);
+      setAdded(true);
+      setIsAddNew(product?._id)
+    })
   }
+
   return (
     <>
       <Col>
@@ -34,13 +60,21 @@ const ProductCard = ({product}) => {
             <div className="d-flex justify-content-between align-items-center py-3">
               <div className="item-qty">
                 <i onClick={qtyMinus} className="bx bxs-minus-circle qty-minus fs-3"></i>
-                <input type="number" name="countqty" id="" defaultValue={1} />
+                <input type="number" name="countqty" id={`qty${index}`} defaultValue={1} />
                 <i onClick={qtyPlus} className="bx bxs-plus-circle qty-plus fs-3"></i>
               </div>
               <p className="small text-danger fw-bold mb-0">{product?.price} ৳</p>
             </div>
             <div className="d-flex mt-2">
-              <Button variant='primary' className='rounded-1 px-3 d-flex align-items-center' size='sm'><i className='bx bx-cart-add me-2 fs-3' ></i> Add to cart</Button>
+              <Button onClick={()=> addToCart()} variant='primary' className='rounded-1 px-3 d-flex align-items-center' size='sm'>
+                <i className='bx bx-cart-add me-2 fs-3' ></i>
+                {
+                  added ? "Already Added" :<>
+                  {addingCart ? <Spinner animation="border" variant="light" /> : "Add to cart"}
+                  </>
+
+                }                 
+              </Button>
             </div>
           </div>
         </div>

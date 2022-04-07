@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Alert, Button, Col, Container, Row } from 'react-bootstrap';
+import { Button, Col, Container, Row } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 import useMember from '../../../hooks/useMembers/useMembers';
 import Hearder from '../../CommonSections/Header/Hearder';
@@ -39,9 +39,14 @@ const ProductDetails = () => {
   const addtocart = (id) => {
     setAddingCart(true);
     const qty = document.getElementById("product-qty").value;
-    console.log(id,qty);
-    const data = {customerId : currentMember?._id, productId : product?._id, qty: qty}
-    axios.put('https://warm-earth-97575.herokuapp.com/addtocart', data)
+    const {detail,tag, ...toCart} = product;
+    toCart.customerId = currentMember?._id;
+    toCart.productId = product?._id
+    toCart.qty= parseInt(qty);
+    
+
+    console.log(toCart)
+    axios.put('https://warm-earth-97575.herokuapp.com/addtocart', toCart)
     .then(res=>{
       console.log(res.status);
       setShowAdded(true)
