@@ -73,7 +73,7 @@ const ProductDetails = () => {
               <h2 className="text-danger">{product?.price} ৳</h2>
               <div className="item-qty py-3">
                 <i onClick={qtyMinus} className="bx bxs-minus-circle qty-minus fs-3"></i>
-                <input type="number" name="countqty" id="product-qty" defaultValue={1} />
+                <input type="number" name="countqty" id="product-qty" readOnly defaultValue={1} />
                 <i onClick={qtyPlus} className="bx bxs-plus-circle qty-plus fs-3"></i>
               </div>
               <div className="d-flex align-items-center">

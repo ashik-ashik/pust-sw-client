@@ -20,7 +20,7 @@ const ProductCard = ({product, index, setIsAddNew}) => {
   const qtyPlus = (e) => {
     const cc = e.target.previousElementSibling;
     let val = parseInt(cc.value);
-    if(val < 20) {
+    if(val < 100) {
       val += 1;
     }
     cc.value = val;
@@ -38,7 +38,6 @@ const ProductCard = ({product, index, setIsAddNew}) => {
     console.log(toCart)
     axios.put('https://warm-earth-97575.herokuapp.com/addtocart', toCart)
     .then(res=>{
-      console.log(res.status);
       setAddingCart(false);
       setAdded(true);
       setIsAddNew(product?._id)
@@ -60,7 +59,7 @@ const ProductCard = ({product, index, setIsAddNew}) => {
             <div className="d-flex justify-content-between align-items-center py-3">
               <div className="item-qty">
                 <i onClick={qtyMinus} className="bx bxs-minus-circle qty-minus fs-3"></i>
-                <input type="number" name="countqty" id={`qty${index}`} defaultValue={1} />
+                <input type="number" name="countqty" id={`qty${index}`} readOnly defaultValue={1} />
                 <i onClick={qtyPlus} className="bx bxs-plus-circle qty-plus fs-3"></i>
               </div>
               <p className="small text-danger fw-bold mb-0">{product?.price} ৳</p>
