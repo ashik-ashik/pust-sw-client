@@ -1,0 +1,17 @@
+[debug] [2022-04-10T20:24:14.175Z] ----------------------------------------------------------------------
+[debug] [2022-04-10T20:24:14.180Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\ASUS\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2022-04-10T20:24:14.181Z] CLI Version:   9.23.0
+[debug] [2022-04-10T20:24:14.181Z] Platform:      win32
+[debug] [2022-04-10T20:24:14.181Z] Node Version:  v14.16.0
+[debug] [2022-04-10T20:24:14.188Z] Time:          Mon Apr 11 2022 02:24:14 GMT+0600 (Bangladesh Standard Time)
+[debug] [2022-04-10T20:24:14.189Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-04-10T20:24:14.283Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-04-10T20:24:14.284Z] > authorizing via signed-in user (mdashika989@gmail.com)
+[debug] [2022-04-10T20:24:14.284Z] [iam] checking project social-work-at-pust for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-04-10T20:24:14.287Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2022-04-10T20:24:14.288Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-04-10T20:24:14.603Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Sun, 10 Apr 2022 20:24:15 GMT","pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-04-10T20:24:14.621Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/social-work-at-pust:testIamPermissions  
+ {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}

@@ -121,8 +121,8 @@ const TodoApp = () => {
 
           <Container>
             <div className="py-3">
-                <Button onClick={()=>setFiltering('active')} variant={filtering === 'active' ? `success` : 'outline-success'}className='me-2 rounded-pill px-3' size='sm'>Active</Button>
-                <Button onClick={()=>setFiltering('completed')} variant={filtering === 'completed' ? `success` : 'outline-success'} className='rounded-pill px-3' size='sm'>Completed</Button>
+                <Button onClick={()=>setFiltering('active')} variant={filtering === 'active' ? `success` : 'outline-success'} className='me-2 rounded-pill px-3 shadow-none' size='sm'>Active</Button>
+                <Button onClick={()=>setFiltering('completed')} variant={filtering === 'completed' ? `success` : 'outline-success'} className='rounded-pill px-3 shadow-none' size='sm'>Completed</Button>
             </div>
           <Row xs={1} md={1} lg={2} className='g-4 mt-4'>
             {

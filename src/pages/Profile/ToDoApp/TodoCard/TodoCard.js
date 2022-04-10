@@ -4,7 +4,8 @@ import { Col } from 'react-bootstrap';
 const TodoCard = ({todo, updateDone, setDeleteModal, getIdForDelete}) => {
   return (
     <Col>
-      <div className="p-3 todo-shadow">
+      <div className={`p-3 todo-shadow position-relative ${todo?.isComplete ? 'bg-light' : ''}`}>
+        <span className="position-absolute todo-done">Done</span>
         <div className="pt-3">
           <h4 className="title-font">{todo?.taskTitle}</h4>
           <p className="small text-muted">{todo?.taskDetail}</p>
