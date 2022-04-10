@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# PUST-SW
+> ######  Department of Social Work at Pabna University of Science and Technology.
+[![PUst-SW](https://i.ibb.co/rwKPzb4/favicon.png "PUst-SW")](https://social-work-at-pust.web.app "PUst-SW") 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## [VISIT NOW](HTTPS://SOCIAL-WORK-AT-PUST.WEB.APP "PUST-SW")
 
-## Available Scripts
+------------
 
-In the project directory, you can run:
+### Features:--
+> Action Features:--
 
-### `npm start`
+- To visit the site user need to register first.
+- User can register by useing email and password
+- User have to provide some basic information about him.
+- User can see all members who are registred;
+- User can find a specific user by searching their name/ roll/ registration no;
+- User can see every individual's profile and his basic information;
+- User can add new Phone number;
+- User can make phone number as whatsapp number;
+- User can request for CR ship;
+- A CR user can post a notice from notice board;
+- Every user can publish blog;
+- Admin user can post new event, notice and also publish blog;
+- Admin user can approve or reject the CR-ship request;
+- Admin user can edit or, delete events;
+- Admin user can edit or, delete, duplicate the published blogs;
+- Admin user can make a new admin;
+- User can find everyone's contact number, with search ;
+- User can find out the blood group of the registred users;
+- They can save any food to their cart;
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+------------
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+>### *Technologies:*
+&diams; **React **
+&diams; **React Bootstrap **
+&diams; **Node JS **
+&diams; **Express **
+&diams; **Mongo DB **
+&diams; **Firebase **
+&diams; **React Router Dom **
+&diams; **React Hook Form **
+&diams; **React  jodit**
+&diams; **EmailJS **
+&diams; **axios **
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+------------
+## Site Logo
+[![PUST-SW](https://i.ibb.co/Q9PRVg1/logo.png "PUST-SW")](https://social-work-at-pust.web.app "PUST-SW") 
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+>### Upcomming Features:--
+> &rarr; ToDo App;
+&rarr; Food Order and Payment System;
+&rarr; Edit all of own information;
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

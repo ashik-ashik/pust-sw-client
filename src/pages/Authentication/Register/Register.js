@@ -89,7 +89,7 @@ const Register = () => {
 
   return (
     <>
-      { !user ? <>
+      { user ? <>
       <section className='register-page text-white'>
         <Container>
           <Row className='py-4 align-items-center'style={{"minHeight": "100vh"}}>
@@ -115,13 +115,16 @@ const Register = () => {
 
                 {/* Enter Password */}
                 <h6 className="text-white small ps-4">Password:</h6>
-                <InputGroup className="mb-4">
+                <InputGroup className="mb-2">
                   <InputGroup.Text className="icon-pill px-3"><i className='bx bx-key' ></i></InputGroup.Text>
                   <Form.Control className="input-pill" {...register("password", { required: true, })} type="password" placeholder="Password" id='password' />
                 </InputGroup>
-
+                <Form.Text id="passwordHelpBlock" style={{fontSize:"12px"}} className='text-light'>
+                  Your password must be 8-20 characters long, contain letters, special characters and numbers, and
+                  must not contain spaces or emoji.
+                </Form.Text>
                 {/* re type Password */}
-                <h6 className="text-white small ps-4">Re-type Password:</h6>
+                <h6 className="text-white small ps-4 mt-4">Re-type Password:</h6>
                 <InputGroup className="mb-3">
                   <InputGroup.Text className="icon-pill px-3"><i className='bx bx-key' ></i></InputGroup.Text>
                   <Form.Control className="input-pill" {...register("comfirmPassword", { required: true, })} type="password" placeholder="Re-type Password" id='confirm-password' />

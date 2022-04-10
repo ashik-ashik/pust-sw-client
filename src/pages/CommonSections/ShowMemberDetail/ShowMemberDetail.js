@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Col, Row, Modal, Form, Tab, Nav } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth/useAuth';
 import axios from 'axios';
 import BasicInfo from './BasicInfo/BasicInfo';
@@ -161,6 +161,9 @@ const ShowMemberDetail = ({member}) => {
                 <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light' eventKey="address">Address</Nav.Link>
               </Nav.Item>
               <Nav.Item>
+                <Nav.Link as={Link} to="/todo" className='rounded-0 small cursor-pointer mb-2 bg-light'>To Do App</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
                 <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light' eventKey="myblog">My Blog</Nav.Link>
               </Nav.Item>
 
@@ -173,19 +176,22 @@ const ShowMemberDetail = ({member}) => {
           <div className="d-md-block d-none pb-md-5">
             <Nav variant="pills" className="flex-column">
               <Nav.Item>
-                <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light' eventKey="basic">Basic</Nav.Link>
+                <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light d-flex align-items-center' eventKey="basic"><i className='bx bx-info-circle me-2 fs-5'></i>Basic</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light' eventKey="contact">Contact</Nav.Link>
+                <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light d-flex align-items-center' eventKey="contact"><i className='bx bxs-contact me-2 fs-5' ></i>Contact</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light' eventKey="address">Address</Nav.Link>
+                <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light d-flex align-items-center' eventKey="address"><i className='bx bx-map me-2 fs-5'></i>Address</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light' eventKey="myblog">My Blog</Nav.Link>
+                <Nav.Link as={Link} to="/todo" className='rounded-0 small cursor-pointer mb-2 bg-light d-flex align-items-center'><i className='bx bx-list-plus me-2 fs-5'></i>To Do App</Nav.Link>
               </Nav.Item>
               <Nav.Item>
-                <Nav.Link onClick={memberLogOut} className='rounded-0 small cursor-pointer mb-2 bg-light d-flex align-items-center'> <i className="bx bx-power-off me-2"></i> Log Out</Nav.Link>
+                <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light d-flex align-items-center' eventKey="myblog"><i className='bx bx-book-bookmark me-2 fs-5'></i>My Blog</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link onClick={memberLogOut} className='rounded-0 small cursor-pointer mb-2 bg-light d-flex align-items-center'> <i className="bx bx-power-off me-2 fs-5"></i> Log Out</Nav.Link>
               </Nav.Item>
             </Nav>
           </div>
