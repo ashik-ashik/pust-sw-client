@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import { Button, Col, Container, Form, InputGroup, FloatingLabel, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import useAuth from '../../../hooks/useAuth/useAuth';
 import emailjs from 'emailjs-com';
+import './Register.css'
 const axios = require('axios');
 
 const Register = () => {
@@ -85,6 +86,7 @@ const Register = () => {
     }
     
   }
+
   return (
     <>
       { !user ? <>
@@ -98,29 +100,32 @@ const Register = () => {
               </h3>
               <Form onSubmit={handleSubmit(onSubmit)}>
                 {/* Enter Full Name */}
-                <Form.Group className="mb-3">
-                  <Form.Label>Full Name</Form.Label>
-                  <Form.Control {...register("fullName", {required: true})} type="text" placeholder="Full Name" />
-                </Form.Group>
+                <h6 className="text-white small ps-4">Full Name:</h6>
+                <InputGroup className="mb-4">
+                  <InputGroup.Text className="icon-pill px-3"><i className='bx bxs-user-detail'></i></InputGroup.Text>
+                  <Form.Control className="input-pill" {...register("fullName", {required: true})} type="text" placeholder="Full Name" />
+                </InputGroup>
 
                 {/* Enter email */}
-                <Form.Group className="mb-3">
-                  <Form.Label>Email address</Form.Label>
-                  <Form.Control {...register("email", { required: true, })} type="email" placeholder="example01@any.com" />
-                </Form.Group>
+                <h6 className="text-white small ps-4">Enter Email:</h6>
+                <InputGroup className="mb-4">
+                  <InputGroup.Text className="icon-pill px-3"><i className='bx bxs-envelope' ></i></InputGroup.Text>
+                  <Form.Control className="input-pill" {...register("email", { required: true, })} type="email" placeholder="example01@any.com" />
+                </InputGroup>
 
                 {/* Enter Password */}
-                <Form.Group className="mb-3">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control {...register("password", { required: true, })} type="password" placeholder="Password" id='password' />
-                  
-                </Form.Group>
+                <h6 className="text-white small ps-4">Password:</h6>
+                <InputGroup className="mb-4">
+                  <InputGroup.Text className="icon-pill px-3"><i className='bx bx-key' ></i></InputGroup.Text>
+                  <Form.Control className="input-pill" {...register("password", { required: true, })} type="password" placeholder="Password" id='password' />
+                </InputGroup>
 
-                {/* Enter Password */}
-                <Form.Group className="mb-3">
-                  <Form.Label>Confirm Password</Form.Label>
-                  <Form.Control {...register("comfirmPassword", { required: true, })} type="password" placeholder="Password" id='confirm-password' />
-                </Form.Group>
+                {/* re type Password */}
+                <h6 className="text-white small ps-4">Re-type Password:</h6>
+                <InputGroup className="mb-3">
+                  <InputGroup.Text className="icon-pill px-3"><i className='bx bx-key' ></i></InputGroup.Text>
+                  <Form.Control className="input-pill" {...register("comfirmPassword", { required: true, })} type="password" placeholder="Re-type Password" id='confirm-password' />
+                </InputGroup>
                 {/* show and hide password */}
                 <Form.Group className="mb-3">
                   <Form.Check type="checkbox" label="Show password" onChange={togglePassword} />

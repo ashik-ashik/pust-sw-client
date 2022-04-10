@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Col, Container, Form, Row } from 'react-bootstrap';
+import { Button, Col, Container, Form, Row, InputGroup } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import useAuth from '../../../hooks/useAuth/useAuth';
 import Hearder from '../../CommonSections/Header/Hearder';
+import '../Register/Register.css'
 
 const Login = () => {
   useEffect(()=>{
@@ -67,20 +68,22 @@ const Login = () => {
                   </Form.Text>
                 </Form.Group>
                 {/* Enter email */}
-                <Form.Group className="mb-3">
-                  <Form.Label>Email address</Form.Label>
-                  <Form.Control {...register("email", { required: true, })} type="email" placeholder="example01@any.com" />
-                </Form.Group>
+                <h6 className="text-white small ps-4">Enter Email:</h6>
+                <InputGroup className="mb-4">
+                  <InputGroup.Text className="icon-pill px-3"><i className='bx bxs-envelope'></i></InputGroup.Text>
+                  <Form.Control className="input-pill" {...register("email", { required: true, })} type="email" placeholder="example01@any.com" />
+                </InputGroup>
 
                 {/* Enter Password */}
-                <Form.Group className="mb-3">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control {...register("password", { required: true, })} type="password" placeholder="Password" id='password' />
-                </Form.Group>
+                <h6 className="text-white small ps-4">Enter Password:</h6>
+                <InputGroup className="mb-4">
+                  <InputGroup.Text className="icon-pill px-3"><i className='bx bx-key'></i></InputGroup.Text>
+                  <Form.Control className="input-pill" {...register("password", { required: true, })} type="password" placeholder="Password" id='password' />
+                </InputGroup>
                 {/* show and hide password */}
-                <Form.Group className="mb-3">
+                <InputGroup className="mb-3">
                   <Form.Check type="checkbox" label="Show password" onChange={togglePassword} />
-                </Form.Group>
+                </InputGroup>
                 <Button variant="primary" className='rounded-0 px-4 shadow-none' type="submit">
                   Log In
                 </Button>

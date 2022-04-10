@@ -12,7 +12,7 @@ a{
 }
 .login-page{
   /* min-height: 100vh; */
-  background: #080353ce url(https://i.ibb.co/r7d4nCm/IMG-0167.jpg) center center;
+  background: #ffffffce url(https://i.ibb.co/r7d4nCm/IMG-0167.jpg) center center;
   background-size: cover;
   background-blend-mode: multiply;
 }
@@ -24,7 +24,7 @@ a{
   background-blend-mode: multiply;
 }
 .login-box{
-  background: #0000009c;
+  background: #ffffff17;
 }
 .reloading{
   width: 100%;
@@ -591,7 +591,7 @@ table td {
   border-radius: 50%;
   z-index: -1;
   transform: translate(-50%, -50%) scale(0);
-  animation: ani 2s ease infinite !important;
+  animation: phone 2s ease infinite !important;
   transition: .2s;
 }
 @media screen and (max-width:991px) {
@@ -599,13 +599,13 @@ table td {
  
     z-index: -1;
     transform: translate(-50%, -50%) scale(0);
-    animation: ani 2s ease infinite !important;
+    animation: phone 2s ease infinite !important;
   }
   .quick-contact-item:first-child a{
     z-index: 1;
   }
 }
-@keyframes ani {
+@keyframes phone {
   from{
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;
