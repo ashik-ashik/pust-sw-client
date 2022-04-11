@@ -32,13 +32,28 @@
 .todo-cursor-pointer:hover{
   color: #21005e;
 }
-.todo-done{
+.todo-status{
+  top: 5px;
+  left: 10px;
+  color: #ccc;
+  font-size: 20px;
+}
+.todo-done, 
+.todo-active{
   top: 5px;
   right: 10px;
   padding: 5px 15px;
-  border: 1px solid #fff;
+  font-weight: bold;
   border-radius: 20px;
-  font-size: 13px;
-  background: #000;
-  color: #fafafa;
+  font-size: 11px;
+}
+.todo-done{
+  border: 1px solid #3dbe53;
+  background: #008a174f;
+  color: #fd6702;
+}
+.todo-active{
+  border: 1px solid #fd6602a4;
+  background: #fd660242;
+  color: #06a02c;
 }

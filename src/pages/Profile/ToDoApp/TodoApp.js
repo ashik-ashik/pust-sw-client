@@ -13,7 +13,7 @@ const TodoApp = () => {
   },[]);
   const {currentMember} = useMember();
   const [isNewAntry, setNewAntry] = useState(false)
-  const [filtering, setFiltering] = useState('active');
+  const [filtering, setFiltering] = useState('all');
   const [showAddTaskModal, setShowAddTaskModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
   const [idForDelete, setIdForDelete] = useState('')
@@ -72,7 +72,7 @@ const TodoApp = () => {
   let incompleteTodo = todos?.filter(todo => todo?.isComplete !== true);
    const completeTodo = todos?.filter(todo => todo?.isComplete === true);
 
-
+console.log(todos);
 
   const [day, month, date] = new Date().toDateString().split(' ');
 
@@ -121,12 +121,13 @@ const TodoApp = () => {
 
           <Container>
             <div className="py-3">
+                <Button onClick={()=>setFiltering('all')} variant={filtering === 'all' ? `success` : 'outline-success'} className='me-2 rounded-pill px-3 shadow-none' size='sm'>All</Button>
                 <Button onClick={()=>setFiltering('active')} variant={filtering === 'active' ? `success` : 'outline-success'} className='me-2 rounded-pill px-3 shadow-none' size='sm'>Active</Button>
                 <Button onClick={()=>setFiltering('completed')} variant={filtering === 'completed' ? `success` : 'outline-success'} className='rounded-pill px-3 shadow-none' size='sm'>Completed</Button>
             </div>
           <Row xs={1} md={1} lg={2} className='g-4 mt-4'>
             {
-              (filtering === 'active' ? incompleteTodo : completeTodo)?.map(todo => <TodoCard key={todo?._id} todo={todo} updateDone={updateDone} setDeleteModal={setDeleteModal} getIdForDelete={getIdForDelete} />)
+              ((filtering === 'active' && incompleteTodo) || (filtering === 'completed' && completeTodo) || (filtering === 'all' && todos) )?.map(todo => <TodoCard key={todo?._id} todo={todo} updateDone={updateDone} setDeleteModal={setDeleteModal} getIdForDelete={getIdForDelete} />)
             }
             
             </Row>
