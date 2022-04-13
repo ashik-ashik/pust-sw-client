@@ -19,7 +19,7 @@ const Allmembers = () => {
   const {members} = useMember();
   const [searchedUser, setSearched] = useState(null);
   // const history = 
-
+console.log(members);
 
   useEffect(()=> {
     fetch(`https://warm-earth-97575.herokuapp.com/member-show?page=${currentPage}&&size=${memberInAPage}`)

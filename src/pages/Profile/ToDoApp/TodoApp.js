@@ -15,9 +15,11 @@ const TodoApp = () => {
   const [isNewAntry, setNewAntry] = useState(false)
   const [filtering, setFiltering] = useState('all');
   const [showAddTaskModal, setShowAddTaskModal] = useState(false);
+  const [showEditTaskModal, setShowEditTaskModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
-  const [idForDelete, setIdForDelete] = useState('')
+  const [singleTodoId, setSingleTodoId] = useState('')
   const [todos, setTodos] = useState(null);
+  const [toEdit, setToEdit] = useState(null);
 
   useEffect(()=>{
     fetch(`https://warm-earth-97575.herokuapp.com/todo/${currentMember?._id}`)
@@ -26,7 +28,7 @@ const TodoApp = () => {
       setTodos(result ? result : {});
       setNewAntry(false);
     })
-  },[currentMember, isNewAntry])
+  },[currentMember, isNewAntry]);
 
 
   // get data from the form
@@ -56,23 +58,41 @@ const TodoApp = () => {
     })
   };
 
-  const getIdForDelete = id => {
-    setIdForDelete(id);
+  const getParticularId = id => {
+    setSingleTodoId(id);
   }
   const letsDeleteTodo = () => {
-    axios.delete(`https://warm-earth-97575.herokuapp.com/todo-delete/${idForDelete}`)
+    axios.delete(`https://warm-earth-97575.herokuapp.com/todo-delete/${singleTodoId}`)
     .then(res => {
       if(res){
         setNewAntry(true);
         setDeleteModal(false);
       };
     })
+  };
+  
+  const findToEdit = (isOpen) => {
+    isOpen && setShowEditTaskModal(true);
+    const todoToEdit = todos?.find(todo => todo._id === isOpen);
+    setToEdit(todoToEdit);
+    console.log(todoToEdit);
+  }
+  const editTodo = (data) => {
+    axios.put(`https://warm-earth-97575.herokuapp.com/todo-edit/${singleTodoId}`, data)
+    .then(res=>{
+      if(res.status === 200){
+        setNewAntry(true);
+        setShowEditTaskModal(false)
+      }else{
+        window.alert("OPPS!!! Update Fail!")
+      };
+      reset();
+    })
   }
 
   let incompleteTodo = todos?.filter(todo => todo?.isComplete !== true);
    const completeTodo = todos?.filter(todo => todo?.isComplete === true);
 
-console.log(todos);
 
   const [day, month, date] = new Date().toDateString().split(' ');
 
@@ -92,31 +112,34 @@ console.log(todos);
               onHide={()=>setShowAddTaskModal(false)}
               backdrop="static"
               keyboard={false}
-              size="lg" 
+              fullscreen='xxl-down'
               centered
+              className='add-todo-modal'
             >
               <Modal.Header>
-                <Modal.Title>Add New Task</Modal.Title>
+                <Container><Modal.Title>Add New Task</Modal.Title></Container>
               </Modal.Header>
               <Modal.Body>
-                <div className="add-task py-2">
-                  <form onSubmit={handleSubmit(getTastData)}>
-                    <div className="task-input-group">
-                      <input {...register("taskTitle", {required:true})} type="text"  className='test-title' placeholder='Add Task Title' />
-                      <textarea {...register("taskDetail")} cols="30" rows="4" className='test-detail' placeholder='Description'></textarea>
-                    </div>
-                    <div className="border-top py-3">
-                      <Button type='submit' className='rounded-pill px-3 me-3' size="sm" variant="success">Add Task</Button>
+                <Container>
+                  <div className="add-task py-2">
+                    <form onSubmit={handleSubmit(getTastData)}>
+                      <div className="task-input-group">
+                        <input {...register("taskTitle", {required:true})} type="text"  className='test-title bg-transparent' placeholder='Add Task Title' />
+                        <textarea {...register("taskDetail")} cols="30" rows="4" className='test-detail bg-transparent' placeholder='Description'></textarea>
+                      </div>
+                      <div className="border-top py-3">
+                        <Button type='submit' className='rounded-pill px-3 me-3' size="sm" variant="success">Add Task</Button>
 
-                      <Button variant="outline-dark" className='rounded-pill px-3' size="sm" onClick={()=>setShowAddTaskModal(false)}>
-                        Close
-                      </Button>
-                    </div>
-                  </form>
-                </div>
+                        <Button variant="outline-dark" className='rounded-pill px-3' size="sm" onClick={()=>setShowAddTaskModal(false)}>
+                          Close
+                        </Button>
+                      </div>
+                    </form>
+                  </div>
+                </Container>
               </Modal.Body>
             </Modal>
-            <Button onClick={()=>setShowAddTaskModal(true)} variant='danger' size='sm' className='rounded-pill px-3'><i className="bx bx-plus"></i> Add Task</Button>          
+            <Button onClick={()=>setShowAddTaskModal(true)} variant='danger' size='sm' className='rounded-pill px-3 shadow-none'><i className="bx bx-plus"></i> Add Task</Button>          
           </div>
 
           <Container>
@@ -127,14 +150,14 @@ console.log(todos);
             </div>
           <Row xs={1} md={1} lg={2} className='g-4 mt-4'>
             {
-              ((filtering === 'active' && incompleteTodo) || (filtering === 'completed' && completeTodo) || (filtering === 'all' && todos) )?.map(todo => <TodoCard key={todo?._id} todo={todo} updateDone={updateDone} setDeleteModal={setDeleteModal} getIdForDelete={getIdForDelete} />)
+              ((filtering === 'active' && incompleteTodo) || (filtering === 'completed' && completeTodo) || (filtering === 'all' && todos) )?.map(todo => <TodoCard key={todo?._id} todo={todo} updateDone={updateDone} setDeleteModal={setDeleteModal} getParticularId={getParticularId} findToEdit={findToEdit} />)
             }
             
             </Row>
           </Container>
 
           {
-            (filtering === 'active' ? incompleteTodo : completeTodo)?.length <= 0 && <>
+            ((filtering === 'active' && incompleteTodo) || (filtering === 'completed' && completeTodo) || (filtering === 'all' && todos))?.length <= 0 && <>
               <div className="text-center mt-5 pt-5">
                 <img src="https://i.ibb.co/K9QwXXs/empty.png" alt="" className="img-fluid w-50" />
                 
@@ -148,6 +171,43 @@ console.log(todos);
         </Container>
       </section>
 
+      {/* edit modal */}
+      <Modal
+              show={showEditTaskModal}
+              onHide={()=>setShowEditTaskModal(false)}
+              backdrop="static"
+              keyboard={false}
+              fullscreen='xxl-down'
+              centered
+              className='add-todo-modal'
+            >
+              <Modal.Header>
+                <Container><Modal.Title>Edit Task</Modal.Title></Container>
+              </Modal.Header>
+              <Modal.Body>
+                <Container>
+                  <div className="add-task py-2">
+                    <form onSubmit={handleSubmit(editTodo)}>
+                      <div className="task-input-group">
+                        <input {...register("taskTitle", {required:true})} defaultValue={toEdit?.taskTitle} type="text"  className='test-title bg-transparent' placeholder='Add Task Title' />
+                        <textarea {...register("taskDetail")} cols="30" rows="4" className='test-detail bg-transparent' defaultValue={toEdit?.taskDetail} placeholder='Description'></textarea>
+                      </div>
+                      <div className="border-top py-3">
+                        <Button type='submit' className='rounded-pill px-3 me-3' size="sm" variant="success">Update Task</Button>
+
+                        <Button variant="outline-dark" className='rounded-pill px-3' size="sm" onClick={()=>setShowEditTaskModal(false)}>
+                          Close
+                        </Button>
+                      </div>
+                    </form>
+                  </div>
+                </Container>
+              </Modal.Body>
+            </Modal>
+
+
+      {/* delete modal */}
+
     <Modal 
     show={deleteModal}
     onHide={()=>setDeleteModal(false)}
@@ -160,7 +220,7 @@ console.log(todos);
           <div className="text-center mb-4">
             <i className="bx bx-trash display-1 text-danger"></i>
           </div>
-          <h5>Do you want to delete <span className='text-danger'>{(todos?.find(todo => todo?._id === idForDelete))?.taskTitle}</span></h5>
+          <h5>Do you want to delete <span className='text-danger'>{(todos?.find(todo => todo?._id === singleTodoId))?.taskTitle}</span></h5>
         </div>
         <div className="add-task py-2 text-end">
         <Button variant="danger" className='rounded-pill px-3 me-3' size="sm" onClick={letsDeleteTodo}>

@@ -61,7 +61,7 @@ const ShowMemberDetail = ({member}) => {
   const [largeImg, setLargeImg] = useState('');
   const classa = document.getElementById("large-view");
   const viewLarge = () => {
-    setLargeImg(imageURL);
+    setLargeImg(member?.profilePic);
     classa.style.display = "flex";
   };
   const closeLarge = (e) => {

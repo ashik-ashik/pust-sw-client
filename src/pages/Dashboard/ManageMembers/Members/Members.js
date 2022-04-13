@@ -1,11 +1,10 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Button, Col, Modal } from 'react-bootstrap';
+import { Button, Col } from 'react-bootstrap';
 import useAuth from '../../../../hooks/useAuth/useAuth';
 
 const Members = ({member}) => {
-  const {user, deleteAccount, auth} = useAuth();
-  
+  const {user, deleteAccount} = useAuth();
   // current logged in user
   const [currentUser, setCurrentuser] = useState(null);
   useEffect(()=>{

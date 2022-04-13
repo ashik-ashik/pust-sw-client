@@ -89,7 +89,7 @@ const Register = () => {
 
   return (
     <>
-      { user ? <>
+      { !user ? <>
       <section className='register-page text-white'>
         <Container>
           <Row className='py-4 align-items-center'style={{"minHeight": "100vh"}}>

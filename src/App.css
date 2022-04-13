@@ -149,7 +149,7 @@ a{
   cursor: pointer;
 }
 .cr-badge{
-  font-size: 12px;
+  font-size: 10px;
   font-weight: bold;
   /* border: 1px solid rgb(8, 255, 255); */
   padding: 5px 6px;
@@ -618,16 +618,16 @@ table td {
 
 /*  */
 .add-member-bg{
-  background: #0c24ff3d url(https://i.ibb.co/2NxgbgL/bg-ss.jpg) center center;
+  background: #ffffffbd url(https://i.ibb.co/2NxgbgL/bg-ss.jpg) center center;
   background-attachment: fixed;
   background-blend-mode: overlay;
 }
 .add-profile-bg{
-  background: #030c5e54 url(https://i.ibb.co/7X1gCD4/bg-ser.jpg) center right;
+  background: #ffffffbd url(https://i.ibb.co/7X1gCD4/bg-ser.jpg) center right;
   background-attachment: fixed;
   background-size: 100vw 100vh;
   background-repeat: no-repeat;
-  background-blend-mode: multiply;
+  background-blend-mode:lighten;
 }
 
 /* qty-plus */

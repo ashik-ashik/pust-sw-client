@@ -57,3 +57,7 @@
   background: #fd660242;
   color: #06a02c;
 }
+
+.add-todo-modal .modal-content{
+  background: #ffffffda ;
+}

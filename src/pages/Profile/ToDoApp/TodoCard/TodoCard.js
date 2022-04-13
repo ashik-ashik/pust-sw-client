@@ -1,7 +1,7 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
 
-const TodoCard = ({todo, updateDone, setDeleteModal, getIdForDelete}) => {
+const TodoCard = ({todo, updateDone, setDeleteModal, getParticularId, findToEdit}) => {
   const [day, month, date, year] = todo.addDate.split(' ');
   return (
     <Col>
@@ -22,8 +22,8 @@ const TodoCard = ({todo, updateDone, setDeleteModal, getIdForDelete}) => {
         </div>
         <div className="pt-3 border-top text-center">
           <i onClick={()=> updateDone(todo?._id)} className={`bx fs-4 me-3 todo-cursor-pointer ${todo?.isComplete ? 'bxs-check-circle' : 'bx-check-circle'}`}></i>
-          <i className="bx bx-edit fs-4 me-3 todo-cursor-pointer"></i>
-          <i onClick={()=> {setDeleteModal(true); getIdForDelete(todo?._id)}} className="bx bx-trash fs-4 todo-cursor-pointer"></i>
+          <i onClick={()=> {findToEdit(todo?._id); getParticularId(todo?._id)}} className="bx bx-edit fs-4 me-3 todo-cursor-pointer"></i>
+          <i onClick={()=> {setDeleteModal(true); getParticularId(todo?._id)}} className="bx bx-trash fs-4 todo-cursor-pointer"></i>
         </div>
       </div>
     </Col>
