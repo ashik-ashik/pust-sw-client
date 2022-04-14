@@ -7,7 +7,6 @@ const NoticeCard = ({notice}) => {
   const singleNotice = (id) => {
     navigate(`/notice/${id}`);
   }
-  console.log(notice)
   return (
     <>
       <Col>

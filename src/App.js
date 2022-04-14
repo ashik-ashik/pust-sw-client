@@ -11,6 +11,7 @@ import AllBlogs from './pages/Blogs/AllBlogs/AllBlogs';
 import BlogDetail from './pages/Blogs/BlogDetail/BlogDetail';
 import PublishBlog from './pages/Blogs/PublishBlog/PublishBlog';
 import CafeShop from './pages/Cafe/CafeShop/CafeShop';
+import Checkout from './pages/Cafe/Checkout/Checkout';
 import MyCart from './pages/Cafe/MyCart/MyCart';
 import ProductDetails from './pages/Cafe/ProductDetails/ProductDetails';
 import Footer from './pages/CommonSections/Footer/Footer';
@@ -105,6 +106,7 @@ function App() {
                 <Route path='edit/:id' element={<EditTodo />} />
               </Route>
 
+              <Route path='/checkout' element={<PrivateRoute><Checkout /></PrivateRoute>}/>
 
               <Route path='/login' element={<Login />} />
               <Route path='/register' element={<Register />} />

@@ -48,7 +48,6 @@ const Register = () => {
         const userInfo = {fullName : fullName, email : email, verificationCode: verificationCode}
         // update userName
         const user = userCredential.user;
-        console.log(user)
         updateProfile(auth.currentUser, {
           displayName: fullName, 
         }).then(() => {

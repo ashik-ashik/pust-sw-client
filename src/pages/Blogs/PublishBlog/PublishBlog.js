@@ -28,7 +28,6 @@ const PublishBlog = () => {
     blog.publisherEmail = currentMember?.email;
     blog.publisherId = currentMember?._id;
     blog.publishedAt = new Date().toDateString().split(" ").slice(1,4);
-    console.log(blog)
     axios.post(`https://warm-earth-97575.herokuapp.com/publish-blog`, blog)
     .then(res=>{
       navigate("/blogs")

@@ -7,7 +7,6 @@ const ContactCard = ({member, index}) => {
   profilePic = `data:image/png;base64,${member?.profilePic}`;
   };
   const [phone] = member?.phone;
-  console.log(phone)
   return (
     <>
       <Col>

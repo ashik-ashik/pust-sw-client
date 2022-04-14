@@ -12,7 +12,6 @@ const TodoDetail = () => {
     .then(res=>res.json())
     .then(result => setTodo(result ? result : {}))
   },[id]);
-  console.log(id);
   return (
     <>
       <Modal

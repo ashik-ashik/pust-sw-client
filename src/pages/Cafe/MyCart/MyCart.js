@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Button, Col, Container, Row, Table } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useMember from '../../../hooks/useMembers/useMembers';
 import Hearder from '../../CommonSections/Header/Hearder';
 import Loading from '../../CommonSections/Loading/Loading';
@@ -10,6 +10,7 @@ import CartItem from './CartItem/CartItem';
 const MyCart = () => {
   const [carts, setCart] = useState(null);
   const {currentMember} = useMember();
+  const navigate = useNavigate();
   const [subTotal, setSubTotal] = useState(0);
   const [isUpdate, setUpdate] = useState(false);
   const [itemDeleted, setDeleted] = useState(false);
@@ -43,7 +44,6 @@ const MyCart = () => {
   
   // remove cart item
   const removeCartItem = id => {
-    console.log(id);
     axios.delete(`https://warm-earth-97575.herokuapp.com/delete-cart/${id}`)
     .then(res => {
       if(res.status === 200){
@@ -157,7 +157,7 @@ const MyCart = () => {
                     </tfoot>
                   </Table>
                   <div className="d-grid">
-                    <Button variant='success' className='rounded-0 px-4 text-uppercase'>Checkout</Button>
+                    <Button onClick={()=>navigate('/checkout')} variant='success' className='rounded-0 px-4 text-uppercase'>Checkout</Button>
                   </div>
                 </div>
               </Col>

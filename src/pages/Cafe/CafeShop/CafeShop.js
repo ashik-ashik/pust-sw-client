@@ -34,7 +34,7 @@ if(!products){
       <Hearder><Nav.Link as={NavLink} to="/my-cart"><i className='bx bxs-shopping-bag text-white'></i><sup><Badge bg="danger">{carts?.length}</Badge></sup></Nav.Link></Hearder>
       <section className='py-4'>
         <Container>
-          ADDED to CART : 
+          
           <Row xs={1} md={3} lg={4} className="g-3" >
             {
               products?.map((product, index) => <ProductCard key={product?._id} product={product} index={index} setIsAddNew={setIsAddNew} />)

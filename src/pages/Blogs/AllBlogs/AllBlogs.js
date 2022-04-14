@@ -19,7 +19,6 @@ const AllBlogs = () => {
   if(!blogs){
     return <Loading />
   }
-  console.log(blogs)
   return (
     <>
       <Hearder />

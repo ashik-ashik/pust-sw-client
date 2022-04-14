@@ -47,9 +47,7 @@ const useFirebase = () => {
   const deleteAccount = () => {
     
     deleteUser(auth.currentUser).then(() => {
-      console.log("Member deleted")
     }).catch((error) => {
-      console.log(error.message)
     });
   }
 

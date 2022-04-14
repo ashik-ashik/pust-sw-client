@@ -35,7 +35,6 @@ const ProductCard = ({product, index, setIsAddNew}) => {
     toCart.qty= parseInt(qty);
     
 
-    console.log(toCart)
     axios.put('https://warm-earth-97575.herokuapp.com/addtocart', toCart)
     .then(res=>{
       setAddingCart(false);
@@ -49,7 +48,7 @@ const ProductCard = ({product, index, setIsAddNew}) => {
       <Col>
         <div className=" bg-light">
           <div className="img">
-            {/* <img src={product?.imgUrl} style={{height:"200px", width:"100%"}} alt="" className="img-fluid" /> */}
+            <img src={product?.imgUrl} style={{height:"200px", width:"100%"}} alt="" className="img-fluid" />
           </div>
           <div className="p-2">
 
@@ -66,7 +65,7 @@ const ProductCard = ({product, index, setIsAddNew}) => {
             </div>
             <div className="d-flex mt-2">
               <Button onClick={()=> addToCart()} variant='primary' className='rounded-1 px-3 d-flex align-items-center' size='sm'>
-                <i className='bx bx-cart-add me-2 fs-3' ></i>
+                <i className='bx bx-cart-add me-2 fs-5' ></i>
                 {
                   added ? "Already Added" :<>
                   {addingCart ? <Spinner animation="border" variant="light" /> : "Add to cart"}

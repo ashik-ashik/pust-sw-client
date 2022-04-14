@@ -120,7 +120,9 @@ const Home = () => {
           <h3 className="py-4 styled-heading border-top fw-bold border-secondary"><span className="text-danger fw-bolder">||</span> Latest <span className="text-danger fw-bolder styled-heading">Blogs</span>:</h3>
           <Row xs={1} md={2} lg={3}>
             {
-              blogs?.map(blog => <HomeBlogCard key={blog?._id} blog={blog} />)
+              blogs.length > 0 ? blogs?.map(blog => <HomeBlogCard key={blog?._id} blog={blog} />):<>
+              <h5 className="title-font">There is no blogs available.</h5>
+              </>
             }
           </Row>
 

@@ -45,16 +45,13 @@ const ProductDetails = () => {
     toCart.qty= parseInt(qty);
     
 
-    console.log(toCart)
     axios.put('https://warm-earth-97575.herokuapp.com/addtocart', toCart)
     .then(res=>{
-      console.log(res.status);
       setShowAdded(true)
       setAddingCart(false);
     })
   }
 
-  console.log(product);
   if(!product){
     return <Loading />
   }

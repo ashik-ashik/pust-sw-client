@@ -8,7 +8,6 @@ import ContactInfo from './ContactInfo/ContactInfo';
 import AddressInfo from './AddressInfo/AddressInfo';
 
 const ShowMemberDetail = ({member}) => {
-  console.log(member);
   const {memberLogOut} = useAuth();
   const [primaryPhone] = member?.phone || [];
 
