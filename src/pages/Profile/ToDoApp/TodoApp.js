@@ -6,20 +6,21 @@ import { useForm } from "react-hook-form";
 import './Todo.css';
 import axios from 'axios';
 import TodoCard from './TodoCard/TodoCard';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 
 const TodoApp = () => {
   useEffect(()=>{
     document.title="My To Do APP"
   },[]);
+  const locat = useLocation();
   const {currentMember} = useMember();
   const [isNewAntry, setNewAntry] = useState(false)
   const [filtering, setFiltering] = useState('all');
   const [showAddTaskModal, setShowAddTaskModal] = useState(false);
-  const [showEditTaskModal, setShowEditTaskModal] = useState(false);
   const [deleteModal, setDeleteModal] = useState(false);
   const [singleTodoId, setSingleTodoId] = useState('')
   const [todos, setTodos] = useState(null);
-  const [toEdit, setToEdit] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(()=>{
     fetch(`https://warm-earth-97575.herokuapp.com/todo/${currentMember?._id}`)
@@ -28,7 +29,7 @@ const TodoApp = () => {
       setTodos(result ? result : {});
       setNewAntry(false);
     })
-  },[currentMember, isNewAntry]);
+  },[currentMember, isNewAntry, locat]);
 
 
   // get data from the form
@@ -72,23 +73,9 @@ const TodoApp = () => {
   };
   
   const findToEdit = (isOpen) => {
-    isOpen && setShowEditTaskModal(true);
-    const todoToEdit = todos?.find(todo => todo._id === isOpen);
-    setToEdit(todoToEdit);
-    console.log(todoToEdit);
+    navigate(`edit/${isOpen}`);
   }
-  const editTodo = (data) => {
-    axios.put(`https://warm-earth-97575.herokuapp.com/todo-edit/${singleTodoId}`, data)
-    .then(res=>{
-      if(res.status === 200){
-        setNewAntry(true);
-        setShowEditTaskModal(false)
-      }else{
-        window.alert("OPPS!!! Update Fail!")
-      };
-      reset();
-    })
-  }
+
 
   let incompleteTodo = todos?.filter(todo => todo?.isComplete !== true);
    const completeTodo = todos?.filter(todo => todo?.isComplete === true);
@@ -99,6 +86,7 @@ const TodoApp = () => {
   return (
     <>
       <TodoNav/>
+      <Outlet />
       <section className="py-4">
         <Container>
           <h3 className="title-font border-bottom">Today 
@@ -171,39 +159,7 @@ const TodoApp = () => {
         </Container>
       </section>
 
-      {/* edit modal */}
-      <Modal
-              show={showEditTaskModal}
-              onHide={()=>setShowEditTaskModal(false)}
-              backdrop="static"
-              keyboard={false}
-              fullscreen='xxl-down'
-              centered
-              className='add-todo-modal'
-            >
-              <Modal.Header>
-                <Container><Modal.Title>Edit Task</Modal.Title></Container>
-              </Modal.Header>
-              <Modal.Body>
-                <Container>
-                  <div className="add-task py-2">
-                    <form onSubmit={handleSubmit(editTodo)}>
-                      <div className="task-input-group">
-                        <input {...register("taskTitle", {required:true})} defaultValue={toEdit?.taskTitle} type="text"  className='test-title bg-transparent' placeholder='Add Task Title' />
-                        <textarea {...register("taskDetail")} cols="30" rows="4" className='test-detail bg-transparent' defaultValue={toEdit?.taskDetail} placeholder='Description'></textarea>
-                      </div>
-                      <div className="border-top py-3">
-                        <Button type='submit' className='rounded-pill px-3 me-3' size="sm" variant="success">Update Task</Button>
-
-                        <Button variant="outline-dark" className='rounded-pill px-3' size="sm" onClick={()=>setShowEditTaskModal(false)}>
-                          Close
-                        </Button>
-                      </div>
-                    </form>
-                  </div>
-                </Container>
-              </Modal.Body>
-            </Modal>
+      
 
 
       {/* delete modal */}

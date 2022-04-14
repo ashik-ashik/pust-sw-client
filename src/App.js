@@ -39,6 +39,7 @@ import SingleNotice from './pages/Notices/SingleNotice/SingleNotice';
 import Contacts from './pages/ParticularInfo/Contacts/Contacts';
 import FindBlood from './pages/ParticularInfo/FingBlood/FindBlood';
 import Profile from './pages/Profile/Profile';
+import EditTodo from './pages/Profile/ToDoApp/EditTodo/EditTodo';
 import TodoApp from './pages/Profile/ToDoApp/TodoApp';
 import UpdateProfile from './pages/Profile/UpdateProfile/UpdateProfile';
 import SetInformation from './pages/SetInformation/SetInformation';
@@ -98,7 +99,9 @@ function App() {
               <Route path='/blogs' element={<PrivateRoute><AllBlogs /></PrivateRoute>}/>
               <Route path='/publish-blog' element={<PrivateRoute><PublishBlog /></PrivateRoute>}/>
               <Route path='/blog/:id' element={<PrivateRoute><BlogDetail /></PrivateRoute>}/>
-              <Route path='/todo' element={<PrivateRoute><TodoApp /></PrivateRoute>}/>
+              <Route path='/todo' element={<PrivateRoute><TodoApp /></PrivateRoute>}>
+                <Route path='edit/:id' element={<EditTodo />} />
+              </Route>
 
 
               <Route path='/login' element={<Login />} />
