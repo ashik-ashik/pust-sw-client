@@ -9,6 +9,7 @@ const EditTodo = () => {
   const navigate = useNavigate();
   const [todo, setTodo] = useState(null);
   const [showEditTaskModal, setShowEditTaskModal] = useState(true);
+  const [doAddComment, setAddComment] = useState(false);
   const { register, handleSubmit, reset } = useForm();
 
   useEffect(()=>{
@@ -30,6 +31,14 @@ const EditTodo = () => {
       reset();
     })
   };
+
+  const addComment= e => {
+    if(e.target.checked){
+      setAddComment(true);
+    }else{
+      setAddComment(false)
+    }
+  }
 
 
   return (
@@ -56,6 +65,30 @@ const EditTodo = () => {
                       <div className="task-input-group">
                         <input {...register("taskTitle", {required:true})} defaultValue={todo?.taskTitle} type="text"  className='test-title bg-transparent' placeholder='Add Task Title' />
                         <textarea {...register("taskDetail")} cols="30" rows="4" className='test-detail bg-transparent' defaultValue={todo?.taskDetail} placeholder='Description'></textarea>
+                        {
+                         doAddComment || todo?.taskComment ? <>
+                         <div className="commentBox border">
+                           {todo?.taskComment && <span 
+                           style={{fontSize:"12px"}}
+                           className="ms-3 text-danger border-bottom border-secondary"
+                           >
+                             Comment:
+                           </span> }
+                          <textarea {...register("taskComment")} cols="10" rows="2" className='test-detail bg-transparent' style={{fontSize:"13px"}} defaultValue={todo?.taskComment} placeholder='Add comment'></textarea>
+                        </div>
+                        </>:<>
+                        
+                        </>
+                        }
+                        {
+                          !todo?.taskComment && <>
+                            <div className="border-top pt-2 mt-2">
+                              <label htmlFor="addComment">
+                                <input onChange={addComment} type="checkbox" className="d-none" id='addComment' /> <span style={{fontSize:"12px",cursor:'pointer' }} className={` me-3 py-1 px-3 rounded-pill border ${doAddComment ? 'bg-warning  text-white' : 'border-dark'} `}>{doAddComment ? 'Cancle' :'Add Comment'}</span>
+                              </label>
+                            </div>
+                          </>
+                        }
                       </div>
                       <div className="border-top py-3">
                         <Button type='submit' className='rounded-pill px-3 me-3' size="sm" variant="success">Update Task</Button>

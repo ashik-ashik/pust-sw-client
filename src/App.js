@@ -41,6 +41,7 @@ import FindBlood from './pages/ParticularInfo/FingBlood/FindBlood';
 import Profile from './pages/Profile/Profile';
 import EditTodo from './pages/Profile/ToDoApp/EditTodo/EditTodo';
 import TodoApp from './pages/Profile/ToDoApp/TodoApp';
+import TodoDetail from './pages/Profile/ToDoApp/TodoDetail/TodoDetail';
 import UpdateProfile from './pages/Profile/UpdateProfile/UpdateProfile';
 import SetInformation from './pages/SetInformation/SetInformation';
 firebaseInit();
@@ -100,6 +101,7 @@ function App() {
               <Route path='/publish-blog' element={<PrivateRoute><PublishBlog /></PrivateRoute>}/>
               <Route path='/blog/:id' element={<PrivateRoute><BlogDetail /></PrivateRoute>}/>
               <Route path='/todo' element={<PrivateRoute><TodoApp /></PrivateRoute>}>
+                <Route path=':id' element={<TodoDetail />} />
                 <Route path='edit/:id' element={<EditTodo />} />
               </Route>
 
