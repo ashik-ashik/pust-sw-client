@@ -6,16 +6,18 @@ const MemberProvider = ({children}) => {
   const {user} = useAuth()
   const [members, setMembers] = useState(null);
   const [currentMember, setMember] = useState(null);
-  const [usersLoding, setUserLoading] = useState(true)
+  const [usersLoding, setUserLoading] = useState(true);
+  const [reLoad, setReLoad] = useState(false);
   useEffect(()=>{
     setUserLoading(true)
     fetch('https://warm-earth-97575.herokuapp.com/users')
       .then(res => res.json())
       .then(result => {
         setMembers(result ? result : {})
-        setUserLoading(false)
+        setUserLoading(false);
+        setReLoad(false);
       });
-  },[user]);
+  },[user, reLoad]);
 
   useEffect(()=>{
     setUserLoading(true)
@@ -23,14 +25,15 @@ const MemberProvider = ({children}) => {
       .then(res => res.json())
       .then(result => {
         setMember(result ? result : {})
-        setUserLoading(false)
+        setUserLoading(false);
+        setReLoad(false);
         })
-  },[user]);
+  },[user, reLoad]);
   
   if(usersLoding  || currentMember === null){
     return <Loading />
   }
-  const sendMember = {members, currentMember}
+  const sendMember = {members, currentMember, setReLoad}
   if(currentMember){return (
     <MemberContext.Provider value={sendMember}>
       {children}

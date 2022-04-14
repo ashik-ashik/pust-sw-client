@@ -4,7 +4,7 @@ import useMember from '../../../hooks/useMembers/useMembers';
 import AdminCard from './AdminCard/AdminCard';
 
 const ManageAdmin = () => {
-  const {members} = useMember();
+  const {members, setReLoad} = useMember();
   return (
     <>
       <section className="py-4">
@@ -13,9 +13,9 @@ const ManageAdmin = () => {
           <div className="search-box-admin py-3">
             <p className="small">Search a user:</p>
           </div>
-          <Row classNmae="mt-4" xs="1" md="3" lg="4">
+          <Row className="mt-4 g-3" xs="1" md="3" lg="4">
             {
-              members?.map(member => <AdminCard key={member?._id} member={member} />)
+              members?.map(member => <AdminCard key={member?._id} member={member} setReLoad={setReLoad} />)
             }
           </Row>
         </Container>
