@@ -1,12 +1,15 @@
 import React from 'react';
 import { Accordion, Col, Table } from 'react-bootstrap';
+import useMember from '../../../../hooks/useMembers/useMembers';
 
 const ContactCard = ({member, index}) => {
+  const {currentMember} = useMember();
   let profilePic = "";  
   if(!member?.profilePic?.includes("http")){
   profilePic = `data:image/png;base64,${member?.profilePic}`;
   };
   const [phone] = member?.phone;
+  const isSocialWork = currentMember?.roll?.slice(2,4) === '15';
   return (
     <>
       <Col>
@@ -31,7 +34,7 @@ const ContactCard = ({member, index}) => {
                   {
                     member?.phone?.map((phone, index )=> <tr key={index}>
                     <td>Phone {index > 0 && index}:</td>
-                    <td> <a href={`tel:${phone}`}>{phone}</a> </td>
+                    <td> <a href={`tel:${isSocialWork ? phone : "+88017..."}`}>{isSocialWork ? phone : "+88017 XX-XXXXXX"}</a> </td>
                   </tr>
                   )
                   }
