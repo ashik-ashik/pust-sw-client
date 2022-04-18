@@ -15,17 +15,18 @@ const FindBlood = () => {
   if(!currentMember?.isVerified){
     navigate("/verify-account")
   }
+  const allMembers = members?.filter(memb => memb?.email !== "socialwork.pust2008@gmail.com")
 
   // search blood group
   const [blood, setBlood] = useState(null);
   const getBlood = () => {
     const searchKey = document.getElementById("blood").value;
-    const searched = members.filter(member => member.blood.toLowerCase() === searchKey.toLowerCase())
+    const searched = allMembers.filter(member => member.blood.toLowerCase() === searchKey.toLowerCase())
     setBlood(searched)
   }
 
   
-  if(!members || !currentMember){
+  if(!allMembers || !currentMember){
     return <>
       <Loading />
     </>
@@ -62,7 +63,7 @@ const FindBlood = () => {
 
         <Row xs={1} md={2} lg={3} className="g-2">
           {
-         !blood ? members?.map((member, index) => <BloodCard key={member._id} member={member} index={index} />) : <>
+         !blood ? allMembers?.map((member, index) => <BloodCard key={member._id} member={member} index={index} />) : <>
             {
              blood.length > 0 ? blood?.map((member, index) => <BloodCard key={member._id} member={member} index={index} />) : <h3 className="title-font text-danger">No result found...</h3>}
           </>

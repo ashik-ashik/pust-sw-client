@@ -16,6 +16,7 @@ const Contacts = () => {
   if(!currentMember?.isVerified){
     navigate("/verify-account")
   }
+  const allMembers = members?.filter(memb => memb?.email !== "socialwork.pust2008@gmail.com")
   if(!members){
     return <>
       <Loading />
@@ -26,10 +27,10 @@ const Contacts = () => {
     const searchedKey = (e.target.value);
     document.getElementById("filter-by-name").reset();
     document.getElementById("filter-only-cr").reset();
-    const searched = members?.filter(member => member?.batchNo === searchedKey);
+    const searched = allMembers?.filter(member => member?.batchNo === searchedKey);
     setSearchedMembers(searched);
     if(searchedKey === "all"){
-      setSearchedMembers(members);
+      setSearchedMembers(allMembers);
     }
     
   };
@@ -38,7 +39,7 @@ const Contacts = () => {
     document.getElementById("filter-by-name").reset();
     document.getElementById("filter-by-batch").reset();
     if(onlyCR){
-      const searched = members?.filter(member => member?.CRstatus === 'verified');
+      const searched = allMembers?.filter(member => member?.CRstatus === 'verified');
       setSearchedMembers(searched);
     }
     else{
@@ -51,7 +52,7 @@ const Contacts = () => {
     document.getElementById("filter-only-cr").reset();
     const searchedKey = e.target.value;
     if(searchedKey){
-      const searched = members?.filter(member => member?.fullName?.toLowerCase()?.includes(searchedKey?.toLowerCase()));
+      const searched = allMembers?.filter(member => member?.fullName?.toLowerCase()?.includes(searchedKey?.toLowerCase()));
       setSearchedMembers(searched);
     }
     else{
@@ -72,7 +73,7 @@ const Contacts = () => {
           <div className="border-bottom py-4 mb-3 publish-notice">
             <Container className="text-white text-center">
               <h3 className="mb-0 styled-heading">Contacts :</h3>
-              <span className="fitle-font">{members?.length} Contacts available</span>
+              <span className="fitle-font">{allMembers?.length} Contacts available</span>
             </Container>
           </div>
         <Container>
@@ -129,7 +130,7 @@ const Contacts = () => {
           <Accordion className='contact-accordion'>
           <Row xs={1} md={2} lg={3} className="g-2">
           {
-           (!searchedMembers) && members?.map((member, index) => <ContactCard key={member?._id} member={member} index={index} />)
+           (!searchedMembers) && allMembers?.map((member, index) => <ContactCard key={member?._id} member={member} index={index} />)
           }
           {
            ( !searchedMembers || (searchedMembers?.length > 0)) ? searchedMembers?.map((member, index) => <ContactCard key={member?._id} member={member} index={index} />) : <>

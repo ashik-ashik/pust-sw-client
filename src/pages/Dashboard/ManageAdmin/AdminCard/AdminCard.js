@@ -1,8 +1,10 @@
 import axios from 'axios';
 import React, {useState} from 'react';
 import { Button, Col, Form, Modal } from 'react-bootstrap';
+import useMember from '../../../../hooks/useMembers/useMembers';
 
 const AdminCard = ({member, setReLoad}) => {
+  const {currentMember} = useMember();
   const [showConfirmModal, setConfirmModal] = useState(false);
   const manageAdmin = (id, action) =>{
       axios.put(`https://warm-earth-97575.herokuapp.com/manage-admin/${id}`, {role:action})
@@ -26,7 +28,7 @@ const AdminCard = ({member, setReLoad}) => {
           <p className='text-break' style={{fontSize:"12px"}}>{member?.email}</p>
           {
             member?.role === 'admin' ? <>
-              <Button onClick={()=>setConfirmModal(true)} variant='danger' className='rounded-0 shadow-none px-4' size="sm">Remove from Admin</Button>
+              <Button disabled={member?._id === currentMember?._id && true} onClick={()=>setConfirmModal(true)} variant='danger' className='rounded-0 shadow-none px-4' size="sm">Remove from Admin</Button>
             </> : <>
               <Button onClick={()=>setConfirmModal(true)} variant='success' className='rounded-0 shadow-none px-4' size="sm">Make as Admin</Button>            
             </>
