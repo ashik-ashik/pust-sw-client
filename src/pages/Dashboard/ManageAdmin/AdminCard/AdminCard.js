@@ -13,8 +13,9 @@ const AdminCard = ({member, setReLoad}) => {
       });
       
   }
-  const handelManageAdmin = ()=>{
-
+  const handelManageAdmin = (id, action)=>{
+    setConfirmModal(false);
+    manageAdmin(id, action);
   }
   return (
     <>
@@ -25,7 +26,7 @@ const AdminCard = ({member, setReLoad}) => {
           <p className='text-break' style={{fontSize:"12px"}}>{member?.email}</p>
           {
             member?.role === 'admin' ? <>
-              <Button onClick={()=>manageAdmin(member?._id, '')} variant='danger' className='rounded-0 shadow-none px-4' size="sm">Remove from Admin</Button>
+              <Button onClick={()=>setConfirmModal(true)} variant='danger' className='rounded-0 shadow-none px-4' size="sm">Remove from Admin</Button>
             </> : <>
               <Button onClick={()=>setConfirmModal(true)} variant='success' className='rounded-0 shadow-none px-4' size="sm">Make as Admin</Button>            
             </>
@@ -36,18 +37,27 @@ const AdminCard = ({member, setReLoad}) => {
 
       <Modal show={showConfirmModal} onHide={()=>setConfirmModal(false)} centered animation={true}>
         <Modal.Header className='fs-5 shadow-none'>
-          <Modal.Title>Upload Profile Picture</Modal.Title>
+          <Modal.Title>Make <span className="title-font text-danger fw-bold">{member?.fullName}</span> as Admin</Modal.Title>
         </Modal.Header>
         <Modal.Body>
+          {
+            member?.role !== 'admin' ? <p className="text-danger small" style={{textAlign:'justify'}}>
+            If you make him as admin he can access all of components and can manage all everything link edit, delete, providing permission to CR and many more.
+          </p>
+          :
+          <p>
+            If you remove his <strong>Admin</strong> status he will loss all the controlling power!
+          </p>  
+        }
           <Form >
               
-              <Button variant="success" className='shadow-none rounded-1 px-4' size="sm" >
-                Make Admin
+              <Button onClick={()=>handelManageAdmin(member?._id, member?.role !== "admin" ? 'admin' : '')} variant={member?.role === "admin" ? 'danger' : 'success'} className='shadow-none rounded-0 px-4' size="sm" >
+                {member?.role === 'admin' ? "Remove Admin" : 'Make Admin'}
               </Button>
             </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={()=>setConfirmModal(false)}>
+          <Button variant="dark" className='rounded-1 px-3' size='sm' onClick={()=>setConfirmModal(false)}>
             Cancel
           </Button>
           {/* <Button variant="primary" onClick={handleClose}>

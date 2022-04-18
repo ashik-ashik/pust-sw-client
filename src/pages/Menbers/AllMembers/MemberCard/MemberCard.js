@@ -18,7 +18,6 @@ const MemberCard = ({userInfo}) => {
   }
 
   const isSocialWork = currentMember?.roll?.slice(2,4) === '15';
-  console.log(isSocialWork);
   return (
     <>
       <Col>

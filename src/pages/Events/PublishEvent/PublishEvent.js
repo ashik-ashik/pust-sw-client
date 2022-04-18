@@ -55,6 +55,7 @@ const PublishEvent = () => {
   event.eventStart = startTime;
   event.eventEnd = endTime;
   event.eventContent = content;
+  event.likes = [];
 
 
     axios.post(`https://warm-earth-97575.herokuapp.com/publish-event`, event)

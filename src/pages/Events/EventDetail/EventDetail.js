@@ -1,18 +1,23 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { useParams } from 'react-router-dom';
+import useMember from '../../../hooks/useMembers/useMembers';
 import Hearder from '../../CommonSections/Header/Hearder';
 import Loading from '../../CommonSections/Loading/Loading';
 
 const EventDetail = () => {
  
   const [event, setEvent] = useState(null);
+  const [reFetch, setFetch] = useState(false)
   const {id} = useParams();
+  const {currentMember} = useMember();
   useEffect(()=>{
       fetch(`https://warm-earth-97575.herokuapp.com/event/${id}`)
       .then(res => res.json())
-      .then(result => setEvent(result))
-  },[id]);
+      .then(result => setEvent(result));
+      setFetch(false);
+  },[id, reFetch]);
   const eventContent = event?.eventContent
 
   let date = ['','','']
@@ -27,8 +32,22 @@ const EventDetail = () => {
     document.title = `Event- ${event?.eventTitle ? event?.eventTitle : ''}`;
   },[event]);
 
+ 
+
   if(!event){
     return <Loading />
+  }
+
+  const likes = [...event?.likes];
+  const isLiked = likes?.find(like => like === currentMember?._id);
+  const likesAdd = (likerId) => {
+    if(!isLiked){
+      likes.push(likerId);
+    }
+    axios.put(`https://warm-earth-97575.herokuapp.com/event-like/${id}`, {likes : likes})
+    .then(res => {
+      setFetch(true)
+    })
   }
 
   return (
@@ -43,6 +62,10 @@ const EventDetail = () => {
         <Container>
           <h2 className="title-font">{event?.eventTitle}</h2>
           <img className='event-detail-img' src={event?.eventImage} alt="" />
+          <div className="pt-3 d-flex align-items-center">
+            <i onClick={()=>likesAdd(currentMember?._id)} className={`bx ${isLiked ? 'bxs' : 'bx'}-heart ${isLiked && 'text-danger'}`} style={{cursor:'pointer'}}></i> 
+            <small className="text-danger title-font fw-bold ms-1">{event?.likes?.length} Likes</small>
+          </div>
           <Row className="mt-3">
             <Col>
               <h3 className="styled-heading">EVENT DESCRIPTION:</h3>
