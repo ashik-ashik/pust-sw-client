@@ -1,12 +1,25 @@
 import React from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Alert, Col, Container, Row } from 'react-bootstrap';
+import useMember from '../../../hooks/useMembers/useMembers';
 
 const Footer = () => {
+  const {currentMember} = useMember();
+  const isSocialWork = currentMember?.roll?.slice(2,4) === '15';
   return (
     <>
       <footer className='py-3 bg-light'>
         <Container>
+          {
+            !isSocialWork && <>
+              <Alert variant="danger">
+                <Alert.Heading className='title-font'>We have recognized that, You are not a member/Student of Department of Social Work at PUST.</Alert.Heading>
+                <hr />
+                <p>
+                  So you cannot enjoy some of features. Because There is some important personal imformation. These should not be accessable to others.
+                </p>
+              </Alert>
+            </>
+          }
           <div className="footer-links">
             <ul className="list-unstyled d-flex mb-0">
               <li className='me-2 pe-2 border-end border-2'><a className='footer-link ' href="/mission-vision">Mission & Vision</a></li>

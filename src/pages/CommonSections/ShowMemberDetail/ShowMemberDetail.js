@@ -6,13 +6,21 @@ import axios from 'axios';
 import BasicInfo from './BasicInfo/BasicInfo';
 import ContactInfo from './ContactInfo/ContactInfo';
 import AddressInfo from './AddressInfo/AddressInfo';
+import useMember from '../../../hooks/useMembers/useMembers';
 
-const ShowMemberDetail = ({member}) => {
+const ShowMemberDetail = ({member, setReLoad}) => {
   const {memberLogOut} = useAuth();
   const [primaryPhone] = member?.phone || [];
+  const {currentMember} = useMember();
+
 
   const {user, deleteAccount} = useAuth();
   const navigate = useNavigate();
+  const [largeImg, setLargeImg] = useState('');
+  const [deleteConfirmModal, setDeleteComfirmModal] = useState(false);
+  const [deleteSuccessModal, setDeleteSuccessModal] = useState(false);
+  const [menuShow, setMenuShow] = useState(false);
+
 
   const updateProfile = id => {
     navigate(`/update-profile/${id}`);
@@ -29,7 +37,7 @@ const ShowMemberDetail = ({member}) => {
     axios.put(`https://warm-earth-97575.herokuapp.com/upload-cr-ship/${member?._id}`, {isCR, CRstatus:'pending'})
     .then(res => {
       setShow(false);
-        window.location.reload();
+      setReLoad(true);
     })
   }
 
@@ -47,7 +55,7 @@ const ShowMemberDetail = ({member}) => {
     axios.put(`https://warm-earth-97575.herokuapp.com/upload-profile/${member?._id}`, formData)
     .then(res => {
       setShow(false);
-        window.location.reload();
+      setReLoad(true);
     });
   };
 
@@ -57,7 +65,6 @@ const ShowMemberDetail = ({member}) => {
   }  
 
   // view profile in large
-  const [largeImg, setLargeImg] = useState('');
   const classa = document.getElementById("large-view");
   const viewLarge = () => {
     setLargeImg(member?.profilePic);
@@ -71,9 +78,6 @@ const ShowMemberDetail = ({member}) => {
   }
 
 
-  const [deleteConfirmModal, setDeleteComfirmModal] = useState(false);
-  const [deleteSuccessModal, setDeleteSuccessModal] = useState(false);
-  const [menuShow, setMenuShow] = useState(false);
 
   const deleteUserDate = id => {
     axios.delete(`https://warm-earth-97575.herokuapp.com/delete-member/${id}`)
@@ -92,6 +96,8 @@ const ShowMemberDetail = ({member}) => {
       deleteUserDate(id);
       setDeleteComfirmModal(false)
   }
+
+  const isSocialWork = currentMember?.roll?.slice(2,4) === '15';
 
   if (!member){
     return <>
@@ -115,7 +121,7 @@ const ShowMemberDetail = ({member}) => {
       <Tab.Container id="left-tabs-example" defaultActiveKey="basic">
       <Row className='profile-sticky pb-4'>
         <Col md='3' className='bg-dark profile-nav-sticky border-top border-light'>
-          
+          {/* side menu large screen */}
           <div className="pt-4 pb-3 text-center border-bottom brder-2 mb-3">
             <img className='profile-pic' src={member?.profilePic} alt="" />
             <h4 className='mt-2 text-danger styled-heading'>{member?.fullName} {member?.CRstatus === "verified" && <sup className="cr-badge">CR</sup>}</h4>
@@ -124,18 +130,18 @@ const ShowMemberDetail = ({member}) => {
             <div className="quick-contact py-3">
                 <ul className="list-unstyled d-flex justify-content-center">
                   <li className='quick-contact-item'>
-                    <a className='quick-phone' href={`tel:${primaryPhone}`}><i className='bx bxs-phone'></i></a>
+                    <a className='quick-phone' href={`tel:${isSocialWork ? primaryPhone : '+8801700000000'}`}><i className='bx bxs-phone'></i></a>
                   </li>
                   <li className='quick-contact-item'>
-                    <a href={`sms:${primaryPhone}`}><i className='bx bxs-message-rounded-detail'></i></a>
+                    <a href={`sms:${isSocialWork ? primaryPhone : '+8801700000000'}`}><i className='bx bxs-message-rounded-detail'></i></a>
                   </li>
                   {member?.whatsApp ? <li className='quick-contact-item'>
-                    <a  href={`https://api.whatsapp.com/send?phone=${member?.whatsApp}`}><i className='bx bxl-whatsapp'></i></a>
+                    <a  href={`https://api.whatsapp.com/send?phone=${isSocialWork ? member?.whatsApp : '+88017'}`}><i className='bx bxl-whatsapp'></i></a>
                   </li> : <>
                   </>
                   }
                   <li className='quick-contact-item'>
-                    <a href={member?.messengerLink || member?.facebookLink}><i className='bx bxl-messenger'></i></a>
+                    <a href={isSocialWork ? (member?.messengerLink || member?.facebookLink) : "https://facebook.com"}><i className='bx bxl-messenger'></i></a>
                   </li>
                   
                 </ul>
@@ -146,6 +152,7 @@ const ShowMemberDetail = ({member}) => {
           <div onClick={()=>setMenuShow(true)} className="my-side-toggle-menu-icon d-md-none">
             <i className='bx bxs-chevron-right text-white  bx-tada fs-1'></i>
           </div>
+
           <div className={`my-side-toggle-menu-items ${menuShow ? "active" : ""}`}>
             <i onClick={()=>setMenuShow(false)} className='bx bxs-chevron-left text-white menu-close fs-1 bx-tada'></i>
             <h5 className="text-light mb-3 border-bottom pb-2">Menu</h5>
@@ -169,9 +176,13 @@ const ShowMemberDetail = ({member}) => {
               <Nav.Item>
                 <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light d-flex align-items-center' eventKey="myblog"><i className='bx bx-book-bookmark me-2 fs-5'></i>My Blog</Nav.Link>
               </Nav.Item>
+              {
+                user?.email === member?.email && <>
               <Nav.Item>
                 <Nav.Link onClick={memberLogOut} className='rounded-0 small cursor-pointer mb-2 bg-light d-flex align-items-center'> <i className="bx bx-power-off me-2 fs-5"></i> Log Out</Nav.Link>
               </Nav.Item>
+              </>
+            }
             </Nav>
           </div>
 
@@ -194,13 +205,18 @@ const ShowMemberDetail = ({member}) => {
                 </>
               }
               <Nav.Item>
-                <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light d-flex align-items-center' eventKey="myblog"><i className='bx bx-book-bookmark me-2 fs-5'></i>My Blog</Nav.Link>
+                <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light d-flex align-items-center' eventKey="myblog"><i className='bx bx-book-bookmark me-2 fs-5'></i>Blogs</Nav.Link>
               </Nav.Item>
+              {
+                user?.email === member?.email && <>
               <Nav.Item>
                 <Nav.Link onClick={memberLogOut} className='rounded-0 small cursor-pointer mb-2 bg-light d-flex align-items-center'> <i className="bx bx-power-off me-2 fs-5"></i> Log Out</Nav.Link>
               </Nav.Item>
+              </>
+            }
             </Nav>
           </div>
+
         </Col>
         <Col md="9">
           <div className={`profilePic text-center ${member?.email !== user?.email ? "py-5" : "py-4"} d-none d-md-block`} style={{backgroundImage:`url(${imageURL ? imageURL : member.profilePic})`}}>
@@ -224,7 +240,6 @@ const ShowMemberDetail = ({member}) => {
               <p>Are you CR of your class? <span className='cr-ship' onClick={()=> updateCR(member?._id)}>Set CRship</span></p>
             </>
           }
-
           
                 <Tab.Content>
                   <Tab.Pane eventKey="basic">
@@ -234,7 +249,7 @@ const ShowMemberDetail = ({member}) => {
 
                   <Tab.Pane eventKey="contact">
                     <h5 className="title-font"><span className="text-danger">||</span> Contact Information</h5>
-                    <ContactInfo member={member} />
+                    <ContactInfo member={member} setReLoad={setReLoad} />
                   </Tab.Pane>
 
                   <Tab.Pane eventKey="address">

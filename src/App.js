@@ -117,9 +117,9 @@ function App() {
               <Route path='*' element={<NotFound />} />
             </Routes>
           </Router>
+          <Footer />
         </MemberProvider>
       </AuthProvider>
-        <Footer />
     </>
   );
 }

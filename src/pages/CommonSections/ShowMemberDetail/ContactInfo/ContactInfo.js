@@ -3,9 +3,11 @@ import { Button, Table, Modal, Form } from 'react-bootstrap';
 import useAuth from '../../../../hooks/useAuth/useAuth';
 import { useForm } from "react-hook-form";
 import axios from 'axios';
+import useMember from '../../../../hooks/useMembers/useMembers';
 
 const ContactInfo = ({member}) => {
   const {user} = useAuth();
+  const {currentMember, setReLoad} = useMember();
 
   const [phones, setPhones] = useState(member?.phone);
   const [show, setShow] = useState(false);
@@ -24,7 +26,7 @@ const ContactInfo = ({member}) => {
     axios.put(`https://warm-earth-97575.herokuapp.com/add-contact/${member._id}`, updatePhone)
     .then(res => {
       if(res.status === 200){
-        window.location.reload();
+        setReLoad(true);
       }
     })
     
@@ -36,7 +38,7 @@ const ContactInfo = ({member}) => {
     axios.put(`https://warm-earth-97575.herokuapp.com/remove-phone/${member._id}`, {phones})
     .then(res => {
       if(res.status === 200){
-        window.location.reload();
+        setReLoad(true);
       }
     })
   }
@@ -45,11 +47,12 @@ const ContactInfo = ({member}) => {
     axios.put(`https://warm-earth-97575.herokuapp.com/add-whatsapp/${member._id}`, {number})
     .then(res => {
       if(res.status === 200){
-        window.location.reload();
+        setReLoad(true);
       }
     })
   }
   
+  const isSocialWork = currentMember?.roll?.slice(2,4) === '15';
 
   return (
     <>
@@ -76,7 +79,7 @@ const ContactInfo = ({member}) => {
           {
             phones?.map((phone, indx)=> <tr key={indx}>
                 <td className='text-nowrap'>{indx === 0 ? 'Primary' : "Phone "+indx} :</td>
-                <td className='text-nowrap'><a className='text-decoration-none contact-link' href={`tel:${phone}`}> {phone} </a></td>
+                <td className='text-nowrap'><a className='text-decoration-none contact-link' href={`tel:${isSocialWork ? phone : '+88017...'}`}> {isSocialWork ? phone : '+88017 XX-XXXXXX'} </a></td>
                 <td className='text-nowrap text-center'>
                   {user?.email === member?.email && <> 
                   <Button className='p-0 bg-transparent border-0 shadow-none' disabled={indx === 0 ? true : false} onClick={()=>removePhone(indx)}>
@@ -89,7 +92,7 @@ const ContactInfo = ({member}) => {
           }
           {member?.whatsApp && <tr>
             <td className='text-nowrap'>WhatsApp:</td>
-            <td className='text-nowrap'> <a className='text-decoration-none text-lowercase contact-link' href={`https://api.whatsapp.com/send?phone=${member?.whatsApp}`}>{member?.whatsApp}</a></td> 
+            <td className='text-nowrap'> <a className='text-decoration-none text-lowercase contact-link' href={`https://api.whatsapp.com/send?phone=${isSocialWork ? member?.whatsApp : '+8807...'}`}>{isSocialWork ? member?.whatsApp : '+88017 XX-XXXXXX'}</a></td> 
             <td className='text-nowrap text-center'><i className="bx bxl-whatsapp-square fs-5 text-success"></i></td>
           </tr>
           }

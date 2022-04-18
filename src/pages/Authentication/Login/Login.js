@@ -59,7 +59,7 @@ const Login = () => {
               <h3 className="text-info mb-3 styled-heading text-center">{!user? 'Login Now:' : 'You have already Logged In'}</h3>
               
               {
-                user ? <Form onSubmit={handleSubmit(onSubmit)}>
+                !user ? <Form onSubmit={handleSubmit(onSubmit)}>
                 {/* show error */}
                 <Form.Group>
                   <Form.Text className="text-danger small">

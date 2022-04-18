@@ -2,20 +2,23 @@ import React from 'react';
 import { Button, Col } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../../../../hooks/useAuth/useAuth';
-
+import useMember from '../../../../hooks/useMembers/useMembers'
 const MemberCard = ({userInfo}) => {
   const {user} = useAuth();
   const navigate = useNavigate();
   const viewProfile = id => {
     navigate(`/member/${id}`)
 };
-
+  const {currentMember} = useMember();
   const [primaryPhone] = userInfo?.phone || [];
 
   let profilePic = "";  
   if(!userInfo?.profilePic?.includes("http")){
     profilePic = `data:image/png;base64,${userInfo?.profilePic}`;
-  } 
+  }
+
+  const isSocialWork = currentMember?.roll?.slice(2,4) === '15';
+  console.log(isSocialWork);
   return (
     <>
       <Col>
@@ -73,18 +76,18 @@ const MemberCard = ({userInfo}) => {
               </ul> */}
               <ul className="list-unstyled d-flex justify-content-center">
                   <li className='quick-contact-item'>
-                    <a href={`tel:${primaryPhone}`}><i className='bx bxs-phone'></i></a>
+                    <a href={`tel:${isSocialWork ? primaryPhone : '+88017...'}`}><i className='bx bxs-phone'></i></a>
                   </li>
                   <li className='quick-contact-item'>
-                    <a href={`sms:${primaryPhone}`}><i className='bx bxs-message-rounded-detail'></i></a>
+                    <a href={`sms:${isSocialWork ? primaryPhone : '+88017...'}`}><i className='bx bxs-message-rounded-detail'></i></a>
                   </li>
                   {userInfo?.whatsApp ? <li className='quick-contact-item'>
-                    <a  href={`https://api.whatsapp.com/send?phone=${userInfo?.whatsApp}`}><i className='bx bxl-whatsapp'></i></a>
+                    <a  href={`https://api.whatsapp.com/send?phone=${isSocialWork ? userInfo?.whatsApp : '+88017...'}`}><i className='bx bxl-whatsapp'></i></a>
                   </li> : <>
                   </>
                   }
                   <li className='quick-contact-item'>
-                    <a href={userInfo?.messengerLink || userInfo?.facebookLink}><i className='bx bxl-messenger'></i></a>
+                    <a href={isSocialWork ? (userInfo?.messengerLink || userInfo?.facebookLink) : 'https://facebook.com'}><i className='bx bxl-messenger'></i></a>
                   </li>
                   
                 </ul>

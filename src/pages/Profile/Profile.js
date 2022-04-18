@@ -1,20 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Hearder from '../CommonSections/Header/Hearder';
-import useAuth from '../../hooks/useAuth/useAuth';
 import { Container } from 'react-bootstrap';
 import ShowMemberDetail from '../CommonSections/ShowMemberDetail/ShowMemberDetail';
+import useMember from '../../hooks/useMembers/useMembers';
 
 const Profile = () => {
-  const {user} = useAuth();
-  const [currentUser, setCurrentUser] = useState(null);
+  const {currentMember, setReLoad} = useMember();
   useEffect(()=>{
-    document.title = currentUser ? currentUser?.fullName+ " Profile" : "Profile";
-  }, [currentUser]);
-  useEffect(()=>{
-    fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`)
-    .then(res => res.json())
-    .then(data => setCurrentUser(data))
-  }, [user]);
+    document.title = currentMember ? currentMember?.fullName+ " Profile" : "Profile";
+  }, [currentMember]);
+
 
 
   return (
@@ -22,7 +17,7 @@ const Profile = () => {
     <Hearder />
       <section className="pb-4 add-profile-bg">
         <Container fluid>
-          <ShowMemberDetail member={currentUser} />
+          <ShowMemberDetail member={currentMember} setReLoad={setReLoad} />
           
         </Container>
       </section>

@@ -16,6 +16,8 @@ const MemberProvider = ({children}) => {
         setMembers(result ? result : {})
         setUserLoading(false);
         setReLoad(false);
+      }).catch(err=>{
+        console.log(err.message);
       });
   },[user, reLoad]);
 
