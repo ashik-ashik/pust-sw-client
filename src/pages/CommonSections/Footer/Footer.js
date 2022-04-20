@@ -1,15 +1,29 @@
 import React from 'react';
-import { Alert, Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import useMember from '../../../hooks/useMembers/useMembers';
+import { GoogleMap, LoadScript } from '@react-google-maps/api';
+
 
 const Footer = () => {
   const {currentMember} = useMember();
   const isSocialWork = currentMember?.roll?.slice(2,4) === '15';
+
+  const containerStyle = {
+    width: '100%',
+    height: '400px'
+  };
+  
+  const center = {
+    lat: 24.014136,
+    lng: 89.279313
+  };
+
+
   return (
     <>
       <footer className='py-3 bg-light'>
           {
-            !isSocialWork && <>
+            currentMember && !isSocialWork && <>
               <div className="p-4 bg-danger text-white" style={{zIndex:"0 !important"}}>
                 <Container>
                   <h3 className='title-font border-bottom pb-2'>We have recognized that, You are not a member/Student of Department of Social Work at PUST.</h3>
@@ -37,7 +51,18 @@ const Footer = () => {
               <p><i className='bx bx-street-view me-2' ></i><small>South side of Dhaka-Pabna Highway.</small></p>
             </Col>
             <Col md='8'>
-              <iframe title='University Location Map' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3644.507737452127!2d89.27752541435366!3d24.013154184606048!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39fe84f0ec23a72b%3A0x775d6cd53cbdad8b!2sPabna%20University%20of%20Science%20and%20Technology!5e0!3m2!1sen!2sbd!4v1649927840311!5m2!1sen!2sbd" width="100%" height="300" style={{border:"0"}} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade"></iframe>
+              <LoadScript
+                googleMapsApiKey={process.env.MAP_API_KEY}
+              >
+                <GoogleMap
+                  mapContainerStyle={containerStyle}
+                  center={center}
+                  zoom={17}
+                >
+                  { /* Child components, such as markers, info windows, etc. */ }
+                  <></>
+                </GoogleMap>
+              </LoadScript>
             </Col>
           </Row>
         </Container>

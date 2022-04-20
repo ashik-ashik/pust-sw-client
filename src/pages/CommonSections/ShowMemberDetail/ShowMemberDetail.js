@@ -7,6 +7,8 @@ import BasicInfo from './BasicInfo/BasicInfo';
 import ContactInfo from './ContactInfo/ContactInfo';
 import AddressInfo from './AddressInfo/AddressInfo';
 import useMember from '../../../hooks/useMembers/useMembers';
+import MyReviews from '../../Profile/Review/MyReviews/MyReviews'
+import WriteReview from '../../Profile/Review/WriteReview/WriteReview'
 
 const ShowMemberDetail = ({member, setReLoad}) => {
   const {memberLogOut} = useAuth();
@@ -20,6 +22,7 @@ const ShowMemberDetail = ({member, setReLoad}) => {
   const [deleteConfirmModal, setDeleteComfirmModal] = useState(false);
   const [deleteSuccessModal, setDeleteSuccessModal] = useState(false);
   const [menuShow, setMenuShow] = useState(false);
+  const [reviewLoad, setReviewLoad] = useState(false)
 
 
   const updateProfile = id => {
@@ -121,7 +124,7 @@ const ShowMemberDetail = ({member, setReLoad}) => {
       <Tab.Container id="left-tabs-example" defaultActiveKey="basic">
       <Row className='profile-sticky pb-4'>
         <Col md='3' className='bg-dark profile-nav-sticky border-top border-light'>
-          {/* side menu large screen */}
+          {/* side bat large screen */}
           <div className="pt-4 pb-3 text-center border-bottom brder-2 mb-3">
             <img className='profile-pic' src={member?.profilePic} alt="" />
             <h4 className='mt-2 text-danger styled-heading'>{member?.fullName} {member?.CRstatus === "verified" && <sup className="cr-badge">CR</sup>}</h4>
@@ -152,7 +155,8 @@ const ShowMemberDetail = ({member, setReLoad}) => {
           <div onClick={()=>setMenuShow(true)} className="my-side-toggle-menu-icon d-md-none">
             <i className='bx bxs-chevron-right text-white  bx-tada fs-1'></i>
           </div>
-
+            
+            {/* mobile menu */}
           <div className={`my-side-toggle-menu-items ${menuShow ? "active" : ""}`}>
             <i onClick={()=>setMenuShow(false)} className='bx bxs-chevron-left text-white menu-close fs-1 bx-tada'></i>
             <h5 className="text-light mb-3 border-bottom pb-2">Menu</h5>
@@ -166,6 +170,15 @@ const ShowMemberDetail = ({member, setReLoad}) => {
               <Nav.Item>
                 <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light d-flex align-items-center' eventKey="address"><i className='bx bx-map me-2 fs-5'></i>Address</Nav.Link>
               </Nav.Item>
+              
+              <Nav.Item>
+              <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light d-flex align-items-center' eventKey="write-review"><i className='bx bx-message-alt-dots me-2 fs-5'></i>Write Reviews</Nav.Link> 
+              </Nav.Item>
+              
+              <Nav.Item>
+                <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light d-flex align-items-center' eventKey="review"><i className='bx bx-message-alt-dots me-2 fs-5'></i>Reviews</Nav.Link>
+              </Nav.Item>
+
               {
                 user?.email === member?.email && <>
                   <Nav.Item>
@@ -173,6 +186,7 @@ const ShowMemberDetail = ({member, setReLoad}) => {
                   </Nav.Item>
                 </>
               }
+              
               <Nav.Item>
                 <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light d-flex align-items-center' eventKey="myblog"><i className='bx bx-book-bookmark me-2 fs-5'></i>My Blog</Nav.Link>
               </Nav.Item>
@@ -186,6 +200,7 @@ const ShowMemberDetail = ({member, setReLoad}) => {
             </Nav>
           </div>
 
+        {/* large screen menu */}
           <div className="d-md-block d-none pb-md-5">
             <Nav variant="pills" className="flex-column">
               <Nav.Item>
@@ -204,6 +219,17 @@ const ShowMemberDetail = ({member, setReLoad}) => {
                   </Nav.Item>
                 </>
               }
+              <Nav.Item>
+                <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light d-flex align-items-center' eventKey="review"><i className='bx bx-message-alt-dots me-2 fs-5'></i>Reviews</Nav.Link>
+              </Nav.Item>
+              
+              {
+                user?.email === member?.email && <>
+              <Nav.Item>
+              <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light d-flex align-items-center' eventKey="write-review"><i className='bx bx-message-alt-dots me-2 fs-5'></i>Write Reviews</Nav.Link> 
+              </Nav.Item>
+                </>
+                }
               <Nav.Item>
                 <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light d-flex align-items-center' eventKey="myblog"><i className='bx bx-book-bookmark me-2 fs-5'></i>Blogs</Nav.Link>
               </Nav.Item>
@@ -255,6 +281,16 @@ const ShowMemberDetail = ({member, setReLoad}) => {
                   <Tab.Pane eventKey="address">
                     <h5 className="title-font"><span className="text-danger">||</span> Address</h5>
                     <AddressInfo member={member} />
+                  </Tab.Pane>
+                  
+                  <Tab.Pane eventKey="review">
+                    <h5 className="title-font"><span className="text-danger">||</span> Reviews</h5>
+                    <MyReviews member={member} setReviewLoad={setReviewLoad} reviewLoad={reviewLoad} />
+                  </Tab.Pane>
+                  
+                  <Tab.Pane eventKey="write-review">
+                    <h5 className="title-font"><span className="text-danger">||</span> Write A Reviews</h5>
+                    <WriteReview member={member} setReviewLoad={setReviewLoad} />
                   </Tab.Pane>
 
                   <Tab.Pane eventKey="myblog">
