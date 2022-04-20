@@ -55,6 +55,7 @@ const Footer = () => {
                 googleMapsApiKey={process.env.MAP_API_KEY}
               >
                 <GoogleMap
+                style={{zIndex:'-1'}}
                   mapContainerStyle={containerStyle}
                   center={center}
                   zoom={17}

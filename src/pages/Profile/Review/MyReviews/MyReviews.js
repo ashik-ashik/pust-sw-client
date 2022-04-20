@@ -12,7 +12,6 @@ const MyReviews = ({member, setReviewLoad, reviewLoad}) => {
     setReviewLoad(false)
   },[member._id, reviewLoad]);
 
-  console.log(member);
 
   return (
     <>

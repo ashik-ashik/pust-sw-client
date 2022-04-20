@@ -18,6 +18,7 @@ import Footer from './pages/CommonSections/Footer/Footer';
 import Verification from './pages/CommonSections/Verification/Verification';
 import CRrequestList from './pages/Dashboard/CRrquestList/CRrequestList';
 import Dashboard from './pages/Dashboard/Dashboard/Dashboard';
+import ManageReviews from './pages/Dashboard/Dashboard/ManageReview/ManageReviews';
 import DashboardHome from './pages/Dashboard/DashboardHome/DashboardHome';
 import ManageAdmin from './pages/Dashboard/ManageAdmin/ManageAdmin';
 import ManageBlogs from './pages/Dashboard/ManageBlogs/ManageBlogs';
@@ -78,6 +79,7 @@ function App() {
                 <Route path='overview' element={<DashboardHome />}/>
                 <Route path='manage-members' element={<ManageMembers />}/>
                 <Route path='cr-request' element={<CRrequestList />}/>            
+                <Route path='reviews' element={<ManageReviews />}/>          
                 <Route path='manage-notice' element={<ManageNotice />}/>
                 <Route path='publish-event' element={<PublishEvent />}/>
                 <Route path='manage-events' element={<ManageEvent />} />

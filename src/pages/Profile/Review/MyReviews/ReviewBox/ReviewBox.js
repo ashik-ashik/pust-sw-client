@@ -19,7 +19,6 @@ const ReviewBox = ({review}) => {
       console.log(newValue);
     }
   };
-  console.log(review);
   return (
     <div className="shadow mb-4 p-3">
       <div className="d-flex align-items-center">

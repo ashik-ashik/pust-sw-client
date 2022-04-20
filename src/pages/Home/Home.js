@@ -9,7 +9,11 @@ import Members from '../Dashboard/ManageMembers/Members/Members';
 import EventCard from '../Events/EventCard/EventCard';
 import NoticeCard from '../Notices/NoticeCard/NoticeCard';
 import HomeBlogCard from './HomeBlogCard/HomeBlogCard';
-import Slider from './Slider/Slider';
+import SliderHome from './Slider/Slider';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import ReviewSlider from './ReviewSlider/ReviewSlider';
 
 
 const Home = () => {
@@ -24,6 +28,7 @@ const Home = () => {
   const [notices, setNotices] = useState(null);
   const {currentMember} = useMember();
   const [blogs, setBlogs] = useState(null);
+  const [reviews, setReviews] = useState(null)
 
 
 
@@ -57,6 +62,20 @@ const Home = () => {
     .then(result => setBlogs(result ? result : {}))
   },[]);
 
+  useEffect(()=>{
+    fetch(`https://warm-earth-97575.herokuapp.com/approved-review`)
+    .then(res => res.json())
+    .then(result => setReviews(result ? result : {}))
+  },[]);
+  const reviewSettings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    autoplay: true
+  };
+
 
   if(isLoading || !currentMember || !blogs){
     return <>
@@ -72,13 +91,14 @@ const Home = () => {
   if(currentMember.email && !currentMember?.isVerified){
     navigate("/verify-account");
   }
+
   return (
     <>
       <Hearder />
       
       <section>
         <Container >
-          <Slider />
+          <SliderHome />
         </Container>
       </section>
 
@@ -118,7 +138,7 @@ const Home = () => {
           }
 
           <h3 className="py-4 styled-heading border-top fw-bold border-secondary"><span className="text-danger fw-bolder">||</span> Latest <span className="text-danger fw-bolder styled-heading">Blogs</span>:</h3>
-          <Row xs={1} md={2} lg={3}>
+          <Row xs={1} md={2} lg={3} className="g-3">
             {
               blogs.length > 0 ? blogs?.map(blog => <HomeBlogCard key={blog?._id} blog={blog} />):<>
               <h5 className="title-font">There is no blogs available.</h5>
@@ -126,6 +146,12 @@ const Home = () => {
             }
           </Row>
 
+          <h2 className="mt-4 text-center display-4">Students Say About This</h2>
+          <Slider {...reviewSettings}>
+            {
+              reviews?.map(review => <ReviewSlider key={review?._id} review={review} />)
+            }
+          </Slider>
         </Container>
       </section>
     </>

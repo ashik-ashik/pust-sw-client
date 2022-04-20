@@ -35,6 +35,7 @@ const WriteReview = ({member, setReviewLoad}) => {
     data.status = 'pending';
     data.rating = rating;
     data.userPhoto = member.profilePic;
+    data.userBatch = member.batchNo;
     console.log(data);
     axios.post(`https://warm-earth-97575.herokuapp.com/review-post`, data)
     .then(res=>{
@@ -46,7 +47,6 @@ const WriteReview = ({member, setReviewLoad}) => {
     reset();
   }
   
-  console.log(member);
   return (
     <>
       <Form onSubmit={handleSubmit(postReview)}>
