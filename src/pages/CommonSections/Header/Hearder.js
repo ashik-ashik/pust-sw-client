@@ -72,6 +72,15 @@ const Hearder = ({children}) => {
           </Navbar.Offcanvas>
         </Container>
       </Navbar>
+        <div className="pt-2 pb-1 bg-danger">
+      <Container>
+        <marquee className='text-white m-0 small' behavior="scroll" truespeed='1' direction="left">
+            <small className="small">
+            Hey Social Worker, Ramadan Mubarak. Welcome {currentUser?.fullName} to the our new web application. We are going to get useable helpful reality based web application. Thank you for visiting us.
+            </small>
+          </marquee>
+      </Container>
+        </div>
       {
         currentUser ? (currentUser.email && "") : ""
       }

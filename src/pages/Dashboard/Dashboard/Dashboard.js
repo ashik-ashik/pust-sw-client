@@ -33,6 +33,8 @@ const Dashboard = () => {
             <Col lg="3" xl="2" className="bg-light d-block d-lg-none profile-nav-sticky">
               <Row className='align-items-center'>
                 <Col>
+
+                {/* mobile menu */}
                 <div onClick={()=>setOffcanvasHandle(true)} className="my-side-toggle-menu-icon d-md-none">
                   <i className='bx bxs-chevron-right text-white  bx-tada fs-1'></i>
                 </div>
@@ -44,6 +46,7 @@ const Dashboard = () => {
                       <Nav.Link onClick={()=> setOffcanvasHandle(false)} as={NavLink} className="admin-menu-items" to="/"><i className='fs-4 bx bxs-left-arrow-alt me-1'></i> <span>Back to Home</span></Nav.Link>
                       <Nav.Link onClick={()=> setOffcanvasHandle(false)} as={NavLink} className="admin-menu-items" to="overview"><i className='fs-4 bx bxs-droplet-half me-2'></i> <span>Overview</span></Nav.Link>
                       <Nav.Link onClick={()=> setOffcanvasHandle(false)} as={NavLink} className="admin-menu-items" to="manage-members"><i className='fs-4 bx bxs-user-detail me-2'></i> <span>Manage Members</span></Nav.Link>
+                      <Nav.Link onClick={()=> setOffcanvasHandle(false)} as={NavLink} className="admin-menu-items" to="reviews"><i className='fs-4 bx bx-message-alt-dots me-2' ></i> Manage Reviews</Nav.Link>
                       <Nav.Link onClick={()=> setOffcanvasHandle(false)} as={NavLink} className="admin-menu-items" to="cr-request"><i className='fs-4 bx bxs-user-pin me-2' ></i> CR Requests</Nav.Link>
                       <Nav.Link onClick={()=> setOffcanvasHandle(false)} as={NavLink} className="admin-menu-items" to="manage-notice"><i className='fs-4 bx bxs-bell-plus me-2' ></i> Manage Notice</Nav.Link>
                       <Nav.Link onClick={()=> setOffcanvasHandle(false)} as={NavLink} className="admin-menu-items" to="publish-event"><i className='fs-4 bx bxs-calendar-event me-2' ></i> Publish Event</Nav.Link>
@@ -59,13 +62,14 @@ const Dashboard = () => {
                 </Col>
               </Row>
             </Col>
+            {/* large screen side bar menu */}
             <Col lg="3" xl="2" className="bg-light d-none d-lg-block profile-nav-sticky">
               <h4 className="styled-heading d-none d-lg-block">Dashboard</h4>
                 <Nav.Link as={NavLink} className="admin-menu-items" to="/"><i className='fs-4 bx bxs-left-arrow-alt me-1'></i> <span>Back to Home</span></Nav.Link>
                 <Nav.Link as={NavLink} className="admin-menu-items" to="overview"><i className='fs-4 bx bxs-droplet-half me-2'></i> <span>Overview</span></Nav.Link>
                 <Nav.Link as={NavLink} className="admin-menu-items" to="manage-members"><i className='fs-4 bx bxs-user-detail me-2'></i> <span>Manage Members</span></Nav.Link>
                 <Nav.Link as={NavLink} className="admin-menu-items" to="cr-request"><i className='fs-4 bx bxs-user-pin me-2' ></i> CR Requests</Nav.Link>
-                <Nav.Link as={NavLink} className="admin-menu-items" to="reviews"><i className='fs-4 bx bx-message-alt-dots me-2' ></i> Reviews</Nav.Link>
+                <Nav.Link as={NavLink} className="admin-menu-items" to="reviews"><i className='fs-4 bx bx-message-alt-dots me-2' ></i> Manage Reviews</Nav.Link>
                 <Nav.Link as={NavLink} className="admin-menu-items" to="manage-notice"><i className='fs-4 bx bxs-bell-plus me-2' ></i> Manage Notice</Nav.Link>
                 <Nav.Link as={NavLink} className="admin-menu-items" to="publish-event"><i className='fs-4 bx bxs-calendar-event me-2' ></i> Publish Event</Nav.Link>
                 <Nav.Link as={NavLink} className="admin-menu-items" to="manage-events"><i className='fs-4 bx bx-calendar-event me-2' ></i> Manage Event</Nav.Link>

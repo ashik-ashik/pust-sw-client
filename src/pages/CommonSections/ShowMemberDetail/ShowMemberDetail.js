@@ -172,15 +172,15 @@ const ShowMemberDetail = ({member, setReLoad}) => {
               </Nav.Item>
               
               <Nav.Item>
-              <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light d-flex align-items-center' eventKey="write-review"><i className='bx bx-message-alt-dots me-2 fs-5'></i>Write Reviews</Nav.Link> 
-              </Nav.Item>
-              
-              <Nav.Item>
                 <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light d-flex align-items-center' eventKey="review"><i className='bx bx-message-alt-dots me-2 fs-5'></i>Reviews</Nav.Link>
               </Nav.Item>
 
               {
                 user?.email === member?.email && <>
+                  <Nav.Item>
+                  <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light d-flex align-items-center' eventKey="write-review"><i className='bx bx-plus me-2 fs-5'></i>Write Reviews</Nav.Link> 
+                  </Nav.Item>
+              
                   <Nav.Item>
                     <Nav.Link as={Link} to="/todo" className='rounded-0 small cursor-pointer mb-2 bg-light d-flex align-items-center'><i className='bx bx-list-plus me-2 fs-5'></i>To Do App</Nav.Link>
                   </Nav.Item>
@@ -226,7 +226,7 @@ const ShowMemberDetail = ({member, setReLoad}) => {
               {
                 user?.email === member?.email && <>
               <Nav.Item>
-              <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light d-flex align-items-center' eventKey="write-review"><i className='bx bx-message-alt-dots me-2 fs-5'></i>Write Reviews</Nav.Link> 
+              <Nav.Link className='rounded-0 small cursor-pointer mb-2 bg-light d-flex align-items-center' eventKey="write-review"><i className='bx bx-plus me-2 fs-5'></i>Write Reviews</Nav.Link> 
               </Nav.Item>
                 </>
                 }
@@ -301,11 +301,11 @@ const ShowMemberDetail = ({member, setReLoad}) => {
 
                 <div className="socital-media py-4">
                   <ul className='list-unstyled member-social-media w-75 mx-auto'>
-                    <li><a href={member?.facebookLink || "#"}><i className='bx bxl-facebook'></i></a></li>
-                    <li><a href={member?.instagramLink || "#"}><i className='bx bxl-instagram'></i></a></li>
-                    <li><a href={member?.twitterLink || "#"}><i className='bx bxl-twitter'></i></a></li>
-                    <li><a href={member?.linkedinLink || "#"}><i className='bx bxl-linkedin'></i></a></li>
-                    <li><a href={member?.messengerLink || "#"}><i className='bx bxl-messenger'></i></a></li>
+                    <li><a href={member?.facebookLink || "#"} rel='noreferrer' target='_blank'><i className='bx bxl-facebook'></i></a></li>
+                    <li><a href={member?.instagramLink || "#"} rel='noreferrer' target='_blank'><i className='bx bxl-instagram'></i></a></li>
+                    <li><a href={member?.twitterLink || "#"} rel='noreferrer' target='_blank'><i className='bx bxl-twitter'></i></a></li>
+                    <li><a href={member?.linkedinLink || "#"} rel='noreferrer' target='_blank'><i className='bx bxl-linkedin'></i></a></li>
+                    <li><a href={member?.messengerLink || "#"} rel='noreferrer' target='_blank'><i className='bx bxl-messenger'></i></a></li>
                   </ul>
                 </div>
                 

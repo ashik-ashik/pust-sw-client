@@ -521,7 +521,8 @@ table td {
   position: fixed;
   top: 70px;
   left: -110%;
-  width: 300px;
+  max-width: 300px;
+  width: 85%;
   height: 100vh;
   padding: 20px 10px 0;
   transition: ease-in .5s;

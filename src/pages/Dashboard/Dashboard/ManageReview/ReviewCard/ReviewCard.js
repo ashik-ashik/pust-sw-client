@@ -42,17 +42,17 @@ const ReviewCard = ({review, setReviewReLoad}) => {
       <Col>
         <div className="shadow p-3">
           <img className='text-center d-block mx-auto mb-3' style={{width:'100px',height:'100px'}} src={review?.userPhoto || 'https://i.ibb.co/NZ07KB3/admin-user.png'} alt="" />
-          <h4 className="title-font text-center"><Link to={`/member/${review?.userId}`}>{review?.userName}</Link></h4>
+          <h4 className="text-center"><Link className="title-font" to={`/member/${review?.userId}`}>{review?.userName}</Link></h4>
           
           <div className="d-flex justify-content-center mb-2">
             <ReactStars {...startRating} />
           </div>
-          <p className="mb-1">
+          <p className="mb-3 small" style={{textAlign:'justify'}}>
             {review?.review}
           </p>
-              <Button onClick={()=>manageReviewStatus('approved')} variant='success' className='rounded-0 shadow-none px-3 me-2' size='sm'>{review?.status === 'approved' ? 'Approved' : 'Approve'}</Button>
-              <Button onClick={()=>manageReviewStatus('rejected')} variant='warning' className='rounded-0 shadow-none px-3 me-2' size='sm'>{review?.status === 'rejected' ? 'Rejected' : 'Reject'}</Button>
-              <Button onClick={()=>deleteReview(review?._id)} variant='danger' className='rounded-0 shadow-none px-3 me-2' size='sm'>Delete</Button>
+              <Button onClick={()=>manageReviewStatus('approved')} variant='success' className='rounded-0 shadow-none px-3 me-2' style={{fontSize:'11px'}} size='sm'>{review?.status === 'approved' ? 'Approved' : 'Approve'}</Button>
+              <Button onClick={()=>manageReviewStatus('rejected')} variant='warning' className='rounded-0 shadow-none px-3 me-2' style={{fontSize:'11px'}} size='sm'>{review?.status === 'rejected' ? 'Rejected' : 'Reject'}</Button>
+              <Button onClick={()=>deleteReview(review?._id)} variant='danger' className='rounded-0 shadow-none px-3 me-2' style={{fontSize:'11px'}} size='sm'>Delete</Button>
         </div>
       </Col>
     </>
