@@ -156,7 +156,7 @@ const Home = () => {
             }
           </Row>
 
-          <h2 className="mt-4 text-center display-4">Students Say About This</h2>
+          <h2 className="mt-4 text-center">Students Say About This</h2>
           <Slider {...reviewSettings}>
             {
               reviews?.map(review => <ReviewSlider key={review?._id} review={review} />)

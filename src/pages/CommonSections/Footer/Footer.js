@@ -2,9 +2,11 @@ import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import useMember from '../../../hooks/useMembers/useMembers';
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import useAuth from '../../../hooks/useAuth/useAuth';
 
 
 const Footer = () => {
+  const {user} = useAuth();
   const {currentMember} = useMember();
   const isSocialWork = currentMember?.roll?.slice(2,4) === '15';
 
@@ -23,7 +25,7 @@ const Footer = () => {
     <>
       <footer className='py-3 bg-light'>
           {
-            currentMember && !isSocialWork && <>
+            user && !isSocialWork && <>
               <div className="p-4 bg-danger text-white" style={{zIndex:"0 !important"}}>
                 <Container>
                   <h3 className='title-font border-bottom pb-2'>We have recognized that, You are not a member/Student of Department of Social Work at PUST.</h3>

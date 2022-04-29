@@ -8,7 +8,7 @@ const ContactCard = ({member, index}) => {
   if(!member?.profilePic?.includes("http")){
   profilePic = `data:image/png;base64,${member?.profilePic}`;
   };
-  const [phone] = member?.phone;
+  const [phone] = member?.phone || [];
   const isSocialWork = currentMember?.roll?.slice(2,4) === '15';
   return (
     <>

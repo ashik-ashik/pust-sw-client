@@ -124,9 +124,9 @@ const ShowMemberDetail = ({member, setReLoad}) => {
       <Tab.Container id="left-tabs-example" defaultActiveKey="basic">
       <Row className='profile-sticky pb-4'>
         <Col md='3' className='bg-dark profile-nav-sticky border-top border-light'>
-          {/* side bat large screen */}
+          {/* side bar large screen */}
           <div className="pt-4 pb-3 text-center border-bottom brder-2 mb-3">
-            <img className='profile-pic' src={member?.profilePic} alt="" />
+            <img className='profile-pic' src={(member?.email === 'mdashika989@gmail.com' ? "https://i.ibb.co/k3f5CR6/ashik.jpg" : member.profilePic)} alt="" />
             <h4 className='mt-2 text-danger styled-heading'>{member?.fullName} {member?.CRstatus === "verified" && <sup className="cr-badge">CR</sup>}</h4>
             <p className="text-light small m-0">{member?.batchNo}<sup>th</sup> Batch</p>
             <small style={{fontSize:"12px"}} className="text-light text-break">{member?.email}</small>
@@ -245,11 +245,11 @@ const ShowMemberDetail = ({member, setReLoad}) => {
 
         </Col>
         <Col md="9">
-          <div className={`profilePic text-center ${member?.email !== user?.email ? "py-5" : "py-4"} d-none d-md-block`} style={{backgroundImage:`url(${imageURL ? imageURL : member.profilePic})`}}>
+          <div className={`profilePic text-center ${member?.email !== user?.email ? "py-5" : "py-4"} d-none d-md-block`} style={{backgroundImage:`url(${imageURL ? imageURL : (member?.email === 'mdashika989@gmail.com' ? "https://i.ibb.co/k3f5CR6/ashik.jpg" : member.profilePic)})`}}>
             
             {
               member?.profilePic ?
-              <img onClick={viewLarge} className='profile-pic to-large-view' src={imageURL ? imageURL : member.profilePic} alt="" /> : 
+              <img onClick={viewLarge} className='profile-pic to-large-view' src={imageURL ? imageURL : (member?.email === 'mdashika989@gmail.com' ? "https://i.ibb.co/k3f5CR6/ashik.jpg" : member.profilePic)} alt="" /> : 
               <img className='profile-pic' src="https://i.ibb.co/17b0X70/profile-avatar.jpg" alt="" />
               }
             <div className="mt-3">
@@ -261,6 +261,19 @@ const ShowMemberDetail = ({member, setReLoad}) => {
             </div>
           </div>
           <h2 className='mb-3 mt-2 text-center styled-heading'>{member?.fullName} {member?.CRstatus === "verified" && <sup className="cr-badge">CR</sup>}</h2>
+          {
+            member?.email === 'mdashika989@gmail.com' && <>
+            <div className="pb-2">
+              <h5 className="title-font text-center">
+                MERN Stack Junior Developer
+              </h5>
+              <h6 className="text-center title-font">
+                Student of Department of Social Work <br />
+                at Pabna University of Science and Technology
+              </h6>
+            </div>
+            </>
+          }
           {
             user?.email === member?.email && !member?.isCR && <>
               <p>Are you CR of your class? <span className='cr-ship' onClick={()=> updateCR(member?._id)}>Set CRship</span></p>
@@ -298,6 +311,17 @@ const ShowMemberDetail = ({member, setReLoad}) => {
                   </Tab.Pane>
                 </Tab.Content>
 
+                {
+                  member?.email === 'mdashika989@gmail.com' && <>
+                    <div className="py-2">
+                      <h5 className="title-font">Developer Say:</h5>
+                      <p className="small text-muted">
+                        Hey there, This is our unofficial website. I have build this website for our Social Work Department. I have created this with a simple purpose, to collect and store basic data about the student of Department of Social work at Pabna University of Science and Technology. Here all of your information will be secured. No one can access you important information such as your phone number, your whatsApp number, your social media profile links. These all of your important information is protected by secrec thing. If someone register with wrong information even he/she can not access these protected information. <br /> <br />
+                        The actual purpose behind this website is practice.
+                      </p>
+                    </div>
+                  </>
+                }
 
                 <div className="socital-media py-4">
                   <ul className='list-unstyled member-social-media w-75 mx-auto'>

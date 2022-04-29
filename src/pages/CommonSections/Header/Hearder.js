@@ -58,7 +58,7 @@ const Hearder = ({children}) => {
                 <Nav.Link as={NavLink} className="menu-items" to="/mission-vision"><i className='fs-4 bx bx-target-lock me-2' ></i> Mission & Vision</Nav.Link>
 
                 {
-                  user ? <Nav.Link as={Button} variant='danger' className='text-white small mt-2' onClick={memberLogOut}>Log Out</Nav.Link> : <>
+                  user ? <Nav.Link as={Button} variant='danger' className='text-white mt-2 py-1' onClick={memberLogOut}>Log Out</Nav.Link> : <>
                     <Nav.Link to="/login">Log In</Nav.Link>
                   </>
                 }
@@ -68,6 +68,9 @@ const Hearder = ({children}) => {
                 <a href="https://social-work-at-pust.web.app/" rel='noreferrer' target='_blank'><img className='img-fluid' src="https://i.ibb.co/Q9PRVg1/logo.png" alt="pust-sw" /></a>
                 <h4 className="styled-heading text-center text-success mt-4">Department of Social Work at PUST</h4>
               </div>
+              <p style={{fontSize:'11px'}} className="text-secondary">
+              the web side designed and developed by <Link to="/member/625dbd513d8e55f7e7ede7f6">Md Ashik Ali</Link>
+              </p>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
         </Container>

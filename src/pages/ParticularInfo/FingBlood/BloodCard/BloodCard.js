@@ -16,7 +16,7 @@ const BloodCard = ({member, index}) => {
             <Accordion.Header>
               <img className='blood-card-img me-3' src={profilePic ? profilePic : member?.profilePic} alt="" />
               <div>
-              <h4 className="title-font mb-0">{member?.blood?.toUpperCase()}</h4>
+              <h4 className="title-font mb-0">{member?.blood !=='Select Blood Group:' ? member?.blood?.toUpperCase() : "N/A"}</h4>
               <p className="mb-0 text-light blood-name">{member?.fullName}, {member?.batchNo}<sup>th</sup></p>
               </div>
             </Accordion.Header>

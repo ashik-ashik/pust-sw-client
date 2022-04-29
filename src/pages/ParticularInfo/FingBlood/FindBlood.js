@@ -15,7 +15,7 @@ const FindBlood = () => {
   if(!currentMember?.isVerified){
     navigate("/verify-account")
   }
-  const allMembers = members?.filter(memb => memb?.email !== "socialwork.pust2008@gmail.com")
+  const allMembers = members?.filter(memb => memb.roll && memb.email !== 'socialwork.pust2008@gmail.com')
 
   // search blood group
   const [blood, setBlood] = useState(null);

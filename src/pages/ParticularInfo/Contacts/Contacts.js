@@ -16,7 +16,7 @@ const Contacts = () => {
   if(!currentMember?.isVerified){
     navigate("/verify-account")
   }
-  const allMembers = members?.filter(memb => memb?.email !== "socialwork.pust2008@gmail.com")
+  const allMembers = members?.filter(memb => memb.roll && memb.email !== 'socialwork.pust2008@gmail.com')
   if(!members){
     return <>
       <Loading />
