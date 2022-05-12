@@ -1,5 +1,5 @@
 # PUST-SW
-> ######  Department of Social Work at Pabna University of Science and Technology.
+> ######  Department of XYZ at ABC University of Science and Technology.
 [![PUst-SW](https://i.ibb.co/rwKPzb4/favicon.png "PUst-SW")](https://social-work-at-pust.web.app "PUst-SW") 
 
 ## [VISIT NOW](HTTPS://SOCIAL-WORK-AT-PUST.WEB.APP "PUST-SW")

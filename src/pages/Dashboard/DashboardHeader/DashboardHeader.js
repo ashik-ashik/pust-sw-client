@@ -43,7 +43,7 @@ const DashboardHeader = () => {
               </Nav>
               <div className="canvas-logo py-4">
                 <Link to="/"><img className='img-fluid' src="https://i.ibb.co/Q9PRVg1/logo.png" alt="pust-sw" /></Link>
-                <h4 className="styled-heading text-center text-success mt-4">Department of Social Work at PUST</h4>
+                <h4 className="styled-heading text-center text-success mt-4">Department of XYZ at PUST</h4>
               </div>
             </Offcanvas.Body>
           </Navbar.Offcanvas>

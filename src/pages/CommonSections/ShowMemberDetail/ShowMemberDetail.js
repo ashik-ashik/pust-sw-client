@@ -268,8 +268,8 @@ const ShowMemberDetail = ({member, setReLoad}) => {
                 MERN Stack Junior Developer
               </h5>
               <h6 className="text-center title-font">
-                Student of Department of Social Work <br />
-                at Pabna University of Science and Technology
+                Student of Department of XYZ <br />
+                at ABC University of Science and Technology
               </h6>
             </div>
             </>
@@ -316,7 +316,7 @@ const ShowMemberDetail = ({member, setReLoad}) => {
                     <div className="py-2">
                       <h5 className="title-font">Developer Say:</h5>
                       <p className="small text-muted">
-                        Hey there, This is our unofficial website. I have build this website for our Social Work Department. I have created this with a simple purpose, to collect and store basic data about the student of Department of Social work at Pabna University of Science and Technology. Here all of your information will be secured. No one can access you important information such as your phone number, your whatsApp number, your social media profile links. These all of your important information is protected by secrec thing. If someone register with wrong information even he/she can not access these protected information. <br /> <br />
+                        Hey there, This is our unofficial website. I have build this website for our XYZ Department. I have created this with a simple purpose, to collect and store basic data about the student of Department of XYZ at ABC University of Science and Technology. Here all of your information will be secured. No one can access you important information such as your phone number, your whatsApp number, your social media profile links. These all of your important information is protected by secrec thing. If someone register with wrong information even he/she can not access these protected information. <br /> <br />
                         The actual purpose behind this website is practice.
                       </p>
                     </div>

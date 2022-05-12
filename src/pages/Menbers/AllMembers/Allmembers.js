@@ -9,7 +9,7 @@ import useMember from '../../../hooks/useMembers/useMembers';
 
 const Allmembers = () => {
   useEffect(()=>{
-    document.title = "Members of Department of Social Work at PUST"
+    document.title = "Members of Department of XYZ at PUST"
   }, []);
   const {user} = useAuth();
   const [uaers, setUsers] = useState(null);

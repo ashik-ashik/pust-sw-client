@@ -31,7 +31,7 @@ const Faqs = () => {
                 <Accordion.Item eventKey="0" className='mb-2'>
                   <Accordion.Header>How can it will help me?</Accordion.Header>
                   <Accordion.Body>
-                    Here you will save some of your basic informaion such as email, phone number, your current mess address/ where you are in, your blood group. Similarly others will do same. So, here you can easily find anyone's detail, find one's phone number/contact info, connect with others through social media, you also can know better about others who are also member(student) of Department of Social Work at PUST. Thus it will help you.
+                    Here you will save some of your basic informaion such as email, phone number, your current mess address/ where you are in, your blood group. Similarly others will do same. So, here you can easily find anyone's detail, find one's phone number/contact info, connect with others through social media, you also can know better about others who are also member(student) of Department of XYZ at PUST. Thus it will help you.
                   </Accordion.Body>
                 </Accordion.Item>
               </Accordion>

@@ -219,18 +219,18 @@ const SetInformation = () => {
                       <Form.Control list='mess-address' {...register("messAddress")} type="text" placeholder="Mess Address" />
                     </Form.Group> 
                     <datalist id='mess-address'>
-                      <option value="Central Terminal, Pabna">Central Terminal, Pabna</option>
-                      <option value="Chetoner Mor, Pabna">Chetoner Mor, Pabna</option>
-                      <option value="Meril bypass, Pabna">Meril bypass, Pabna</option>
-                      <option value="Singa, Pabna">Singa, Pabna</option>
-                      <option value="Degree Bottola, Pabna">Degree Bottola, Pabna</option>
-                      <option value="Dak-Bangla, Pabna">Dak-Bangla, Pabna</option>
-                      <option value="Moktob Mor, Pabna">Moktob Mor, Pabna</option>
-                      <option value="Radhanagar, Pabna">Radhanagar, Pabna</option>
-                      <option value="Mujahid Club, Pabna">Mujahid Club, Pabna</option>
-                      <option value="Bangla Clinic, Pabna">Bangla Clinic, Pabna</option>
-                      <option value="Masus Bazar, Pabna">Masus Bazar, Pabna</option>
-                      <option value="Mahatab Tower, Razapur, Pabna">Mahatab Tower, Razapur, Pabna</option>
+                      <option value="Central Terminal, ABC">Central Terminal, ABC</option>
+                      <option value="Chetoner Mor, ABC">Chetoner Mor, ABC</option>
+                      <option value="Meril bypass, ABC">Meril bypass, ABC</option>
+                      <option value="Singa, ABC">Singa, ABC</option>
+                      <option value="Degree Bottola, ABC">Degree Bottola, ABC</option>
+                      <option value="Dak-Bangla, ABC">Dak-Bangla, ABC</option>
+                      <option value="Moktob Mor, ABC">Moktob Mor, ABC</option>
+                      <option value="Radhanagar, ABC">Radhanagar, ABC</option>
+                      <option value="Mujahid Club, ABC">Mujahid Club, ABC</option>
+                      <option value="Bangla Clinic, ABC">Bangla Clinic, ABC</option>
+                      <option value="Masus Bazar, ABC">Masus Bazar, ABC</option>
+                      <option value="Mahatab Tower, Razapur, ABC">Mahatab Tower, Razapur, ABC</option>
                     </datalist>
                 </Row>
                 }
@@ -254,7 +254,7 @@ const SetInformation = () => {
                       <option value="Naogan">Naogan</option>
                       <option value="Sirajgogn">Sirajgogn</option>
                       <option value="Nawabganj">Nawabganj</option>
-                      <option value="Pabna">Pabna</option>
+                      <option value="ABC">ABC</option>
                       <option value="Joypurhat">Joypurhat</option>
                       <option value="Dhaka">Dhaka</option>
                       <option value="Tangail">Tangail</option>

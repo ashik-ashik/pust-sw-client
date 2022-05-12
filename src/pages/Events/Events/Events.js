@@ -6,7 +6,7 @@ import EventCard from '../EventCard/EventCard';
 
 const Events = () => {
   useEffect(()=>{
-    document.title = "Events of Department of Social Work at PUST";
+    document.title = "Events of Department of XYZ at PUST";
   }, []);
   const [events, setEvents] = useState(null)
 

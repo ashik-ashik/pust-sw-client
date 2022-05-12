@@ -18,7 +18,7 @@ import ReviewSlider from './ReviewSlider/ReviewSlider';
 
 const Home = () => {
   useEffect(()=>{
-    document.title = "Department of Social Work at PUST"
+    document.title = "Department of XYZ at PUST"
   }, []);
   const {user, isLoading} = useAuth();
   const navigate = useNavigate();
@@ -116,7 +116,7 @@ const Home = () => {
             <Col md="7" className='mb-3'>
               <h3 className="styled-heading">A Few Words About the University</h3>
               <p style={{textAlign:"justify"}}>
-              The government passed the Act in 15 July 2001 to establish a science and technology university in Pabna. The university will be located in the district head quarter of Pabna. Pabna is a central district town in northern Bangladesh having long historical and cultural heritage. The academic curriculum of the Pabna University of Science and Technology was started on 05 June 2008. This university will play an innovative role in providing need-based higher education, training and research. Also the university will be committed to maintain and raise the quality and standard of higher education for the students as in international standards. This practical and need-based curricula will produce highly qualified trained scientists and technologists for the needs of Bangladesh as well as the world employment market. The university offers education in science- and technology-based subjects for undergraduate and post graduate levels. This newly established university will occupies an area of about 30 acres, with a number of multi-storied buildings. Because of its location, it has already drawn the attention of brilliant students for admission and scholarly faculty members for teaching and research.
+              The government passed the Act in 15 July 2001 to establish a science and technology university in ABC. The university will be located in the district head quarter of ABC. ABC is a central district town in northern Bangladesh having long historical and cultural heritage. The academic curriculum of the ABC University of Science and Technology was started on 05 June 2008. This university will play an innovative role in providing need-based higher education, training and research. Also the university will be committed to maintain and raise the quality and standard of higher education for the students as in international standards. This practical and need-based curricula will produce highly qualified trained scientists and technologists for the needs of Bangladesh as well as the world employment market. The university offers education in science- and technology-based subjects for undergraduate and post graduate levels. This newly established university will occupies an area of about 30 acres, with a number of multi-storied buildings. Because of its location, it has already drawn the attention of brilliant students for admission and scholarly faculty members for teaching and research.
               </p>
             </Col>
             <Col>

@@ -28,7 +28,7 @@ const Footer = () => {
             user && !isSocialWork && <>
               <div className="p-4 bg-danger text-white" style={{zIndex:"0 !important"}}>
                 <Container>
-                  <h3 className='title-font border-bottom pb-2'>We have recognized that, You are not a member/Student of Department of Social Work at PUST.</h3>
+                  <h3 className='title-font border-bottom pb-2'>We have recognized that, You are not a member/Student of Department of XYZ at PUST.</h3>
                   
                   <p>
                     So you cannot enjoy some of features. Because There is some important personal imformation. These should not be accessable to others.
@@ -48,9 +48,9 @@ const Footer = () => {
           <Row className='align-items-center'>
             <Col>
               <h3 className="title- font">Location:</h3>
-              <p><i className='bx bxs-institution me-2'></i><small>Pabna University of Science and Technology,</small></p>
-              <p><i className='bx bx-map-alt me-2' ></i><small>Razapur, Pabna Sadar, Pabna-6600,</small></p>
-              <p><i className='bx bx-street-view me-2' ></i><small>South side of Dhaka-Pabna Highway.</small></p>
+              <p><i className='bx bxs-institution me-2'></i><small>ABC University of Science and Technology,</small></p>
+              <p><i className='bx bx-map-alt me-2' ></i><small>Razapur, ABC Sadar, ABC-6600,</small></p>
+              <p><i className='bx bx-street-view me-2' ></i><small>South side of Dhaka-ABC Highway.</small></p>
             </Col>
             <Col md='8'>
               <LoadScript

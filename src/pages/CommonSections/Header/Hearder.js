@@ -66,7 +66,7 @@ const Hearder = ({children}) => {
               </Nav>
               <div className="canvas-logo py-4">
                 <a href="https://social-work-at-pust.web.app/" rel='noreferrer' target='_blank'><img className='img-fluid' src="https://i.ibb.co/Q9PRVg1/logo.png" alt="pust-sw" /></a>
-                <h4 className="styled-heading text-center text-success mt-4">Department of Social Work at PUST</h4>
+                <h4 className="styled-heading text-center text-success mt-4">Department of XYZ at PUST</h4>
               </div>
               <p style={{fontSize:'11px'}} className="text-secondary">
               the web side designed and developed by <Link to="/member/625dbd513d8e55f7e7ede7f6">Md Ashik Ali</Link>

@@ -8,7 +8,7 @@ import '../Register/Register.css'
 
 const Login = () => {
   useEffect(()=>{
-    document.title = "Login to Department of Social Work at PUST"
+    document.title = "Login to Department of XYZ at PUST"
   }, []);
   const {user, setNewUser, memberLogin, errorMessage} = useAuth();
   // get values from the form

@@ -9,7 +9,7 @@ const axios = require('axios');
 
 const Register = () => {
   useEffect(()=>{
-    document.title = "Register to Department of Social Work at PUST"
+    document.title = "Register to Department of XYZ at PUST"
   }, []);
   
   const {user, setNewUser, memberRegister, updateProfile, auth} = useAuth();
