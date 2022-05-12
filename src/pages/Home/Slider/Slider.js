@@ -2,13 +2,17 @@ import React from 'react';
 import { Carousel } from 'react-bootstrap';
 
 const Slider = () => {
+  /*
+  
+
+*/ 
   return (
     <>
       <Carousel fade>
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src="https://i.ibb.co/0VsVbT8/teachers.jpg"
+            src="https://i.ibb.co/KyZV0Xr/bg-image-31.jpg"
             alt="First slide"
           />
           <Carousel.Caption>
@@ -23,7 +27,7 @@ const Slider = () => {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src="https://i.ibb.co/prm1XKZ/11th-Group.jpg"
+            src="https://i.ibb.co/ccfPWG4/bg-image-32.jpg"
             alt="Second slide"
           />
 
@@ -36,7 +40,7 @@ const Slider = () => {
         <Carousel.Item>
           <img
             className="d-block w-100"
-            src="https://i.ibb.co/y0b11vX/orientation.jpg"
+            src="https://i.ibb.co/4VnPjPX/bg-image-30.jpg"
             alt="Third slide"
           />
 
