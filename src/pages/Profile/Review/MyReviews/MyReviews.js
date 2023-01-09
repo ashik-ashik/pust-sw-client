@@ -6,7 +6,7 @@ const MyReviews = ({member, setReviewLoad, reviewLoad}) => {
   const {user}= useAuth()
   const [reviews, setReviews] = useState(null);
   useEffect(()=>{
-    fetch(`https://warm-earth-97575.herokuapp.com/reviews/${member._id}`)
+    fetch(`https://pust-sw-server.vercel.app/reviews/${member._id}`)
     .then(res=>res.json())
     .then(result => setReviews(result ? result : []))
     setReviewLoad(false)

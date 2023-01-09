@@ -11,14 +11,14 @@ const ManageEvent = () => {
   const {user} = useAuth();
   const [currentUser, setCurrentUser]=useState(null);
   useEffect(()=> {
-    fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`)
+    fetch(`https://pust-sw-server.vercel.app/currentUser/${user?.email}`)
     .then(res => res.json())
     .then(data => setCurrentUser(data));
   }, [user]);
 
   const [events, setEvents ] = useState(null);
   useEffect(()=>{
-      fetch(`https://warm-earth-97575.herokuapp.com/events`)
+      fetch(`https://pust-sw-server.vercel.app/events`)
       .then(res => res.json())
       .then(result => setEvents(result))
   },[]);

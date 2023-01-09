@@ -9,7 +9,7 @@ const SingleNotice = () => {
     const {id} = useParams();
     const [notice, setNotice] = useState(null);
     useEffect(()=>{
-        fetch(`https://warm-earth-97575.herokuapp.com/notice/${id}`)
+        fetch(`https://pust-sw-server.vercel.app/notice/${id}`)
         .then(res => res.json())
         .then(result => setNotice(result))
     },[id]);

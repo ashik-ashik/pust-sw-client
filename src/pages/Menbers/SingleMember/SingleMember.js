@@ -12,7 +12,7 @@ const SingleMember = () => {
   }, [member])
   
   useEffect(()=> {
-    fetch(`https://warm-earth-97575.herokuapp.com/getUser/${id}`)
+    fetch(`https://pust-sw-server.vercel.app/getUser/${id}`)
     .then(res => res.json())
     .then(data => setMember(data))
   }, [id]);

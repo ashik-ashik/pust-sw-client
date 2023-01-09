@@ -11,7 +11,7 @@ const AllBlogs = () => {
 
   const [blogs, setBlogs] = useState(null);
   useEffect(()=>{
-    fetch(`https://warm-earth-97575.herokuapp.com/blogs`)
+    fetch(`https://pust-sw-server.vercel.app/blogs`)
     .then(res => res.json())
     .then(result => setBlogs(result ? result : {}))
   },[]);

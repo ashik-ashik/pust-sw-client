@@ -13,14 +13,14 @@ const EditTodo = () => {
   const { register, handleSubmit, reset } = useForm();
 
   useEffect(()=>{
-    fetch(`https://warm-earth-97575.herokuapp.com/todo-edit/${id}`)
+    fetch(`https://pust-sw-server.vercel.app/todo-edit/${id}`)
     .then(res=>res.json())
     .then(result => setTodo(result ? result : {}))
   },[id]);
 
 
   const editTodo = (data) =>{
-    axios.put(`https://warm-earth-97575.herokuapp.com/todo-edit/${id}`, data)
+    axios.put(`https://pust-sw-server.vercel.app/todo-edit/${id}`, data)
     .then(res=>{
       if(res.status === 200){
         setShowEditTaskModal(false);

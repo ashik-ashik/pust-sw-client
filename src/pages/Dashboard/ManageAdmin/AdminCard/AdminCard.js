@@ -7,7 +7,7 @@ const AdminCard = ({member, setReLoad}) => {
   const {currentMember} = useMember();
   const [showConfirmModal, setConfirmModal] = useState(false);
   const manageAdmin = (id, action) =>{
-      axios.put(`https://warm-earth-97575.herokuapp.com/manage-admin/${id}`, {role:action})
+      axios.put(`https://pust-sw-server.vercel.app/manage-admin/${id}`, {role:action})
       .then(res=>{
         if(res.status === 200){
           setReLoad(true);

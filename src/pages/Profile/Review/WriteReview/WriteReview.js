@@ -37,7 +37,7 @@ const WriteReview = ({member, setReviewLoad}) => {
     data.userPhoto = member.profilePic;
     data.userBatch = member.batchNo;
     console.log(data);
-    axios.post(`https://warm-earth-97575.herokuapp.com/review-post`, data)
+    axios.post(`https://pust-sw-server.vercel.app/review-post`, data)
     .then(res=>{
       console.log(res);
       setRating(0);

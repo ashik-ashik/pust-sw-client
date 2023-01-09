@@ -23,7 +23,7 @@ const TodoApp = () => {
   const navigate = useNavigate();
 
   useEffect(()=>{
-    fetch(`https://warm-earth-97575.herokuapp.com/todo/${currentMember?._id}`)
+    fetch(`https://pust-sw-server.vercel.app/todo/${currentMember?._id}`)
     .then(res=>res.json())
     .then(result => {
       setTodos(result ? result : {});
@@ -40,7 +40,7 @@ const TodoApp = () => {
     data.addTime = new Date().toLocaleTimeString();
     data.isComplete = false;
 
-    axios.post(`https://warm-earth-97575.herokuapp.com/todo`, data)
+    axios.post(`https://pust-sw-server.vercel.app/todo`, data)
     .then(res => {
       if(res.status === 200){
         setNewAntry(true);
@@ -51,7 +51,7 @@ const TodoApp = () => {
   };
 
   const updateDone = (id) => {
-    axios.put(`https://warm-earth-97575.herokuapp.com/todo-update/${id}`)
+    axios.put(`https://pust-sw-server.vercel.app/todo-update/${id}`)
     .then(res=>{
       if(res.status === 200){
         setNewAntry(true);
@@ -63,7 +63,7 @@ const TodoApp = () => {
     setSingleTodoId(id);
   }
   const letsDeleteTodo = () => {
-    axios.delete(`https://warm-earth-97575.herokuapp.com/todo-delete/${singleTodoId}`)
+    axios.delete(`https://pust-sw-server.vercel.app/todo-delete/${singleTodoId}`)
     .then(res => {
       if(res){
         setNewAntry(true);

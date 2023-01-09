@@ -14,7 +14,7 @@ const ProductDetails = () => {
   const [addingCart, setAddingCart] = useState(false);
   const [showAdded, setShowAdded] = useState(false);
   useEffect(()=>{
-    fetch(`https://warm-earth-97575.herokuapp.com/product/${id}`)
+    fetch(`https://pust-sw-server.vercel.app/product/${id}`)
     .then(res => res.json())
     .then(result => setProduct(result ? result : {}))
   },[id]);
@@ -45,7 +45,7 @@ const ProductDetails = () => {
     toCart.qty= parseInt(qty);
     
 
-    axios.put('https://warm-earth-97575.herokuapp.com/addtocart', toCart)
+    axios.put('https://pust-sw-server.vercel.app/addtocart', toCart)
     .then(res=>{
       setShowAdded(true)
       setAddingCart(false);

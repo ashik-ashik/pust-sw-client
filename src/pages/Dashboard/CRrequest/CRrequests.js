@@ -20,7 +20,7 @@ const CRrequests = ({request}) => {
     setApprovalModal(true);
   }
   const approveCRship = (id) => {
-    axios.put(`https://warm-earth-97575.herokuapp.com/approve-cr/${id}`, {approve: true})
+    axios.put(`https://pust-sw-server.vercel.app/approve-cr/${id}`, {approve: true})
     .then(res => {
       if(res?.status){
         setApprovalModal(false)
@@ -35,7 +35,7 @@ const CRrequests = ({request}) => {
     setDeleteModal(true);
   }
   const removeCRrequest = (id) => {
-    axios.put(`https://warm-earth-97575.herokuapp.com/remove-cr/${id}`, {})
+    axios.put(`https://pust-sw-server.vercel.app/remove-cr/${id}`, {})
     .then(res => {
       window.location.reload();
     })

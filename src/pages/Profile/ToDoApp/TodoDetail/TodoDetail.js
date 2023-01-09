@@ -8,7 +8,7 @@ const TodoDetail = () => {
   const [todo, setTodo] = useState(null);
   const [showDetailTaskModal, setShowDetailTaskModal] = useState(true)
   useEffect(()=>{
-    fetch(`https://warm-earth-97575.herokuapp.com/todo-edit/${id}`)
+    fetch(`https://pust-sw-server.vercel.app/todo-edit/${id}`)
     .then(res=>res.json())
     .then(result => setTodo(result ? result : {}))
   },[id]);

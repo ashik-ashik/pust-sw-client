@@ -8,14 +8,14 @@ const Members = ({member}) => {
   // current logged in user
   const [currentUser, setCurrentuser] = useState(null);
   useEffect(()=>{
-      fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`)
+      fetch(`https://pust-sw-server.vercel.app/currentUser/${user?.email}`)
       .then(res => res.json())
       .then(result => setCurrentuser(result))
   }, [user]);
 
   // remove cr ship
   const removeCR = (id) => {
-    axios.put(`https://warm-earth-97575.herokuapp.com/remove-cr/${id}`, {})
+    axios.put(`https://pust-sw-server.vercel.app/remove-cr/${id}`, {})
     .then(res => {
       window.location.reload();
     })
@@ -23,7 +23,7 @@ const Members = ({member}) => {
 
   // make a cr
   const makeCR = (id) => {
-    axios.put(`https://warm-earth-97575.herokuapp.com/approve-cr/${id}`, {})
+    axios.put(`https://pust-sw-server.vercel.app/approve-cr/${id}`, {})
     .then(res => {
       window.location.reload();
     })
@@ -31,7 +31,7 @@ const Members = ({member}) => {
   // make a cr
   const removeAccount = (member) => {
     deleteAccount(member.email);
-    // axios.delete(`https://warm-earth-97575.herokuapp.com/delete-member/${id}`, {})
+    // axios.delete(`https://pust-sw-server.vercel.app/delete-member/${id}`, {})
     // .then(res => {
     //   window.location.reload();
     // })

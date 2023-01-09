@@ -12,7 +12,7 @@ const EditEvent = () => {
   const [event, setEvent] = useState(null);
   const navigate = useNavigate();
   useEffect(()=>{
-      fetch(`https://warm-earth-97575.herokuapp.com/event/${id}`)
+      fetch(`https://pust-sw-server.vercel.app/event/${id}`)
       .then(res => res.json())
       .then(result => setEvent(result))
   }, [id]);
@@ -27,7 +27,7 @@ const EditEvent = () => {
   const { register, handleSubmit } = useForm();
   const editEvent = data => {
     data.eventContent = content;
-    axios.put(`https://warm-earth-97575.herokuapp.com/update-event/${id}`, data)
+    axios.put(`https://pust-sw-server.vercel.app/update-event/${id}`, data)
     .then(res => {
       navigate("/dashboard/manage-events")
     })

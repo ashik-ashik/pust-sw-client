@@ -37,7 +37,7 @@ const SetInformation = () => {
       userInfo = notHall;
     }
     // save user informaiton to database
-    axios.put("https://warm-earth-97575.herokuapp.com/user", userInfo)
+    axios.put("https://pust-sw-server.vercel.app/user", userInfo)
     .then(res => {
       if(res.status === 200){
         setSetupDoneModal(true);

@@ -6,7 +6,7 @@ import Loading from '../../CommonSections/Loading/Loading';
 const CRrequestList = () => {
   const [user, setUser] = useState(null);
   useEffect(()=>{
-      fetch("https://warm-earth-97575.herokuapp.com/users")
+      fetch("https://pust-sw-server.vercel.app/users")
       .then(res=> res.json())
       .then(result => setUser(result))
   }, [])

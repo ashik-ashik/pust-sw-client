@@ -16,7 +16,7 @@ const Verification = () => {
   const [matching, setMatching] = useState(true);
 
   useEffect(()=>{    
-      fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`)
+      fetch(`https://pust-sw-server.vercel.app/currentUser/${user?.email}`)
       .then(res => res.json())
       .then(result => setGetUser(result))
   },[user, isLoading]);
@@ -29,7 +29,7 @@ const Verification = () => {
       const code = document.getElementById("code").value;
       if(code === getUser?.verificationCode){
         setMatching(true);
-        axios.put(`https://warm-earth-97575.herokuapp.com/verify/${getUser?._id}`, {isVerified:true})
+        axios.put(`https://pust-sw-server.vercel.app/verify/${getUser?._id}`, {isVerified:true})
         .then(res => {
           if(res.status === 200){
             setMatching(true);

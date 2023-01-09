@@ -14,7 +14,7 @@ const PublishNotice = () => {
   const navigate = useNavigate();
   const [member, setMember] = useState(null);
   useEffect (()=>{
-      fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`)
+      fetch(`https://pust-sw-server.vercel.app/currentUser/${user?.email}`)
       .then(res => res.json())
       .then(result => setMember(result))
   }, [user]);
@@ -24,7 +24,7 @@ const PublishNotice = () => {
     notice.publisherName = member.fullName;
     notice.publisherEmail = user.email;
     notice.isFromCR = member.isCR;
-    axios.post(`https://warm-earth-97575.herokuapp.com/publish-notice`, notice)
+    axios.post(`https://pust-sw-server.vercel.app/publish-notice`, notice)
     .then(res => {
       if(res.status === 200){
         navigate('/notice-board')

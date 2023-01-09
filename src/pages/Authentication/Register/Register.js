@@ -52,7 +52,7 @@ const Register = () => {
           displayName: fullName, 
         }).then(() => {
         // updated https://warm-earth-97575.herokuapp.com
-          axios.post("https://warm-earth-97575.herokuapp.com/user", userInfo)
+          axios.post("https://pust-sw-server.vercel.app/user", userInfo)
           .then(res => {
           })
         }).catch((error) => {

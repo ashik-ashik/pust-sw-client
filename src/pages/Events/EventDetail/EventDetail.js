@@ -13,7 +13,7 @@ const EventDetail = () => {
   const {id} = useParams();
   const {currentMember} = useMember();
   useEffect(()=>{
-      fetch(`https://warm-earth-97575.herokuapp.com/event/${id}`)
+      fetch(`https://pust-sw-server.vercel.app/event/${id}`)
       .then(res => res.json())
       .then(result => setEvent(result));
       setFetch(false);
@@ -44,7 +44,7 @@ const EventDetail = () => {
     if(!isLiked){
       likes.push(likerId);
     }
-    axios.put(`https://warm-earth-97575.herokuapp.com/event-like/${id}`, {likes : likes})
+    axios.put(`https://pust-sw-server.vercel.app/event-like/${id}`, {likes : likes})
     .then(res => {
       setFetch(true)
     })

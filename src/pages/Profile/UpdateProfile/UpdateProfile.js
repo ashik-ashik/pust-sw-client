@@ -10,14 +10,14 @@ const UpdateProfile = () => {
   const [user, setUser]= useState(null);
   const navigate = useNavigate();
   useEffect(()=>{
-    fetch(`https://warm-earth-97575.herokuapp.com/getUser/${id}`)
+    fetch(`https://pust-sw-server.vercel.app/getUser/${id}`)
     .then(res => res.json())
     .then(data => setUser(data))
   }, [id]);
 
   const { register, handleSubmit } = useForm();
   const onSubmit = data => {
-    axios.put(`https://warm-earth-97575.herokuapp.com/add-social/${id}`, data)
+    axios.put(`https://pust-sw-server.vercel.app/add-social/${id}`, data)
     .then(res => {
       if(res.status === 200){
         navigate("/profile");

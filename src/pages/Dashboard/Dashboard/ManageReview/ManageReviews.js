@@ -6,7 +6,7 @@ const ManageReviews = () => {
   const [reviews, setReviews] = useState(null);
   const [reviewReLoad, setReviewReLoad] = useState(false);
   useEffect(()=>{
-    fetch(`https://warm-earth-97575.herokuapp.com/reviews`)
+    fetch(`https://pust-sw-server.vercel.app/reviews`)
     .then(res=>res.json())
     .then(result => setReviews(result ? result : []));
     setReviewReLoad(false)

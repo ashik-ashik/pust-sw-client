@@ -13,7 +13,7 @@ const CafeShop = () => {
   const [products, setProducts] = useState(null);
   const [isAddNew, setIsAddNew] = useState('')
   useEffect(()=>{
-    fetch('https://warm-earth-97575.herokuapp.com/products')
+    fetch('https://pust-sw-server.vercel.app/products')
     .then(res => res.json())
     .then(result => setProducts(result ? result : {}))
   },[]);
@@ -21,7 +21,7 @@ const CafeShop = () => {
   const [carts, setCart] = useState(null);
   const {currentMember} = useMember();
   useEffect(()=>{
-    fetch(`https://warm-earth-97575.herokuapp.com/my-cart/${currentMember?._id}`)
+    fetch(`https://pust-sw-server.vercel.app/my-cart/${currentMember?._id}`)
     .then(res=>res.json())
     .then(result => setCart(result ? result : {} ))
   },[currentMember, isAddNew]);

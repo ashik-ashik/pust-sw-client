@@ -16,7 +16,7 @@ const ManageBlogs = () => {
   const [deleteDone, setDeleteDone] = useState(false);
 
   useEffect(()=>{
-    fetch(`https://warm-earth-97575.herokuapp.com/blogs`)
+    fetch(`https://pust-sw-server.vercel.app/blogs`)
     .then(res => res.json())
     .then(result => setBlogs(result ? result : {}))
   },[update]);
@@ -27,7 +27,7 @@ const ManageBlogs = () => {
     const {_id, ...dublicate_blog} = blog;
     dublicate_blog.blogTitle = blog?.blogTitle + " (copy)";
     dublicate_blog.publishedAt = new Date().toDateString().split(" ").slice(1,4);
-    axios.post(`https://warm-earth-97575.herokuapp.com/publish-blog`, dublicate_blog)
+    axios.post(`https://pust-sw-server.vercel.app/publish-blog`, dublicate_blog)
     .then(res=>{
       setUpdate(false)
     })
@@ -42,7 +42,7 @@ const ManageBlogs = () => {
   const deleteBlog = () => {
     setUpdate(true)
     setDeleteModal(false)
-    axios.delete(`https://warm-earth-97575.herokuapp.com/blog-delete/${idForDelete}`)
+    axios.delete(`https://pust-sw-server.vercel.app/blog-delete/${idForDelete}`)
     .then(res => {
       setUpdate(false);
       setDeleteDone(true);

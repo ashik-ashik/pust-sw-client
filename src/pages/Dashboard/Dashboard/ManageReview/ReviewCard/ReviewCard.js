@@ -23,7 +23,7 @@ const ReviewCard = ({review, setReviewReLoad}) => {
     }
   };
   const manageReviewStatus = (sts) => {
-    axios.put(`https://warm-earth-97575.herokuapp.com/review-status-update/${review._id}`, {status : sts})
+    axios.put(`https://pust-sw-server.vercel.app/review-status-update/${review._id}`, {status : sts})
     .then(res=>{
       console.log(res);
       setReviewReLoad(true);
@@ -31,7 +31,7 @@ const ReviewCard = ({review, setReviewReLoad}) => {
   };
 
   const deleteReview = (id) => {
-    axios.delete(`https://warm-earth-97575.herokuapp.com/review-delete/${id}`)
+    axios.delete(`https://pust-sw-server.vercel.app/review-delete/${id}`)
     .then(res=>{
       console.log(res);
       setReviewReLoad(true);

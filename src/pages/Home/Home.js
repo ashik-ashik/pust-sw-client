@@ -33,7 +33,7 @@ const Home = () => {
 
 
    useEffect (()=>{
-      fetch(`https://warm-earth-97575.herokuapp.com/fearured-members`)
+      fetch(`https://pust-sw-server.vercel.app/fearured-members`)
       .then(res => res.json())
       .then(result => setMembers(result))    
   }, [user]);
@@ -42,7 +42,7 @@ const Home = () => {
   
   useEffect(()=>{
     setUserLoad(true)
-    fetch(`https://warm-earth-97575.herokuapp.com/events-home`)
+    fetch(`https://pust-sw-server.vercel.app/events-home`)
     .then(res => res.json())
     .then(result => setEvents(result))    
     setUserLoad(false)
@@ -50,20 +50,20 @@ const Home = () => {
   
   useEffect(()=>{
     setUserLoad(true)
-    fetch(`https://warm-earth-97575.herokuapp.com/notice-home`)
+    fetch(`https://pust-sw-server.vercel.app/notice-home`)
     .then(res => res.json())
     .then(result => setNotices(result))    
     setUserLoad(false)
   },[]);
 
   useEffect(()=>{
-    fetch(`https://warm-earth-97575.herokuapp.com/blogs-home`)
+    fetch(`https://pust-sw-server.vercel.app/blogs-home`)
     .then(res => res.json())
     .then(result => setBlogs(result ? result : {}))
   },[]);
 
   useEffect(()=>{
-    fetch(`https://warm-earth-97575.herokuapp.com/approved-review`)
+    fetch(`https://pust-sw-server.vercel.app/approved-review`)
     .then(res => res.json())
     .then(result => setReviews(result ? result : {}))
   },[]);

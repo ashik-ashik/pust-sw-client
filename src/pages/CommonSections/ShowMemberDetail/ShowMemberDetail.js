@@ -37,7 +37,7 @@ const ShowMemberDetail = ({member, setReLoad}) => {
   }
   const submitCRship = (e) => {
     const isCR = document.getElementById("CRship").checked;
-    axios.put(`https://warm-earth-97575.herokuapp.com/upload-cr-ship/${member?._id}`, {isCR, CRstatus:'pending'})
+    axios.put(`https://pust-sw-server.vercel.app/upload-cr-ship/${member?._id}`, {isCR, CRstatus:'pending'})
     .then(res => {
       setShow(false);
       setReLoad(true);
@@ -55,7 +55,7 @@ const ShowMemberDetail = ({member, setReLoad}) => {
     const file = document.getElementById("file").files[0];
     const formData = new FormData();
     formData.append("image", file)
-    axios.put(`https://warm-earth-97575.herokuapp.com/upload-profile/${member?._id}`, formData)
+    axios.put(`https://pust-sw-server.vercel.app/upload-profile/${member?._id}`, formData)
     .then(res => {
       setShow(false);
       setReLoad(true);
@@ -83,7 +83,7 @@ const ShowMemberDetail = ({member, setReLoad}) => {
 
 
   const deleteUserDate = id => {
-    axios.delete(`https://warm-earth-97575.herokuapp.com/delete-member/${id}`)
+    axios.delete(`https://pust-sw-server.vercel.app/delete-member/${id}`)
     .then(res => {
       if(res?.status === 200){
           setDeleteSuccessModal(true)

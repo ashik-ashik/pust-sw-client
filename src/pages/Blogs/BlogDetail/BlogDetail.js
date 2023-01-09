@@ -10,7 +10,7 @@ const BlogDetail = () => {
 
   const [blog, setBlog] = useState(null);
   useEffect(()=>{
-    fetch(`https://warm-earth-97575.herokuapp.com/blog/${id}`)
+    fetch(`https://pust-sw-server.vercel.app/blog/${id}`)
     .then(res=>res.json())
     .then(result=>setBlog(result ? result : {}))
   }, [id]);

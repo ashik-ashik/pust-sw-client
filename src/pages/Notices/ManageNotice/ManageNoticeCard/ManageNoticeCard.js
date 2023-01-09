@@ -6,7 +6,7 @@ const ManageNoticeCard = ({notice, member}) => {
   const deleteNotice = id => {
     const isDelete = window.confirm("Do you want to delete the notice???");
     if(isDelete){
-      axios.delete(`https://warm-earth-97575.herokuapp.com/notice-delete/${id}`)
+      axios.delete(`https://pust-sw-server.vercel.app/notice-delete/${id}`)
       .then(res => {
         window.location.reload();
       });

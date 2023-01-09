@@ -17,7 +17,7 @@ const EventCard = ({event, user}) => {
   
   const deleteModal = () => setShow(true);
   const doDelete = id => {
-    axios.delete(`https://warm-earth-97575.herokuapp.com/event-delete/${id}`)
+    axios.delete(`https://pust-sw-server.vercel.app/event-delete/${id}`)
     .then(res => {
       window.location.reload();
     })

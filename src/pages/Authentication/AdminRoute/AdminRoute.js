@@ -10,7 +10,7 @@ const AdminRoute = ({children, ...rest}) => {
   const [userLoad, setUserLoad] = useState(true)
   useEffect(()=>{
       setUserLoad(true)
-      fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`)
+      fetch(`https://pust-sw-server.vercel.app/currentUser/${user?.email}`)
       .then(res => res.json())
       .then(result => {
         setAdmin(result);

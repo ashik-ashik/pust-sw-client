@@ -5,6 +5,7 @@ import AdminCard from './AdminCard/AdminCard';
 
 const ManageAdmin = () => {
   const {members, setReLoad} = useMember();
+  const legalMember = members?.filter(member => member?.isVerified && member?.roll && (member?.phone?.length > 0));
   return (
     <>
       <section className="py-4">
@@ -15,7 +16,7 @@ const ManageAdmin = () => {
           </div>
           <Row className="mt-4 g-3" xs="1" md="3" lg="4">
             {
-              members?.map(member => <AdminCard key={member?._id} member={member} setReLoad={setReLoad} />)
+              legalMember?.map(member => <AdminCard key={member?._id} member={member} setReLoad={setReLoad} />)
             }
           </Row>
         </Container>

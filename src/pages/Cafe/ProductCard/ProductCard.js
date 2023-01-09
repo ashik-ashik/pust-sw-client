@@ -35,7 +35,7 @@ const ProductCard = ({product, index, setIsAddNew}) => {
     toCart.qty= parseInt(qty);
     
 
-    axios.put('https://warm-earth-97575.herokuapp.com/addtocart', toCart)
+    axios.put('https://pust-sw-server.vercel.app/addtocart', toCart)
     .then(res=>{
       setAddingCart(false);
       setAdded(true);

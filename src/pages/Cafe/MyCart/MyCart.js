@@ -17,7 +17,7 @@ const MyCart = () => {
 
 
   useEffect(()=>{
-    fetch(`https://warm-earth-97575.herokuapp.com/my-cart/${currentMember?._id}`)
+    fetch(`https://pust-sw-server.vercel.app/my-cart/${currentMember?._id}`)
     .then(res=>res.json())
     .then(result => setCart(result ? result : [] ));    
   },[currentMember, itemDeleted]);
@@ -44,7 +44,7 @@ const MyCart = () => {
   
   // remove cart item
   const removeCartItem = id => {
-    axios.delete(`https://warm-earth-97575.herokuapp.com/delete-cart/${id}`)
+    axios.delete(`https://pust-sw-server.vercel.app/delete-cart/${id}`)
     .then(res => {
       if(res.status === 200){
         setCart(null)

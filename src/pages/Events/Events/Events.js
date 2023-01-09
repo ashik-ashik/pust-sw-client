@@ -11,7 +11,7 @@ const Events = () => {
   const [events, setEvents] = useState(null)
 
   useEffect(()=>{
-      fetch(`https://warm-earth-97575.herokuapp.com/events`)
+      fetch(`https://pust-sw-server.vercel.app/events`)
       .then(res => res.json())
       .then(result => setEvents(result))    
   },[]);

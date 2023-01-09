@@ -16,7 +16,7 @@ const CartItem = ({cart, setUpdate, removeCartItem}) => {
     setPrice(val * cart?.price);
     setUpdate(true);
 
-    axios.put(`https://warm-earth-97575.herokuapp.com/update-cart/${cart?.productId}`, {qty: val})
+    axios.put(`https://pust-sw-server.vercel.app/update-cart/${cart?.productId}`, {qty: val})
     .then(res=>{
     });
 
@@ -31,7 +31,7 @@ const CartItem = ({cart, setUpdate, removeCartItem}) => {
     setPrice(val * cart?.price)
     setUpdate(true)
 
-    axios.put(`https://warm-earth-97575.herokuapp.com/update-cart/${cart?.productId}`, {qty: val})
+    axios.put(`https://pust-sw-server.vercel.app/update-cart/${cart?.productId}`, {qty: val})
     .then(res=>{
     });
 

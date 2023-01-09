@@ -21,7 +21,7 @@ const Allmembers = () => {
   // const history = 
 
   useEffect(()=> {
-    fetch(`https://warm-earth-97575.herokuapp.com/member-show?page=${currentPage}&&size=${memberInAPage}`)
+    fetch(`https://pust-sw-server.vercel.app/member-show?page=${currentPage}&&size=${memberInAPage}`)
     .then(res => res.json())
     .then(data => {
       setUsers(data?.members);

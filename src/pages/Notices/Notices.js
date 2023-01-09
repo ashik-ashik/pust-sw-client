@@ -15,13 +15,13 @@ const Notices = () => {
   }, []);
 
   useEffect (()=>{
-      fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`)
+      fetch(`https://pust-sw-server.vercel.app/currentUser/${user?.email}`)
       .then(res => res.json())
       .then(result => setMember(result))
   }, [user]);
 
   useEffect(()=>{
-      fetch('https://warm-earth-97575.herokuapp.com/notices')
+      fetch('https://pust-sw-server.vercel.app/notices')
       .then(res => res.json())
       .then(result => setNotices(result))
   }, [])

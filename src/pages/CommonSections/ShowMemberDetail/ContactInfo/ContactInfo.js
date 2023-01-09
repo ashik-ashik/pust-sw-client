@@ -23,7 +23,7 @@ const ContactInfo = ({member}) => {
       newPhone = data.phone;
     }
     const updatePhone = [...member?.phone, newPhone]
-    axios.put(`https://warm-earth-97575.herokuapp.com/add-contact/${member._id}`, updatePhone)
+    axios.put(`https://pust-sw-server.vercel.app/add-contact/${member._id}`, updatePhone)
     .then(res => {
       if(res.status === 200){
         setReLoad(true);
@@ -35,7 +35,7 @@ const ContactInfo = ({member}) => {
   const removePhone = index => {
     phones.splice(index, 1);
     setPhones(phones);    
-    axios.put(`https://warm-earth-97575.herokuapp.com/remove-phone/${member._id}`, {phones})
+    axios.put(`https://pust-sw-server.vercel.app/remove-phone/${member._id}`, {phones})
     .then(res => {
       if(res.status === 200){
         setReLoad(true);
@@ -44,7 +44,7 @@ const ContactInfo = ({member}) => {
   }
   
   const makeWhatsApp = number => {
-    axios.put(`https://warm-earth-97575.herokuapp.com/add-whatsapp/${member._id}`, {number})
+    axios.put(`https://pust-sw-server.vercel.app/add-whatsapp/${member._id}`, {number})
     .then(res => {
       if(res.status === 200){
         setReLoad(true);

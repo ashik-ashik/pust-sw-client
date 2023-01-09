@@ -10,7 +10,7 @@ const MemberProvider = ({children}) => {
   const [reLoad, setReLoad] = useState(false);
   useEffect(()=>{
     setUserLoading(true)
-    fetch('https://warm-earth-97575.herokuapp.com/users')
+    fetch('https://pust-sw-server.vercel.app/users')
       .then(res => res.json())
       .then(result => {
         setMembers(result ? result : {})
@@ -23,7 +23,7 @@ const MemberProvider = ({children}) => {
 
   useEffect(()=>{
     setUserLoading(true)
-      fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`)
+      fetch(`https://pust-sw-server.vercel.app/currentUser/${user?.email}`)
       .then(res => res.json())
       .then(result => {
         setMember(result ? result : {})

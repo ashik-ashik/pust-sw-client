@@ -58,7 +58,7 @@ const PublishEvent = () => {
   event.likes = [];
 
 
-    axios.post(`https://warm-earth-97575.herokuapp.com/publish-event`, event)
+    axios.post(`https://pust-sw-server.vercel.app/publish-event`, event)
     .then(res => {
       if(res.status === 200){
         navigate('/events')

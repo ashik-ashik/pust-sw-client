@@ -8,7 +8,7 @@ const DashboardHeader = () => {
   const {user, memberLogOut} = useAuth();
   const [currentUser, setCurrentUser]=useState(null);
   useEffect(()=> {
-    fetch(`https://warm-earth-97575.herokuapp.com/currentUser/${user?.email}`)
+    fetch(`https://pust-sw-server.vercel.app/currentUser/${user?.email}`)
     .then(res => res.json())
     .then(data => setCurrentUser(data));
   }, [user]);
